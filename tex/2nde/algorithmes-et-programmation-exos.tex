@@ -1,0 +1,287 @@
+\newpage
+
+\section{Exercices}
+ {
+  \small
+  \setlength{\columnseprule}{0.6pt}
+  \begin{multicols}{2}
+
+	  \begin{exo}[Analyse d'affectations]
+		  Soient les instructions suivantes exécutées successivement :
+
+		  \begin{lstlisting}
+a = 3
+b = 7
+a = a + b
+b = a - b
+a = a - b
+\end{lstlisting}
+
+		  Quelles sont les valeurs finales des variables \lstinline|a| et \lstinline|b| ?
+	  \end{exo}
+
+	  \begin{exo}[Calculs arithmétiques]
+		  Soient \lstinline|x = 17| et \lstinline|y = 5|. Donner le résultat et le type des expressions suivantes :
+		  \begin{enumerate}[label=\alph*)]
+			  \item \lstinline|x / y|
+			  \item \lstinline|x // y|
+			  \item \lstinline|x % y|
+			  \item \lstinline|x ** 2|
+		  \end{enumerate}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Expliquer de façon claire et concise ce que fait le programme suivant.
+
+		  \begin{lstlisting}
+a=int(input("Entrez un entier"))
+b=a
+a=a*b
+print(a)
+\end{lstlisting}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Qu'affichera le programme suivant ?
+
+		  \begin{lstlisting}
+a=1
+b=2
+c=a+b
+a=b+c
+b=c+a
+print(b)
+\end{lstlisting}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Que fait le programme suivant ?
+
+		  \begin{lstlisting}
+a=int(input("Entrez un entier"))
+b=a+a
+a=a+b
+print(a)
+\end{lstlisting}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Qu'affichera le programme suivant ?
+
+		  \begin{lstlisting}
+a=3
+for i in range(1,1001):
+    a=a+0.5
+print(a)
+\end{lstlisting}
+	  \end{exo}
+
+	  \vfill~\columnbreak
+
+	  \begin{exo}{}
+		  Que fait le programme suivant ?
+
+		  \begin{lstlisting}
+b=1
+a=int(input("Entrez un nombre"))
+for i in range(1,4):
+    b=b*a
+print(b)
+\end{lstlisting}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Compléter le programme suivant pour qu'il calcule la somme des inverses des entiers de $1$ à $1000$ :
+
+		  \[
+			  1 + \frac12 + \frac13 + \frac14 + \cdots + \frac1{1000}
+		  \]
+
+		  \begin{lstlisting}
+somme=0
+for i in range(1,1001):
+    somme=somme+.........
+print(somme)
+\end{lstlisting}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Écrivez un programme qui demande à l'utilisateur d'entrer un entier naturel non nul $n$ et qui affiche la factorielle de $n$.
+
+		  La factorielle d'un entier $n$, notée $n!$, est le produit de tous les entiers de $1$ à $n$ inclus.
+
+		  \[
+			  5! = 1 \times 2 \times 3 \times 4 \times 5 = 120.
+		  \]
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Que fait le programme suivant ?
+		  {\footnotesize
+		  \begin{lstlisting}
+s=0
+n=int(input("Entrez un entier > 0"))
+for i in range(1,n+1):
+    s=s+i
+print(s)
+\end{lstlisting}
+		  }
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Que fait le programme suivant ?
+		  {\footnotesize
+		  \begin{lstlisting}
+s=0
+n=int(input("Entrez un entier > 0"))
+p=int(input("Entrez-en un deuxième"))
+for i in range(1,n+1):
+    for j in range(1,p+1):
+        s=s+1
+print(s)
+\end{lstlisting}
+		  }
+	  \end{exo}
+
+	  \begin{exo}[Structure conditionnelle]
+		  Écrire une fonction Python \lstinline|maximum(a, b)| qui prend deux nombres \lstinline|a| et \lstinline|b| en paramètres et renvoie le plus grand des deux sans utiliser la fonction native \lstinline|max()|.
+	  \end{exo}
+
+	  \vfill~\columnbreak
+
+	  \begin{exo}{}
+		  Le programme suivant tire au sort $20$ entiers entre $1$ et $100$ et affiche leur somme.
+
+		  Modifiez-le pour qu'il affiche non plus la somme, mais le plus grand d'entre eux.
+
+		  \begin{lstlisting}
+from random import *
+
+s=0
+for i in range(1,21):
+    a=randint(1,100)
+    s=s+a
+print(s)
+\end{lstlisting}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Modifiez le programme de l'exercice précédent pour qu'il affiche à la fin la moyenne des entiers tirés au sort.
+	  \end{exo}
+
+	  \begin{exo}[Boucle \texttt{while} et seuil]
+		  On considère la suite de nombres définie par son premier terme $U_0 = 100$ et la relation $U_{n+1} = 0{,}8 U_n + 5$.
+
+		  Écrire un programme Python déterminant le plus petit entier $n$ tel que $U_n < 30$.
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Qu'affichera le programme suivant ?
+
+		  \begin{lstlisting}
+a=30
+n=1
+while n<=a:
+    n=2*n
+print(n)
+\end{lstlisting}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Que fait le programme suivant ?
+
+		  \begin{lstlisting}
+a=input("Entrez un entier > 0")
+a=int(a)
+n=1
+while n<=a:
+    n=2*n
+print(n)
+\end{lstlisting}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Un puits contient une hauteur d'eau de $10$ m. Chaque jour, son niveau diminue de $2$\%.
+
+		  Compléter l'algorithme suivant pour qu'il calcule le nombre de jours qu'il faudra pour que le niveau descende en dessous de $1$ m.
+
+		  \begin{lstlisting}
+hauteur=10
+nb_jours=0
+
+while hauteur>1:
+    nb_jours=............
+    hauteur=............
+
+print(nb_jours)
+\end{lstlisting}
+	  \end{exo}
+
+	  \vfill~\columnbreak
+
+	  \begin{exo}[Milieu et distance dans le plan]
+		  On considère deux points $A(x_A, y_A)$ et $B(x_B, y_B)$ dans un repère orthonormé.
+
+		  Écrire une fonction Python \lstinline|milieu(xA, yA, xB, yB)| qui renvoie les coordonnées $(x_I, y_I)$ du milieu $I$ du segment $[AB]$ sous forme d'un couple de valeurs.
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Qu'affichera le programme suivant ?
+
+		  \begin{lstlisting}
+def f(x):
+    y=x**2+x+1
+    return y
+
+y=f(5)
+print(y)
+\end{lstlisting}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Que fait la fonction suivante ?
+
+		  \begin{lstlisting}
+def ultime(a,b,c):
+    if b>a:
+        a=b
+    if c>a:
+        a=c
+    return a
+\end{lstlisting}
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Une urne contient $3$ boules blanches et $3$ boules noires. On effectue deux tirages avec remise.
+
+		  Écrire une fonction qui simule la répétition à $n$ reprises de cette expérience et affiche le nombre de cas où le joueur a gagné (deux boules blanches).
+	  \end{exo}
+
+	  \begin{exo}{}
+		  Dans le cadre d'un jeu de hasard, un joueur lance un dé.
+
+		  S'il obtient \epsdice{5} ou $\epsdice{6}$, il gagne, sinon il perd.
+
+		  La fonction suivante simule $n$ fois l'expérience et renvoie le nombre de cas où le joueur a gagné.
+
+		  Modifier cette fonction afin qu'elle renvoie la \textbf{fréquence} des victoires.
+
+		  Que se passe-t-il lorsque $n$ devient très grand ?
+		  {\footnotesize
+		  \begin{lstlisting}
+from random import *
+
+def echantillon(n):
+    gagne=0
+    for i in range(1,n+1):
+        a=randint(1,6)
+        if a>=5:
+            gagne=gagne+1
+    return gagne
+\end{lstlisting}
+		  }
+	  \end{exo}
+	  \vfill~
+
+  \end{multicols}
+ }

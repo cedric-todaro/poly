@@ -14,7 +14,7 @@
 \geometry{a4paper,top=1.8cm,bottom=2.2cm,inner=2.0cm,outer=1.6cm,footskip=10mm}
 \RequirePackage{fourier}
 \addtokomafont{disposition}{\rmfamily}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \raggedbottom
 % ---------------------------------------------------------------------------------------------------- 
 \RequirePackage{setspace}
@@ -143,18 +143,43 @@
 \def\ber{\begin{enumerate}[resume]}
 \def\bmc\begin{multicols}\def\emc\end{multicols}
 % ----------------------------------------------------------------------------------------------------
-\RequirePackage{listings,courier}
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+\definecolor{codegreen}{rgb}{0, 0.6, 0}
+\definecolor{codegray}{rgb}{0.45, 0.45, 0.45}
+\definecolor{codepurple}{rgb}{0.58, 0, 0.82}
+\definecolor{backcolour}{rgb}{0.95, 0.95, 0.97}
+\definecolor{codeblue}{rgb}{0, 0.35, 0.75}
 \lstset{
-	language=Python,
-	tabsize=4,
-	keepspaces=true,
-	breaklines=true,
-	basicstyle=\ttfamily,
-	texcl=true,
-	commentstyle=\ttfamily,
-	frame=single,
-	framerule=0.8pt,
-	framesep=5pt,
+    language=Python,
+    basicstyle=\ttfamily,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegray}\itshape,
+    keywordstyle=\color{codeblue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codegreen},
+    identifierstyle=\color{black},
+    tabsize=4,
+    showspaces=false,
+    showstringspaces=false,
+    keepspaces=true,
+    breaklines=true,
+    breakatwhitespace=true,
+	xleftmargin=\parindent, % Décale l'ensemble du bloc de code vers la droite
+	xrightmargin=\parindent, % Décale l'ensemble du bloc de code vers la droite
+	numbers=left,
+    numberstyle=\footnotesize\color{codegray},
+    numbersep=8pt,             % Espace entre les numéros et le code
+    framerule=0.8pt,           % Épaisseur de la barre verticale
+    frame=single,
+    rulecolor=\color{codeblue!40},
+    inputencoding=utf8,
+    extendedchars=true,
+    literate=
+        {é}{{\'e}}1 {è}{{\`e}}1 {à}{{\`a}}1 {ê}{{\^e}}1 {ù}{{\`u}}1
+        {Â}{{\^A}}1 {Ç}{{\c C}}1 {ç}{{\c c}}1 {É}{{\'E}}1 {È}{{\`E}}1
+        {Ê}{{\^E}}1 {Î}{{\^I}}1 {î}{{\^i}}1 {Ô}{{\^O}}1 {ô}{{\^o}}1
+        {Û}{{\^U}}1 {û}{{\^u}}1 {«}{{\guillemotleft}}1 {»}{{\guillemotright}}1
 }
 % ----------------------------------------------------------------------------------------------------
 \RequirePackage{hyperref}

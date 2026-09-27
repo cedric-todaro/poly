@@ -1,0 +1,270 @@
+\chapter{Algorithmes et programmation}
+
+\section{Variable, affectation et types de données}
+
+\begin{defin}[Variable et affectation]
+	En programmation, une \textbf{variable} est un espace mémoire nommé servant à stocker une donnée.
+
+	L'\textbf{affectation} est l'opération qui consiste à attribuer une valeur à une variable.
+
+	En Python, elle est réalisée à l'aide du symbole \lstinline|=|.
+\end{defin}
+
+\begin{remarque}
+	Dans une instruction d'affectation ~\lstinline|x = expression|~, l'évaluation de l'expression située à droite du ~\lstinline|=|~ est effectuée en premier, puis le résultat est stocké dans la variable ~\lstinline|x|.
+\end{remarque}
+
+\begin{ex}
+	\nline
+	\begin{lstlisting}
+a=5
+b=a+2
+a=a+1
+\end{lstlisting}
+
+	\begin{itemize}
+		\item \lstinline|a=5| : affecte la valeur entière $5$ à la variable \lstinline|a|.
+		\item \lstinline|b=a+2| : évalue $5 + 2$, puis affecte la valeur $7$ à la variable \lstinline|b|.
+		\item \lstinline|a=a+1| : augmente de $1$ la valeur contenue dans \lstinline|a| (opération d'incrémentation).
+	\end{itemize}
+\end{ex}
+
+\begin{prop}[Principaux types de données en Python]
+	En Python, chaque variable possède un type déterminé par la valeur qu'elle contient :
+	\begin{itemize}
+		\item \textbf{Entiers} (\lstinline|int|) : nombres entiers relatifs (ex. : \lstinline|3|, \lstinline|-12|).
+		\item \textbf{Flottants} (\lstinline|float|) : nombres décimaux (ex. : \lstinline|3.14|, \lstinline|-0.5|).
+		\item \textbf{Chaînes de caractères} (\lstinline|str|) : suites de caractères délimitées par des guillemets (ex. : \lstinline|"Maths"|, \lstinline|'Python'|).
+		\item \textbf{Booléens} (\lstinline|bool|) : valeurs de vérité, soit \lstinline|True| (Vrai), soit \lstinline|False| (Faux).
+	\end{itemize}
+\end{prop}
+
+\begin{attention}
+	Le séparateur décimal en Python est le point \lstinline|.| et non la virgule \lstinline|,|.
+
+	De plus, la chaîne de caractères \lstinline|"5"| de type \lstinline|str| est différente du nombre entier \lstinline|5| de type \lstinline|int|.
+\end{attention}
+
+\begin{prop}[Opérateurs arithmétiques]
+	Soient \lstinline|a| et \lstinline|b| deux variables numériques. Les principaux opérateurs sont :
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item \lstinline|a + b| : Addition
+			\item \lstinline|a - b| : Soustraction
+			\item \lstinline|a * b| : Multiplication
+			\item \lstinline|a / b| : Division exacte (résultat \lstinline|float|)
+			\item \lstinline|a // b| : Quotient de la division entière
+			\item \lstinline|a % b| : Reste de la division entière (modulo)
+			\item \lstinline|a ** b| : Puissance ($a^b$)
+		\end{itemize}
+	\end{multicols}
+\end{prop}
+
+\newpage
+
+\begin{methode}[Échanger les valeurs de deux variables]
+	Pour échanger les contenus de deux variables \lstinline|a| et \lstinline|b|, il est nécessaire de passer par une variable temporaire \lstinline|temp| pour ne pas perdre de donnée, ou d'utiliser l'affectation simultanée propre à Python.
+
+	\begin{correction}
+		\nline
+		{
+			\setlength{\columnseprule}{0.6pt}
+			\begin{multicols}{2}
+				\noindent\textbf{Méthode avec variable temporaire :}
+				\begin{lstlisting}[language=Python]
+temp = a
+a = b
+b = temp
+\end{lstlisting}
+				\columnbreak
+				\noindent\textbf{Méthode propre à Python :}
+				\begin{lstlisting}[language=Python]
+a, b = b, a
+	
+	
+\end{lstlisting}
+			\end{multicols}
+		}
+	\end{correction}
+\end{methode}
+
+\section{Structure conditionnelle}
+
+\begin{defin}[Structure conditionnelle]
+	Une \textbf{structure conditionnelle} permet d'exécuter un bloc d'instructions uniquement si une condition donnée (une expression booléenne) est vérifiée.
+\end{defin}
+
+\begin{prop}[Opérateurs de comparaison]
+	Les conditions s'expriment à l'aide des opérateurs de comparaison suivants :
+	\begin{multicols}{3}
+		\begin{itemize}
+			\item \lstinline|==| : Égal à
+			\item \lstinline|!=| : Différent de
+			\item \lstinline|<| : Strictement inférieur
+			\item \lstinline|>| : Strictement supérieur
+			\item \lstinline|<=| : Inférieur ou égal
+			\item \lstinline|>=| : Supérieur ou égal
+		\end{itemize}
+	\end{multicols}
+\end{prop}
+
+\begin{attention}
+	Il ne faut pas confondre le symbole d'affectation \lstinline|=| avec le test d'égalité \lstinline|==|.
+\end{attention}
+
+\begin{defin}[Syntaxe des blocs \lstinline|if / elif / else|]
+	En Python, les blocs d'instructions sont délimités par des deux-points \lstinline|:| et par l'\textbf{indentation} (décalage vers la droite systématique d'une tabulations ou $4$ espaces).
+
+	\begin{lstlisting}[language=Python]
+if condition_1:
+    # Instructions si condition_1 est vraie
+elif condition_2:
+    # Instructions si condition_1 est fausse et condition_2 vraie
+else:
+    # Instructions si aucune condition n'est vraie
+\end{lstlisting}
+\end{defin}
+
+\begin{methode}[Mise en œuvre d'une structure conditionnelle]
+	On souhaite déterminer si un nombre réel $x$ appartient à l'intervalle $\intff{2}{5}$.
+
+	\begin{correction}
+		\nline
+		\begin{lstlisting}[language=Python]
+if x >= 2 and x <= 5:
+    print("x appartient a l'intervalle [2 ; 5]")
+else:
+    print("x n'appartient pas a l'intervalle [2 ; 5]")
+\end{lstlisting}
+	\end{correction}
+\end{methode}
+
+\begin{remarque}[Opérateurs logiques]
+	Les conditions complexes peuvent être combinées à l'aide des opérateurs logiques :
+	\begin{itemize}
+		\item \lstinline|and| (ET) : vrai si toutes les conditions sont vraies simultanément.
+		\item \lstinline|or| (OU) : vrai si au moins l'une des conditions est vraie.
+		\item \lstinline|not| (NON) : inverse l'état logique d'une condition.
+	\end{itemize}
+\end{remarque}
+
+
+\section{Structures itératives (Boucles)}
+
+\begin{defin}[Boucle bornée \texttt{for}]
+	Une \textbf{boucle bornée} répète un bloc d'instructions un nombre déterminé à l'avance de fois.
+
+	En Python, elle s'écrit avec la commande \lstinline|for| combinée avec \lstinline|range()|.
+\end{defin}
+
+\begin{prop}[Fonction \texttt{range}]
+	La fonction \lstinline|range()| génère une séquence d'entiers :
+	\begin{itemize}
+		\item \lstinline|range(n)| génère les $n$ entiers de $0$ à $n-1$.
+		\item \lstinline|range(a, b)| génère les entiers de $a$ à $b-1$.
+		\item \lstinline|range(a, b, k)| génère les entiers de $a$ à $b-1$ par pas de $k$.
+	\end{itemize}
+\end{prop}
+
+\begin{ex}
+	Le code suivant calcule la somme $S = 1 + 2 + 3 + \dots + 10$ :
+	\begin{lstlisting}[language=Python]
+S = 0
+for i in range(1, 11):
+    S = S + i
+print(S)
+\end{lstlisting}
+\end{ex}
+
+\begin{defin}[Boucle non bornée \texttt{while}]
+	Une \textbf{boucle non bornée} répète un bloc d'instructions tant qu'une condition reste vraie.
+
+	Le nombre d'itérations n'est pas connu à l'avance.
+	\begin{lstlisting}[language=Python]
+while condition:
+    # Instructions a repeter
+\end{lstlisting}
+\end{defin}
+
+\begin{attention}[Risque de boucle infinie]
+	Dans une boucle \lstinline|while|, la condition doit obligatoirement devenir fausse à un moment donné.
+
+	Si la variable de contrôle n'est pas modifiée dans le corps de la boucle, le programme boucle indéfiniment.
+\end{attention}
+
+\begin{methode}[Utiliser une boucle \lstinline|while|]
+	On place la somme de $1000$ € sur un compte à un taux d'intérêts annuel de $5\,\%$.
+
+	On souhaite déterminer au bout de combien d'années le capital dépassera $1500$ €.
+
+	\begin{correction}
+		\nline
+		\begin{lstlisting}[language=Python]
+capital = 1000
+annees = 0
+while capital <= 1500:
+    capital = capital * 1.05
+    annees = annees + 1
+print("Nombre d'annees :", annees)
+\end{lstlisting}
+	\end{correction}
+\end{methode}
+
+\section{Fonctions et modularité}
+
+\begin{defin}[Fonction]
+	En programmation, une \textbf{fonction} est un bloc d'instructions nommé qui effectue une tâche précise.
+
+	Elle peut recevoir des paramètres d'entrée (arguments) et renvoyer un résultat à l'aide du mot-clé \lstinline|return|.
+\end{defin}
+
+\begin{defin}[Syntaxe d'une fonction]
+	\nline
+	\begin{lstlisting}[language=Python]
+def nom_de_la_fonction(parametre1, parametre2):
+    # Bloc d'instructions
+    resultat = ...
+    return resultat
+\end{lstlisting}
+\end{defin}
+
+\begin{methode}[Définir et appeler une fonction mathématique]
+	Soit la fonction mathématique $f: x \mapsto 3x^2 - 5x + 2$.
+
+	Créer une fonction Python nommée \lstinline|f| prenant en paramètre un nombre \lstinline|x| et renvoyant son image par $f$.
+
+	\begin{correction}
+		\nline
+		\begin{lstlisting}[language=Python]
+def f(x):
+    y = 3 * x**2 - 5 * x + 2
+    return y
+
+# Appel de la fonction pour x = 4
+image = f(4)
+print(image)
+\end{lstlisting}
+	\end{correction}
+\end{methode}
+
+\begin{remarque}
+	L'instruction \lstinline|return| interrompt immédiatement l'exécution de la fonction et renvoie la valeur spécifiée. Si une fonction ne contient pas d'instruction \lstinline|return|, elle renvoie la valeur \lstinline|None|.
+\end{remarque}
+
+\begin{methode}[Algorithme de calcul de distance dans le plan]
+	Créer une fonction \lstinline|distance(xA, yA, xB, yB)| qui renvoie la distance entre deux points $A(x_A, y_A)$ et $B(x_B, y_B)$ dans un repère orthonormé :
+	\[
+		AB = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}
+	\]
+
+	\begin{correction}
+		\nline
+		\begin{lstlisting}[language=Python]
+from math import sqrt
+
+def distance(xA, yA, xB, yB):
+    d = sqrt((xB - xA)**2 + (yB - yA)**2)
+    return d
+\end{lstlisting}
+	\end{correction}
+\end{methode}
