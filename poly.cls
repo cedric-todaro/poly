@@ -90,7 +90,9 @@
 \nc{\coordl}[2]{\pa{#1\,;\,#2}}
 \nc{\OIJ}{\pa{O;I,J}}
 \nc{\vOIJ}{\pa{O~;~\vec{i}~,~\vec{j}}}
-\nc{\eqv}{\Longleftrightarrow}
+% \nc{\eqv}{\Longleftrightarrow}
+\nc{\eqv}{~\Leftrightarrow~}
+\rnc{\iff}{~\Leftrightarrow~}
 \nc{\rarr}{\rightarrow}
 \nc{\larr}{\leftarrow}
 \nc{\Rarr}{\Rightarrow}
