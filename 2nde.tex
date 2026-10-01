@@ -21,6 +21,44 @@
 
 \chapter{Droites du plan}
 
+\section{Qu'est-ce qu'une équation de droite ?}
+
+\begin{defin}[Équation d'une droite]
+	Dans le plan muni d'un repère $\vOIJ$, une \textbf{équation d'une droite} $d$ est une relation algébrique reliant les coordonnées $(x\,;\,y)$ des points du plan.
+
+	Un point $M(x\,;\,y)$ appartient à la droite $d$ \textbf{si et seulement si} ses coordonnées vérifient cette relation. On note alors :
+	\[
+		M(x\,;\,y) \in d \iff \text{les coordonnées }(x\,;\,y)\text{ vérifient l'équation de }d
+	\]
+\end{defin}
+
+\begin{ex}
+	Soit $d$ la droite d'équation $2x - 3y + 1 = 0$.
+	\begin{itemize}
+		\item Le point $A(1\,;\,1)$ appartient-il à $d$ ?
+		      \[
+			      2 \times 1 - 3 \times 1 + 1 = 2 - 3 + 1 = 0
+		      \]
+		      Les coordonnées de $A$ vérifient l'équation, donc $A(1\,;\,1) \in d$.
+
+		\item Le point $B(2\,;\,1)$ appartient-il à $d$ ?
+		      \[
+			      2 \times 2 - 3 \times 1 + 1 = 4 - 3 + 1 = 2 \neq 0
+		      \]
+		      Les coordonnées de $B$ ne vérifient pas l'équation, donc $B(2\,;\,1) \notin d$.
+	\end{itemize}
+\end{ex}
+
+\begin{remarque}
+
+	Une même droite $d$ peut s'exprimer sous plusieurs formes d'équations :
+
+	\begin{itemize}
+		\item La \textbf{forme réduite} : $y = mx + p$ (ou $x = k$), vue en $3^\text{e}$.
+		\item La \textbf{forme cartésienne} : $ax + by + c = 0$, que nous allons étudier dans ce chapitre.
+	\end{itemize}
+\end{remarque}
+
 \section{Vecteurs directeurs et équations cartésiennes}
 
 \subsection{Vecteur directeur d'une droite}
@@ -32,7 +70,7 @@
 \end{df}
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.8]
+	\begin{tikzpicture}[scale=0.5]
 		\draw[line width=1.2pt, domain=-2:4] plot (\x, {0.6*\x + 1}) node[right] {$d$};
 		\draw[line width=1.5pt, -Stealth] (-0.5, 2.2) -- (2.5, 4) node[midway, above left] {$\vec{u}$};
 	\end{tikzpicture}
@@ -144,7 +182,6 @@
 
 \begin{prop}[Vecteur directeur et coefficients]
 	Soit $(d)$ une droite d'équation cartésienne $ax + by + c = 0$. Le vecteur $\vec{u}\coord{-b}{a}$ est un vecteur directeur de $(d)$.
-
 	\[
 		(d) : ax + by + c = 0 \iff \vec{u}\coord{-b}{a} \text{ vecteur directeur de } (d)
 	\]
@@ -163,7 +200,6 @@
 	Pour tracer la droite $(d)$, déterminons deux points à l'aide d'un point initial et du vecteur directeur :
 	\begin{itemize}
 		\item Pour $x = 0$ :
-
 		      \begin{align*}
 			      2\times 0 + 3y - 9 = 0 & \eqv 3y = 9 \\ &\eqv y = 3
 		      \end{align*}
@@ -194,7 +230,9 @@
 \end{ex}
 
 \begin{demo}
-	Soit $A\coordl{x_0}{y_0}$ un point fixé de la droite $d$ et $\vec{u}\coord{\alpha}{\beta}$ un vecteur directeur non nul de $d$. Un point $M\coordl{x}{y}$ appartient à la droite $d$ si et seulement si les vecteurs $\vec{AM}\coord{x - x_0}{y - y_0}$ et $\vec{u}\coord{\alpha}{\beta}$ sont colinéaires.
+	Soit $A\coordl{x_0}{y_0}$ un point fixé de la droite $d$ et $\vec{u}\coord{\alpha}{\beta}$ un vecteur directeur non nul de $d$.
+
+	Un point $M\coordl{x}{y}$ appartient à la droite $d$ si et seulement si les vecteurs $\vec{AM}\coord{x - x_0}{y - y_0}$ et $\vec{u}\coord{\alpha}{\beta}$ sont colinéaires.
 
 	Or, la colinéarité équivaut à la nullité du déterminant :
 	\begin{align*}
@@ -243,7 +281,7 @@
 		\end{align*}
 
 		Une équation cartésienne de la droite $d$ est $5x + 2y - 13 = 0$.
-		
+
 		\begin{center}
 			\begin{tikzpicture}[scale=0.65]
 				\draw[step=1cm,gray!30,very thin] (-1,-5) grid (6,7);
@@ -298,7 +336,7 @@
 
 		\item \textbf{Tracé de la droite :} On place le point $A\coordl{0}{2}$, puis à partir de $A$, on applique le vecteur $\vec{v}\coord{3}{-2}$ ($+3$ en abscisse, $-2$ en ordonnée) pour placer un second point $B\coordl{3}{0}$ et tracer la droite $d$.
 	\end{enumerate}
-% TODO: illustrationà revoir	
+	% TODO: illustrationà revoir	
 	\begin{center}
 		\begin{tikzpicture}[scale=0.8]
 			\draw[step=1cm,gray!30,very thin] (-2,-2) grid (6,4);
@@ -331,8 +369,9 @@
 	\begin{itemize}
 		\item $d$ et $d'$ sont parallèles si et seulement si leurs vecteurs directeurs $\vec{u}\coord{-b}{a}$ et $\vec{u'}\coord{-b'}{a'}$ sont colinéaires, c'est-à-dire :
 		      \[
-			      \determinant{\vec{u} & \vec{u'}} = 0 \eqv ab' - a'b = 0
+			      \det\pa{\vec{u}~;~\vec{u'}} = 0 \eqv ab' - a'b = 0
 		      \]
+
 		\item $d$ et $d'$ sont sécantes si et seulement si $ab' - a'b \neq 0$.
 	\end{itemize}
 \end{prop}
@@ -345,8 +384,9 @@
 
 		Calculons leur déterminant :
 		\[
-			\determinant{\vec{u_1} & \vec{u_2}} = \determinant{2 & -4 \\ 3 & -6} = 2 \times (-6) - 3 \times (-4) = -12 + 12 = 0
+			\det\pa{\vec{u_1}~;~\vec{u_2}} = \determinant{2 & -4 \\ 3 & -6} = 2 \times (-6) - 3 \times (-4) = -12 + 12 = 0
 		\]
+
 		Les vecteurs $\vec{u_1}$ et $\vec{u_2}$ sont colinéaires, donc les droites $d_1$ et $d_2$ sont parallèles.
 	\end{correction}
 \end{exemple}
