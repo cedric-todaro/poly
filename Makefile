@@ -4,7 +4,7 @@ FLAGS     = --quiet --silent
 SRC       = $(wildcard *.tex)
 PDFS      = $(SRC:.tex=.pdf)
 
-DEPS        = $(shell find assets -type f 2>/dev/null)
+DEPS        = $(shell find tex -type f 2>/dev/null)
 
 EXTRA_CLEAN = *.synctex.gz *-blx.bib *.run.xml *.nav *.snm *.vrb *.fdb_latexmk *.log
 

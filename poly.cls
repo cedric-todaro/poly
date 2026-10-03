@@ -34,7 +34,7 @@
 \newtheorem*{definition}{\faBook\, Définition}
 \newtheorem*{methode}{\faLightbulb\, Méthode}
 \newtheorem*{exercice}{\faPenSquare\, Exercice}
-\newtheorem{exo}{\faPenSquare\, Exercice}[chapter]
+\newtheorem{exo}{\faPenSquare\, Ex.}[chapter]
 \renewcommand{\theexo}{\arabic{exo}}
 \theoremstyle{remark}
 \newtheorem*{demonstration}{\faSearch\, Démonstration}
@@ -90,7 +90,6 @@
 \nc{\coordl}[2]{\pa{#1\,;\,#2}}
 \nc{\OIJ}{\pa{O;I,J}}
 \nc{\vOIJ}{\pa{O~;~\vec{i}~,~\vec{j}}}
-% \nc{\eqv}{\Longleftrightarrow}
 \nc{\eqv}{~\Leftrightarrow~}
 \rnc{\iff}{~\Leftrightarrow~}
 \nc{\rarr}{\rightarrow}
