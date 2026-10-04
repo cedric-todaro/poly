@@ -149,43 +149,68 @@
 \def\ber{\begin{enumerate}[resume]}
 \def\bmc\begin{multicols}\def\emc\end{multicols}
 % ----------------------------------------------------------------------------------------------------
-\RequirePackage{listings}
 \RequirePackage{xcolor}
 \definecolor{codegreen}{rgb}{0, 0.6, 0}
 \definecolor{codegray}{rgb}{0.45, 0.45, 0.45}
 \definecolor{codepurple}{rgb}{0.58, 0, 0.82}
 \definecolor{backcolour}{rgb}{0.95, 0.95, 0.97}
 \definecolor{codeblue}{rgb}{0, 0.35, 0.75}
+\definecolor{bleu}{HTML}{0D47A1}
+\definecolor{rouge}{HTML}{B71C1C}
+\definecolor{vert}{HTML}{1B5E20}
+\definecolor{violet}{HTML}{4A148C}
+\definecolor{orange}{HTML}{E65100}
+\definecolor{indigo}{HTML}{311B92}
+\definecolor{bordeaux}{HTML}{880E4F}
+\definecolor{prune}{HTML}{6A1B9A}
+\definecolor{ocre}{HTML}{A14214}
+\definecolor{gris}{HTML}{37474F}
+\definecolor{magenta}{HTML}{880E4F}
+\definecolor{turquoise}{HTML}{006064}
+\colorlet{bleuClair}{bleu!40}
+\colorlet{rougeClair}{rouge!40}
+\colorlet{vertClair}{vert!40}
+\colorlet{violetClair}{violet!40}
+\colorlet{orangeClair}{orange!40}
+\colorlet{indigoClair}{indigo!40}
+\colorlet{bordeauxClair}{bordeaux!40}
+\colorlet{pruneClair}{prune!40}
+\colorlet{ocreClair}{ocre!40}
+\colorlet{grisClair}{gris!40}
+\colorlet{magentaClair}{magenta!40}
+\colorlet{turquoiseClair}{turquoise!40}
+\colorlet{grisLeger}{gris!20}
+\RequirePackage{listings}
 \lstset{
-    language=Python,
-    basicstyle=\ttfamily,
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegray}\itshape,
-    keywordstyle=\color{codeblue}\bfseries,
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codegreen},
-    identifierstyle=\color{black},
-    tabsize=4,
-    showspaces=false,
-    showstringspaces=false,
-    keepspaces=true,
-    breaklines=true,
-    breakatwhitespace=true,
+	language=Python,
+	basicstyle=\ttfamily,
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegray}\itshape,
+	keywordstyle=\color{codeblue}\bfseries,
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codegreen},
+	identifierstyle=\color{black},
+	tabsize=4,
+	showspaces=false,
+	showstringspaces=false,
+	keepspaces=true,
+	breaklines=true,
+	breakatwhitespace=true,
 	xleftmargin=\parindent, % Décale l'ensemble du bloc de code vers la droite
 	xrightmargin=\parindent, % Décale l'ensemble du bloc de code vers la droite
 	numbers=left,
-    numberstyle=\footnotesize\color{codegray},
-    numbersep=8pt,             % Espace entre les numéros et le code
-    framerule=0.8pt,           % Épaisseur de la barre verticale
-    frame=single,
-    rulecolor=\color{codeblue!40},
-    inputencoding=utf8,
-    extendedchars=true,
-    literate=
-        {é}{{\'e}}1 {è}{{\`e}}1 {à}{{\`a}}1 {ê}{{\^e}}1 {ù}{{\`u}}1
-        {Â}{{\^A}}1 {Ç}{{\c C}}1 {ç}{{\c c}}1 {É}{{\'E}}1 {È}{{\`E}}1
-        {Ê}{{\^E}}1 {Î}{{\^I}}1 {î}{{\^i}}1 {Ô}{{\^O}}1 {ô}{{\^o}}1
-        {Û}{{\^U}}1 {û}{{\^u}}1 {«}{{\guillemotleft}}1 {»}{{\guillemotright}}1
+	numberstyle=\footnotesize\color{codegray},
+	numbersep=8pt,             % Espace entre les numéros et le code
+	framerule=0.8pt,           % Épaisseur de la barre verticale
+	frame=single,
+	rulecolor=\color{codeblue!40},
+	inputencoding=utf8,
+	extendedchars=true,
+	literate=
+		{é}{{\'e}}1 {è}{{\`e}}1 {à}{{\`a}}1 {ê}{{\^e}}1 {ù}{{\`u}}1
+		{Â}{{\^A}}1 {Ç}{{\c C}}1 {ç}{{\c c}}1 {É}{{\'E}}1 {È}{{\`E}}1
+		{Ê}{{\^E}}1 {Î}{{\^I}}1 {î}{{\^i}}1 {Ô}{{\^O}}1 {ô}{{\^o}}1
+		{Û}{{\^U}}1 {û}{{\^u}}1 {«}{{\guillemotleft}}1 {»}{{\guillemotright}}1
 }
 % ----------------------------------------------------------------------------------------------------
 \RequirePackage{hyperref}
