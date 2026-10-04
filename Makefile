@@ -28,6 +28,7 @@ mrproper: clean
 		$(LLMK) --quiet --clobber $$f ; \
 	done
 	@rm -f $(PDFS) $(EXTRA_CLEAN)
+	@latexmk -C > /dev/null
 
 regenerate: mrproper all
 
