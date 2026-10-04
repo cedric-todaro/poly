@@ -1,0 +1,32 @@
+\begin{exo}{}
+	Un terrain de jeu a la forme d'un rectangle $ABCD$.
+
+	On donne ses dimensions en mètres :
+
+	\cmath{AB = 4^3 \times 2^{-4} \quad \text{et} \quad BC = \sqrt{75} + \sqrt{12} - 3\sqrt{3}}
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7, >=Stealth]
+			\coordinate (A) at (0,4);
+			\coordinate (B) at (6.93,4);
+			\coordinate (C) at (6.93,0);
+			\coordinate (D) at (0,0);
+			\draw[very thick, black] (D) -- (A) -- (B) -- (C) -- cycle;
+			\draw[thick, dashed, red] (A) -- (C);
+			\draw[thick] (0,0.4) -- (0.4,0.4) -- (0.4,0);
+			\draw[thick] (6.53,4) -- (6.53,3.6) -- (6.93,3.6);
+			\node[above left] at (A) {$A$};
+			\node[above right] at (B) {$B$};
+			\node[below right] at (C) {$C$};
+			\node[below left] at (D) {$D$};
+			\node[above] at (3.465,4) {$4^3 \times 2^{-4}$};
+			\node[right] at (6.93,2) {$\sqrt{75} + \sqrt{12} - 3\sqrt{3}$};
+		\end{tikzpicture}
+	\end{center}
+	\begin{enumerate}
+		\item Montrer que la longueur $AB$ est égale à $4\text{m}$.
+		\item Simplifier l'expression de la largeur $BC$ pour l'écrire sous la forme $a\sqrt{3}$ où $a$ est un entier.
+		\item Calculer la valeur exacte de la longueur de la diagonale $AC$ de ce terrain.
+		\item Exprimer l'aire de ce rectangle sous sa forme simplifiée la plus exacte.
+	\end{enumerate}
+\end{exo}

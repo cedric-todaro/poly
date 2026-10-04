@@ -61,7 +61,12 @@
 \newenvironment{rmq}{\begin{remarque}}{\end{remarque}}
 \rnc{\qedsymbol}{}
 \nc{\nline}{\leavevmode\vspace{-\baselineskip}}
-\let\ajusteliste\nline
+% \let\ajusteliste\nline
+% ----------------------------------------------------------------------------------------------------
+\RequirePackage{tabularx}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}b{#1}}
 % ----------------------------------------------------------------------------------------------------
 \RequirePackage{amsfonts, mathtools, mathrsfs, interval, xfp, relsize, siunitx, esvect, epsdice, numprint, cancel, colortbl}
 \mathsurround=1pt

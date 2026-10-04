@@ -1,0 +1,24 @@
+\begin{exo}{}
+	Dans le cadre d'un jeu de hasard, un joueur lance un dé.
+
+	S'il obtient \epsdice{5} ou $\epsdice{6}$, il gagne, sinon il perd.
+
+	La fonction suivante simule $n$ fois l'expérience et renvoie le nombre de cas où le joueur a gagné.
+
+	Modifier cette fonction afin qu'elle renvoie la \textbf{fréquence} des victoires.
+
+	Que se passe-t-il lorsque $n$ devient très grand ?
+	{\footnotesize
+	\begin{lstlisting}
+from random import *
+
+def echantillon(n):
+    gagne=0
+    for i in range(1,n+1):
+        a=randint(1,6)
+        if a>=5:
+            gagne=gagne+1
+    return gagne
+\end{lstlisting}
+	}
+\end{exo}
