@@ -1,0 +1,32 @@
+\begin{exo}{}
+	On considère l'équation réduite d'une droite $d$ définie par $y = ax + b$ représentée dans le repère ci-dessous :
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.40, >=Stealth]
+			\def\xmin{-7.5}\def\xmax{7.5}\def\ymin{-4.5}\def\ymax{6.5}
+			\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+			\draw[xstep=1, gray!40, ystep=1] (\xmin, \ymin) grid (\xmax, \ymax);
+			\draw[->, very thick] (\xmin, 0) -- (\xmax, 0) node[above left] {$x$};
+			\draw[->, very thick] (0, \ymin) -- (0, \ymax) node[below right] {$y$};
+			\draw (-5,0.2) -- (-5,-0.2) node[below,fill=white, scale=0.8] {$-5$};
+			\draw (1,0.2) -- (1,-0.2) node[below,fill=white, scale=0.8] {$1$};
+			\draw (5,0.2) -- (5,-0.2) node[below,fill=white, scale=0.8] {$5$};
+			\draw (0.2,1) -- (-0.2,1) node[left,fill=white, scale=0.8] {$1$};
+			\draw (0.2,5) -- (-0.2,5) node[left,fill=white, scale=0.8] {$5$};
+			\node[below left, scale=0.8] at (0,0) {$0$};
+			\fill[teal!20, opacity=0.6] (3,3) -- (6,3) -- (6,5) -- cycle;
+			\draw[thick, teal] (3,3) -- (6,3) node[midway, below, scale=0.9, font=\bfseries] {3};
+			\draw[thick, teal] (6,3) -- (6,5) node[midway, right, scale=0.9, font=\bfseries] {2};
+			\fill[teal!20, opacity=0.6] (-6,-3) -- (-6,1) -- (0,1) -- cycle;
+			\draw[thick, teal] (-6,-3) -- (-6,1) node[midway, left, scale=0.9, font=\bfseries] {4};
+			\draw[thick, teal] (-6,1) -- (0,1) node[midway, above, scale=0.9, font=\bfseries] {6};
+			\draw[domain=\xmin:\xmax, smooth, very thick, blue!70!black] plot (\x, {2/3*\x + 1});
+			\filldraw[black] (0,1) circle (2pt);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Avec les indications de la figure, proposer deux calculs pour la valeur du coefficient directeur.
+		\item En quel point la droite coupe-t-elle l'axe des ordonnées ?
+	\end{enumerate}
+\end{exo}

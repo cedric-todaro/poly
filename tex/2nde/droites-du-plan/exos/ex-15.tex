@@ -1,0 +1,30 @@
+\begin{exo}{}
+	On se place dans un repère orthonormé $\vOIJ$.
+
+	Par lecture graphique, déterminer une équation cartésienne de chacune des droites représentées dans le repère ci-dessous.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.65, >=Stealth]
+			\def\xmin{-5.5}\def\xmax{7.5}\def\ymin{-3.5}\def\ymax{4.5}
+			\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+			\draw[xstep=1, gray!40, ystep=1] (\xmin, \ymin) grid (\xmax, \ymax);
+			\draw[very thick] (\xmin, 0) -- (\xmax, 0);
+			\draw[very thick] (0, \ymin) -- (0, \ymax);
+			\foreach \x in {-5,-4,-3,-2,-1,1,2,3,4,5,6,7} \draw (\x,0.1) -- (\x,-0.1);
+			\foreach \y in {-3,-2,-1,1,2,3,4} \draw (0.1,\y) -- (-0.1,\y);
+			\node[below left, scale=0.8] at (0,0) {$O$};
+			\draw[->, thick, black] (0,0) -- (1,0) node[midway, below, scale=0.8] {$\vec{i}$};
+			\draw[->, thick, black] (0,0) -- (0,1) node[midway, left, scale=0.8] {$\vec{j}$};
+			\node[violet, fill=white, above] at (-4.5, -1) {$d_1$};
+			\node[vert, fill=white, left] at (-2, 3.5) {$d_2$};
+			\node[orange, fill=white, above right] at (-4.2, 2) {$d_3$};
+			\node[teal, fill=white, below right] at (-4.5, -2.1) {$d_4$};
+			\node[magenta, fill=white, right] at (1.3, -2) {$d_5$};
+			\draw[domain=\xmin:\xmax, smooth, very thick, violet] plot (\x, {-1});
+			\draw[very thick, vert] (-2, \ymin) -- (-2, \ymax);
+			\draw[domain=\xmin:\xmax, smooth, very thick, orange] plot (\x, {-\x - 2});
+			\draw[domain=\xmin:\xmax, smooth, very thick, teal] plot (\x, {0.5*\x});
+			\draw[domain=\xmin:\xmax, smooth, very thick, magenta] plot (\x, {\x - 3});
+		\end{tikzpicture}
+	\end{center}
+\end{exo}

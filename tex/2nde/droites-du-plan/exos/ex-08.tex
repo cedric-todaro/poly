@@ -1,0 +1,24 @@
+\begin{exo}{}
+	Les points orange appartiennent à une droite d'équation $y = mx + p$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.40, >=Stealth]
+			\def\xmin{-6.5}\def\xmax{7.5}\def\ymin{-3.5}\def\ymax{6.5}
+			\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+			\draw[xstep=1, gray!40, ystep=1] (\xmin, \ymin) grid (\xmax, \ymax);
+			\draw[very thick] (\xmin, 0) -- (\xmax, 0) node[above left] {$x$};
+			\draw[very thick] (0, \ymin) -- (0, \ymax) node[below right] {$y$};
+			\foreach \x in {-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9} \draw (\x,0.2) -- (\x,-0.2);
+			\foreach \y in {-4,-3,-2,-1,1,2,3,4,5,6} \draw (0.2,\y) -- (-0.2,\y);
+			\draw[->, thick, black] (0,0) -- (1,0) node[midway, below, scale=0.8] {$\vec{i}$};
+			\draw[->, thick, black] (0,0) -- (0,1) node[midway, left, scale=0.8] {$\vec{j}$};
+			\draw[domain=\xmin:\xmax, smooth, very thick, green!60!black] plot (\x, {0.75*\x + 1.5});
+			\foreach \coord in {(-6,-3), (-2,0), (2,3), (6,6)} { \filldraw[orange] \coord circle (5pt); }
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Avec les indications de la figure, proposer des calculs pour déterminer $m$.
+		\item Quelle est l'ordonnée du point d'abscisse $5$ ?
+	\end{enumerate}
+\end{exo}

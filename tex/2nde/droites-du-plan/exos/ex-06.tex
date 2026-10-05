@@ -1,0 +1,36 @@
+\begin{exo}{}
+	On se place dans un repère orthonormé $\vOIJ$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.55, >=Stealth]
+			\def\xmin{-3.5}\def\xmax{7.5}\def\ymin{-4.5}\def\ymax{6.5}
+			\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+			\draw[xstep=1, gray!40, ystep=1] (\xmin, \ymin) grid (\xmax, \ymax);
+			\draw[->, very thick] (\xmin, 0) -- (\xmax, 0) node[above left] {$x$};
+			\draw[->, very thick] (0, \ymin) -- (0, \ymax) node[below right] {$y$};
+			\foreach \x in {-3,-2,-1,1,2,3,4,5,6,7}
+			\draw (\x,0.1) -- (\x,-0.1);
+			\foreach \y in {-5,-4,-3,-2,-1,1,2,3,4,5,6}
+			\draw (0.1,\y) -- (-0.1,\y);
+			\node[below left, scale=0.8] at (0,0) {$O$};
+			\draw[->, very thick, black] (0,0) -- (1,0) node[midway, below, scale=0.8] {$\vec{i}$};
+			\draw[->, very thick, black] (0,0) -- (0,1) node[midway, left, scale=0.8] {$\vec{j}$};
+			\node[violet, fill=white, above] at (5, 5.4) {$d_1$};
+			\node[vert, fill=white, left] at (-0.5, 5) {$d_2$};
+			\node[orange, fill=white, below right] at (6, 5.5) {$d_3$};
+			\node[teal, fill=white, left] at (-2, 2) {$d_4$};
+			\node[purple, fill=white, below] at (-1.5, -3) {$d_5$};
+			\node[bleu, fill=white, above left] at (4, 5.2) {$d_6$};
+			\draw[domain=\xmin:\xmax, smooth, very thick, violet] plot (\x, {\x});
+			\draw[domain=-1.5:5, smooth, very thick, vert] plot (\x, {-2*\x + 4});
+			\draw[domain=\xmin:\xmax, smooth, very thick, orange] plot (\x, {0.75*\x + 1});
+			\draw[domain=-3.5:2, smooth, very thick, teal] plot (\x, {-2*\x - 2});
+			\draw[very thick, purple] (\xmin, -3) -- (\xmax, -3);
+			\draw[very thick, bleu] (4, \ymin) -- (4, \ymax);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Déterminer les coordonnées d'un vecteur directeur pour chacune des droites représentées ci-dessus.
+	\end{enumerate}
+\end{exo}
