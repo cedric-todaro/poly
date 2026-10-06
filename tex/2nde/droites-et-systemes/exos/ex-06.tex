@@ -1,0 +1,54 @@
+\begin{exo}{}
+	Dans un repère, les droites d'équations ...
+	\begin{itemize}
+		\item $d_1 : 2x - y - 5 = 0$
+		\item $d_2 : x + 4y - 25 = 0$
+		\item $d_3 : x - 5y + 11 = 0$
+	\end{itemize}
+	... se coupent en formant un triangle $ABC$.
+
+	\ms
+
+	\begin{center}
+		\begin{tikzpicture}[x=5mm, y=5mm, >=Stealth]
+			\def\xmin{-1.5}\def\xmax{13.5}\def\ymin{-2.5}\def\ymax{7.5}
+			\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+			\draw[xstep=1, gray!40, ystep=1] (\xmin, \ymin) grid (\xmax, \ymax);
+			\draw[very thick, ->] (\xmin, 0) -- (\xmax, 0) node[below left] {$x$};
+			\draw[very thick, ->] (0, \ymin) -- (0, \ymax) node[below left] {$y$};
+			\foreach \x in {-2,-1,1,2,3,4,5,6,7,8,9,10,11,12,13} \draw (\x,0.1) -- (\x,-0.1);
+			\foreach \y in {-2,-1,1,2,3,4,5,6,7} \draw (0.1,\y) -- (-0.1,\y);
+			\draw[->, thick] (0,0) -- (1,0) node[midway, below] {$\vec{i}$};
+			\draw[->, thick] (0,0) -- (0,1) node[midway, left] {$\vec{j}$};
+			\node[below left] at (0,0) {$O$};
+			\coordinate (A) at (4,3);
+			\coordinate (B) at (9,4);
+			\coordinate (C) at (5,5);
+			\node[below, fill=white, xshift=3pt] at (A) {$A$};
+			\node[above, fill=white] at (B) {$B$};
+			\node[above, fill=white, xshift=-3pt] at (C) {$C$};
+			\node[orange,fill=white] at (6.1,6) {$d_1$};
+			\node[purple,fill=white] at (11.5,2.7) {$d_2$};
+			\node[vert,fill=white] at (11.5,5.2) {$d_3$};
+			\draw[domain=-1:7, smooth, very thick, orange] plot (\x, {2*\x - 5});
+			\draw[domain=-2:14, smooth, very thick, purple] plot (\x, {-0.25*\x + 6.25});
+			\draw[domain=-2:14, smooth, very thick, vert] plot (\x, {0.2*\x + 2.2});
+			\foreach \pt in {A,B,C} {\filldraw (\pt) circle (2pt);}
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Associer aux coordonnées de chaque sommet le couple solution de chacun des systèmes suivants :
+	\end{enumerate}
+	\vspace*{-2mm}
+	\begin{multicols}{2}
+	\begin{itemize}
+		\item $S_1 : \begin{cases} x + 4y = 25 \\ -2x + y = -5 \end{cases}$
+		\item $S_2 : \begin{cases} -2x + y = -5 \\ x - 5y = -11 \end{cases}$
+		\item $S_3 : \begin{cases} x - 5y = -11 \\ x + 4y = 25 \end{cases}$
+	\end{itemize}
+	\end{multicols}
+	\begin{enumerate}[resume]
+		\item Vérifier les résultats par le calcul.
+	\end{enumerate}
+\end{exo}
