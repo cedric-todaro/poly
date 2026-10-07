@@ -1,0 +1,50 @@
+\begin{exo}{}
+	Dans le plan, on considère le pavage constitué d'hexagones réguliers illustré ci-dessous.
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth]
+			\foreach \x/\y in {
+					0/0, 1.5/0.866, 1.5/-0.866, 0/-1.732, -1.5/-0.866, -1.5/0.866, 0/1.732
+				} {
+					\draw[thick, black!70, fill=black!2]
+					(\x+1, \y) -- (\x+0.5, \y+0.866) -- (\x-0.5, \y+0.866) --
+					(\x-1, \y) -- (\x-0.5, \y-0.866) -- (\x+0.5, \y-0.866) -- cycle;
+				}
+			\foreach \p/\x/\y/\pos in { A/0/0/left, B/1/0/right, C/1.5/0.866/below right, D/1/1.732/right, E/0/1.732/left, F/-0.5/0.866/below left, G/-1.5/0.866/left, H/-2/0/left, I/-1.5/-0.866/below left, J/-0.5/-0.866/below left, K/0/-1.732/below, L/1/-1.732/below, M/1.5/-0.866/below right, N/2.5/-0.866/below right, O/3/0/right, P/2.5/0.866/right, Q/3/1.732/right, R/2.5/2.598/above right, S/1.5/2.598/above right, T/1/3.464/above, U/0/3.464/above, V/-0.5/2.598/above left, W/-1.5/2.598/above left, X/-2/1.732/left, } {
+					\fill[black] (\x-0.5,\y-0.866) circle (2pt);
+					\node[\pos] at (\x-0.5,\y-0.866) {$\p$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	En utilisant les propriétés géométriques et les directions des côtés des hexagones réguliers du pavage, répondre aux questions suivantes :
+
+	\begin{enumerate}
+		\item Justifier que les vecteurs $\vec{AD}$ et $\vec{BC}$ sont colinéaires et déterminer le coefficient de colinéarité $k$ tel que $\vec{AD} = k \times \vec{BC}$.
+		\item Les vecteurs $\vec{AP}$ et $\vec{ES}$ sont-ils colinéaires ? Justifier la réponse.
+		\item Citer cinq paires de vecteurs colinéaires.
+	\end{enumerate}
+
+\end{exo}
+
+% \begin{exo}{}
+% 	Soit $\vec{u}$ et $\vec{v}$ deux vecteurs tels que : $2\vec{u} = 3\vec{v}$
+% 	\begin{enumerate}
+% 		\item Justifier que les vecteurs $\vec{u}$ et $\vec{v}$ sont colinéaires et que leur coefficient de colinéarité est $\dfrac{3}{2}$.
+% 	\end{enumerate}
+% 	\vspace*{2mm}
+% 	Soit $\vec{u}$ et $\vec{v}$ deux vecteurs tels que : $\vec{u} + \vec{v} = \vec{0}$.
+% 	\begin{enumerate}[resume]
+% 		\item Justifier que ces deux vecteurs sont colinéaires.
+% 	\end{enumerate}
+% 	\vspace*{2mm}
+% 	Pour chacune des questions ci-dessous, $\vec{u}$ et $\vec{v}$ sont colinéaires.
+% 	\begin{enumerate}[resume]
+% 		\item Déterminer la valeur du coefficient de colinéarité de $\vec{u}$ par rapport à $\vec{v}$ :
+% 			\begin{enumerate}[itemsep=2mm]
+% 			      \item $\dfrac{1}{2} \times \vec{u} = \dfrac{3}{4} \times \vec{v}$
+% 			      \item $3 \times \vec{u} - 2 \times \vec{v} = \vec{0}$
+% 			      \item $-2 \times (\vec{u} + \vec{v}) = 2 \times \vec{u} + 3 \times \vec{v}$
+% 		      \end{enumerate}
+% 	\end{enumerate}
+% \end{exo}

@@ -1,0 +1,34 @@
+\begin{exo}{}
+	Associer chaque fonction affine suivante à sa représentation graphique.
+	\begin{center}
+		\begin{tikzpicture}[x=5mm,y=5mm, >=Stealth]
+			\def\xmin{-5.5}\def\xmax{11.5}\def\ymin{-3.5}\def\ymax{5.5}
+			\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+			\draw[xstep=1, gray!40, ystep=1] (\xmin, \ymin) grid (\xmax, \ymax);
+			\draw[very thick, ->] (\xmin, 0) -- (\xmax, 0);
+			\draw[very thick, ->] (0, \ymin) -- (0, \ymax);
+			\foreach \x in {-6,-4,-2,2,4,6,8,10,12} \draw (\x,0.1) -- (\x,-0.1);
+			\foreach \y in {-2,2,4} \draw (0.1,\y) -- (-0.1,\y);
+			\node[below left] at (0,0) {$0$};
+			\node[below] at (2,0) {$2$};
+			\node[below] at (10,0) {$10$};
+			\node[left] at (0,2) {$2$};
+			\draw[domain=\xmin:\xmax, smooth, very thick, violet] plot (\x, {-0.25*\x + 4});
+			\draw[domain=\xmin:\xmax, smooth, very thick, orange!80!black] plot (\x, {0.25*\x});
+			\draw[domain=\xmin:\xmax, smooth, very thick, black!70] plot (\x, {4});
+			\draw[domain=\xmin:\xmax, smooth, very thick, red!80!black] plot (\x, {4*\x});
+			\draw[domain=\xmin:\xmax, smooth, very thick, green!60!black] plot (\x, {-0.25*\x + 1});
+			\foreach \pt in { (0,0),(0,4), (0,1), (8,2), (4,0)} {\filldraw \pt circle (2pt);}
+		\end{tikzpicture}
+	\end{center}
+	\vspace*{-2mm}
+	\begin{multicols}{2}
+	\begin{enumerate}
+		\item $f(x) = -\dfrac{1}{4}x + 4$
+		\item $g(x) = \dfrac{1}{4}x$
+		\item $h(x) = 4$
+		\item $i(x) = 4x$
+		\item $j(x) = -\dfrac{1}{4}x + 1$
+	\end{enumerate}
+	\end{multicols}
+\end{exo}

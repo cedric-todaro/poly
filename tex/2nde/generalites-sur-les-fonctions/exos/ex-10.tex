@@ -1,0 +1,45 @@
+\begin{exo}{}
+	On a représenté ci-contre une fonction $f$ définie sur $\intff{-2,5}{2,5}$ et une fonction $g$ définie sur $\R$.
+
+
+	\begin{center}
+		\begin{tikzpicture}[x=14mm, y=4mm, >=Stealth]
+			\def\xmin{-2.8}\def\xmax{2.8}\def\ymin{-1.5}\def\ymax{8.5}
+			\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+			\draw[xstep=0.5, gray!40, ystep=1] (\xmin, \ymin) grid (\xmax, \ymax);
+			\node[fill=white,below left] at (0, 0) {$0$};
+			\node[fill=white,below] at (-2, 0) {$-2$};
+			\node[fill=white,below] at (-1, 0) {$-1$};
+			\node[fill=white,below] at (1, 0) {$1$};
+			\node[fill=white,below] at (2, 0) {$2$};
+			\node[fill=white,left] at (0, 1) {$1$};
+			\node[fill=white,left] at (0, 5) {$5$};
+			\draw[very thick, ->] (\xmin, 0) -- (\xmax, 0);
+			\draw[very thick, ->] (0, \ymin) -- (0, \ymax);
+			\foreach \x in {-2.5, -2, -1.5, -1, -0.5, 0.5, 1, 1.5, 2, 2.5} \draw (\x, 0.15) -- (\x, -0.15);
+			\foreach \y in {-1, 1, 2,..., 7} \draw (0.05, \y) -- (-0.05, \y);
+			\node[orange!80!black, right, fill=white] at (-2.4, 5.8) {$f$};
+			\draw[domain=-2.5:2.5, samples=200, smooth, very thick, orange!80!black] plot(\x,{-0.0034099234099235266*(\x)^(6.0)-2.8629061649151667E-16*(\x)^(5.0)+0.5327294927294933*(\x)^(4.0)+1.307865283553777E-15*(\x)^(3.0)-2.0763591963591965*(\x)^(2.0)-7.063224215820982E-16*(\x)+1.0});
+		\end{tikzpicture}
+	\end{center}
+	\begin{enumerate}
+		\item Recopier et compléter le tableau de valeurs :
+	\end{enumerate}
+	\begin{center}
+		\renewcommand{\arraystretch}{1.5}
+		\begin{tabular}{|c|C{8mm}|C{5mm}|C{5mm}|C{5mm}|C{5mm}|C{5mm}|C{5mm}|} \hline
+			\cellcolor{gray!30}$x$    & $-2,5$ & $-2$ & $-1$ & $0$ & $1$ & $2$ & $2,5$ \\ \hline
+			\cellcolor{gray!30}$f(x)$ &        &      &      &     &     &     &       \\ \hline
+		\end{tabular}
+	\end{center}
+	\begin{enumerate}[resume]
+		\item Recopier et compléter ce tableau en précisant si une case ne peut pas être complétée. Si plusieurs valeurs sont possibles, les écrire toutes.
+	\end{enumerate}
+	\begin{center}
+		\renewcommand{\arraystretch}{1.5}
+		\begin{tabular}{|c|C{5mm}|C{5mm}|C{5mm}|C{5mm}|C{5mm}|C{5mm}|C{5mm}|} \hline
+			\cellcolor{gray!30}$x$    &      &      &     &     &     &     &      \\ \hline
+			\cellcolor{gray!30}$f(x)$ & $-2$ & $-1$ & $0$ & $1$ & $4$ & $8$ & $10$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{exo}

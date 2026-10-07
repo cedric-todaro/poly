@@ -1,0 +1,59 @@
+\begin{exo}{}
+	On considère les points suivants.
+	\begin{center}
+		\begin{tikzpicture}[scale=0.9, >=Stealth]
+			\coordinate (A) at (1.5,2.4);
+			\coordinate (B) at (4,2.4);
+			\coordinate (C) at (3.25,1.2);
+			\coordinate (D) at (0.75,1.2);
+			\coordinate (E) at (0,0);
+			\coordinate (F) at (2.5,0);
+			\coordinate (G) at (5,0);
+			\coordinate (H) at (5.75,1.2);
+			\coordinate (I) at (7.5,0);
+			\fill[blue!15] (C) -- (H) -- (G) -- (F) -- cycle;
+			\fill[cyan!10] (A) -- (B) -- (C) -- (D) -- cycle;
+			\fill[magenta!10] (B) -- (H) -- (C) -- cycle;
+			\fill[orange!30] (D) -- (C) -- (F) -- (E) -- cycle;
+			\fill[yellow!30] (H) -- (I) -- (G) -- cycle;
+			\draw (A) node[above] {$A$};
+			\draw (B) node[above] {$B$};
+			\draw (C) node[above left, xshift=3pt] {$C$};
+			\draw (D) node[above left, xshift=3pt] {$D$};
+			\draw (E) node[below] {$E$};
+			\draw (F) node[below] {$F$};
+			\draw (G) node[below] {$G$};
+			\draw (H) node[above right] {$H$};
+			\draw (I) node[below] {$I$};
+			\draw[thick, black] (A) -- (B);
+			\draw[thick, black] (D) -- (H);
+			\draw[thick, black] (E) -- (A);
+			\draw[thick, black] (E) -- (I);
+			\draw[thick, black] (F) -- (B);
+			\draw[thick, black] (G) -- (H);
+			\draw[thick, black] (I) -- (B);
+			\draw (A) node {$\bullet$};
+			\draw (B) node {$\bullet$};
+			\draw (C) node {$\bullet$};
+			\draw (D) node {$\bullet$};
+			\draw (E) node {$\bullet$};
+			\draw (F) node {$\bullet$};
+			\draw (G) node {$\bullet$};
+			\draw (H) node {$\bullet$};
+			\draw (I) node {$\bullet$};
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Simplifier les sommes suivantes :
+		      \begin{enumerate}
+			      \vspace*{-2mm}
+			      \begin{multicols}{2}
+			      \item $\vec{a} = \vec{AB} + \vec{HI}$
+			      \item $\vec{b} = \vec{EF} + \vec{ED}$
+			      \item $\vec{c} = \vec{IG} + \vec{AB}$
+			      \item $\vec{d} = 3\vec{EF} + 2\vec{IH}$
+			            \end{multicols}
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

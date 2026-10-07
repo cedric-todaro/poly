@@ -1,0 +1,57 @@
+\begin{exo}{}
+	On souhaite résoudre par différentes méthodes l'équation $(E) : x^3 - 2x = 0$.
+
+	\dotfill
+
+	On a représenté ci-contre la courbe représentative de $f$ définie sur $\R$ par $f(x) = x^3 - 2x$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=1.6, >=Stealth]
+			\def\xmin{-2.25}\def\xmax{2.25}\def\ymin{-1.25}\def\ymax{1.25}
+			\clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+			\draw[gray!40, step=0.5] (\xmin,\ymin) grid (\xmax,\ymax);
+			\node[fill=white, below left] at (0,0) {$0$};
+			\node[fill=white, below=1mm] at (1,0) {$1$};
+			\node[fill=white, left=1mm] at (0,1) {$1$};
+			\draw[very thick, ->] (\xmin, 0) -- (\xmax, 0);
+			\draw[very thick, ->] (0, \ymin) -- (0, \ymax);
+			\foreach \x in {-2,-1.5,...,2} \draw (\x,0.1) -- (\x,-0.1);
+			\foreach \y in {-2,-1.5,...,2} \draw (0.1,\y) -- (-0.1,\y);
+			\draw[domain=-1.75:1.75, smooth, samples=100, very thick, green!60!black] plot (\x, {\x^3 - 2*\x});
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Résoudre graphiquement l'équation $(E)$.
+	\end{enumerate}
+
+	\dotfill
+
+	On a représenté ci-contre les fonctions $g$ et $h$ définies sur $\R$ respectivement par $g(x) = x^3$ et $h(x) = 2x$.
+
+
+	\begin{center}
+		\begin{tikzpicture}[x=16mm, y=8mm, >=Stealth]
+			\def\xmin{-2.25}\def\xmax{2.25}\def\ymin{-4.25}\def\ymax{4.25}
+			\clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+			\draw[gray!40, step=0.5] (\xmin,\ymin) grid (\xmax,\ymax);
+			\node[blue!80!black,fill=white] at (-2,-3.5) {$h$};
+			\node[red!80!black,fill=white] at (1.2,1) {$g$};
+			\node[fill=white,below left] at (0,0) {$0$};
+			\node[fill=white, below=1mm] at (1,0) {$1$};
+			\node[fill=white, left=1mm] at (0,1) {$1$};
+			\draw[very thick, ->] (\xmin, 0) -- (\xmax, 0);
+			\draw[very thick, ->] (0, \ymin) -- (0, \ymax);
+			\foreach \x in {-3,-2,-1,1,2,3} \draw (\x,0.2) -- (\x,-0.2);
+			\foreach \y in {-4,-3,-2,-1,1,2,3} \draw (0.1,\y) -- (-0.1,\y);
+			\draw[domain=-1.65:1.65, smooth, samples=100, very thick, red!80!black] plot (\x, {\x^3});
+			\draw[domain=-2.2:2.2, smooth, very thick, blue!80!black] plot (\x, {2*\x});
+		\end{tikzpicture}
+	\end{center}
+
+
+	\begin{enumerate}
+		\item Montrer que, pour tout $x \in \R$, $x^3 - 2x = 0$ est équivalent à $x^3 = 2x$.
+		\item Utiliser la représentation graphique des fonctions $g$ et $h$ pour résoudre l'équation $(E)$.
+	\end{enumerate}
+\end{exo}

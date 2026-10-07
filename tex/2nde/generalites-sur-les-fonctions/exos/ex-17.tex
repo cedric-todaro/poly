@@ -1,0 +1,29 @@
+\begin{exo}{}
+	On considère la représentation graphique des fonctions $C$ et $S$ tracée ci-dessous :
+
+	\begin{center}
+		\begin{tikzpicture}[x=5.5mm, y=11mm, >=Stealth]
+			\def\xmin{-7.5}\def\xmax{7.5}\def\ymin{-1.4}\def\ymax{1.4}
+			\draw[gray!40,xstep=1,ystep=0.5] (\xmin,\ymin) grid (\xmax,\ymax);
+			\draw[very thick] (\xmin, 0) -- (\xmax, 0);
+			\draw[very thick] (0, \ymin) -- (0, \ymax);
+			\foreach \y in {-1,0,1} \draw (0.2,\y) -- (-0.2,\y);
+			\foreach \x in {-7,...,7} \draw (\x,0.1) -- (\x,-0.1);
+			\node[below, green!60!black, fill=white] at (-4,-1) {$C$};
+			\node[above, red!80!black, fill=white] at (-6,1) {$S$};
+			\node[below] at (-5,-0.1) {$-5$};
+			\node[below] at (1,-0.1) {$1$};
+			\node[below] at (5,-0.1) {$5$};
+			\node[below left] at (0,0) {$0$};
+			\draw (0.1,1) -- (-0.1,1) node[left] {$1$};
+			\draw[domain=-7.5:7.5, smooth, samples=200, very thick, green!60!black] plot (\x, {cos(\x*45)});
+			\draw[domain=-7.5:7.5, smooth, samples=200, very thick, red!80!black] plot (\x, {sin(\x*45)});
+		\end{tikzpicture}
+	\end{center}
+	\begin{enumerate}
+		\item Avec la précision permise par le graphique, résoudre les équations suivantes :
+
+		      \cmath{C(x) = 1\ ;\ C(x) = 0\ ;\ S(x) = -2}
+		\item Avec la précision permise par le graphique, résoudre $C(x) = S(x)$.
+	\end{enumerate}
+\end{exo}

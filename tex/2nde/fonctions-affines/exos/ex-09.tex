@@ -1,0 +1,28 @@
+\begin{exo}{}
+	Deux fonctions affines $h$ et $k$ ont été représentées dans le repère $\OIJ$ ci-dessous.
+
+	\begin{center}
+		\begin{tikzpicture}[x=6mm, y=6mm, >=Stealth]
+			\def\xmin{-5.5}\def\xmax{5.5}\def\ymin{-4.5}\def\ymax{6.5}
+			\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+			\draw[xstep=1, gray!40, ystep=1] (\xmin, \ymin) grid (\xmax, \ymax);
+			\draw[very thick, ->] (\xmin, 0) -- (\xmax, 0);
+			\draw[very thick, ->] (0, \ymin) -- (0, \ymax);
+			\foreach \x in {-5,-4,-3,-2,-1,1,2,3,4,5,6,7} \draw (\x,0.1) -- (\x,-0.1);
+			\foreach \y in {-4,-3,-2,-1,1,2,3,4,5,6} \draw (0.1,\y) -- (-0.1,\y);
+			\node[below left, scale=0.8] at (0,0) {$O$};
+			\node[below, scale=0.8] at (1,0) {$I$};
+			\node[left, scale=0.8] at (0,1) {$J$};
+			\node[black, fill=white] at (3,5) {$h$};
+			\node[black, fill=white] at (3,-2) {$k$};
+			\draw[domain=\xmin:\xmax, smooth, very thick, orange!80!black] plot (\x, {0.75*\x + 2});
+			\draw[domain=\xmin:\xmax, smooth, very thick, violet] plot (\x, {-1.25*\x + 1});
+			\foreach \pt in { (0,2),(4,-4), (0,1), (8,2), (4,5), (-4,-1), (-4,6)} {\filldraw \pt circle (2pt);}
+		\end{tikzpicture}
+	\end{center}
+	
+	\begin{enumerate}
+		\item Retrouver l'expression algébrique de chacune de ces fonctions.
+		\item Déterminer algébriquement les solutions de $h(x) < k(x)$ sur $\R$.
+	\end{enumerate}
+\end{exo}

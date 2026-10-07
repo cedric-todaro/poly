@@ -1,0 +1,25 @@
+\begin{exo}{}
+	Le dessin ci-dessous représente une droite munie d'une graduation régulière.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.70, >=Stealth]
+			\draw[very thick, ->] (-0.5,0) -- (10.8,0);
+			\foreach \x/\p in {0/A, 1/B, 2/C, 3/D, 4/E, 5/F, 6/G, 7/H, 8/I, 9/J, 10/K} {
+					\draw[thick] (\x,0.15) -- (\x,-0.15);
+					\node[above=2pt] at (\x,0.15) {$\p$};
+				}
+		\end{tikzpicture}
+	\end{center}
+	\begin{enumerate}
+		\item Compléter les pointillés par la lettre manquante :
+		      \vspace*{-2mm}
+		      \begin{multicols}{2}
+		      \begin{enumerate}[itemsep=2mm]
+			      \item $\vec{A \dots} = 2\times \vec{CD}$
+			      \item $\vec{\dots D} = \dfrac{1}{2}\times \vec{KG}$
+			      \item $\vec{F \dots} = -3\times \vec{BA}$
+			      \item $\vec{I \dots} = -\dfrac{2}{3}\times \vec{DG}$
+		      \end{enumerate}
+		      \end{multicols}
+	\end{enumerate}
+\end{exo}

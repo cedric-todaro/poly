@@ -1,0 +1,24 @@
+\begin{exo}{}
+	Reproduire la figure ci-dessous.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.5, >=Stealth]
+			\draw[gray!30, thin, step=1] (0,-1) grid (14,8);
+			\coordinate (A) at (6,3);
+			\coordinate (B) at (8,2);
+			\coordinate (C) at (7,5);
+			\foreach \p/\pos in {A/left, B/below, C/above} {
+					\draw[thick] (\p) ++(-0.15,-0.15) -- ++(0.3,0.3);
+					\draw[thick] (\p) ++(-0.15,0.15) -- ++(0.3,-0.3);
+					\node[\pos, font=\small] at (\p) {$\p$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Construire les points $E$ et $F$ tels que :
+		      $$\vec{AE} = 2~\vec{AB} + \frac{1}{2}~\vec{BC} \quad \text{et} \quad \vec{AF} = 2~\vec{AC} - 2~\vec{BC}$$
+		\item Démontrer que $\vec{EF} = \dfrac{-1}{2}~\vec{BC}$.
+		\item Que peut-on en déduire à propos des droites $(EF)$ et $(BC)$ ?
+	\end{enumerate}
+\end{exo}

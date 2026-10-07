@@ -102,7 +102,9 @@
 \nc{\Rarr}{\Rightarrow}
 \nc{\Larr}{\Leftarrow}
 \nc{\Lrarr}{\Leftrightarrow}
+\let\leq\leqslant
 \let\le\leqslant
+\let\geq\geqslant
 \let\ge\geqslant
 \nc{\lt}{\ifmmode{<}\else\textless\fi}
 \nc{\gt}{\ifmmode{>}\else\textgreater\fi}

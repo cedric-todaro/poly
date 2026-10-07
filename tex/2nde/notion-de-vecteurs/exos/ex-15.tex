@@ -1,0 +1,50 @@
+\begin{exo}{}
+	On considère les deux cercles concentriques de centre $O$ et dont le rayon de l'un est le double de l'autre :
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth]
+			\coordinate (O) at (0,0);
+			\draw[thick] (O) circle (1.2cm);
+			\draw[thick] (O) circle (2.4cm);
+			\path (O) ++(0:1.2) coordinate (A);
+			\path (O) ++(45:1.2) coordinate (B);
+			\path (O) ++(90:1.2) coordinate (C);
+			\path (O) ++(135:1.2) coordinate (D);
+			\path (O) ++(180:1.2) coordinate (E);
+			\path (O) ++(225:1.2) coordinate (F);
+			\path (O) ++(270:1.2) coordinate (G);
+			\path (O) ++(315:1.2) coordinate (H);
+			\path (O) ++(0:2.4) coordinate (I);
+			\path (O) ++(45:2.4) coordinate (J);
+			\path (O) ++(90:2.4) coordinate (K);
+			\path (O) ++(135:2.4) coordinate (L);
+			\path (O) ++(180:2.4) coordinate (M);
+			\path (O) ++(225:2.4) coordinate (N);
+			\path (O) ++(270:2.4) coordinate (P);
+			\path (O) ++(315:2.4) coordinate (Q);
+			\draw[thick] (L) -- (Q);
+			\node[below right, fill=white] at (O) {$O$};
+			\fill (O) circle (2pt);
+			\draw[thick] (M) -- (I);
+			\draw[thick] (N) -- (J);
+			\draw[thick] (P) -- (K);
+			\foreach \pt/\pos in {A/below right, B/right, C/above left, D/left, E/below left, F/left, G/below left, H/right} {
+					\fill (\pt) circle (2pt);
+					\node[\pos, font=\small, shift={(0,0)}] at (\pt) {$\pt$};
+				}
+			\foreach \pt/\pos in {I/right, J/above right, K/above, L/above left, M/left, N/below left, P/below, Q/below right} {
+					\fill (\pt) circle (2pt);
+					\node[\pos, font=\small] at (\pt) {$\pt$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Justifier l'égalité vectorielle : $\vec{LJ} = 2 \times \vec{DB}$
+		\item Sans justification, compléter les égalités par les vecteurs manquants :
+		      \begin{enumerate}[itemsep=2mm]
+			      \item $\vec{ED} = \vec{\phantom{|}\dots\dots\phantom{|}} = \frac{1}{2}\times\vec{\phantom{|}\dots\dots\phantom{|}} = \frac{1}{2}\times\vec{\phantom{|}\dots\dots\phantom{|}}$
+			      \item $\vec{FB} = 2\times\vec{\phantom{|}\dots\dots\phantom{|}} = 2\times\vec{\phantom{|}\dots\dots\phantom{|}} = \frac{1}{2}\times\vec{\phantom{|}\dots\dots\phantom{|}}$
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

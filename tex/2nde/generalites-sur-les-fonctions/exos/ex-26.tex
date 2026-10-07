@@ -1,0 +1,34 @@
+\begin{exo}{}
+	On considère la hauteur $H$, en mètre, d'un type d'arbre en fonction de son âge $t$ (en mois).
+
+	\begin{center}
+		\begin{tikzpicture}[x=3.15mm, y=6mm, >=Stealth]
+			\def\xmin{0}\def\xmax{25.5}\def\ymin{0}\def\ymax{4.75}
+			\clip (-1.5,-0.6) rectangle (\xmax,\ymax);
+			\draw[gray!40, xstep=1, ystep=0.5] (0,0) grid (\xmax,\ymax);
+			\node[fill=white, below right] at (0, \ymax) {$H$ (m)};
+			\node[fill=white, above left] at (\xmax, 0) {$t$ (mois)};
+			\draw[thick, ->] (-0.5, 0) -- (\xmax, 0);
+			\draw[thick, ->] (0, -0.5) -- (0, \ymax);
+			\foreach \x in {0,1,...,24} \draw (\x,0.1) -- (\x,-0.1);
+			\foreach \y in {0,0.5,...,5.5} \draw (0.2,\y) -- (-0.2,\y);
+			\node[below left] at (0,0) {$0$};
+			\node[below] at (2,0) {$2$};
+			\node[below] at (10,0) {$10$};
+			\node[below] at (20,0) {$20$};
+			\node[left] at (0,1) {$1$};
+			\node[left] at (0,2) {$2$};
+			\node[left] at (0,3) {$3$};
+			\node[left] at (0,4) {$4$};
+			\node[left] at (0,5) {$5$};
+			\draw[smooth, ultra thick, green!60!black] plot coordinates { (0, 0) (1, 1) (2, 1.7) (3, 2.2) (4, 2.5) (6, 3) (8, 3.4) (10, 3.75) (12, 4) (15, 4.25) (20, 4.5) (25, 4.5) };
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Déterminer et interpréter $H(1)$.
+		\item Ces arbres sont commercialisables dès qu'ils mesurent au moins $2$ m : traduire cela par une inéquation et la résoudre.
+		\item À partir de quelle année ces arbres atteignent-ils leur hauteur maximale ?
+		\item Dès qu'ils atteignent $3,5$ m, Jean taille ses arbres à une hauteur de $3$ m. Les arbres repoussent au même rythme : quelle sera la fréquence des coupes après la première ?
+	\end{enumerate}
+\end{exo}

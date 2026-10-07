@@ -1,0 +1,53 @@
+\begin{exo}{}
+	On considère les vecteurs suivants représentés sur du papier quadrillé.
+	\vspace*{2mm}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.6, >=Stealth]
+			\draw[gray!30, thick, step=1] (-1.5,-3.5) grid (12.5,2.5);
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (1,1);
+			\coordinate (C) at (4,1);
+			\coordinate (D) at (3,-2);
+			\coordinate (E) at (12, 1);
+			\coordinate (F) at (11, -2);
+			\coordinate (F1) at (5, -3);
+			\coordinate (F2) at (6, -2);
+			\coordinate (G) at (7, -3);
+			\coordinate (H) at (8, -2);
+			\coordinate (L) at (1,-2);
+			\coordinate (P1) at (6, -1);
+			\coordinate (P2) at (9, -1);
+			\coordinate (P3) at (10, 1);
+			\coordinate (P4) at (11, 0);
+			\draw (A) node {$\times$} node[left] {$A$};
+			\draw (B) node {$\times$} node[above] {$B$};
+			\draw (C) node {$\times$} node[right] {$C$};
+			\draw (D) node {$\times$} node[below] {$D$};
+			\draw (E) node {$\times$} node[above] {$E$};
+			\draw (F) node {$\times$} node[below] {$F$};
+			\draw (G) node {$\times$} node[left] {$G$};
+			\draw (H) node {$\times$} node[right] {$H$};
+			\draw (L) node {$\times$} node[below] {$L$};
+			\draw[->, very thick, black] (A) -- (B);
+			\draw[->, very thick, vert] (A) -- (C);
+			\draw[->, very thick, bleu] (A) -- (D);
+			\draw[->, very thick, rouge] (A) -- (L);
+			\draw[->, very thick, rouge] (B) -- (D);
+			\draw[->, very thick, brown] (C) -- (D);
+			\draw[->, very thick, gray] (C) -- (L);
+			\draw[->, very thick, blue] (E) -- (F);
+			\draw[->, very thick, red] (F1) -- (F2) node[midway, above, sloped] {$\vec{f}$};
+			\draw[->, very thick, violet] (G) -- (H);
+			\draw[->, very thick, green!50!black] (P2) -- (P1) node[midway, below, sloped] {$\vec{c}$};
+			\draw[->, very thick, magenta] (P2) -- (P3) node[midway, below, sloped, xshift=2pt, yshift=2pt] {$\vec{b}$};
+			\draw[->, very thick, orange] (P3) -- (P1) node[midway, above, sloped] {$\vec{d}$};
+			% \draw[->, thick, sloped] (P3) -- (P4) node {$\vec{r}$};
+			\draw[->, very thick, gris] (P3) -- (P4) node[midway, above, sloped] {$\vec{r}$};
+			\draw[->, very thick, vert] (P4) -- (P2) node[midway, below, sloped] {$\vec{k}$};
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Écrire cinq sommes de vecteurs traduisant la relation de Chasles.
+	\end{enumerate}
+\end{exo}

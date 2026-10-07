@@ -1,0 +1,37 @@
+\begin{exo}{}
+	Parmi les représentations graphiques suivantes, déterminer celles correspondant à des fonctions affines sur $\intoo{0}{+\infty}$.
+
+	\ms
+
+	\begin{center}
+		\begin{tikzpicture}[x=5mm,y=5mm, >=Stealth]
+			\begin{scope}[shift={(0,0)}]
+				\def\xmin{-0.5}\def\xmax{7.5}\def\ymin{-0.9}\def\ymax{7.5}
+				\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+				\draw[xstep=1, gray!40, ystep=1] (-1, -2) grid (\xmax, \ymax);
+				\draw[very thick, ->] (\xmin, 0) -- (\xmax, 0);
+				\draw[very thick, ->] (0, \ymin) -- (0, \ymax);
+				\foreach \x in {1,5} \draw (\x,0.1) -- (\x,-0.1);
+				\foreach \y in {1,5} \draw (0.1,\y) -- (-0.1,\y);
+				\draw[domain=0:7.5, smooth, very thick, green!60!black] plot (\x, {3}) node[below left] {$f$};
+				\draw[domain=0:3, smooth, very thick, purple] plot (\x, {2*\x + 1.5}) node[below, xshift=4pt] {$g$};
+				\draw[domain=0:5, smooth, very thick, orange] plot (\x, {0.3*\x^2}) node[below,xshift=5pt] {$h$};
+				\draw[domain=0:7.5, smooth, very thick, violet,samples=100] plot (\x, {1.5*sqrt(\x)+ 1}) node[above left] {$k$};
+			\end{scope}
+
+			\begin{scope}[shift={(9,0)}]
+				\def\xmin{-0.5}\def\xmax{7.5}\def\ymin{-0.9}\def\ymax{7.5}
+				\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+				\draw[xstep=1, gray!40, ystep=1] (-1, -2) grid (\xmax, \ymax);
+				\draw[very thick, ->] (\xmin, 0) -- (\xmax, 0);
+				\draw[very thick, ->] (0, \ymin) -- (0, \ymax);
+				\foreach \x in {1,5} \draw (\x,0.1) -- (\x,-0.1);
+				\foreach \y in {1,5} \draw (0.1,\y) -- (-0.1,\y);
+				\draw[domain=0:7, smooth, very thick, purple] plot (\x, {\x}) node[below] {$s$};
+				\draw[domain=0:5.5, smooth, very thick, orange] plot (\x, {-0.8*\x + 4}) node[right, yshift=-2pt,xshift=-2pt] {$t$};
+				\draw[domain=0.1:7, very thick, violet, samples=50,smooth] plot (\x, {1/\x}) node[above] {$m$};
+				\draw[domain=0:2.45, smooth, very thick, green!60!black] plot (\x, {0.5*\x^3}) node[right, xshift=-2pt] {$n$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+\end{exo}

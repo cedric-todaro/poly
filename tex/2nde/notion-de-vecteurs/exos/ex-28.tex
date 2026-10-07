@@ -1,0 +1,37 @@
+\begin{exo}[Théorème de Varignon]
+	Soit $ABCD$ un quadrilatère quelconque et $I$, $J$, $K$ et $L$ les milieux respectifs des segments $[AB]$, $[BC]$, $[CD]$ et $[DA]$.
+
+	\begin{enumerate}
+		\item Faire une figure (Attention : $ABCD$ quadrilatère quelconque).
+		\item
+		      \begin{enumerate}
+			      \item Justifier que $\vec{AB} = 2~\vec{IB}$ et que $\vec{BC} = 2~\vec{BJ}$.
+			      \item En déduire que $\vec{AC} = 2~\vec{IJ}$.
+		      \end{enumerate}
+		\item Montrer que le quadrilatère $IJKL$ est un parallélogramme.
+	\end{enumerate}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8, >=Stealth]
+			% --- Définition des coordonnées des sommets du quadrilatère ABCD ---
+			\coordinate (A) at (-2.5, 4.5);
+			\coordinate (B) at (6.5, 3.5);
+			\coordinate (C) at (5.6, 1.3);
+			\coordinate (D) at (1.5, 0.5);
+			\coordinate (I) at ($(A)!0.5!(B)$);
+			\coordinate (J) at ($(B)!0.5!(C)$);
+			\coordinate (K) at ($(C)!0.5!(D)$);
+			\coordinate (L) at ($(D)!0.5!(A)$);
+			\fill[blue!5, draw=blue!40, thick] (A) -- (B) -- (C) -- (D) -- cycle;
+			\fill[red!10, draw=red!70, thick] (I) -- (J) -- (K) -- (L) -- cycle;
+			\foreach \p in {A, B, C, D} { \fill[thick] (\p) circle (2.5pt); }
+			\foreach \m in {I, J, K, L} { \fill[thick] (\m) circle (2.5pt); }
+			\node[blue, left] at (A) {$A$};
+			\node[blue, right] at (B) {$B$};
+			\node[blue, right] at (C) {$C$};
+			\node[blue, below] at (D) {$D$};
+			\node[red, above] at (I) {$I$};
+			\node[red, right] at (J) {$J$};
+			\node[red, below] at (K) {$K$};
+			\node[red, left] at (L) {$L$};
+		\end{tikzpicture}
+	\end{center}\end{exo}
