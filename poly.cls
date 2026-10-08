@@ -16,7 +16,8 @@
 \addtokomafont{disposition}{\rmfamily}
 \setcounter{tocdepth}{2}
 \raggedbottom
-% ---------------------------------------------------------------------------------------------------- 
+\nc{\inputifexists}[1]{\IfFileExists{#1}{\input{#1}}{}
+}% ---------------------------------------------------------------------------------------------------- 
 \RequirePackage{setspace}
 \setstretch{1.05}
 \newlength{\monindent}

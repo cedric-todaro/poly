@@ -360,16 +360,6 @@
 \begin{rem}[Crible d'Ératosthène]
 	Le crible d'Ératosthène est un procédé algorithmique permettant de trouver tous les nombres premiers inférieurs ou égaux à une valeur donnée $N$ (ici $N = 100$).
 
-	% \begin{enumerate}
-	% 	\item \textbf{Initialisation :} Écrire tous les nombres entiers de $2$ à $100$ dans un tableau.
-	% 	\item \textbf{Élimination du premier multiple :} Le premier nombre non barré est $2$. Il est \textbf{premier}. On barre ensuite tous ses multiples strictement supérieurs à $2$ ($4, 6, 8, \dots, 100$).
-	% 	\item \textbf{Réitération :} Le nombre suivant non barré est $3$. Il est \textbf{premier}. On barre tous ses multiples strictement supérieurs à $3$ qui ne le sont pas encore ($9, 15, 21, \dots$).
-	% 	\item \textbf{Condition d'arrêt :} On répète l'opération avec le premier nombre non barré suivant ($5$, puis $7$).
-	%
-	% 	      Comme $\sqrt{100} = 10$, il suffit de tester les multiples des nombres premiers inférieurs ou égaux à $10$ (c'est-à-dire $2$, $3$, $5$ et $7$).
-	% 	\item \textbf{Conclusion :} Tous les nombres restant non barrés dans le tableau sont les \textbf{nombres premiers} inférieurs ou égaux à $100$.
-	% \end{enumerate}
-
 	\begin{center}
 		\begin{tikzpicture}[prime/.style={draw=red!80!black, thick, circle, fill=white, inner sep=1pt, minimum size=14pt},crossed/.style={ path picture={ \draw[gray!60, line width=0.6pt] (path picture bounding box.south west) -- (path picture bounding box.north east) (path picture bounding box.south east) -- (path picture bounding box.north west); } } ]
 			\foreach \n in {1,...,100} { \pgfmathtruncatemacro{\r}{int((\n-1)/10)} \pgfmathtruncatemacro{\c}{\n - \r*10} \node[crossed] at (\c, 10-\r) {\n}; }
@@ -377,6 +367,3 @@
 		\end{tikzpicture}
 	\end{center}
 \end{rem}
-
-% ---------------------------------------------------------------------------------------------------- 
-\input{./tex/2nde/multiples-et-diviseurs/exos/exercices.tex}
