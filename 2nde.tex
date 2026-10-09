@@ -7,11 +7,10 @@
 \date{}
 % ----------------------------------------------------------------------------------------------------
 \newif\ifpoly\polyfalse
-\polytrue
+% \polytrue
 % ----------------------------------------------------------------------------------------------------
 \begin{document}
 % -----------------
-
 \ifpoly
 	\maketitle
 	\tableofcontents
@@ -27,7 +26,8 @@
 	% --------------------------------------------------
 	\inputifexists{./tex/2nde/geometrie.tex}
 \else
-	~
+	\hfill
+	\input{./tex/2nde/notion-de-vecteurs/notion-de-vecteurs.tex}
 \fi
 % -----------------
 \end{document}
