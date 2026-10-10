@@ -6,12 +6,12 @@
 \author{}
 \date{}
 % ----------------------------------------------------------------------------------------------------
-\newif\ifpoly\polyfalse
+\newif\ifpoly\polyfalse%
 % \polytrue
 % ----------------------------------------------------------------------------------------------------
 \begin{document}
 % -----------------
-\ifpoly
+\ifpoly%
 	\maketitle
 	\tableofcontents
 	% --------------------------------------------------
@@ -26,8 +26,8 @@
 	% --------------------------------------------------
 	\inputifexists{./tex/2nde/geometrie.tex}
 \else
-	\hfill
 	\input{./tex/2nde/notion-de-vecteurs/notion-de-vecteurs.tex}
+	\hfill
 \fi
 % -----------------
 \end{document}
