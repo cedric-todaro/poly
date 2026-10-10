@@ -15,7 +15,7 @@
 \RequirePackage{fourier}
 \addtokomafont{disposition}{\rmfamily}
 \setcounter{tocdepth}{1}
-\raggedbottom
+\raggedbottom\hbadness=100000\vbadness=100000
 \nc{\inputifexists}[1]{\IfFileExists{#1}{\input{#1}}{}
 }% ---------------------------------------------------------------------------------------------------- 
 \RequirePackage{setspace}
