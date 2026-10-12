@@ -1,0 +1,39 @@
+\begin{exo}{}
+	On considère les vecteurs suivants dans un repère orthonormé $(O; \vec{i}, \vec{j})$.
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=0.7]
+			\draw[style=help lines, color=gray!30, line width=0.5pt] (-5.5,-4.5) grid (5.5,4.5);
+			\foreach \x in {-5,-4,-3,-2,-1,1,2,3,4,5} \draw (\x,2pt) -- (\x,-2pt);
+			\foreach \y in {-4,-3,-2,-1,1,2,3,4} \draw (2pt,\y) -- (-2pt,\y);
+			\draw[->, thick] (0,-4.5) -- (0,4.5);
+			\draw[->, very thick] (0,0) -- (1,0) node[midway, below] {$\vec{i}$};
+			\draw[->, thick] (-5.5,0) -- (5.5,0);
+			\draw[->, very thick] (0,0) -- (0,1) node[midway, left] {$\vec{j}$};
+			\fill (2,2) circle (3pt) node[above] {$A$};
+			\fill (3,2) circle (3pt) node[above] {$B$};
+			\fill (-2,3) circle (3pt) node[above] {$C$};
+			\fill (-3,2) circle (3pt) node[above] {$D$};
+			\fill (-4,1) circle (3pt) node[below] {$E$};
+			\fill (2,-1) circle (3pt) node[above] {$F$};
+			\fill (4,-4) circle (3pt) node[below] {$G$};
+			\fill (-2,0) circle (3pt) node[above] {$K$};
+			\fill (-4,-1) circle (3pt) node[below] {$L$};
+			\fill (0,0) circle (3pt) node[below left] {$O$};
+			\draw (-3,-3) node[above] {$\vec{b}$};
+			\draw (4,1) node[left] {$\vec{d}$};
+			\draw[->, very thick, color=gray] (-3,2) -- (-4,1);
+			\draw[->, very thick, color=gray] (-4,-1) -- (-2,0);
+			\draw[->, very thick, color=gray] (0,0) -- (3,2);
+			\draw[->, very thick, color=gray] (-1,-2.5) -- (-5,-3.5);
+			\draw[->, very thick, color=gray] (2,2) -- (-2,3);
+			\draw[->, very thick, color=gray] (2,-1) -- (4,-4);
+			\draw[->, very thick, color=gray] (4,2) -- (4,0);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Déterminer les coordonnées des vecteurs.
+		\item Écrire les vecteurs dans la base $(O; \vec{i}, \vec{j})$ comme l'exemple suivant : $\vec{OB} = 3\vec{i} + 2\vec{j}$.
+	\end{enumerate}
+\end{exo}

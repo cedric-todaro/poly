@@ -1,0 +1,86 @@
+\begin{exo}{}
+	Solal part de son domicile situé en $O$ pour se rendre à son bureau $E$ situé à $6$~km.
+
+	On note $x$ la distance parcourue par Solal sur la route durant son trajet.
+
+	Deux antennes-relais $A$ et $B$ de son opérateur téléphonique sont situées à $1,2$~km et $1$~km de part et d'autre de la route (perpendiculairement aux points $C$ et $D$).
+
+	\begin{center}
+		\begin{tikzpicture}[scale=1.2, >=Triangle, font=\small]
+			\coordinate (A) at (2,1.2);
+			\coordinate (B) at (4,-1);
+			\draw[thick] (0,0) -- (6,0);
+			\draw[thick] (0,0.05) -- (0,-0.05) node[below] {$O$};
+			\draw[thick] (2,0.05) -- (2,-0.05) node[blue!80!black, below] {$C$};
+			\draw[thick] (4,0.05) -- (4,-0.05) node[blue!80!black, above, yshift=2] {$D$};
+			\draw[thick] (6,0.05) -- (6,-0.05) node[below] {$E$};
+			\draw[thick] (1,0.05) -- (1,-0.05);
+			\draw[thick] (3,0.05) -- (3,-0.05);
+			\draw[thick] (5,0.05) -- (5,-0.05);
+			\draw[purple, very thick] (0,0) -- (1.3,0);
+			\filldraw[purple] (1.3,0) circle (1.2pt) node[purple, below] {$P$};
+			\draw (0.65,0) node[below=2pt, purple] {$x$};
+			\draw (2,0.6) node[left] {$1,2$};
+			\fill[blue!70!black] (A) circle (1.5pt) node[above, yshift=5] {$A$};
+			\draw[blue!20!gray, thin] (2,1.3) arc (90:270:0.1);
+			\draw[blue!20!gray, thin] (2,1.4) arc (90:270:0.2);
+			\draw[blue!20!gray, thin] (2,1.1) arc (-90:90:0.1);
+			\draw[blue!20!gray, thin] (2,1.0) arc (-90:90:0.2);
+			\draw[blue!70!black, dashed, <->, shorten <=2pt, shorten >=2pt] (A) -- (2,0);
+			\draw (4,-0.5) node[right] {$1$};
+			\fill[blue!70!black] (B) circle (1.5pt) node[below, yshift=-5] {$B$};
+			\draw[blue!20!gray, thin] (4,-0.9) arc (90:270:0.1);
+			\draw[blue!20!gray, thin] (4,-0.8) arc (90:270:0.2);
+			\draw[blue!20!gray, thin] (4,-1.1) arc (-90:90:0.1);
+			\draw[blue!20!gray, thin] (4,-1.2) arc (-90:90:0.2);
+			\draw[blue!70!black, dashed, <->, shorten <=2pt, shorten >=2pt] (B) -- (4,0);
+			\draw[black, <->] (5,0.2) -- (6,0.2);
+			\draw (5.5,0.2) node[fill=white] {$1$};
+		\end{tikzpicture}
+	\end{center}
+
+	Le but est d'étudier les zones dans lesquelles Solal pourra recevoir du réseau téléphonique.
+
+	On suppose que $OC = CD = DE = 2\text{ km}$.
+
+	La position de Solal sur la route est représentée par le point $P$.
+
+	Pour étudier l'intensité du signal reçu grâce aux antennes $A$ et $B$, on considère les fonctions $f$ et $g$ définies sur $I = \intff{0}{6}$ par :
+
+	\begin{itemize}[itemsep=2mm]
+		\item $f(x) = \dfrac{10}{AP^2}$ pour l'antenne $A$
+		\item $g(x) = \dfrac{10}{BP^2}$ pour l'antenne $B$
+	\end{itemize}
+
+	\begin{enumerate}
+		\item Montrer que, pour tout $x \in I$ : $$f(x) = \frac{10}{1,44 + (2-x)^2}\quad\text{et}\quad g(x) = \frac{10}{1 + (4-x)^2}$$
+	\end{enumerate}
+	On a tracé les courbes représentatives des fonctions $f$ et $g$ dans un même repère.
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, y=4.5mm, font=\small]
+			\draw[gray!20, thin, xstep=0.5, ystep=1] (0,0) grid (6.25,11.5);
+			\draw[->, thick] (0,0) -- (6.5,0) node[below] {$x$};
+			\draw[->, thick] (0,0) -- (0,11.5) node[left] {$y$};
+			\foreach \x in {1,2,3,4,5,6} { \draw (\x, 0.15) -- (\x, -0.15) node[below, scale=0.9] {$\x$} ; }
+			\draw (0,0) node[below left, scale=0.9] {$0$};
+			\draw (0.1, 1) -- (-0.1, 1) node[left, scale=0.9] {$1$};
+			\draw (0.1, 5) -- (-0.1, 5) node[left, scale=0.9] {$5$};
+			\draw (0.1, 10) -- (-0.1, 10) node[left, scale=0.9] {$10$};
+			\foreach \y in {2,3,4,6,7,8,9,11} { \draw (0.07, \y) -- (-0.07, \y); }
+			\draw[green!60!black, very thick, samples=150, domain=0:6] plot (\x, {10 / (1.44 + (2 - \x)^2)}) node[right] {$\Cf$};
+			\draw[blue!60!black, very thick, samples=150, domain=0:6] plot (\x, {10 / (1 + (4 - \x)^2)}) node[right] {$\Cg$};
+		\end{tikzpicture}
+	\end{center}
+	\begin{enumerate}[resume]
+		\item \begin{enumerate}
+			      \item Tracer le tableau de variations de $f$ et $g$ sur $I$.
+			      \item Préciser les valeurs de $x$ maximisant $f$ et $g$. Pouvait-on trouver ces résultats par des considérations géométriques ?
+		      \end{enumerate}
+		\item Sachant que le mobile capte le signal de l'antenne qui émet la plus grande intensité : préciser, suivant les valeurs de $x$, l'antenne qui sera captée par le mobile (en précisant les inéquations correspondantes).
+		\item En réalité, le réseau est reçu par le mobile lorsque l'intensité du signal est supérieure ou égale à $4$.
+		      \begin{enumerate}
+			      \item Pour l'antenne $A$ : quelle inéquation concernant $f(x)$ cela revient-il à résoudre ? Préciser les valeurs de $x$ correspondantes.
+			      \item Répondre à la question précédente pour l'antenne $B$.
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

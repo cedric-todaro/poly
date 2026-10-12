@@ -1,0 +1,31 @@
+\begin{exo}{}
+	On considère l'énoncé de l'exercice précédent.
+
+	On a représenté dans un repère la fonction $B$ définie pour tout $x \in [0 ; 70]$ par $B(x) = R(x) - D(x)$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.090, >=Triangle, y=0.025cm]
+			% Grille adaptée de y = -400 à y = 1400 (par pas de 200)
+			\draw[gray!20, thin, xstep=2, ystep=200] (0,-400) grid (73,1300);
+			\draw[->, thick] (0,0) -- (74,0) node[right] {$x$};
+			\draw[->, thick] (0,-400) -- (0,1400) node[right] {$y$};
+			\foreach \x in {10, 20, 30, 40, 50, 60, 70} { \draw (\x, 40) -- (\x, -40) node[below, scale=0.8] {\x}; }
+			\draw (1, -200) -- (-1, -200) node[left, scale=0.8] {$-200$};
+			\draw (1, 200) -- (-1, 200) node[left, scale=0.8] {$200$};
+			\draw (1, 600) -- (-1, 600) node[left, scale=0.8] {$600$};
+			\draw (1, 1000) -- (-1, 1000) node[left, scale=0.8] {$1000$};
+			\foreach \y in {400, 800, 1200} { \draw (0.6, \y) -- (-0.6, \y); }
+			\draw[gray, very thick] plot[smooth, tension=0.5] coordinates { (0, -115) (10, -253) (21, -124) (26, 0) (30, 127) (40, 393) (50, 760) (60, 1076) (70, 1000) } node[above] {$B$};
+			\fill[black] (26,0) circle (20pt);
+		\end{tikzpicture}
+	\end{center}
+	\begin{enumerate}
+		\item À l'aide de cette représentation graphique, retrouver les résultats de l'exercice précédent.
+		\item Dresser le tableau de variations de $B$ sur $\intff{0}{70}$.
+		\item
+		      \begin{enumerate}
+			      \item Pour combien d'objets produits le déficit est-il le plus important ?
+			      \item Le directeur pense que, pour avoir un bénéfice maximum, il doit produire le plus d'objets possible. A-t-il raison ? Préciser.
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

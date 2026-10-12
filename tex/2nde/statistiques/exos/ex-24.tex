@@ -1,0 +1,65 @@
+% !TEX root = ./2nde.tex
+\begin{exo}
+	On représente trois séries statistiques par des diagrammes en barres donnés ci-dessous.
+
+	\begin{center}
+		\centering
+		\textbf{Série 1}\\
+		\begin{tikzpicture}[scale=1.1, x=0.25cm, y=0.03cm, >=latex]
+			% Axes
+			\draw[->] (26,0) -- (44,0);
+			\draw[->] (27,0) -- (27,85);
+			\foreach \y in {0, 10, 20, 30, 40, 50, 60, 70, 80} {
+					\draw (27,\y) -- (26.6,\y) node[left, font=\small] {\y};
+				}
+			\foreach \x in {28, 30, 32, 34, 36, 38, 40, 42} {
+					\draw (\x,0) -- (\x,-1.5) node[below, font=\small] {\x};
+				}
+			\foreach \x/\y in {30/1, 31/2, 32/8, 33/26, 34/57, 35/37, 36/81, 37/31, 38/8, 39/1, 40/1} {
+					\draw[fill=bleuClair, draw=bleu, thin] (\x-0.4,0) rectangle (\x+0.4,\y);
+				}
+		\end{tikzpicture}
+		\\[3mm]
+		\textbf{Série 2}\\
+		\begin{tikzpicture}[scale=1.1, x=0.25cm, y=0.06cm, >=latex]
+			% Axes
+			\draw[->] (26,0) -- (44,0);
+			\draw[->] (27,0) -- (27,43);
+			\foreach \y in {0, 5, 10, 15, 20, 25, 30, 35, 40} {
+					\draw (27,\y) -- (26.6,\y) node[left, font=\small] {\y};
+				}
+			\foreach \x in {28, 30, 32, 34, 36, 38, 40, 42} {
+					\draw (\x,0) -- (\x,-0.75) node[below, font=\small] {\x};
+				}
+			\foreach \x/\y in {30/29, 31/16, 32/9, 33/17, 34/25, 35/20, 36/37, 37/35, 38/34, 39/29, 40/35} {
+					\draw[fill=bleuClair, draw=bleu, thin] (\x-0.4,0) rectangle (\x+0.4,\y);
+				}
+		\end{tikzpicture}
+		\\[3mm]
+		\textbf{Série 3}\\
+		\begin{tikzpicture}[scale=1.1, x=0.25cm, y=0.045cm, >=latex]
+			% Axes
+			\draw[->] (26,0) -- (44,0);
+			\draw[->] (27,0) -- (27,65);
+			\foreach \y in {0, 10, 20, 30, 40, 50, 60} {
+					\draw (27,\y) -- (26.6,\y) node[left, font=\small] {\y};
+				}
+			\foreach \x in {28, 30, 32, 34, 36, 38, 40, 42} {
+					\draw (\x,0) -- (\x,-1) node[below, font=\small] {\x};
+				}
+			\foreach \x/\y in {30/59, 31/31, 32/42, 33/32, 34/19, 35/6, 36/15, 37/32, 38/52, 39/49, 40/50} {
+					\draw[fill=bleuClair, draw=bleu, thin] (\x-0.4,0) rectangle (\x+0.4,\y);
+				}
+		\end{tikzpicture}
+	\end{center}
+	\vspace{0.4cm}
+	\begin{enumerate}
+		\item Associer chacun de ces diagrammes aux valeurs des moyennes et écart-types suivantes (arrondies au dixième près).
+
+		      \begin{enumerate}
+			      \item $35,1$ et $3,6$
+			      \item $34,6$ et $1,5$
+			      \item $34,8$ et $3,2$
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

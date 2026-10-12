@@ -1,0 +1,31 @@
+\begin{exo}{}
+	On considère les points et les vecteurs suivants dans un repère orthonormé $(O; \vec{i}, \vec{j})$.
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=0.7]
+			\draw[style=help lines, color=gray!30, thin] (-1.5,-2.5) grid (8.5,4.5);
+			\draw[->, thick] (-1.5,0) -- (8.5,0);
+			\draw[->, thick] (0,-2.5) -- (0,4.5);
+			\fill (0,0) circle (3pt) node[below left] {$O$};
+			\foreach \x in {-1,1,2,3,4,5,6,7,8} \draw (\x,2pt) -- (\x,-2pt);
+			\foreach \y in {-2,-1,1,2,3,4} \draw (2pt,\y) -- (-2pt,\y);
+			\draw[->, very thick] (0,0) -- (1,0) node[midway, below] {$\vec{i}$};
+			\draw[->, very thick] (0,0) -- (0,1) node[midway, left] {$\vec{j}$};
+			\fill (2,-2) circle (3pt) node[right] {$A$};
+			\fill (5,1) circle (3pt) node[right] {$B$};
+			\fill (2,2) circle (3pt) node[left] {$C$};
+			\fill (2,4) circle (3pt) node[left] {$D$};
+			\fill (7,1) circle (3pt) node[right] {$E$};
+			\draw[<-, very thick] (2,2) -- (5,1);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Déterminer les coordonnées des objets suivants.
+		      \begin{itemize}
+			      \item Le point $K$ tel que $\vec{KD}=\vec{BC}$
+			      \item Le point $G$ tel que $\vec{AG}\coord{-3}{4}$
+			      \item Le point $H$ tel que $\vec{HE}\coord{3}{3}$
+		      \end{itemize}
+	\end{enumerate}
+\end{exo}

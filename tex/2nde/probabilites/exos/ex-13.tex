@@ -1,0 +1,34 @@
+\begin{exo}
+	Le matin, Dominique choisit au hasard dans son tiroir une paire de chaussettes indiscernables au toucher dont la répartition est donnée par le diagramme en barres ci-contre.
+
+	\begin{center}
+		\begin{tikzpicture}[x=8mm ,y=4mm, >=Stealth]
+			\draw[step=1, gray!40] (0,0) grid (7,9);
+			\draw[->, thick] (-0.5,0) -- (7.5,0);
+			\draw[->, thick] (0,-0.5) -- (0,9);
+			\foreach \y in {2,4,6,8} { \draw (-0.1,\y) -- (0.1,\y); \node[left] at (-0.1,\y) {\small \y}; }
+			\fill[black] (0.6,0) rectangle (1.0,6);
+			\node[rotate=45, anchor=north east] at (0.8,0) {\small noir};
+			\fill[green!70!black] (1.6,0) rectangle (2.0,2);
+			\node[rotate=45, anchor=north east] at (1.8,0) {\small vert};
+			\fill[cyan!80!blue] (2.6,0) rectangle (3.0,5);
+			\node[rotate=45, anchor=north east] at (2.8,0) {\small bleu};
+			\fill[violet] (3.6,0) rectangle (4.0,4);
+			\node[rotate=45, anchor=north east] at (3.8,0) {\small violet};
+			\fill[gray!60] (4.6,0) rectangle (5.0,7);
+			\node[rotate=45, anchor=north east] at (4.7,0) {\small gris};
+			\fill[brown!80!black] (5.6,0) rectangle (6.0,4);
+			\node[rotate=45, anchor=north east] at (5.8,0) {\small marron};
+		\end{tikzpicture}
+	\end{center}
+
+	Reproduire et compléter le tableau ci-dessous.
+
+	\begin{center}
+		\small\def\arraystretch{1.5}
+		\begin{tabular}{|c|c|c|c|c|c|c|} \hline
+			\cellcolor{gray!30}Couleur & Noir & Vert & Bleu & Violet & Gris & Marron \\ \hline
+			\cellcolor{gray!30}Proba.  &      &      &      &        &      &        \\ \hline
+		\end{tabular}
+	\end{center}
+\end{exo}

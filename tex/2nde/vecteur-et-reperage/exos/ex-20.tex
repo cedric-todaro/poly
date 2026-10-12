@@ -1,0 +1,39 @@
+\begin{exo}{}
+	Dans le repère orthonormé $\vOIJ$ ci-dessous, on considère le carré $ABCD$ et le parallélogramme $EFDC$.
+	\vspace*{2mm}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.6, >=Stealth]
+			\draw[gray!30, thick] (-4.5,-3.5) grid (7.5,6.5);
+			\draw[thick] (-4.5,0) -- (7.5,0);
+			\draw[thick] (0,-3.5) -- (0,6.5);
+			\node[below left] at (0,0) {$O$};
+			\draw[->, thick] (0,0) -- (1,0); \draw (0.5,0) node[below] {$\vec{i}$};
+			\draw[->, thick] (0,0) -- (0,1); \draw (0,0.5) node[left] {$\vec{j}$};
+			\coordinate (A) at (-3,3);
+			\coordinate (B) at (-1,-1);
+			\coordinate (C) at (3,1);
+			\coordinate (D) at (1,5);
+			\coordinate (F) at (4,2);
+			\coordinate (E) at (6,-2);
+			\fill[teal!30, opacity=0.6] (A) -- (B) -- (C) -- (D) -- cycle;
+			\fill[teal!40, opacity=0.4] (E) -- (F) -- (D) -- (C) -- cycle;
+			\draw[thick, teal!80!black] (A) -- (B) -- (C) -- (D) -- cycle;
+			\draw[thick, teal!80!black] (E) -- (F) -- (D) -- (C) -- cycle;
+			\foreach \p in {A,B,C,D,F,E} { \draw[thick] (\p) node {$\bullet$}; }
+			\node[left] at (A) {$A$};
+			\node[below] at (B) {$B$};
+			\node[below] at (C) {$C$};
+			\node[above] at (D) {$D$};
+			\node[right] at (F) {$F$};
+			\node[right] at (E) {$E$};
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Lire les coordonnées de tous les points.
+		\item Calculer les coordonnées du milieu $K$ de $[AE]$.
+		\item Calculer les coordonnées du milieu $L$ de $[BF]$.
+		\item En déduire la nature du quadrilatère $AFEB$.
+		\item Que dire alors des droites $(AF)$ et $(BE)$ ?
+	\end{enumerate}
+\end{exo}
