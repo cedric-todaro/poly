@@ -16,7 +16,16 @@
 % \maketitle
 % \tableofcontents
 
+\begin{tikzpicture}[scale=0.5]
+	\foreach \x in {0.5 , 1 , 1.5 , 2 ,..., 9.5} {
+			\draw[thick] (-\x,0) -- (0, 10 -\x);
+			\draw[thick] (\x,0) -- (0, 10 -\x);
+			\draw[thick] (-\x,0) -- (0, \x-10);
+			\draw[thick] (\x,0) -- (0, \x-10);
+			\draw[red] (0,0) circle (\x);
+		}
+\end{tikzpicture}
 
 % \input{./tex/1techno/proportion-evolution/proportion-evolution.tex}
-\input{./tex/1techno/fonctions-affines/fonctions-affines.tex}
+% \input{./tex/1techno/fonctions-affines/fonctions-affines.tex}
 \end{document}
