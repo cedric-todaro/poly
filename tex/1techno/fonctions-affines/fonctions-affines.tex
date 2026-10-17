@@ -1,3 +1,4 @@
+%! TEX root = ../../../1techno.tex
 \chapter{Fonctions affines}
 
 \section{Introduction et exemple concret}
@@ -54,6 +55,8 @@
 	\end{itemize}
 \end{ex}
 
+\newpage
+
 \subsection{Calcul d'une image et d'un antécédent}
 
 \begin{methode}[Calculer une image ou un antécédent]
@@ -74,7 +77,9 @@
 
 			\item On cherche $x$ tel que $f(x) = 55$ :
 			      \[
-				      2x + 15 = 55 \eqv 2x = 40 \eqv x = 20
+				      \begin{array}{rcl}
+					      2x + 15 = 55 & \eqv & 2x = 40 \\ &\eqv& x = 20
+				      \end{array}
 			      \]
 			      Pour un montant de $55\eur{}$, la distance parcourue est de $20\text{ km}$.
 		\end{enumerate}
@@ -89,21 +94,19 @@
 		\item $p$ est l'ordonnée du point d'intersection de la droite avec l'axe vertical $(0\,;\,p)$.
 		\item Le coefficient directeur $m$ caractérise la pente de la droite.
 	\end{itemize}
-\end{prop}
 
-% TODO illustration à revoir
-\begin{center}
-	\begin{tikzpicture}[>=Stealth]
-		\draw[->] (-1,0) -- (5,0) node[above] {$x$};
-		\draw[->] (0,-1) -- (0,4) node[right] {$y$};
-		\draw[ultra thick, blue, domain=-1:5] plot ( \x , 0.5*\x+1 );
-		% \draw[thick, blue] (-0.5,0.5) -- (4.5,4.5) node[right] {$y = mx + p$};
-		\fill (0,1) circle (3pt) node[above left] {$p$};
-		\draw[dashed] (1,1.5) -- (3,1.5) -- (3,2.5);
-		\node at (2,1.2) {$1$};
-		\node at (3.4,2) {$m$};
-	\end{tikzpicture}
-\end{center}
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth]
+			\draw[->] (-1,0) -- (5,0) node[above] {$x$};
+			\draw[->] (0,-1) -- (0,4) node[right] {$y$};
+			\draw[ultra thick, blue, domain=-1:5] plot ( \x , 0.5*\x+1 );
+			\fill (0,1) circle (3pt) node[above left] {$p$};
+			\draw[dashed] (1,1.5) -- (3,1.5) -- (3,2.5);
+			\node at (2,1.2) {$1$};
+			\node at (3.4,2) {$m$};
+		\end{tikzpicture}
+	\end{center}
+\end{prop}
 \begin{methode}[Tracer la droite représentant une fonction affine]
 	Pour tracer la droite représentant la fonction $f(x) = 2x + 15$ sur l'intervalle $[0\,;\,30]$ :
 	\begin{enumerate}
@@ -114,17 +117,164 @@
 		      \end{itemize}
 		\item On place ces deux points dans le repère et l'on trace la droite passant par $A$ et $B$.
 	\end{enumerate}
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=1.0]
+			\draw[gray!40,xstep=1,ystep=1/2] (-1,-0.5) grid (6,4);
+			\fill (0,1.5) circle (2.5pt) node[left,fill=white] {$A(0\,;\,15)$};
+			\fill (4,2.7) circle (2.5pt) node[above left,fill=white] {$B(20\,;\,55)$};
+			\draw[->] (-1,0) -- (6,0) node[above] {$x$};
+			\draw[->] (0,-0.5) -- (0,4) node[right] {$y$};
+			\draw[thick, blue, domain=0:5.5] plot (\x, {0.3*\x + 1.5});
+			\fill (0,1.5) circle (2.5pt) node[left] {$A(0\,;\,15)$};
+			\fill (4,2.7) circle (2.5pt) node[above left] {$B(20\,;\,55)$};
+			\draw[dashed] (4,0) node[below] {$20$} -- (4,2.7) -- (0,2.7) node[left] {$55$};
+			\node[blue, right,fill=white] at (4.5, 3.4) {$y = 2x + 15$};
+		\end{tikzpicture}
+	\end{center}
+\end{methode}
+
+\section{Détermination d'une fonction affine}
+
+\begin{prop}[Calcul du coefficient directeur]
+	Soit $f(x) = mx + p$ une fonction affine. Si $a$ et $b$ sont deux nombres distincts ($a \neq b$), alors le coefficient directeur $m$ se calcule par la formule :
+	\[
+		m = \dfrac{f(b) - f(a)}{b - a}
+	\]
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth]
+			\draw[->] (-1,0) -- (5,0) node[above] {$x$};
+			\draw[->] (0,-1) -- (0,4) node[right] {$y$};
+			\draw[thick, blue, domain=-0.5:4.5] plot (\x, {0.75*\x + 0.5});
+			\fill (1, 1.25) circle (2pt);
+			\fill (3, 2.75) circle (2pt);
+			\draw[dashed, darkgray] (1,0) node[below] {$a$} -- (1, 1.25) -- (0, 1.25) node[left] {$f(a)$};
+			\draw[dashed, darkgray] (3,0) node[below] {$b$} -- (3, 2.75) -- (0, 2.75) node[left] {$f(b)$};
+			\draw[dashed, darkgray] (1, 1.25) -- (3, 1.25) node[midway, below] {$b - a$};
+			\draw[dashed, darkgray] (3, 1.25) -- (3, 2.75) node[midway, right] {$f(b) - f(a)$};
+		\end{tikzpicture}
+	\end{center}
+\end{prop}
+
+\begin{demo}
+	Puisque $f$ est une fonction affine, on a :
+	\[
+		f(a) = ma + p \quad \text{et} \quad f(b) = mb + p
+	\]
+
+	Calculons la différence $f(b) - f(a)$ :
+	\[
+		\begin{array}{rcl}
+			f(b) - f(a) & = & (mb + p) - (ma + p) \\
+			            & = & mb - ma             \\
+			            & = & m(b - a)
+		\end{array}
+	\]
+
+	Comme $a \neq b$, on a $b - a \neq 0$, ce qui permet de diviser par $(b - a)$ :
+	\[
+		m = \dfrac{f(b) - f(a)}{b - a}
+	\]
+\end{demo}
+
+\begin{methode}[Déterminer une fonction affine à partir du coefficient directeur et d'un point]
+	Soit $f$ une fonction affine de coefficient directeur $m = -3$ et telle que $f(1) = 4$.
+
+	Déterminer l'expression de $f(x)$.
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Puisque $m = -3$, l'expression de la fonction est de la forme :
+			      \[
+				      f(x) = -3x + p
+			      \]
+			\item On utilise les coordonnées du point donné ($f(1) = 4$) pour trouver $p$ :
+			      \[
+				      \begin{array}{rcl}
+					      -3\times (1) + p = 4 & \eqv & -3 + p = 4 \\
+					                           & \eqv & p = 7
+				      \end{array}
+			      \]
+
+			      Conclusion : $f(x) = -3x + 7$
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\newpage
+
+\begin{methode}[Déterminer une fonction affine à partir de deux valeurs]
+	Soit $f$ une fonction affine telle que $f(2) = 5$ et $f(5) = 11$.
+
+	Déterminer l'expression de $f(x)$.
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On calcule le coefficient directeur $m$ :
+			      \[
+				      \def\arraystretch{2}
+				      \begin{array}{rcl}
+					      m & = & \dfrac{f(5) - f(2)}{5 - 2} \\
+					        & = & \dfrac{11 - 5}{3}          \\
+					        & = & \dfrac{6}{3} \quad = 2
+				      \end{array}
+			      \]
+			      La fonction est donc de la forme $f(x) = 2x + p$.
+			\item On détermine $p$ en utilisant l'une des valeurs, par exemple $f(2) = 5$ :
+			      \[
+				      \begin{array}{rcl}
+					      2\times (2) + p = 5 & \eqv & 4 + p = 5 \\
+					                          & \eqv & p = 1
+				      \end{array}
+			      \]
+
+			      Conclusion : $f(x) = 2x + 1$
+		\end{enumerate}
+	\end{correction}
 \end{methode}
 
 \section{Sens de variation}
 
 \begin{prop}[Sens de variation d'une fonction affine]
-	Soit $f(x) = mx + p$ une fonction affine sur $\R$. Le sens de variation de $f$ dépend du signe de son coefficient directeur $m$ :
+	Soit $f(x) = mx + p$ une fonction affine sur $\R$. Le sens de variation d'une fonction affine $f$ dépend du signe de son coefficient directeur $m$ :
 	\begin{itemize}
 		\item Si $m > 0$, la fonction $f$ est \textbf{croissante} sur $\R$.
 		\item Si $m < 0$, la fonction $f$ est \textbf{décroissante} sur $\R$.
 		\item Si $m = 0$, la fonction $f$ est \textbf{constante} sur $\R$.
 	\end{itemize}
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth]
+			\begin{scope}[shift={(-3.8,0)}]
+				\draw[->, gray] (-1.5,0) -- (2.5,0) node[above, black] {$x$};
+				\draw[->, gray] (0,-0.5) -- (0,2.5) node[right, black] {$y$};
+				\draw[thick, blue, domain=-1.2:2] plot (\x, {0.7*\x + 0.5});
+
+				% Triangle de pente
+				\draw[dashed, darkgray] (0, 0.5) -- (1, 0.5) node[midway, below] {$1$};
+				\draw[dashed, darkgray] (1, 0.5) -- (1, 1.2) node[midway, right] {$m > 0$};
+				\fill[blue] (0, 0.5) circle (1.5pt);
+				\fill[blue] (1, 1.2) circle (1.5pt);
+
+				\node at (0.5, -1) {\textbf{Fonction croissante}};
+			\end{scope}
+
+			% Cas m < 0 : Fonction décroissante
+			\begin{scope}[shift={(3.8,0)}]
+				\draw[->, gray] (-1.5,0) -- (2.5,0) node[above, black] {$x$};
+				\draw[->, gray] (0,-0.5) -- (0,2.5) node[right, black] {$y$};
+				\draw[thick, red, domain=-1.2:2] plot (\x, {-0.7*\x + 1.2});
+
+				% Triangle de pente
+				\draw[dashed, darkgray] (0, 1.2) -- (1, 1.2) node[midway, above] {$1$};
+				\draw[dashed, darkgray] (1, 1.2) -- (1, 0.5) node[midway, right] {$m < 0$};
+				\fill[red] (0, 1.2) circle (1.5pt);
+				\fill[red] (1, 0.5) circle (1.5pt);
+
+				\node at (0.5, -1) {\textbf{Fonction décroissante}};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
 \end{prop}
 
 \begin{ex}
@@ -139,15 +289,15 @@
 	Voici l'allure générale du tableau de variation d'une fonction affine selon le signe de $m$ :
 
 	\begin{center}
-		\begin{tabular}{cc}
-			\textbf{Si $m > 0$ (Croissante)} & \textbf{Si $m < 0$ (Décroissante)} \\
+		\begin{tabular}{ccc}
+			\textbf{Si $m > 0$ (Croissante)} &                & \textbf{Si $m < 0$ (Décroissante)} \\
 			\begin{tikzpicture}
-				\tkzTabInit[lgt=1,espcl=2.5]{$x$ / 1, $f$ / 2}{$-\infty$, $+\infty$}
+				\tkzTabInit[lgt=1,espcl=2.5]{$x$ / 0.75, $f$ / 1.5}{$-\infty$, $+\infty$}
 				\tkzTabVar{-/ , +/}
 			\end{tikzpicture}
-			                                 &
+			                                 & ~\hspace{2cm}~ &
 			\begin{tikzpicture}
-				\tkzTabInit[lgt=1,espcl=2.5]{$x$ / 1, $f$ / 2}{$-\infty$, $+\infty$}
+				\tkzTabInit[lgt=1,espcl=2.5]{$x$ / 0.75, $f$ / 1.5}{$-\infty$, $+\infty$}
 				\tkzTabVar{+/ , -/}
 			\end{tikzpicture}
 		\end{tabular}
@@ -160,9 +310,22 @@
 	Soit $f(x) = mx + p$ avec $m \neq 0$.
 	L'expression s'annule pour la valeur (appelée racine) :
 	\[
-		x = -\dfrac{p}{m}
+		x = \dfrac{-p}{m}
 	\]
+
 	Le signe de $mx + p$ est donné par la règle suivante : \textbf{le signe de $m$ après la racine, et le signe contraires de $m$ avant la racine}.
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth]
+			\draw[->] (-2,0) -- (4,0) node[above] {$x$};
+			\draw[->] (0,-2) -- (0,2) node[right] {$y$};
+			% Droite coupant l'axe en x=1
+			\draw[thick, blue, domain=-2:4] plot(\x, 0.5*(\x-1);
+			\fill (1,0) circle (2pt) node[below] {$\frac{-p}{m}$};
+			\foreach \x in {1.5,2,...,4} { \node[blue] at (\x, {0.5*(\x-1) + 0.3}) {$+$}; }
+			\foreach \x in {-2,-1.5,...,0.5} { \node[blue] at (\x, {0.5*(\x-1) - 0.3}) {$-$}; }
+		\end{tikzpicture}
+	\end{center}
 \end{prop}
 
 \begin{methode}[Établir le tableau de signes]
@@ -197,19 +360,30 @@
 	\begin{correction}
 		On résout l'équation $f(x) = g(x)$ :
 		\[
-			2x + 15 = 3,50x
+			\begin{array}{rcl}
+				 &      & 2x + 15 = 3,50x           \\
+				 & \eqv & 15 = 3,50x - 2x           \\
+				 & \eqv & 15 = 1,50x                \\
+				 & \eqv & x = \dfrac{15}{1,50} = 10
+			\end{array}
 		\]
-		\[
-			15 = 3,50x - 2x
-		\]
-		\[
-			15 = 1,50x
-		\]
-		\[
-			x = \dfrac{15}{1,50} = 10
-		\]
+
 		Pour un trajet de $10\text{ km}$, les deux compagnies coûtent le même prix ($35\eur{}$).
 	\end{correction}
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth,x=5mm,y=1mm]
+			\draw[->] (-1,0) -- (17,0) node[above] {$x$};
+			\draw[->] (0,-5) -- (0,60) node[right] {Prix};
+			\draw[very thick, blue, domain=0:15] plot (\x, {2*\x + 15}) node[right] {$f(x)$};
+			\draw[very thick, red, domain=0:15] plot (\x, {3.5*\x}) node[right] {$g(x)$};
+			\fill (10, 35) circle (2pt);
+			\fill (0, 15) circle (2pt);
+			\fill (0, 0) circle (2pt);
+			\draw[dashed] (10,0) node[below] {$10$} -- (10, 35) -- (0, 35) node[left] {$35$};
+			\node[above left] at (10, 35) {Intersection};
+		\end{tikzpicture}
+	\end{center}
 \end{methode}
 
 \subsection{Résolution d'une inéquation $f(x) < g(x)$}
@@ -220,17 +394,30 @@
 	\begin{correction}
 		On cherche à résoudre l'inéquation $f(x) < g(x)$ :
 		\[
-			2x + 15 < 3,50x
-		\]
-		\[
-			15 < 3,50x - 2x
-		\]
-		\[
-			15 < 1,50x
-		\]
-		\[
-			x > \dfrac{15}{1,50} \eqv x > 10
+			\begin{array}{rcl}
+				 &      & 2x + 15 < 3,50x      \\
+				 & \eqv & 15 < 3,50x - 2x      \\
+				 & \eqv & 15 < 1,50x           \\
+				 & \eqv & x > \dfrac{15}{1,50} \\ &\eqv &  x > 10
+			\end{array}
 		\]
 		La compagnie A est plus avantageuse pour un nombre de kilomètres \textbf{strictement supérieur à $10\text{ km}$}.
 	\end{correction}
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth,x=5mm,y=1mm]
+			\draw[->] (-1,0) -- (17,0) node[above] {$x$};
+			\draw[->] (0,-5) -- (0,60) node[right] {Prix};
+			\draw[very thick, blue, domain=0:15] plot (\x, {2*\x + 15}) node[right] {$f(x)$};
+			\draw[very thick, red, domain=0:15] plot (\x, {3.5*\x}) node[right] {$g(x)$};
+			\fill (10, 35) circle (2pt);
+			\fill (10, 0) circle (2pt);
+			\fill (0, 35) circle (2pt);
+			\fill (0, 15) circle (2pt) node[left] {$15$};
+			\fill (0, 0) circle (2pt) node[above left] {$0$};
+			\draw[dashed] (10,0) node[below] {$10$} -- (10, 35) -- (0, 35) node[left] {$35$};
+			\node[above left] at (10, 35) {Intersection};
+			\draw[ultra thick, green!50!black, <->] (10.5, -3) -- (17,-3) node[midway, below] {$f(x) < g(x)$ (A plus avantageuse)};
+		\end{tikzpicture}
+	\end{center}
 \end{methode}
