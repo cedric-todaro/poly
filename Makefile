@@ -1,18 +1,18 @@
-LLMK      = llmk
-FLAGS     = --quiet --silent
+LLMK = llmk
+FLAGS = --quiet --silent
 
-SRC       = $(wildcard *.tex)
+SRC = $(wildcard *.tex)
 PDFS      = $(SRC:.tex=.pdf)
 
-DEPS        = $(shell find tex -type f 2>/dev/null)
+DEPS = $(shell find tex -type f 2>/dev/null)
 
-EXTRA_CLEAN = *.synctex.gz *-blx.bib *.run.xml *.nav *.snm *.vrb *.fdb_latexmk *.log
+EXTRA_CLEAN = *.synctex* *-blx.bib *.run.xml *.nav *.snm *.vrb *.fdb_latexmk *.log
 
 .PHONY: all compile clean mrproper regenerate
 
 all: $(PDFS)
 
-%.pdf: %.tex $(DEPS) 
+%.pdf: %.tex $(DEPS)
 	@$(LLMK) $(FLAGS) $<
 	@$(LLMK) --quiet --clean $<
 	@rm -f $(basename $<).synctex.gz

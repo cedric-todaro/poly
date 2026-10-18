@@ -130,7 +130,7 @@
 % ---------------------------------------------------------------------------------------------------- 
 \RequirePackage{tikz,pgfplots,tkz-tab}
 \usetikzlibrary{calc, patterns, positioning, backgrounds}
-\usetikzlibrary{arrows.meta, decorations.markings, decorations.text, shapes.geometric}
+\usetikzlibrary{arrows.meta, decorations.markings, decorations.text, decorations.fractals, shapes.geometric}
 \usetikzlibrary{lindenmayersystems}
 \pgfplotsset{compat=1.18}
 \tikzset{arrow style/.style={thick, >={Stealth[scale=1.5]}, ->, shorten <=5pt, shorten >=5pt}}
