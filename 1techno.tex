@@ -5,13 +5,22 @@
 \title{Mathématiques~---~1\textsuperscript{ère} Techno}
 \author{}
 \date{}
+
 % ----------------------------------------------------------------------------------------------------
-% \newif\ifpoly\polyfalse%
-% \polytrue
+\newif\ifpoly\polyfalse%
+\polytrue
 % ----------------------------------------------------------------------------------------------------
 \begin{document}
-\maketitle
-\tableofcontents
-\input{./tex/1techno/proportion-evolution/proportion-evolution.tex}
-\input{./tex/1techno/fonctions-affines/fonctions-affines.tex}
+
+\ifpoly
+	\maketitle
+	\tableofcontents
+	\part{Analyse}
+	\input{./tex/1techno/fonctions-affines/fonctions-affines.tex}
+	\input{./tex/1techno/fonctions-2nd-degre/fonctions-2nd-degre.tex}
+	\part{Statistiques et probabilités}
+	\input{./tex/1techno/proportion-evolution/proportion-evolution.tex}
+\else
+	\lipsum[1]
+\fi
 \end{document}
