@@ -16,8 +16,8 @@
 \addtokomafont{disposition}{\rmfamily}
 \setcounter{tocdepth}{2}
 \raggedbottom\hbadness=100000\vbadness=100000
-\nc{\inputifexists}[1]{\IfFileExists{#1}{\input{#1}}{}
-}% ---------------------------------------------------------------------------------------------------- 
+\nc{\pagenotes}{\clearpage\ifodd\value{page}\else\thispagestyle{empty}\null\clearpage\fi\pagestyle{empty}\chapter*{Notes}\foreach \i in {1,...,22}{\dotfill\par~\par}\dotfill}
+% ---------------------------------------------------------------------------------------------------- 
 \RequirePackage{setspace}
 \setstretch{1.05}
 \newlength{\monindent}
@@ -49,7 +49,6 @@
 \newtheorem*{erreur}{\faExclamationTriangle\,\normalfont\bfseries Erreur à éviter}
 \newtheorem*{fauxami}{\faExclamationTriangle\,\normalfont\bfseries Faux ami}
 \newtheorem*{miseengarde}{\faExclamationTriangle\,\normalfont\bfseries Mise en garde}
-
 \newenvironment{thm}{\begin{theoreme}}{\end{theoreme}}
 \newenvironment{prop}{\begin{propriete}}{\end{propriete}}
 \newenvironment{df}{\begin{definition}}{\end{definition}}
@@ -63,7 +62,6 @@
 \newenvironment{rmq}{\begin{remarque}}{\end{remarque}}
 \rnc{\qedsymbol}{}
 \nc{\nline}{\leavevmode\vspace{-\baselineskip}}
-% \let\ajusteliste\nline
 % ----------------------------------------------------------------------------------------------------
 \RequirePackage{tabularx}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}b{#1}}

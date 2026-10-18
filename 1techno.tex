@@ -1,17 +1,13 @@
 %!TEX program = pdflatex
-% -----------------
 \documentclass{poly}
-% ----------------------------------------------------------------------------------------------------
-\title{Mathématiques~---~1\textsuperscript{ère} Techno}
+\title{Mathématiques~---~1\textsuperscript{ère} Technologique}
 \author{}
 \date{}
-
 % ----------------------------------------------------------------------------------------------------
-\newif\ifpoly\polyfalse%
+\newif\ifpoly\polyfalse
 \polytrue
 % ----------------------------------------------------------------------------------------------------
 \begin{document}
-
 \ifpoly
 	\maketitle
 	\tableofcontents
@@ -20,7 +16,8 @@
 	\input{./tex/1techno/fonctions-2nd-degre/fonctions-2nd-degre.tex}
 	\part{Statistiques et probabilités}
 	\input{./tex/1techno/proportion-evolution/proportion-evolution.tex}
+	\pagenotes
 \else
-	\lipsum[1]
+	\lipsum
 \fi
 \end{document}

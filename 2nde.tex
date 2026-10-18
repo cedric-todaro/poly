@@ -1,32 +1,23 @@
 %!TEX program = pdflatex
-% -----------------
 \documentclass{poly}
-% ----------------------------------------------------------------------------------------------------
 \title{Mathématiques~---~2\textsuperscript{nde}}
 \author{}
 \date{}
 % ----------------------------------------------------------------------------------------------------
-\newif\ifpoly\polyfalse%
+\newif\ifpoly\polyfalse
 \polytrue
 % ----------------------------------------------------------------------------------------------------
 \begin{document}
-% -----------------
-\ifpoly%
+\ifpoly
 	\maketitle
 	\tableofcontents
-	% --------------------------------------------------
-	\inputifexists{./tex/2nde/algorithmes-et-programmation/algorithmes-et-programmation.tex}
-	\inputifexists{./tex/2nde/algorithmes-et-programmation/exos/exercices.tex}
-	% --------------------------------------------------
-	\inputifexists{./tex/2nde/nombres-et-calculs.tex}
-	% --------------------------------------------------
-	\inputifexists{./tex/2nde/statistiques-et-probabilites.tex}
-	% --------------------------------------------------
-	\inputifexists{./tex/2nde/fonctions.tex}
-	% --------------------------------------------------
-	\inputifexists{./tex/2nde/geometrie.tex}
+	\input{./tex/2nde/algo.tex}
+	\input{./tex/2nde/nombres-et-calculs.tex}
+	\input{./tex/2nde/statistiques-et-probabilites.tex}
+	\input{./tex/2nde/fonctions.tex}
+	\input{./tex/2nde/geometrie.tex}
+	\pagenotes
 \else
 	$~$
 \fi
-% -----------------
 \end{document}
