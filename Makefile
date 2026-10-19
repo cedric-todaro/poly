@@ -1,21 +1,20 @@
 LLMK = llmk
 FLAGS = --quiet --silent
-
 SRC = $(wildcard *.tex)
-PDFS      = $(SRC:.tex=.pdf)
+PDFS = $(SRC:.tex=.pdf)
 
-DEPS = $(shell find tex -type f 2>/dev/null)
+DEPS = $(shell find .2nde .1techno -type f 2>/dev/null)
 
 EXTRA_CLEAN = *.synctex* *-blx.bib *.run.xml *.nav *.snm *.vrb *.fdb_latexmk *.log
 
-.PHONY: all compile clean mrproper regenerate
+.PHONY: all compile clean mrproper recompile
 
 all: $(PDFS)
 
 %.pdf: %.tex $(DEPS)
 	@$(LLMK) $(FLAGS) $<
 	@$(LLMK) --quiet --clean $<
-	@rm -f $(basename $<).synctex.gz
+	@rm -f $(EXTRA_CLEAN)
 
 clean:
 	@for f in $(SRC); do \
@@ -30,6 +29,6 @@ mrproper: clean
 	@rm -f $(PDFS) $(EXTRA_CLEAN)
 	@latexmk -C > /dev/null
 
-regenerate: mrproper all
+recompile: mrproper all clean
 
 # vim: set ft=make noet ts=8 sw=8 :
