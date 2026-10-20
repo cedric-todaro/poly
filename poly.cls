@@ -126,7 +126,10 @@
 \nc{\intff}[2]{\interval[scaled]{#1}{#2}}
 \nc{\intof}[2]{\interval[open left,scaled]{#1}{#2}}
 \nc{\intfo}[2]{\interval[open right,scaled]{#1}{#2}}
-\nc\cmath[1]{\begin{center}\ensuremath{#1}\end{center}}
+\nc{\cmath}[1]{\begin{center}\ensuremath{#1}\end{center}}
+\nc{\p}[1]{\operatorname{P}\pa{#1}}
+\nc{\pc}[2]{\operatorname{P}_{#1}\pa{#2}}
+\nc{\card}[1]{\operatorname{Card}\pa{#1}}
 % ---------------------------------------------------------------------------------------------------- 
 \RequirePackage{tikz,pgfplots,tkz-tab}
 \usetikzlibrary{calc, patterns, positioning, backgrounds}
