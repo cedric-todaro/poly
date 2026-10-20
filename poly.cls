@@ -1,11 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{poly}[2026/09/06 Classe de document personnalisee pour poly de mathematiques]
+\ProvidesClass{poly}[2026/09/06 Classe de document personnalisée pour poly de mathematiques]
 \DeclareOption*{\PassToOptionsToClass{\CurrentOption}{scrreprt}}
 \ProcessOptions\relax
 \LoadClass[a4paper,11pt,headings=normal,headings=openright,twoside=true]{scrreprt}
 % ---------------------------------------------------------------------------------------------------- 
-\let\nc\newcommand
-\let\rnc\renewcommand
+\let\nc\newcommand\let\rnc\renewcommand
 % ---------------------------------------------------------------------------------------------------- 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
@@ -132,7 +131,6 @@
 \RequirePackage{tikz,pgfplots,tkz-tab}
 \usetikzlibrary{calc, patterns, positioning, backgrounds}
 \usetikzlibrary{arrows.meta, decorations.markings, decorations.text, decorations.fractals, shapes.geometric}
-\usetikzlibrary{lindenmayersystems}
 \pgfplotsset{compat=1.18}
 \tikzset{arrow style/.style={thick, >={Stealth[scale=1.5]}, ->, shorten <=5pt, shorten >=5pt}}
 \tikzset{double style/.style={double distance=3pt, line width=0.5pt}}
@@ -178,8 +176,6 @@
 \colorlet{magentaClair}{magenta!40}
 \colorlet{turquoiseClair}{turquoise!40}
 \colorlet{grisLeger}{gris!20}
-
-% Couleurs pour les blocs de code
 \definecolor{codegreen}{rgb}{0, 0.6, 0}
 \definecolor{codegray}{rgb}{0.45, 0.45, 0.45}
 \definecolor{codepurple}{rgb}{0.58, 0, 0.82}
