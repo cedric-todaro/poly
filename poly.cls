@@ -188,35 +188,35 @@
 
 \RequirePackage{listings}
 \lstset{
-	language=Python,
-	basicstyle=\ttfamily,
-	backgroundcolor=\color{backcolour},
-	commentstyle=\color{codegray}\itshape,
-	keywordstyle=\color{codeblue}\bfseries,
-	numberstyle=\tiny\color{codegray},
-	stringstyle=\color{codegreen},
-	identifierstyle=\color{black},
-	tabsize=4,
-	showspaces=false,
-	showstringspaces=false,
-	keepspaces=true,
-	breaklines=true,
-	breakatwhitespace=true,
-	xleftmargin=\parindent,
-	xrightmargin=\parindent,
-	numbers=left,
-	numberstyle=\footnotesize\color{codegray},
-	numbersep=8pt,
-	framerule=0.8pt,
-	frame=single,
-	rulecolor=\color{codeblue!40},
-	inputencoding=utf8,
-	extendedchars=true,
-	literate=
-		{é}{{\'e}}1 {è}{{\`e}}1 {à}{{\`a}}1 {ê}{{\^e}}1 {ù}{{\`u}}1
-		{Â}{{\^A}}1 {Ç}{{\c C}}1 {ç}{{\c c}}1 {É}{{\'E}}1 {È}{{\`E}}1
-		{Ê}{{\^E}}1 {Î}{{\^I}}1 {î}{{\^i}}1 {Ô}{{\^O}}1 {ô}{{\^o}}1
-		{Û}{{\^U}}1 {û}{{\^u}}1 {«}{{\guillemotleft}}1 {»}{{\guillemotright}}1
+language=Python,
+basicstyle=\ttfamily,
+backgroundcolor=\color{backcolour},
+commentstyle=\color{codegray}\itshape,
+keywordstyle=\color{codeblue}\bfseries,
+numberstyle=\tiny\color{codegray},
+stringstyle=\color{codegreen},
+identifierstyle=\color{black},
+tabsize=4,
+showspaces=false,
+showstringspaces=false,
+keepspaces=true,
+breaklines=true,
+breakatwhitespace=true,
+xleftmargin=\parindent,
+xrightmargin=\parindent,
+numbers=left,
+numberstyle=\footnotesize\color{codegray},
+numbersep=8pt,
+framerule=0.8pt,
+frame=single,
+rulecolor=\color{codeblue!40},
+inputencoding=utf8,
+extendedchars=true,
+literate=
+	{é}{{\'e}}1 {è}{{\`e}}1 {à}{{\`a}}1 {ê}{{\^e}}1 {ù}{{\`u}}1
+{Â}{{\^A}}1 {Ç}{{\c C}}1 {ç}{{\c c}}1 {É}{{\'E}}1 {È}{{\`E}}1
+{Ê}{{\^E}}1 {Î}{{\^I}}1 {î}{{\^i}}1 {Ô}{{\^O}}1 {ô}{{\^o}}1
+{Û}{{\^U}}1 {û}{{\^u}}1 {«}{{\guillemotleft}}1 {»}{{\guillemotright}}1
 }
 % ----------------------------------------------------------------------------------------------------
 \RequirePackage{hyperref}
@@ -245,3 +245,46 @@
 	\end{center}
 }
 
+\nc{\figureB}[1]{
+	\definecolor{fibGold}{HTML}{D97706}
+	\definecolor{fibNavy}{HTML}{1E295B}
+	\definecolor{fibSlate}{HTML}{475569}
+	\definecolor{box1}{HTML}{FDE68A}
+	\definecolor{box2}{HTML}{FCA5A5}
+	\definecolor{box3}{HTML}{C084FC}
+	\definecolor{box4}{HTML}{60A5FA}
+	\definecolor{box5}{HTML}{34D399}
+	\definecolor{box6}{HTML}{A3E635}
+	\definecolor{box7}{HTML}{FDBA74}
+	\definecolor{box8}{HTML}{E879F9}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.4,#1]
+			\draw[fill=box1!40, draw=fibSlate!60, line width=0.8pt] (13,8)   rectangle (14,9);
+			\draw[fill=box2!40, draw=fibSlate!60, line width=0.8pt] (13,9)   rectangle (14,10);
+			\draw[fill=box3!40, draw=fibSlate!60, line width=0.8pt] (11,8)   rectangle (13,10);
+			\draw[fill=box4!40, draw=fibSlate!60, line width=0.8pt] (11,5)   rectangle (14,8);
+			\draw[fill=box5!40, draw=fibSlate!60, line width=0.8pt] (14,5)   rectangle (19,10);
+			\draw[fill=box6!40, draw=fibSlate!60, line width=0.8pt] (11,10)  rectangle (19,18);
+			\draw[fill=box7!40, draw=fibSlate!60, line width=0.8pt] (-2,5)   rectangle (11,18);
+			\draw[fill=box8!30, draw=fibSlate!60, line width=0.8pt] (-2,-16) rectangle (19,5);
+			\node[opacity=0.5,font=\fontsize{8}{18}\selectfont\bfseries, color=fibNavy!80]  at (13.5, 8.5) {1};
+			\node[opacity=0.5,font=\fontsize{8}{20}\selectfont\bfseries, color=fibNavy!80]  at (13.5, 9.5) {1};
+			\node[opacity=0.5,font=\fontsize{10}{24}\selectfont\bfseries, color=fibNavy!80]  at (12, 9)     {2};
+			\node[opacity=0.5,font=\fontsize{12}{28}\selectfont\bfseries, color=fibNavy!80] at (12.5, 6.5) {3};
+			\node[opacity=0.5,font=\fontsize{15}{28}\selectfont\bfseries, color=fibNavy!80] at (16.5, 7.5) {5};
+			\node[opacity=0.5,font=\fontsize{24}{30}\selectfont\bfseries, color=fibNavy!80] at (15, 14)    {8};
+			\node[opacity=0.5,font=\fontsize{30}{34}\selectfont\bfseries, color=fibNavy!80] at (4.5, 11.5) {13};
+			\node[opacity=0.5,font=\fontsize{42}{42}\selectfont\bfseries, color=fibNavy!80] at (8.5, -5.5) {21};
+			\draw[fibNavy!80, line width=1.5pt] (-2,-16) rectangle (19,18);
+			\draw[line width=2pt, fibGold] (13,8)  arc[start angle=-90, end angle=0,   radius=1];
+			\draw[line width=2pt, fibGold] (14,9)  arc[start angle=0,   end angle=90,  radius=1];
+			\draw[line width=2pt, fibGold] (13,10) arc[start angle=90,  end angle=180, radius=2];
+			\draw[line width=2pt, fibGold] (11,8)  arc[start angle=180, end angle=270, radius=3];
+			\draw[line width=2pt, fibGold] (14,5)  arc[start angle=-90, end angle=0,   radius=5];
+			\draw[line width=2pt, fibGold] (19,10) arc[start angle=0,   end angle=90,  radius=8];
+			\draw[line width=2pt, fibGold] (11,18) arc[start angle=90,  end angle=180, radius=13];
+			\draw[line width=2pt, fibGold] (-2,5)  arc[start angle=180, end angle=270, radius=21];
+			\fill[fibNavy] (13, 8) circle (6pt);
+		\end{tikzpicture}
+	\end{center}
+}
