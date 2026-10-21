@@ -221,3 +221,26 @@
 \RequirePackage{hyperref}
 \hypersetup{hidelinks, pdftitle={}, pdfauthor={}, psdextra}
 \makeatletter\pdfstringdefDisableCommands{\def\HyPsd@Warning#1{}}\makeatother
+% ----------------------------------------------------------------------------------------------------
+\nc{\figureA}[1]{
+	\begin{center}
+		\begin{tikzpicture}[#1]
+			\foreach \ang in {0,30,...,330} {
+					\draw (\ang:3) circle (3);
+					\draw (0,0) -- (\ang:{3*sqrt(3)});
+					\draw (0,0) -- (\ang+15:{1.5*(sqrt(6)+sqrt(2))});
+					\filldraw (\ang+15:{6*cos(75)}) circle (2pt);
+					\filldraw (\ang:3) circle (2pt);
+					\filldraw (\ang+15:{3*sqrt(2)}) circle (2pt);
+					\filldraw (\ang:{3*(sqrt(3))}) circle (2pt);
+					\filldraw (\ang+15:{1.5*(sqrt(6)+sqrt(2))}) circle (2pt);
+				}
+			\draw (0,0) circle ({6*cos(75)});
+			\draw (0,0) circle (3);
+			\draw (0,0) circle ({3*sqrt(2)});
+			\draw (0,0) circle ({3*sqrt(3)});
+			\draw (0,0) circle ({1.5*(sqrt(6)+sqrt(2))});
+		\end{tikzpicture}
+	\end{center}
+}
+
