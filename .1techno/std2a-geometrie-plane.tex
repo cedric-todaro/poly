@@ -1,0 +1,617 @@
+% !TEX program = pdflatex
+\chapter{Géométrie plane}
+% TODO : A finir
+\section{Polygones réguliers}
+
+\begin{defin}
+	Un \textbf{polygone régulier} est un polygone inscrit dans un cercle dont tous les côtés ont la même longueur.
+\end{defin}
+
+\begin{rem}
+	Le mot \og{} polygone \fg{} vient de \og{} poly \fg{}, qui signifie \og{} plusieurs \fg{}, et de \og{} gonia \fg{}, qui signifie \og{} angle, coin \fg{}.
+\end{rem}
+
+\begin{center}
+	\begin{tikzpicture}
+		\foreach \nn/\aa/\xx/\rl/\nom in {3/120/0/0.5/{Triangle équilatéral}, 4/90/2.8/0.7/{Carré}, 5/72/5.6/0.8/{Pentagone régulier}, 6/60/8.4/0.85/{Hexagone régulier}, 8/45/11.2/0.9/{Octogone régulier}} {
+		\begin{scope}[shift={(\xx,0)}]
+			\foreach \k in {1,...,\nn} {
+				\draw[bleu, thick] ({90+360*(\k-1)/\nn}:1.2) -- ({90+360*\k/\nn}:1.2);
+			}
+			\node[rouge, fill=white] at ({90+180/\nn}:\rl) {\ang{\aa}};
+				\foreach \k in {1,...,\nn} {
+					\draw[gris!50] (0,0) -- ({90+360*\k/\nn}:1.2);
+				}
+			\draw[rouge, thick] (90:0.25) arc[start angle=90, end angle={90+360/\nn}, radius=0.25];
+			\node[fill=white, inner sep=0.5pt, font=\scriptsize] at (0,0) {$O$};
+			\node[anchor=north, font=\footnotesize, text width=2.5cm, align=center] at (0,-1.35) {\nom};
+			\draw[gris] (0,0) circle (1.2);
+		\end{scope}
+		}
+	\end{tikzpicture}
+\end{center}
+
+\begin{defin}
+	Dans un polygone régulier, les angles marqués sur les figures ci-dessus, dont le sommet est le centre $O$ du cercle, sont appelés \textbf{angles au centre}.
+\end{defin}
+
+\begin{prop}
+	Si un polygone régulier possède $n$ côtés, alors ses angles au centre sont tous égaux et mesurent
+	\[
+		\alpha = \dfrac{360^\circ}{n}
+	\]
+\end{prop}
+
+\begin{ex}
+	\nline
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\small
+		\begin{tabular}{|c|c|c|c|c|c|} \hline
+			\ccg \textbf{Polygone régulier}   & Triangle équilatéral             & Carré                           & Pentagone                       & Hexagone                        & Octogone                        \\ \hline
+			\ccg \textbf{Nombre de côtés} $n$ & $3$                              & $4$                             & $5$                             & $6$                             & $8$                             \\ \hline
+			\ccg\rule[-4mm]{0mm}{11mm} \textbf{Angle au centre}     & $\dfrac{360^\circ}{3}=120^\circ$ & $\dfrac{360^\circ}{4}=90^\circ$ & $\dfrac{360^\circ}{5}=72^\circ$ & $\dfrac{360^\circ}{6}=60^\circ$ & $\dfrac{360^\circ}{8}=45^\circ$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{ex}
+
+\section{Transformations du plan}
+
+\subsection{Symétrie axiale}
+
+\begin{defin}
+	Une \textbf{symétrie axiale} transforme une figure par effet miroir par rapport à l'axe de symétrie.
+
+	Soit $M$ un point n'appartenant pas à la droite $(d)$. Le point $M'$ est l'\textbf{image} de $M$ par la symétrie d'axe $(d)$ lorsque :
+
+	\begin{itemize}
+		\item $[MM']$ est perpendiculaire à $(d)$ ;
+		\item $M$ et $M'$ sont à égale distance de $(d)$, de part et d'autre de $(d)$.
+	\end{itemize}
+\end{defin}
+
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (P) at (-0.4,-1.2);
+		\coordinate (Q) at (2,2.4);
+		\coordinate (M) at (-1.8,1);
+		\coordinate (H) at ($(P)!(M)!(Q)$);
+		\coordinate (M') at ($(M)!2!(H)$);
+		\draw[gris, thick] (P) -- (Q) node[above] {$(d)$};
+		\draw[bleu, dashed] (M) -- (M');
+		\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (M) -- (H);
+		\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (H) -- (M');
+		\coordinate (a) at ($(H)!0.3cm!(Q)$);
+		\coordinate (b) at ($(H)!0.3cm!(M)$);
+		\draw[vert] (a) -- ($(a)+(b)-(H)$) -- (b);
+		\fill[bleu] (M) circle (1.5pt) node[left] {$M$};
+		\fill[bleu] (M') circle (1.5pt) node[right] {$M'$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{rem}
+	\nline
+	\begin{itemize}
+		\item $(d)$ est la médiatrice de $[MM']$.
+		\item Si $M$ est sur $(d)$, alors $M$ et $M'$ sont confondus.
+	\end{itemize}
+\end{rem}
+
+\subsection{Symétrie centrale}
+
+\begin{defin}
+	Une \textbf{symétrie centrale} fait tourner une figure autour d'un point en effectuant un demi-tour.
+
+	Soit $M$ un point distinct de $O$. Le point $M'$ est l'\textbf{image} de $M$ par la symétrie de centre $O$ lorsque :
+
+	\begin{itemize}
+		\item $M$, $O$ et $M'$ sont alignés, $O$ étant situé entre $M$ et $M'$ ;
+		\item $MO = OM'$.
+	\end{itemize}
+\end{defin}
+
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (O) at (0,0);
+		\coordinate (M) at (-2.4,-1.2);
+		\coordinate (M') at ($(M)!2!(O)$);
+		\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (M) -- (O);
+		\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (O) -- (M');
+		\fill (O) circle (1.5pt) node[above left] {$O$};
+		\fill[bleu] (M) circle (1.5pt) node[below] {$M$};
+		\fill[bleu] (M') circle (1.5pt) node[above] {$M'$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{rem}
+	\nline
+	\begin{itemize}
+		\item $O$ est le milieu de $[MM']$.
+		\item Si $M$ est en $O$, alors $M$, $O$ et $M'$ sont confondus.
+	\end{itemize}
+\end{rem}
+
+\subsection{Translation}
+
+\begin{defin}
+	Une \textbf{translation} fait glisser une figure selon une flèche. Cette flèche définit une direction, un sens et une longueur.
+
+	Le point $M'$ est l'\textbf{image} de $M$ par la translation qui envoie $A$ en $B$.
+\end{defin}
+
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (3.6,0.8);
+		\coordinate (M) at (-0.6,2.2);
+		\coordinate (M') at ($(M)+(B)-(A)$);
+		\draw[gris, dashed] (B) -- (M');
+		\draw[gris, dashed] (A) -- (M);
+		\draw[->, rouge, thick] (A) -- (B);
+		\draw[->, bleu, thick] (M) -- (M');
+		\fill[rouge] (A) circle (1.5pt) node[below left] {$A$};
+		\fill[rouge] (B) circle (1.5pt) node[below right] {$B$};
+		\fill[bleu] (M) circle (1.5pt) node[above left] {$M$};
+		\fill[bleu] (M') circle (1.5pt) node[above right] {$M'$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{rem}
+	Si $M$ n'est pas sur la droite $(AB)$, alors $ABM'M$ est un parallélogramme.
+\end{rem}
+
+\subsection{Rotation}
+
+\begin{defin}
+	Une \textbf{rotation} fait tourner une figure autour d'un point selon un angle et un sens.
+\end{defin}
+
+\begin{ex}
+	Le point $M'$ est l'image de $M$ par la rotation de \textbf{centre $O$} et d'\textbf{angle $60^\circ$ dans le sens inverse des aiguilles d'une montre} lorsque :
+
+	\begin{itemize}
+		\item $\widehat{MOM'} = 60^\circ$ ;
+		\item $MO = OM'$.
+	\end{itemize}
+
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (O) at (0,0);
+			\coordinate (M) at (200:2.4);
+			\coordinate (M') at (260:2.4);
+			\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (O) -- (M);
+			\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (O) -- (M');
+			\draw[vert, ->] (200:0.7) arc[start angle=200, end angle=260, radius=0.7];
+			\node[vert] at (230:1.1) {$60^\circ$};
+			\draw[gris, dashed, ->] (M) arc[start angle=200, end angle=260, radius=2.4];
+			\fill (O) circle (1.5pt) node[above right] {$O$};
+			\fill[bleu] (M) circle (1.5pt) node[left] {$M$};
+			\fill[bleu] (M') circle (1.5pt) node[below] {$M'$};
+		\end{tikzpicture}
+	\end{center}
+\end{ex}
+
+\begin{rem}
+	\nline
+	\begin{itemize}
+		\item Appliquer une rotation sur une figure, c'est faire tourner la figure autour d'un centre selon un angle donné et dans un sens donné.
+		\item Une rotation d'angle $180^\circ$ est une symétrie centrale.
+		\item L'image du point $O$ par une rotation de centre $O$ est le point $O$ lui-même.
+	\end{itemize}
+\end{rem}
+
+\newpage
+
+\begin{methode}[Construire l'image d'une figure par une rotation]
+	Construire l'image du triangle $ABC$ par la rotation de centre $O$ et d'angle $60^\circ$ dans le sens des aiguilles d'une montre.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On commence par construire l'image du point $A$ : on trace un angle de sommet $O$ et de mesure $60^\circ$ en partant de $[OA]$ et en tournant dans le sens des aiguilles d'une montre.
+
+			      Le point $A'$ est tel que $OA = OA'$.
+
+			\item On refait de même pour tracer les images des points $B$ et $C$.
+
+			\item On obtient ainsi l'image $A'B'C'$ du triangle $ABC$ par la rotation.
+		\end{enumerate}
+
+		\begin{center}
+			\begin{tikzpicture}[scale=0.8]
+				\coordinate (O) at (0,0);
+				\coordinate (A) at (125:4.4);
+				\coordinate (B) at (175:3.4);
+				\coordinate (C) at (200:1.9);
+				\coordinate (A') at (65:4.4);
+				\filldraw[fill=rouge!10, draw=rouge] (A) -- (B) -- (C) -- cycle;
+				\draw[vert, dashed] (O) -- (A);
+				\draw[vert, dashed] (O) -- (A');
+				\draw[vert, dashed] (A) arc[start angle=125, end angle=65, radius=4.4];
+				\draw[vert, ->] (125:0.9) arc[start angle=125, end angle=60+5, radius=0.9];
+				\node[vert] at (95:1.3) {$60^\circ$};
+				\fill (O) circle (1.5pt) node[right] {$O$};
+				\fill[rouge] (A) circle (1.5pt) node[above left] {$A$};
+				\fill[rouge] (B) circle (1.5pt) node[left] {$B$};
+				\fill[rouge] (C) circle (1.5pt) node[below] {$C$};
+				\fill[violet] (A') circle (1.5pt) node[above right] {$A'$};
+			\end{tikzpicture}
+			\hfill
+			\begin{tikzpicture}[scale=0.8]
+				\coordinate (O) at (0,0);
+				\coordinate (A) at (125:4.4);
+				\coordinate (B) at (175:3.4);
+				\coordinate (C) at (200:1.9);
+				\coordinate (A') at (65:4.4);
+				\coordinate (B') at (115:3.4);
+				\coordinate (C') at (140:1.9);
+				\filldraw[fill=rouge!10, draw=rouge] (A) -- (B) -- (C) -- cycle;
+				\filldraw[fill=violet!15, draw=violet] (A') -- (B') -- (C') -- cycle;
+				\draw[vert, dashed] (A) arc[start angle=125, end angle=65, radius=4.4];
+				\draw[vert, dashed] (B) arc[start angle=175, end angle=115, radius=3.4];
+				\draw[vert, dashed] (C) arc[start angle=200, end angle=140, radius=1.9];
+				\node[vert, fill=white] at (170:1.25) {$60^\circ$};
+				\draw[vert, ->] (200:0.9) arc[start angle=200, end angle=140, radius=0.9];
+				\fill (O) circle (1.5pt) node[right] {$O$};
+				\fill[rouge] (A) circle (1.5pt) node[above left] {$A$};
+				\fill[rouge] (B) circle (1.5pt) node[left] {$B$};
+				\fill[rouge] (C) circle (1.5pt) node[below] {$C$};
+				\fill[violet] (A') circle (1.5pt) node[above right] {$A'$};
+				\fill[violet] (B') circle (1.5pt) node[above] {$B'$};
+				\draw[vert, dashed] (O) -- (C);
+				\draw[vert, dashed] (O) -- (C');
+				\fill[violet] (C') circle (1.5pt) node[right] {$C'$};
+			\end{tikzpicture}
+		\end{center}
+	\end{correction}
+\end{methode}
+
+\section{Règles classiques de géométrie}
+
+\subsection{Formules d'aire}
+
+\begin{prop}
+	Notons $\mathcal{A}$ l'aire d'une figure.
+
+	\begin{itemize}
+		\item \textbf{Rectangle} de longueur $L$ et de largeur $l$ : $\mathcal{A} = L \times l$.
+		\item \textbf{Carré} de côté $c$ : $\mathcal{A} = c \times c = c^2$.
+		\item \textbf{Losange} de diagonales $D$ et $d$ : $\mathcal{A} = \dfrac{D \times d}{2}$.
+		\item \textbf{Parallélogramme} de base $b$ et de hauteur $h$ : $\mathcal{A} = b \times h$.
+		\item \textbf{Triangle} de base $b$ et de hauteur $h$ : $\mathcal{A} = \dfrac{b \times h}{2}$.
+		\item \textbf{Trapèze} de grande base $B$, de petite base $b$ et de hauteur $h$ :
+		      \[
+			      \mathcal{A} = \dfrac{B \times h}{2} + \dfrac{b \times h}{2} = \dfrac{\pa{B + b} \times h}{2}
+		      \]
+		\item \textbf{Disque} de rayon $r$ : $\mathcal{A} = \pi r^2$ (la circonférence du cercle est $2\pi r$).
+	\end{itemize}
+\end{prop}
+
+\begin{center}
+	\begin{tikzpicture}[every node/.style={font=\small}]
+		\tikzset{forme/.style={draw=bleu, thick, fill=bleu!10}}
+		\tikzset{nomf/.style={font=\footnotesize, gris}}
+		% Rectangle
+		\begin{scope}
+			\draw[forme] (0,0) rectangle (3,1.8);
+			\node[below] at (1.5,0) {$L$};
+			\node[left] at (0,0.9) {$l$};
+			\node[nomf] at (1.5,-0.9) {Rectangle};
+		\end{scope}
+		% Carré
+		\begin{scope}[shift={(4.4,0)}]
+			\draw[forme] (0,0) rectangle (1.8,1.8);
+			\node[below] at (0.9,0) {$c$};
+			\node[left] at (0,0.9) {$c$};
+			\node[nomf] at (0.9,-0.9) {Carré};
+		\end{scope}
+		% Losange
+		\begin{scope}[shift={(7.6,0)}]
+			\draw[gris, dashed] (0,0) rectangle (2.8,1.8);
+			\draw[forme] (0,0.9) -- (1.4,1.8) -- (2.8,0.9) -- (1.4,0) -- cycle;
+			\draw[bleu] (0,0.9) -- (2.8,0.9);
+			\draw[bleu] (1.4,0) -- (1.4,1.8);
+			\node[below] at (1.4,0) {$D$};
+			\node[right] at (2.8,0.9) {$d$};
+			\node[nomf] at (1.4,-0.9) {Losange};
+		\end{scope}
+		% Disque
+		\begin{scope}[shift={(12.4,0.9)}]
+			\draw[forme] (0,0) circle (0.9);
+			\draw[bleu] (0,0) -- (0.9,0);
+			\fill[bleu] (0,0) circle (1pt);
+			\node[above] at (0.45,0) {$r$};
+			\node[nomf] at (0,-1.8) {Disque};
+		\end{scope}
+		% Parallélogramme
+		\begin{scope}[shift={(0,-4.4)}]
+			\draw[forme] (0,0) -- (2.8,0) -- (3.6,1.8) -- (0.8,1.8) -- cycle;
+			\draw[bleu, dashed] (0.8,1.8) -- (0.8,0);
+			\draw[bleu] (1,0) -- (1,0.2) -- (0.8,0.2);
+			\node[below] at (1.4,0) {$b$};
+			\node[right] at (0.8,0.9) {$h$};
+			\node[nomf] at (1.8,-0.9) {Parallélogramme};
+		\end{scope}
+		% Triangle
+		\begin{scope}[shift={(5.2,-4.4)}]
+			\draw[forme] (0,0) -- (3,0) -- (1,1.9) -- cycle;
+			\draw[bleu, dashed] (1,1.9) -- (1,0);
+			\draw[bleu] (1.2,0) -- (1.2,0.2) -- (1,0.2);
+			\node[below] at (1.5,0) {$b$};
+			\node[right] at (1,0.95) {$h$};
+			\node[nomf] at (1.5,-0.9) {Triangle};
+		\end{scope}
+		% Trapèze
+		\begin{scope}[shift={(9.8,-4.4)}]
+			\draw[forme] (0,0) -- (3,0) -- (2,1.8) -- (0.4,1.8) -- cycle;
+			\draw[bleu, dashed] (0,0) -- (2,1.8);
+			\draw[bleu, dashed] (0.4,1.8) -- (0.4,0);
+			\draw[bleu] (0.6,0) -- (0.6,0.2) -- (0.4,0.2);
+			\node[below] at (1.5,0) {$B$};
+			\node[above] at (1.2,1.8) {$b$};
+			\node[left] at (0.4,0.9) {$h$};
+			\node[nomf] at (1.5,-0.9) {Trapèze};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+\begin{rem}
+	Ces formules se déduisent les unes des autres :
+
+	\begin{itemize}
+		\item Le carré est un rectangle dont la longueur et la largeur sont égales à $c$.
+		\item Le losange est inscrit dans le rectangle de dimensions $D$ et $d$ (en pointillés sur la figure) : son aire est la moitié de celle de ce rectangle.
+		\item Le triangle de base $b$ et de hauteur $h$ est la moitié d'un parallélogramme de base $b$ et de hauteur $h$.
+		\item Le trapèze se découpe en deux triangles de même hauteur $h$ (voir la démonstration ci-dessous).
+	\end{itemize}
+\end{rem}
+
+\begin{demo}
+	Soit un trapèze de grande base $B$, de petite base $b$ et de hauteur $h$. Une de ses diagonales le découpe en deux triangles :
+
+	\begin{itemize}
+		\item un triangle de base $B$ et de hauteur $h$, d'aire $\dfrac{B \times h}{2}$ ;
+		\item un triangle de base $b$ et de hauteur $h$, d'aire $\dfrac{b \times h}{2}$.
+	\end{itemize}
+
+	L'aire du trapèze est la somme de ces deux aires :
+	\[
+		\mathcal{A} = \dfrac{B \times h}{2} + \dfrac{b \times h}{2} = \dfrac{\pa{B + b} \times h}{2}
+	\]
+\end{demo}
+
+\begin{ex}
+	\nline
+	\begin{itemize}
+		\item Un rectangle de longueur $5\,\text{cm}$ et de largeur $3\,\text{cm}$ a pour aire $5 \times 3 = 15\,\text{cm}^2$.
+		\item Un triangle de base $6\,\text{cm}$ et de hauteur $4\,\text{cm}$ a pour aire $\dfrac{6 \times 4}{2} = 12\,\text{cm}^2$.
+		\item Un trapèze de bases $7\,\text{cm}$ et $3\,\text{cm}$ et de hauteur $4\,\text{cm}$ a pour aire $\dfrac{\pa{7 + 3} \times 4}{2} = 20\,\text{cm}^2$.
+		\item Un disque de rayon $3\,\text{cm}$ a pour aire $\pi \times 3^2 = 9\pi \approx 28{,}27\,\text{cm}^2$.
+	\end{itemize}
+\end{ex}
+
+\subsection{Trigonométrie dans le triangle rectangle}
+
+\begin{prop}
+	Dans un triangle rectangle, pour un angle aigu, on a :
+	\[
+		\def\arraystretch{1.5}
+		\begin{array}{rcl}
+			\cos\pa{\text{Angle}} & = & \dfrac{\text{Adjacent}}{\text{Hypoténuse}} \\
+			\sin\pa{\text{Angle}} & = & \dfrac{\text{Opposé}}{\text{Hypoténuse}}   \\
+			\tan\pa{\text{Angle}} & = & \dfrac{\text{Opposé}}{\text{Adjacent}}
+		\end{array}
+	\]
+\end{prop}
+
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (A) at (0,0);
+		\coordinate (C) at (4,0);
+		\coordinate (B) at (4,2.4);
+		\draw[rouge, thick] (A) -- (B) node[midway, above, sloped] {Hypoténuse};
+		\draw[bleu, thick] (C) -- (B) node[midway, right] {Opposé};
+		\draw[vert, thick] (A) -- (C) node[midway, below] {Adjacent};
+		\draw (3.75,0) -- (3.75,0.25) -- (4,0.25);
+		\draw (0.9,0) arc[start angle=0, end angle=31, radius=0.9];
+		\node[anchor=west] at (1.0,0.22) {Angle};
+	\end{tikzpicture}
+\end{center}
+
+\begin{rem}
+	Pour mémoriser les formules, on peut retenir \textbf{CAH SOH TOA} :
+
+	\begin{itemize}
+		\item \textbf{C}osinus $=$ \textbf{A}djacent $/$ \textbf{H}ypoténuse ;
+		\item \textbf{S}inus $=$ \textbf{O}pposé $/$ \textbf{H}ypoténuse ;
+		\item \textbf{T}angente $=$ \textbf{O}pposé $/$ \textbf{A}djacent.
+	\end{itemize}
+\end{rem}
+
+\begin{ex}
+	Dans un triangle rectangle de côtés $3$, $4$ et $5$, considérons l'angle aigu dont le côté opposé mesure $3$ et le côté adjacent mesure $4$ (l'hypoténuse mesure $5$) :
+	\[
+		\cos\pa{\text{Angle}} = \dfrac{4}{5} = 0{,}8 \qquad \sin\pa{\text{Angle}} = \dfrac{3}{5} = 0{,}6 \qquad \tan\pa{\text{Angle}} = \dfrac{3}{4} = 0{,}75
+	\]
+\end{ex}
+
+\subsection{Configuration de Pythagore}
+
+\begin{defin}
+	Dans un triangle rectangle, l'\textbf{hypoténuse} est le côté opposé à l'angle droit.
+\end{defin}
+
+\begin{prop}
+	Dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés.
+
+	Si $a$ désigne la longueur de l'hypoténuse et $b$ et $c$ celles des deux autres côtés, alors :
+	\[
+		a^2 = b^2 + c^2
+	\]
+\end{prop}
+
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (R) at (0,0);
+		\coordinate (P) at (3.2,0);
+		\coordinate (Q) at (0,2.4);
+		\draw[rouge, thick] (P) -- (Q) node[midway, above right] {$a$};
+		\draw[bleu, thick] (R) -- (P) node[midway, below] {$b$};
+		\draw[bleu, thick] (R) -- (Q) node[midway, left] {$c$};
+		\draw (0,0.25) -- (0.25,0.25) -- (0.25,0);
+	\end{tikzpicture}
+\end{center}
+
+\begin{ex}
+	Dans un triangle rectangle dont les côtés de l'angle droit mesurent $3\,\text{cm}$ et $4\,\text{cm}$, l'hypoténuse $a$ vérifie :
+	\[
+		a^2 = 3^2 + 4^2 = 9 + 16 = 25
+	\]
+	Comme $a$ est une longueur, $a = 5\,\text{cm}$.
+\end{ex}
+
+\subsection{Configuration de Thalès}
+
+\begin{prop}
+	Soient $A$, $B$ et $C$ trois points formant un triangle, $B'$ un point de la droite $(AB)$ et $C'$ un point de la droite $(AC)$.
+
+	Dans les configurations suivantes, où $(B'C') \parallel (BC)$, on a :
+	\[
+		\dfrac{AB'}{AB} = \dfrac{AC'}{AC} = \dfrac{B'C'}{BC}
+	\]
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (4.4,3);
+			\coordinate (C) at (5.4,0);
+			\coordinate (B') at ($(A)!0.6!(B)$);
+			\coordinate (C') at ($(A)!0.6!(C)$);
+			\draw[bleu, thick] (A) -- (B) -- (C) -- cycle;
+			\draw[vert, thick] (A) -- (B') -- (C') -- cycle;
+			\draw[rouge, thick] (B) -- (C);
+			\draw[rouge, thick] (B') -- (C');
+			\fill (A) circle (1.5pt) node[below left] {$A$};
+			\fill (B) circle (1.5pt) node[above right] {$B$};
+			\fill (C) circle (1.5pt) node[below right] {$C$};
+			\fill (B') circle (1.5pt) node[above left] {$B'$};
+			\fill (C') circle (1.5pt) node[below] {$C'$};
+		\end{tikzpicture}
+		\hfill
+		\begin{tikzpicture}[scale=0.8]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3.2,2.4);
+			\coordinate (C) at (4,0);
+			\coordinate (B') at ($(A)!-0.6!(B)$);
+			\coordinate (C') at ($(A)!-0.6!(C)$);
+			\draw[bleu, thick] (A) -- (B) -- (C) -- cycle;
+			\draw[vert, thick] (A) -- (B') -- (C') -- cycle;
+			\draw[bleu, thick] (B) -- (B');
+			\draw[bleu, thick] (C) -- (C');
+			\draw[rouge, thick] (B) -- (C);
+			\draw[rouge, thick] (B') -- (C');
+			\fill (A) circle (1.5pt) node[below right] {$A$};
+			\fill (B) circle (1.5pt) node[above] {$B$};
+			\fill (C) circle (1.5pt) node[right] {$C$};
+			\fill (B') circle (1.5pt) node[below] {$B'$};
+			\fill (C') circle (1.5pt) node[left] {$C'$};
+		\end{tikzpicture}
+	\end{center}
+\end{prop}
+
+\begin{ex}
+	Dans la première configuration, on suppose que $(B'C') \parallel (BC)$, avec $AB' = 2$, $AB = 5$ et $AC' = 3$. On a :
+	\[
+		\dfrac{AB'}{AB} = \dfrac{AC'}{AC} \quad\text{donc}\quad \dfrac{2}{5} = \dfrac{3}{AC} \quad\text{d'où}\quad AC = \dfrac{3 \times 5}{2} = 7{,}5
+	\]
+\end{ex}
+
+\subsection{Tangente à un cercle}
+
+\begin{defin}
+	Une \textbf{tangente} à un cercle est une droite qui \og{} touche \fg{} le cercle en un point et un seul.
+\end{defin}
+
+\begin{rem}
+	Le mot \og{} tangente \fg{} vient du latin \og{} tangere \fg{}, qui signifie \og{} toucher \fg{}.
+\end{rem}
+
+\begin{prop}
+	La tangente en $M$ au cercle $\mathcal{C}$ est perpendiculaire au rayon en ce point.
+\end{prop}
+
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (O) at (0,0);
+		\coordinate (M) at (-55:1.5);
+		\draw[bleu, thick] (O) circle (1.5);
+		\draw[gris, thick] (O) -- (M);
+		\draw[rouge, thick] ($(M)+(35:2.2)$) -- ($(M)+(215:2.2)$);
+		\coordinate (a) at ($(M)!0.28cm!(O)$);
+		\coordinate (b) at ($(M)+(35:0.28)$);
+		\draw[vert] (a) -- ($(a)+(b)-(M)$) -- (b);
+		\fill (O) circle (1.5pt) node[above left] {$O$};
+		\fill (M) circle (1.5pt) node[below right] {$M$};
+		\node[bleu] at (135:1.8) {$\mathcal{C}$};
+	\end{tikzpicture}
+\end{center}
+
+\section{Frises et pavages}
+
+\subsection{Frises}
+
+\begin{defin}
+	Une \textbf{frise} est formée de la répétition d'une même figure par translation.
+\end{defin}
+
+\begin{ex}
+	Dans la frise ci-dessous, le même motif est répété par la translation $t$.
+	\begin{center}
+		\begin{tikzpicture}
+			\draw (-0.3,1.4) -- (8.7,1.4);
+			\draw (-0.3,-0.4) -- (8.7,-0.4);
+			\foreach \i in {0,...,5} {
+					\draw[bleu, thick, shift={(1.4*\i,0)}] (0,0) -- (0,1) -- (1.1,1) -- (1.1,0.2) -- (0.3,0.2) -- (0.3,0.7) -- (0.8,0.7);
+				}
+			\draw[dotted] (0,-0.9) -- (0,0);
+			\draw[dotted] (1.4,-0.9) -- (1.4,0);
+			\draw[->, thick] (0,-0.8) -- (1.4,-0.8) node[midway, above] {$t$};
+		\end{tikzpicture}
+	\end{center}
+\end{ex}
+
+\newpage
+
+\subsection{Pavages}
+
+\begin{defin}
+	Un \textbf{pavage} est formé de la répétition d'une même figure par translation, rotation ou symétrie.
+
+	\begin{itemize}
+		\item Le pavage ne présente aucun espace libre.
+		\item Les figures ne se chevauchent pas.
+	\end{itemize}
+\end{defin}
+
+\begin{ex}
+	Sur la figure ci-dessous, des losanges identiques sont disposés sans espace libre ni chevauchement. Chaque hexagone est formé de trois losanges qui se déduisent l'un de l'autre par la rotation de centre le centre de l'hexagone et d'angle $120^\circ$, et les hexagones se déduisent les uns des autres par translation.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7, line join=round]
+			\foreach \ii in {0,1,2} {
+					\foreach \jj in {0,...,3} {
+							\begin{scope}[shift={({(\jj+0.5*\ii)*sqrt(3)},{1.5*\ii})}]
+								\filldraw[fill=bleu!15, draw=bleu!70!black] (0,0) -- (330:1) -- (30:1) -- (90:1) -- cycle;
+								\filldraw[fill=bleu!35, draw=bleu!70!black] (0,0) -- (90:1) -- (150:1) -- (210:1) -- cycle;
+								\filldraw[fill=bleu!60, draw=bleu!70!black] (0,0) -- (210:1) -- (270:1) -- (330:1) -- cycle;
+							\end{scope}
+						}
+				}
+		\end{tikzpicture}
+	\end{center}
+\end{ex}
+
+\begin{rem}
+	On connaît $14$ pavages par des pentagones.
+\end{rem}
+
