@@ -1,0 +1,442 @@
+\chapter{Statistiques à deux variables}
+
+\section{Série statistique à deux variables}
+
+\subsection{Définition}
+
+\begin{defin}
+	On considère deux variables statistiques $x$ et $y$ observées sur une même population de $n$ individus.
+
+	On note $x_{1},x_{2},\dots,x_{n}$ les valeurs relevées pour la variable $x$ et $y_{1},y_{2},\dots,y_{n}$ les valeurs relevées pour la variable $y$.
+
+	Les couples $\pa{x_{1}\,;\,y_{1}}, \pa{x_{2}\,;\,y_{2}}, \dots, \pa{x_{n}\,;\,y_{n}}$ forment une \textbf{série statistique à deux variables}.
+\end{defin}
+
+\begin{ex}
+	On considère une série statistique exprimant la température extérieure et la consommation électrique correspondante :
+	\begin{itemize}
+		\item Variable $x$ : Température extérieure (en $^{\circ}\text{C}$).
+		\item Variable $y$ : Consommation électrique correspondante.
+	\end{itemize}
+\end{ex}
+
+\begin{ex}
+	On étudie l'évolution du budget publicitaire et du chiffre d'affaires d'une société.
+
+	Les deux variables observées sur une même population (les années) forment une série statistique à deux variables :
+	\begin{itemize}
+		\item Variable $x$ : Budget publicitaire (en k\eur{}).
+		\item Variable $y$ : Chiffre d'affaires (en k\eur{}).
+	\end{itemize}
+	\[
+		\def\arraystretch{1.4}
+		\begin{array}{|l|c|c|c|c|c|c|}\hline
+			\ccg \text{Budget publicitaire } x_i \text{ (en k\euro{})} & 8  & 10 & 12 & 14 & 16 & 18 \\ \hline
+			\ccg \text{Chiffre d'affaires } y_i \text{ (en k\euro{})}  & 40 & 55 & 55 & 70 & 75 & 95 \\ \hline
+		\end{array}
+	\]
+\end{ex}
+
+\begin{ex}
+	Le responsable d'un site web étudie la relation entre le nombre d'internautes connectés et la durée de chargement des pages :
+	\begin{itemize}
+		\item Variable $x$ : Nombre d'internautes connectés (en milliers).
+		\item Variable $y$ : Durée de chargement (en secondes).
+	\end{itemize}
+	\[
+		\def\arraystretch{1.4}
+		\begin{array}{|l|c|c|c|c|c|}\hline
+			\ccg \text{Nombre d'internautes } x_i \text{ (en milliers)} & 0{,}5 & 1     & 2{,}5 & 3     & 4{,}5 \\ \hline
+			\ccg \text{Durée de chargement } y_i \text{ (en secondes)}  & 0{,}3 & 0{,}4 & 0{,}6 & 0{,}9 & 1{,}3 \\ \hline
+		\end{array}
+	\]
+\end{ex}
+
+\begin{ex}
+	On étudie dans une maternité la relation entre le poids et la taille de plusieurs nouveau-nés :
+	\begin{itemize}
+		\item Variable $x$ : Le poids du bébé à la naissance (en kg).
+		\item Variable $y$ : La taille du bébé à la naissance (en cm).
+	\end{itemize}
+
+	Les relevés effectués sur un échantillon de nourrissons forment la série statistique à deux variables suivante :
+
+	\begin{center}
+		\rnc{\arraystretch}{1.4}
+		\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+			\ccg Poids $x_i$ (en kg)  & $2{,}8$ & $3{,}2$ & $3{,}5$ & $3{,}0$ & $4{,}0$ & $3{,}6$ \\ \hline
+			\ccg Taille $y_i$ (en cm) & $48$    & $50$    & $52$    & $49$    & $54$    & $51$    \\ \hline
+		\end{tabular}
+	\end{center}
+\end{ex}
+
+\subsection{Nuage de points}
+
+\begin{defin}
+	Dans un repère, l'ensemble des points $M_i$ de coordonnées $\pa{x_{i}\,;\,y_{i}}$ est appelé le \textbf{nuage de points} associé à la série statistique $\pa{x_{1}\,;\,y_{1}}, \pa{x_{2}\,;\,y_{2}}, \dots, \pa{x_{n}\,;\,y_{n}}$ à deux variables.
+\end{defin}
+
+\subsection{Point moyen}
+\begin{defin}
+	Le point $G\pa{\bar{x}\,;\,\bar{y}}$, où $\bar{x}$ et $\bar{y}$ sont les moyennes respectives des $x_{i}$ et des $y_{i}$ données par :
+	\[
+		\bar{x} = \dfrac{x_1 + x_2 + \dots + x_n}{n} \qquad\text{et}\qquad \bar{y} = \dfrac{y_1 + y_2 + \dots + y_n}{n}
+	\]
+
+	\ldots est appelé le \textbf{point moyen} du nuage de points associé à la série statistique à deux variables.
+\end{defin}
+
+\begin{methode}[Représenter un nuage de points et déterminer le point moyen]
+	Le tableau suivant présente l'évolution du budget publicitaire et du chiffre d'affaires d'une société au cours des 6 dernières années :
+
+	\begin{center}
+		\rnc{\arraystretch}{1.4}
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\ccg \textbf{Budget publicitaire (en k\eur{}) :} $x_i$ & 8  & 10 & 12 & 14 & 16 & 18 \\ \hline
+			\ccg \textbf{Chiffre d'affaires (en k\eur{}) :} $y_i$  & 40 & 55 & 55 & 70 & 75 & 95 \\ \hline
+		\end{tabular}
+	\end{center}
+
+	\begin{enumerate}
+		\item Dans un repère, représenter le nuage de points $\pa{x_{i}\,;\,y_{i}}$.
+		\item Déterminer les coordonnées du point moyen $G$ du nuage de points, puis le placer.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Calcul des coordonnées du point moyen $G$ :
+			      \[
+				      \bar{x} = \dfrac{8+10+12+14+16+18}{6} = \dfrac{78}{6} = 13
+			      \]
+			      \[
+				      \bar{y} = \dfrac{40+55+55+70+75+95}{6} = \dfrac{390}{6} = 65
+			      \]
+			      Le point moyen $G$ a pour coordonnées $\coordl{13}{65}$.
+
+			\item Représentation graphique du nuage de points et du point moyen $G$ :
+
+			      \begin{center}
+				      \begin{tikzpicture}[x=6mm,y=0.6mm]
+					      \draw[gray!30, xstep=1, ystep=10] (0,0) grid (21,110);
+					      \draw[thick, ->] (0,0) -- (21,0) node[right] {$x$};
+					      \draw[thick, ->] (0,0) -- (0,110) node[above] {$y$};
+					      \foreach \x in {0,1,...,20} \draw (\x,1) -- (\x,-1) node[below] {\x};
+					      \foreach \y in {0,10,...,100} \draw (0.1,\y) -- (-0.1,\y) node[left] {\y};
+					      \filldraw[bleu] (8,40)  circle (2pt) node[above left, bleu]  {$M_1$};
+					      \filldraw[bleu] (10,55) circle (2pt) node[above left, bleu]  {$M_2$};
+					      \filldraw[bleu] (12,55) circle (2pt) node[below left, bleu]  {$M_3$};
+					      \filldraw[bleu] (14,70) circle (2pt) node[above left, bleu]  {$M_4$};
+					      \filldraw[bleu] (16,75) circle (2pt) node[below right, bleu] {$M_5$};
+					      \filldraw[bleu] (18,95) circle (2pt) node[above left, bleu]  {$M_6$};
+					      \filldraw[rouge] (13,65) circle (3pt) node[below right, rouge] {$G(13\,;\,65)$};
+					      \draw[rouge, dashed, very thick] (13,0) -- (13,65) -- (0,65);
+				      \end{tikzpicture}
+			      \end{center}
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\section{Ajustement affine}
+
+\subsection{Interpolation et extrapolation}
+
+\begin{defin}
+	L'\textbf{interpolation} et l'\textbf{extrapolation} sont des méthodes qui consistent à estimer une valeur inconnue dans une série statistique.
+	\begin{itemize}
+		\item Pour une \textbf{interpolation}, le calcul est réalisé \textit{dans} le domaine d'étude fourni par les valeurs de la série.
+		\item Pour une \textbf{extrapolation}, le calcul est réalisé \textit{en dehors} du domaine d'étude.
+	\end{itemize}
+\end{defin}
+
+\begin{rem}
+	La méthode d'extrapolation est parfois contestable car en dehors du domaine d'étude. Rien ne nous assure que le modèle mathématique retenu reste valable sur le long terme.
+\end{rem}
+
+\begin{ex}
+	\nline
+	\begin{itemize}
+		\item On donne une série exprimant la population d'une ville en fonction des années et on souhaite faire des prévisions pour les années à venir.
+
+		      Les prévisions sortent du domaine d'étude de la série, on parle dans ce cas d'\textbf{extrapolation}.
+
+		\item On donne une série exprimant la température extérieure et la consommation électrique correspondante. Les températures étudiées s'échelonnent entre $-10^{\circ}\text{C}$ et $10^{\circ}\text{C}$ avec un pas de $4^{\circ}\text{C}$.
+
+		      Sans faire de nouveaux relevés, on souhaite estimer la consommation électrique pour toutes les températures entières comprises entre $-10^{\circ}\text{C}$ et $10^{\circ}\text{C}$.
+
+		      Les calculs sont réalisés dans le domaine d'étude de la série, on parle dans ce cas d'\textbf{interpolation}.
+	\end{itemize}
+\end{ex}
+
+\subsection{Droite d'ajustement}
+
+Pour obtenir de telles estimations, il faudra déterminer une droite passant \og au plus près possible \fg{} des points du nuage.
+
+L'interpolation ou l'extrapolation consistent à effectuer l'estimation par lecture graphique sur la droite ou par calcul à l'aide de l'équation de la droite.
+
+\begin{defin}
+	Lorsque les points d'un nuage sont sensiblement alignés, on peut construire une droite, appelée \textbf{droite d'ajustement} (ou \textbf{droite de régression}), passant \og au plus près \fg{} de ces points.
+\end{defin}
+
+\begin{methode} [Méthode \og au jugé \fg{}]
+	Sans technique particulière, on trace \og au jugé \fg{} une droite passant au plus près des points du nuage.
+
+	Cette méthode a le mérite d'être rapide mais reste empirique et subjective.
+	\begin{center}
+		\begin{tikzpicture}[x=6mm,y=0.6mm]
+			\draw[gray!30, xstep=1, ystep=10] (0,0) grid (21,110);
+			\draw[thick, ->] (0,0) -- (21,0) node[right] {$x$};
+			\draw[thick, ->] (0,0) -- (0,110) node[above] {$y$};
+			\foreach \x in {0,1,...,20} \draw (\x,1) -- (\x,-1) node[below] {\x};
+			\foreach \y in {0,10,...,100} \draw (0.1,\y) -- (-0.1,\y) node[left] {\y};
+			\filldraw[bleu] (8,40)  circle (2pt) node[above left, bleu]  {$M_1$};
+			\filldraw[bleu] (10,55) circle (2pt) node[above left, bleu]  {$M_2$};
+			\filldraw[bleu] (12,55) circle (2pt) node[below left, bleu]  {$M_3$};
+			\filldraw[bleu] (14,70) circle (2pt) node[above left, bleu]  {$M_4$};
+			\filldraw[bleu] (16,75) circle (2pt) node[below right, bleu] {$M_5$};
+			\filldraw[bleu] (18,95) circle (2pt) node[above left, bleu]  {$M_6$};
+			\draw[line width=1.2pt, vert, opacity=0.8] (3,10) -- (20,102) node[above] {$\mathcal{D}_{\text{jugé}}$};
+		\end{tikzpicture}
+	\end{center}
+\end{methode}
+
+\begin{methode}[Déterminer la droite d'ajustement par la méthode des points moyens]
+	Cet ajustement consiste à partager le nuage de points en deux groupes d'effectifs égaux, puis à déterminer la droite passant par les deux points moyens $G_1$ et $G_2$ de chaque groupe.
+
+	On reprend les données de la situation précédente :
+
+	\begin{center}
+		\rnc{\arraystretch}{1.4}
+		\begin{tabular}{|r||c|c|c||c|c|c|} \hline
+			\ccg \textbf{Budget publicitaire (en k\eur{}) :} $x_i$ & 8  & 10 & 12 & 14 & 16 & 18 \\ \hline
+			\ccg \textbf{Chiffre d'affaires (en k\eur{}) :} $y_i$  & 40 & 55 & 55 & 70 & 75 & 95 \\ \hline
+		\end{tabular}
+	\end{center}
+
+	\begin{enumerate}
+		\item Soit $G_1$ le point moyen associé aux 3 premiers points et $G_2$ le point moyen associé aux 3 derniers points.
+		      \begin{enumerate}
+			      \item Calculer les coordonnées de $G_1$ et $G_2$.
+			      \item Tracer la droite $(G_1G_2)$ prise comme droite d'ajustement.
+		      \end{enumerate}
+		\item À l'aide du graphique :
+		      \begin{enumerate}
+			      \item Estimer le chiffre d'affaires à prévoir pour un budget publicitaire de $\np{22000}$~\eur{}.
+			      \item Estimer le budget publicitaire nécessaire pour obtenir un chiffre d'affaires de $\np{100000}$~\eur{}.
+			      \item Préciser s'il s'agit d'interpolations ou d'extrapolations.
+		      \end{enumerate}
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Coordonnées des points moyens :
+			      \begin{itemize}
+				      \item Pour $G_1$ : $\bar{x_1} = \dfrac{8+10+12}{3} = 10$ et $\bar{y_1} = \dfrac{40+55+55}{3} = 50$, d'où $G_1\coordl{10}{50}$.
+				      \item Pour $G_2$ : $\bar{x_2} = \dfrac{14+16+18}{3} = 16$ et $\bar{y_2} = \dfrac{70+75+95}{3} = 80$, d'où $G_2\coordl{16}{80}$.
+			      \end{itemize}
+
+			\item Graphique et lectures :
+			      \begin{center}
+				      \begin{tikzpicture}[x=6mm,y=0.6mm]
+					      \draw[gray!30, xstep=1, ystep=10] (0,0) grid (24,130);
+					      \draw[thick, ->] (0,0) -- (24,0) node[right] {$x$};
+					      \draw[thick, ->] (0,0) -- (0,130) node[above] {$y$};
+					      \foreach \x in {0,1,...,23} \draw (\x,1) -- (\x,-1) node[below] {\x};
+					      \foreach \y in {0,10,...,120} \draw (0.1,\y) -- (-0.1,\y) node[left] {\y};
+					      \draw[line width=1.2pt, orange, domain=0:24] plot (\x, {105 * \x / 21});
+					      \filldraw[bleu] (8,40)  circle (2pt);
+					      \filldraw[bleu] (10,55) circle (2pt);
+					      \filldraw[bleu] (12,55) circle (2pt);
+					      \filldraw[bleu] (14,70) circle (2pt);
+					      \filldraw[bleu] (16,75) circle (2pt);
+					      \filldraw[bleu] (18,95) circle (2pt);
+					      \filldraw[orange] (10,50) circle (3pt) node[below right, orange] {$G_1$};
+					      \filldraw[orange] (16,80) circle (3pt) node[above left, orange] {$G_2$};
+					      \node[above, orange] at (23,120) {$(G_1G_2)$};
+					      \draw[->, >={Stealth[scale=1.5]}, rouge, dashed, line width=1.2pt] (22,0) -- (22,110) -- (0,110);
+					      \filldraw[rouge] (22,110) circle (3pt);
+					      \draw[->, >={Stealth[scale=1.5]}, violet, dashed, line width=1.2pt] (0,100) -- (20,100) -- (20,0);
+					      \filldraw[violet] (20,100) circle (3pt);
+				      \end{tikzpicture}
+			      \end{center}
+
+			      \begin{enumerate}
+				      \item Pour un budget de $22$ k\eur{}, la lecture donne $110$ k\eur{} de C.A. (soit $\np{110000}$~\eur{}).
+				      \item Pour un C.A. de $100$ k\eur{}, la lecture donne un budget de $20$ k\eur{} (soit $\np{20000}$~\eur{}).
+				      \item Les deux valeurs demandées se situant hors de l'intervalle d'étude $\intff{8}{18}$, il s'agit d'\textbf{extrapolations}.
+			      \end{enumerate}
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\newpage
+
+\begin{methode}[Méthode des moindres carrés]
+	Cette méthode consiste à déterminer l'équation d'une droite d'ajustement $y = ax + b$ de sorte que la somme des carrés des distances verticales entre les points du nuage $M_i$ et les points correspondant de la droite $P_i$ soit minimale.
+
+	\begin{center}
+		\begin{tikzpicture}[x=15mm,y=12mm]
+			\draw[thick, ->] (0,0) -- (6,0) node[right] {$x$};
+			\draw[thick, ->] (0,0) -- (0,4.5) node[above] {$y$};
+			\draw[line width=1.2pt, bleu] (0.5,0.8) -- (5.5,3.8) node[right] {$y = ax + b$};
+			\coordinate (M) at (3.5, 3.8);
+			\coordinate (P) at (3.5, 2.6);
+			\draw[<->, vert, line width=1.5pt] (M) -- (P);
+			\filldraw[rouge] (M) circle (3pt) node[above] {$M_i(x_i\,;\,y_i)$};
+			\filldraw[bleu] (P) circle (3pt) node[below right] {$P_i(x_i\,;\,ax_i+b)$};
+			\draw[dashed, gray] (3.5,0) node[below] {$x_i$} -- (P);
+			\draw[dashed, gray] (0,3.8) node[left] {$y_i$} -- (M);
+			\draw[dashed, gray] (0,2.6) node[left] {$ax_i+b$} -- (P);
+			\node[vert, left] at (3.4, 3.2) {$d_i = \abs{y_i - (ax_i+b)}$};
+		\end{tikzpicture}
+	\end{center}
+
+	On cherche les valeurs de $a$ et $b$ de sorte que la droite passe le plus près possible de tous les points du nuage, en minimisant la somme des carrés des distances verticales ($d_i$) entre chaque point et la droite.
+\end{methode}
+
+\begin{prop}
+	\nline
+	\begin{itemize}
+		\item La droite d'ajustement de $y$ en $x$ par la méthode des moindres carrés passe toujours par le \textbf{point moyen} $G\pa{\bar{x}\,;\,\bar{y}}$ du nuage de points.
+		\item Les coefficients $a$ et $b$ sont calculés directement par la calculatrice.
+	\end{itemize}
+\end{prop}
+
+\begin{methode}[Déterminer la droite d'ajustement par la méthode des moindres carrés]
+	On considère la série statistique à deux variables donnée par le tableau ci-dessous :
+
+	\begin{center}
+		\rnc{\arraystretch}{1.4}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			\ccg $x_i$ & $5$  & $10$ & $15$ & $20$ & $25$ & $30$ & $35$ & $40$ \\ \hline
+			\ccg $y_i$ & $13$ & $23$ & $34$ & $44$ & $50$ & $65$ & $75$ & $90$ \\ \hline
+		\end{tabular}
+	\end{center}
+
+	\begin{enumerate}
+		\item Dans un repère, représenter le nuage de points $\pa{x_i\,;\,y_i}$.
+		\item
+		      \begin{enumerate}
+			      \item À l'aide de la calculatrice, déterminer une équation de la droite d'ajustement de $y$ en $x$ obtenues par la méthode des moindres carrés (arrondir au dixième).
+			      \item Représenter cette droite dans le repère.
+		      \end{enumerate}
+		\item Estimer graphiquement la valeur de $x$ pour $y = 70$. Retrouver ce résultat par calcul.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Représentation graphique :
+			      \begin{center}
+				      \begin{tikzpicture}[x=2mm,y=0.5mm]
+					      \draw[gray!40, xstep=5, ystep=10] (0,0) grid (47,105);
+					      \draw[thick, ->] (0,0) -- (47,0) node[right] {$x$};
+					      \draw[thick, ->] (0,0) -- (0,105) node[above] {$y$};
+					      \foreach \x in {0,5,...,45} \draw (\x,1) -- (\x,-1) node[below] {\x};
+					      \foreach \y in {0,10,...,100} \draw (0.25,\y) -- (-0.25,\y) node[left] {\y};
+					      \filldraw[bleu] (5,13)  circle (2pt);
+					      \filldraw[bleu] (10,23) circle (2pt);
+					      \filldraw[bleu] (15,34) circle (2pt);
+					      \filldraw[bleu] (20,44) circle (2pt);
+					      \filldraw[bleu] (25,50) circle (2pt);
+					      \filldraw[bleu] (30,65) circle (2pt);
+					      \filldraw[bleu] (35,75) circle (2pt);
+					      \filldraw[bleu] (40,90) circle (2pt);
+				      \end{tikzpicture}
+			      \end{center}
+			      \begin{enumerate}
+				      \item Pour déterminer directement les valeurs de $a$ et $b$ de la droite de régression linéaire, on utilise la calculatrice :
+				            \begin{enumerate}
+					            \item \textbf{Avec une calculatrice TI :}
+					                  \begin{itemize}
+						                  \item Appuyer sur \boxed{\texttt{STAT}} puis choisir \boxed{\texttt{1:Edit...}} et saisir les valeurs de $x_i$ dans \boxed{\texttt{L1}} et les valeurs de $y_i$ dans \boxed{\texttt{L2}}.
+						                  \item Appuyer de nouveau sur \boxed{\texttt{STAT}}, aller dans \boxed{\texttt{CALC}}, puis sélectionner \boxed{\texttt{4:RegLin(ax+b)}}
+						                  \item Indiquer les listes si nécessaire (\texttt{L1, L2}) puis valider.
+					                  \end{itemize}
+
+					            \item \textbf{Avec une calculatrice CASIO :}
+					                  \begin{itemize}
+						                  \item Ouvrir le menu \boxed{\texttt{STAT}}.
+						                  \item Saisir les valeurs de $x_i$ dans \boxed{\texttt{List 1}} et les valeurs de $y_i$ dans \boxed{\texttt{List 2}}.
+						                  \item Sélectionner \boxed{\texttt{CALC}} (touche \boxed{\textsf{F2}}) puis \boxed{\texttt{SET}} (touche \boxed{\textsf{F6}}).
+						                  \item Choisir \boxed{\texttt{List 1}} pour \boxed{\texttt{2Var XList}} et \boxed{\texttt{List 2}} pour \boxed{\texttt{2Var YList}}, puis valider par \boxed{\texttt{EXE}}.
+						                  \item Sélectionner \boxed{\texttt{REG}} (touche \boxed{\textsf{F3}}), puis \boxed{\texttt{X}} (touche \boxed{\textsf{F1}}) et \boxed{\texttt{aX+b}} (touche \boxed{\textsf{F2}}).
+					                  \end{itemize}
+				            \end{enumerate}
+
+				            On obtient :
+				            \[
+					            a \approx 2{,}138\ldots \quad \text{et} \quad b \approx 1{,}143\ldots
+				            \]
+
+				            Une équation de la droite d'ajustement est : $\quad y = 2{,}1x + 1{,}1$
+				      \item Pour représenter graphiquement cette droite, on choisit deux valeurs de $x$ et on calcule les $y$ correspondants :
+				            \begin{itemize}
+					            \item Si $x = 7$ :
+					                  \[
+						                  \begin{array}{rccccl}
+							                  y & = & 2{,}1 \times 7 & + & 1{,}1            \\
+							                    & = & 14{,}7         & + & 1{,}1 & = 15{,}8
+						                  \end{array}
+					                  \]
+
+					                  On obtient le point $A$ de coordonnées $A\coordl{7}{15{,}8}$.
+					            \item Si $x = 42$ :
+					                  \[
+						                  \begin{array}{rccccl}
+							                  y & = & 2{,}1 \times 42 & + & 1{,}1 &          \\
+							                    & = & 88{,}2          & + & 1{,}1 & = 89{,}3
+						                  \end{array}
+					                  \]
+
+					                  On obtient le point $B$ de coordonnées $B\coordl{42}{89{,}3}$.
+				            \end{itemize}
+
+				            Il suffit de placer ces deux points dans le repère et de tracer la droite passant par ces derniers.
+				            \begin{center}
+					            \begin{tikzpicture}[x=3mm,y=0.90mm]
+						            \draw[gray!40, xstep=5, ystep=10] (0,0) grid (47,105);
+						            \draw[thick, ->] (0,0) -- (47,0) node[right] {$x$};
+						            \draw[thick, ->] (0,0) -- (0,105) node[above] {$y$};
+						            \foreach \x in {0,5,...,45} \draw (\x,1) -- (\x,-1) node[below] {\x};
+						            \foreach \x in {0,1,...,45} \draw (\x,0.6) -- (\x,-0.6);
+						            \foreach \y in {0,10,...,100} \draw (0.25,\y) -- (-0.25,\y) node[left] {\y};
+						            \filldraw[bleu] (5,13)  circle (2pt);
+						            \filldraw[bleu] (10,23) circle (2pt);
+						            \filldraw[bleu] (15,34) circle (2pt);
+						            \filldraw[bleu] (20,44) circle (2pt);
+						            \filldraw[bleu] (25,50) circle (2pt);
+						            \filldraw[bleu] (30,65) circle (2pt);
+						            \filldraw[bleu] (35,75) circle (2pt);
+						            \filldraw[bleu] (40,90) circle (2pt);
+						            \node[rouge, fill=white] at (45,100) {$\mathcal{D}$};
+						            \draw[line width=1.2pt, rouge, domain=0:47] plot (\x , {2.1 * \x + 1.1});
+						            \filldraw[vert] (7,15.8) circle (2.5pt) node[below right] {$A$};
+						            \filldraw[vert] (42,89.3) circle (2.5pt) node[below right] {$B$};
+						            \draw[->, vert, dashed, line width=2pt] (0,70) -- (32.8,70) -- (32.8,0) node[below] {$32.8$};
+						            \filldraw[vert] (32.8,70) circle (3pt);
+					            \end{tikzpicture}
+				            \end{center}
+			      \end{enumerate}
+
+			\item Pour $y = 70$ :
+			      \begin{itemize}
+				      \item Graphiquement, on lit $x \approx 33$.
+				      \item Par calcul :
+				            \[
+					            \def\arraystretch{1.5}
+					            \begin{array}{rcccl}
+						                 & 70     & = & 2{,}1x + 1{,}1        &                \\
+						            \iff & 2{,}1x & = & 68{,}9                &                \\
+						            \iff & x      & = & \dfrac{68{,}9}{2{,}1} & \approx 32{,}8
+					            \end{array}
+				            \]
+			      \end{itemize}
+			      La valeur $y=70$ entrant dans la plage de valeurs observées ($13 \leqslant y \leqslant 90$), il s'agit d'une \textbf{interpolation}.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
