@@ -143,26 +143,40 @@
 		\item $[MM']$ est perpendiculaire à $(d)$ ;
 		\item $M$ et $M'$ sont à égale distance de $(d)$, de part et d'autre de $(d)$.
 	\end{itemize}
-\end{defin}
 
-\begin{center}
-	\begin{tikzpicture}
-		\coordinate (P) at (-0.4,-1.2);
-		\coordinate (Q) at (2,2.4);
-		\coordinate (M) at (-1.8,1);
-		\coordinate (H) at ($(P)!(M)!(Q)$);
-		\coordinate (M') at ($(M)!2!(H)$);
-		\draw[gris, thick] (P) -- (Q) node[above] {$(d)$};
-		\draw[bleu, dashed] (M) -- (M');
-		\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (M) -- (H);
-		\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (H) -- (M');
-		\coordinate (a) at ($(H)!0.3cm!(Q)$);
-		\coordinate (b) at ($(H)!0.3cm!(M)$);
-		\draw[vert] (a) -- ($(a)+(b)-(H)$) -- (b);
-		\fill[bleu] (M) circle (1.5pt) node[left] {$M$};
-		\fill[bleu] (M') circle (1.5pt) node[right] {$M'$};
-	\end{tikzpicture}
-\end{center}
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (P) at (-0.4,-1.2);
+			\coordinate (Q) at (2,2.4);
+			\coordinate (M) at (-1.8,1);
+			\coordinate (H) at ($(P)!(M)!(Q)$);
+			\coordinate (M') at ($(M)!2!(H)$);
+			\draw[gris, thick] (P) -- (Q) node[above] {$(d)$};
+			\draw[bleu, dashed] (M) -- (M');
+			\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (M) -- (H);
+			\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (H) -- (M');
+			\coordinate (a) at ($(H)!0.3cm!(Q)$);
+			\coordinate (b) at ($(H)!0.3cm!(M)$);
+			\draw[vert] (a) -- ($(a)+(b)-(H)$) -- (b);
+			\coordinate (A) at ($(M) + (-0.3,-0.9)$);
+			\coordinate (B) at ($(M) + (0.3,-0.9)$);
+			\coordinate (C) at ($(M) + (0.3,-0.4)$);
+			\coordinate (D) at ($(M) + (-0.3,-0.4)$);
+			\coordinate (T) at ($(M) + (0,0.0)$);
+			\draw[orange, thick, fill=orange!20] (A) -- (B) -- (C) -- (D) -- cycle;
+			\draw[rouge, thick, fill=rouge!30] (D) -- (C) -- (T) -- cycle;
+			\coordinate (A') at ($(A)!2!($(P)!(A)!(Q)$)$);
+			\coordinate (B') at ($(B)!2!($(P)!(B)!(Q)$)$);
+			\coordinate (C') at ($(C)!2!($(P)!(C)!(Q)$)$);
+			\coordinate (D') at ($(D)!2!($(P)!(D)!(Q)$)$);
+			\coordinate (T') at ($(T)!2!($(P)!(T)!(Q)$)$);
+			\draw[orange, thick, fill=orange!20] (A') -- (B') -- (C') -- (D') -- cycle;
+			\draw[rouge, thick, fill=rouge!30] (D') -- (C') -- (T') -- cycle;
+			\fill[bleu] (M) circle (1.5pt) node[left=2pt] {$M$};
+			\fill[bleu] (M') circle (1.5pt) node[right=2pt] {$M'$};
+		\end{tikzpicture}
+	\end{center}
+\end{defin}
 
 \begin{rem}
 	\nline
@@ -190,11 +204,43 @@
 		\coordinate (O) at (0,0);
 		\coordinate (M) at (-2.4,-1.2);
 		\coordinate (M') at ($(M)!2!(O)$);
+
+		% --- Traits de construction de la symétrie centrale ---
 		\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (M) -- (O);
 		\draw[bleu, thick, postaction={decorate}, decoration={markings, mark=at position 0.5 with {\draw (-1.5pt,-3pt) -- (1.5pt,3pt);}}] (O) -- (M');
+
+		% ==========================================
+		% MAISON ORIGINALE (avec M au sommet du toit)
+		% ==========================================
+		\coordinate (T) at (M);                                  % Sommet du toit = M
+		\coordinate (D) at ($(M) + (-0.3,-0.4)$);                % Haut-gauche du mur
+		\coordinate (C) at ($(M) + (0.3,-0.4)$);                 % Haut-droite du mur
+		\coordinate (A) at ($(M) + (-0.3,-0.9)$);                % Bas-gauche
+		\coordinate (B) at ($(M) + (0.3,-0.9)$);                 % Bas-droite
+
+		% Tracé de la maison originale
+		\draw[orange, thick, fill=orange!20] (A) -- (B) -- (C) -- (D) -- cycle; % Corps
+		\draw[rouge, thick, fill=rouge!30] (D) -- (C) -- (T) -- cycle;          % Toit
+
+		% ==========================================
+		% MAISON SYMÉTRIQUE (avec M' au sommet du toit)
+		% Pour la symétrie centrale de centre O, le symétrique X' d'un point X 
+		% vérifie : X' = $(X)!2!(O)$
+		% ==========================================
+		\coordinate (T') at (M');                                % Sommet du toit = M'
+		\coordinate (D') at ($(D)!2!(O)$);
+		\coordinate (C') at ($(C)!2!(O)$);
+		\coordinate (A') at ($(A)!2!(O)$);
+		\coordinate (B') at ($(B)!2!(O)$);
+
+		% Tracé de la maison symétrique (demi-tour exact)
+		\draw[orange, thick, fill=orange!20] (A') -- (B') -- (C') -- (D') -- cycle;
+		\draw[rouge, thick, fill=rouge!30] (D') -- (C') -- (T') -- cycle;
+
+		% --- Repères des points O, M et M' ---
 		\fill (O) circle (1.5pt) node[above left] {$O$};
-		\fill[bleu] (M) circle (1.5pt) node[below] {$M$};
-		\fill[bleu] (M') circle (1.5pt) node[above] {$M'$};
+		\fill[bleu] (M) circle (1.5pt) node[above left] {$M$};
+		\fill[bleu] (M') circle (1.5pt) node[below right] {$M'$};
 	\end{tikzpicture}
 \end{center}
 
@@ -222,8 +268,22 @@
 		\coordinate (M') at ($(M)+(B)-(A)$);
 		\draw[gris, dashed] (B) -- (M');
 		\draw[gris, dashed] (A) -- (M);
-		\draw[->, rouge, thick] (A) -- (B);
+		\draw[->, rouge, thick] (A) -- (B) node[midway, below] {$\vec{u}$};
 		\draw[->, bleu, thick] (M) -- (M');
+		\coordinate (T) at (M);
+		\coordinate (D) at ($(M) + (-0.3,-0.4)$);
+		\coordinate (C) at ($(M) + (0.3,-0.4)$);
+		\coordinate (AI) at ($(M) + (-0.3,-0.9)$);
+		\coordinate (BI) at ($(M) + (0.3,-0.9)$);
+		\draw[orange, thick, fill=orange!20,opacity=0.8] (AI) -- (BI) -- (C) -- (D) -- cycle;
+		\draw[rouge, thick, fill=rouge!30,opacity=0.8] (D) -- (C) -- (T) -- cycle;
+		\coordinate (T') at (M');
+		\coordinate (D') at ($(D)+(B)-(A)$);
+		\coordinate (C') at ($(C)+(B)-(A)$);
+		\coordinate (AI') at ($(AI)+(B)-(A)$);
+		\coordinate (BI') at ($(BI)+(B)-(A)$);
+		\draw[orange, thick, fill=orange!20,opacity=0.8] (AI') -- (BI') -- (C') -- (D') -- cycle;
+		\draw[rouge, thick, fill=rouge!30,opacity=0.8] (D') -- (C') -- (T') -- cycle;
 		\fill[rouge] (A) circle (1.5pt) node[below left] {$A$};
 		\fill[rouge] (B) circle (1.5pt) node[below right] {$B$};
 		\fill[bleu] (M) circle (1.5pt) node[above left] {$M$};
@@ -259,9 +319,17 @@
 			\draw[vert, ->] (200:0.7) arc[start angle=200, end angle=260, radius=0.7];
 			\node[vert] at (230:1.1) {$60^\circ$};
 			\draw[gris, dashed, ->] (M) arc[start angle=200, end angle=260, radius=2.4];
+			\begin{scope}[shift={(M)}]
+				\draw[orange, thick, fill=orange!20] (-0.3,-0.9) -- (0.3,-0.9) -- (0.3,-0.4) -- (-0.3,-0.4) -- cycle;
+				\draw[rouge, thick, fill=rouge!30] (-0.3,-0.4) -- (0.3,-0.4) -- (0,0) -- cycle;
+			\end{scope}
+			\begin{scope}[shift={(M')}, rotate=60]
+				\draw[orange, thick, fill=orange!20] (-0.3,-0.9) -- (0.3,-0.9) -- (0.3,-0.4) -- (-0.3,-0.4) -- cycle;
+				\draw[rouge, thick, fill=rouge!30] (-0.3,-0.4) -- (0.3,-0.4) -- (0,0) -- cycle;
+			\end{scope}
 			\fill (O) circle (1.5pt) node[above right] {$O$};
-			\fill[bleu] (M) circle (1.5pt) node[left] {$M$};
-			\fill[bleu] (M') circle (1.5pt) node[below] {$M'$};
+			\fill[bleu] (M) circle (1.5pt) node[above] {$M$};
+			\fill[bleu] (M') circle (1.5pt) node[below left] {$M'$};
 		\end{tikzpicture}
 	\end{center}
 \end{ex}
@@ -345,9 +413,78 @@
 
 \subsection{Formules d'aire}
 
-\begin{prop}
-	Notons $\mathcal{A}$ l'aire d'une figure.
+\begin{prop}[Aires de figures]
+\nline
+	\begin{center}
+		\begin{tikzpicture}[every node/.style={font=\small}]
+			\tikzset{forme/.style={draw=bleu, thick, fill=bleu!10}}
+			\tikzset{nomf/.style={font=\small, gris}}
+			% Rectangle
+			\begin{scope}
+				\draw[forme] (0,0) rectangle (3,1.8);
+				\node[below] at (1.5,0) {$L$};
+				\node[left] at (0,0.9) {$l$};
+				\node[nomf] at (1.5,-0.9) {Rectangle};
+			\end{scope}
+			% Carré
+			\begin{scope}[shift={(4.4,0)}]
+				\draw[forme] (0,0) rectangle (1.8,1.8);
+				\node[below] at (0.9,0) {$c$};
+				\node[left] at (0,0.9) {$c$};
+				\node[nomf] at (0.9,-0.9) {Carré};
+			\end{scope}
+			% Losange
+			\begin{scope}[shift={(7.6,0)}]
+				\draw[gris, dashed] (0,0) rectangle (2.8,1.8);
+				\draw[forme] (0,0.9) -- (1.4,1.8) -- (2.8,0.9) -- (1.4,0) -- cycle;
+				\draw[dashed, bleu] (0,0.9) -- (2.8,0.9);
+				\draw[dashed, bleu] (1.4,0) -- (1.4,1.8);
+				\node[below] at (1.4,0) {$D$};
+				\node[right] at (2.8,0.9) {$d$};
+				\node[nomf] at (1.4,-0.9) {Losange};
+			\end{scope}
+			% Disque
+			\begin{scope}[shift={(12.4,0.9)}]
+				\draw[forme] (0,0) circle (0.9);
+				\draw[bleu] (0,0) -- (0.9,0);
+				\fill[bleu] (0,0) circle (1pt);
+				\node[above] at (0.45,0) {$r$};
+				\node[nomf] at (0,-1.8) {Disque};
+			\end{scope}
+			% Parallélogramme
+			\begin{scope}[shift={(0,-4.4)}]
+				\draw[forme] (0,0) -- (2.8,0) -- (3.6,1.8) -- (0.8,1.8) -- cycle;
+				\draw[bleu, dashed] (0.8,1.8) -- (0.8,0);
+				\draw[bleu] (1,0) -- (1,0.2) -- (0.8,0.2);
+				\node[below] at (1.4,0) {$b$};
+				\node[right] at (0.8,0.9) {$h$};
+				\node[nomf] at (1.8,-0.9) {Parallélogramme};
+			\end{scope}
+			% Triangle
+			\begin{scope}[shift={(5.2,-4.4)}]
+				\draw[forme] (0,0) -- (3,0) -- (1,1.9) -- cycle;
+				\draw[bleu, dashed] (1,1.9) -- (1,0);
+				\draw[bleu] (1.2,0) -- (1.2,0.2) -- (1,0.2);
+				\node[below] at (1.5,0) {$b$};
+				\node[right] at (1,0.95) {$h$};
+				\node[nomf] at (1.5,-0.9) {Triangle};
+			\end{scope}
+			% Trapèze
+			\begin{scope}[shift={(9.8,-4.4)}]
+				\draw[forme] (0,0) -- (3,0) -- (2,1.8) -- (0.4,1.8) -- cycle;
+				% \draw[bleu, dashed] (0,0) -- (2,1.8);
+				\draw[bleu, dashed] (0.4,1.8) -- (0.4,0);
+				\draw[bleu] (0.6,0) -- (0.6,0.2) -- (0.4,0.2);
+				\node[below] at (1.5,0) {$B$};
+				\node[above] at (1.2,1.8) {$b$};
+				\node[right] at (0.4,0.9) {$h$};
+				\node[nomf] at (1.5,-0.9) {Trapèze};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
 
+	Notons $\mathcal{A}$ l'aire d'une figure.
+	
 	\begin{itemize}
 		\item \textbf{Rectangle} de longueur $L$ et de largeur $l$ : $\mathcal{A} = L \times l$.
 		\item \textbf{Carré} de côté $c$ : $\mathcal{A} = c \times c = c^2$.
@@ -358,77 +495,9 @@
 		      \[
 			      \mathcal{A} = \dfrac{B \times h}{2} + \dfrac{b \times h}{2} = \dfrac{\pa{B + b} \times h}{2}
 		      \]
-		\item \textbf{Disque} de rayon $r$ : $\mathcal{A} = \pi r^2$ (la circonférence du cercle est $2\pi r$).
+		\item \textbf{Disque} de rayon $r$ : $\mathcal{A} = \pi r^2$.
 	\end{itemize}
 \end{prop}
-
-\begin{center}
-	\begin{tikzpicture}[every node/.style={font=\small}]
-		\tikzset{forme/.style={draw=bleu, thick, fill=bleu!10}}
-		\tikzset{nomf/.style={font=\footnotesize, gris}}
-		% Rectangle
-		\begin{scope}
-			\draw[forme] (0,0) rectangle (3,1.8);
-			\node[below] at (1.5,0) {$L$};
-			\node[left] at (0,0.9) {$l$};
-			\node[nomf] at (1.5,-0.9) {Rectangle};
-		\end{scope}
-		% Carré
-		\begin{scope}[shift={(4.4,0)}]
-			\draw[forme] (0,0) rectangle (1.8,1.8);
-			\node[below] at (0.9,0) {$c$};
-			\node[left] at (0,0.9) {$c$};
-			\node[nomf] at (0.9,-0.9) {Carré};
-		\end{scope}
-		% Losange
-		\begin{scope}[shift={(7.6,0)}]
-			\draw[gris, dashed] (0,0) rectangle (2.8,1.8);
-			\draw[forme] (0,0.9) -- (1.4,1.8) -- (2.8,0.9) -- (1.4,0) -- cycle;
-			\draw[bleu] (0,0.9) -- (2.8,0.9);
-			\draw[bleu] (1.4,0) -- (1.4,1.8);
-			\node[below] at (1.4,0) {$D$};
-			\node[right] at (2.8,0.9) {$d$};
-			\node[nomf] at (1.4,-0.9) {Losange};
-		\end{scope}
-		% Disque
-		\begin{scope}[shift={(12.4,0.9)}]
-			\draw[forme] (0,0) circle (0.9);
-			\draw[bleu] (0,0) -- (0.9,0);
-			\fill[bleu] (0,0) circle (1pt);
-			\node[above] at (0.45,0) {$r$};
-			\node[nomf] at (0,-1.8) {Disque};
-		\end{scope}
-		% Parallélogramme
-		\begin{scope}[shift={(0,-4.4)}]
-			\draw[forme] (0,0) -- (2.8,0) -- (3.6,1.8) -- (0.8,1.8) -- cycle;
-			\draw[bleu, dashed] (0.8,1.8) -- (0.8,0);
-			\draw[bleu] (1,0) -- (1,0.2) -- (0.8,0.2);
-			\node[below] at (1.4,0) {$b$};
-			\node[right] at (0.8,0.9) {$h$};
-			\node[nomf] at (1.8,-0.9) {Parallélogramme};
-		\end{scope}
-		% Triangle
-		\begin{scope}[shift={(5.2,-4.4)}]
-			\draw[forme] (0,0) -- (3,0) -- (1,1.9) -- cycle;
-			\draw[bleu, dashed] (1,1.9) -- (1,0);
-			\draw[bleu] (1.2,0) -- (1.2,0.2) -- (1,0.2);
-			\node[below] at (1.5,0) {$b$};
-			\node[right] at (1,0.95) {$h$};
-			\node[nomf] at (1.5,-0.9) {Triangle};
-		\end{scope}
-		% Trapèze
-		\begin{scope}[shift={(9.8,-4.4)}]
-			\draw[forme] (0,0) -- (3,0) -- (2,1.8) -- (0.4,1.8) -- cycle;
-			\draw[bleu, dashed] (0,0) -- (2,1.8);
-			\draw[bleu, dashed] (0.4,1.8) -- (0.4,0);
-			\draw[bleu] (0.6,0) -- (0.6,0.2) -- (0.4,0.2);
-			\node[below] at (1.5,0) {$B$};
-			\node[above] at (1.2,1.8) {$b$};
-			\node[left] at (0.4,0.9) {$h$};
-			\node[nomf] at (1.5,-0.9) {Trapèze};
-		\end{scope}
-	\end{tikzpicture}
-\end{center}
 
 \begin{rem}
 	Ces formules se déduisent les unes des autres :
