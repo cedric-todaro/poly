@@ -13,21 +13,69 @@
 
 \begin{center}
 	\begin{tikzpicture}
-		\foreach \nn/\aa/\xx/\rl/\nom in {3/120/0/0.5/{Triangle équilatéral}, 4/90/2.8/0.7/{Carré}, 5/72/5.6/0.8/{Pentagone régulier}, 6/60/8.4/0.85/{Hexagone régulier}, 8/45/11.2/0.9/{Octogone régulier}} {
-		\begin{scope}[shift={(\xx,0)}]
-			\foreach \k in {1,...,\nn} {
-				\draw[bleu, thick] ({90+360*(\k-1)/\nn}:1.2) -- ({90+360*\k/\nn}:1.2);
-			}
-			\node[rouge, fill=white] at ({90+180/\nn}:\rl) {\ang{\aa}};
-				\foreach \k in {1,...,\nn} {
-					\draw[gris!50] (0,0) -- ({90+360*\k/\nn}:1.2);
+		% --- Triangle équilatéral (nn = 3, aa = 120, xx = 0) ---
+		\begin{scope}[shift={(0,0)}]
+			\foreach \k in {1,...,3} {
+					\draw[bleu, thick] ({90+360*(\k-1)/3}:1.2) -- ({90+360*\k/3}:1.2);
 				}
-			\draw[rouge, thick] (90:0.25) arc[start angle=90, end angle={90+360/\nn}, radius=0.25];
-			\node[fill=white, inner sep=0.5pt, font=\scriptsize] at (0,0) {$O$};
-			\node[anchor=north, font=\footnotesize, text width=2.5cm, align=center] at (0,-1.35) {\nom};
+			\node[rouge, fill=white] at ({90+180/3}:0.6) {$\ang{120}$};
+			\foreach \k in {1,...,3} {
+					\draw[gris!50] (0,0) -- ({90+360*\k/3}:1.2);
+				}
+			\draw[rouge, thick] (90:0.25) arc[start angle=90, end angle={90+360/3}, radius=0.25];
+			\node[anchor=north, font=\small, text width=2.5cm, align=center] at (0,-1.35) {Triangle équilatéral};
 			\draw[gris] (0,0) circle (1.2);
 		\end{scope}
-		}
+
+		% --- Carré (nn = 4, aa = 90, xx = 2.8) ---
+		\begin{scope}[shift={(2.8,0)}]
+			\foreach \k in {1,...,4} {
+					\draw[bleu, thick] ({90+360*(\k-1)/4}:1.2) -- ({90+360*\k/4}:1.2);
+				}
+			\node[rouge, fill=white] at ({90+180/4}:0.6) {$\ang{90}$};
+			\foreach \k in {1,...,4} {
+					\draw[gris!50] (0,0) -- ({90+360*\k/4}:1.2);
+				}
+			\draw[rouge, thick] (90:0.25) arc[start angle=90, end angle={90+360/4}, radius=0.25];
+			\node[anchor=north, font=\small, text width=2.5cm, align=center] at (0,-1.35) {Carré};
+			\draw[gris] (0,0) circle (1.2);
+		\end{scope}
+
+		% --- Pentagone régulier (nn = 5, aa = 72, xx = 5.6) ---
+		\begin{scope}[shift={(5.6,0)}]
+			\node[rouge, fill=white] at ({90+180/5}:0.6) {$\ang{72}$};
+			\foreach \k in {1,...,5} {
+					\draw[bleu, thick] ({90+360*(\k-1)/5}:1.2) -- ({90+360*\k/5}:1.2);
+					\draw[gris!50] (0,0) -- ({90+360*\k/5}:1.2);
+				}
+			\draw[rouge, thick] (90:0.25) arc[start angle=90, end angle={90+360/5}, radius=0.25];
+			\node[anchor=north, font=\small, text width=2.5cm, align=center] at (0,-1.35) {Pentagone régulier};
+			\draw[gris] (0,0) circle (1.2);
+		\end{scope}
+
+		% --- Hexagone régulier (nn = 6, aa = 60, xx = 8.4) ---
+		\begin{scope}[shift={(8.4,0)}]
+			\node[rouge, fill=white] at ({90+180/6}:0.7) {$\ang{60}$};
+			\foreach \k in {1,...,6} {
+					\draw[bleu, thick] ({90+360*(\k-1)/6}:1.2) -- ({90+360*\k/6}:1.2);
+					\draw[gris!50] (0,0) -- ({90+360*\k/6}:1.2);
+				}
+			\draw[rouge, thick] (90:0.25) arc[start angle=90, end angle={90+360/6}, radius=0.25];
+			\node[anchor=north, font=\small, text width=2.5cm, align=center] at (0,-1.35) {Hexagone régulier};
+			\draw[gris] (0,0) circle (1.2);
+		\end{scope}
+
+		% --- Octogone régulier (nn = 8, aa = 45, xx = 11.2) ---
+		\begin{scope}[shift={(11.2,0)}]
+			\node[rouge, fill=white] at ({90+180/8}:0.75) {$\ang{45}$};
+			\foreach \k in {1,...,8} {
+					\draw[bleu, thick] ({90+360*(\k-1)/8}:1.2) -- ({90+360*\k/8}:1.2);
+					\draw[gris!50] (0,0) -- ({90+360*\k/8}:1.2);
+				}
+			\draw[rouge, thick] (90:0.25) arc[start angle=90, end angle={90+360/8}, radius=0.25];
+			\node[anchor=north, font=\small, text width=2.5cm, align=center] at (0,-1.35) {Octogone régulier};
+			\draw[gris] (0,0) circle (1.2);
+		\end{scope}
 	\end{tikzpicture}
 \end{center}
 
@@ -48,10 +96,37 @@
 		\rnc{\arraystretch}{1.5}
 		\small
 		\begin{tabular}{|c|c|c|c|c|c|} \hline
-			\ccg \textbf{Polygone régulier}   & Triangle équilatéral             & Carré                           & Pentagone                       & Hexagone                        & Octogone                        \\ \hline
-			\ccg \textbf{Nombre de côtés} $n$ & $3$                              & $4$                             & $5$                             & $6$                             & $8$                             \\ \hline
-			\ccg\rule[-4mm]{0mm}{11mm} \textbf{Angle au centre}     & $\dfrac{360^\circ}{3}=120^\circ$ & $\dfrac{360^\circ}{4}=90^\circ$ & $\dfrac{360^\circ}{5}=72^\circ$ & $\dfrac{360^\circ}{6}=60^\circ$ & $\dfrac{360^\circ}{8}=45^\circ$ \\ \hline
+			\ccg \textbf{Polygone régulier}                     & Triangle équilatéral             & Carré                           & Pentagone                       & Hexagone                        & Octogone                        \\ \hline
+			\ccg \textbf{Nombre de côtés} $n$                   & $3$                              & $4$                             & $5$                             & $6$                             & $8$                             \\ \hline
+			\ccg\rule[-4mm]{0mm}{11mm} \textbf{Angle au centre} & $\dfrac{360^\circ}{3}=120^\circ$ & $\dfrac{360^\circ}{4}=90^\circ$ & $\dfrac{360^\circ}{5}=72^\circ$ & $\dfrac{360^\circ}{6}=60^\circ$ & $\dfrac{360^\circ}{8}=45^\circ$ \\ \hline
 		\end{tabular}
+	\end{center}
+\end{ex}
+
+\begin{rem}
+	Parmi tous les polygones réguliers, seuls trois permettent de paver le plan à eux seuls :
+	\begin{itemize}
+		\item le \textbf{triangle équilatéral},
+		\item le \textbf{carré},
+		\item l'\textbf{hexagone régulier}.
+	\end{itemize}
+\end{rem}
+
+\begin{ex}[Pavage à l'aide d'hexagones]
+	\nline
+	\begin{center}
+		\begin{tikzpicture}[scale=0.75]
+			\foreach \i in {-4,...,4} {
+					\foreach \j in {-1,...,1} {
+							\pgfmathsetmacro{\x}{\i * 1.5}
+							\pgfmathsetmacro{\y}{\j * 1.73205 + mod(abs(\i),2) * 0.866025}
+							\begin{scope}[shift={(\x,\y)}]
+								\draw[thick, bleu, fill=bleu!10] (0:1)
+								\foreach \a in {60,120,...,300} { -- (\a:1) } -- cycle;
+							\end{scope}
+						}
+				}
+		\end{tikzpicture}
 	\end{center}
 \end{ex}
 
