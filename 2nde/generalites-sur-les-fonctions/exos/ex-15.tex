@@ -1,0 +1,36 @@
+\begin{exo}{}
+	On considère ici un triangle équilatéral $ABC$ de côté $2$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=1.0, >=Stealth]
+			\coordinate (B) at (0,0);
+			\coordinate (C) at (3,0);
+			\coordinate (A) at (1.5,2.598); % 3 * sqrt(3)/2
+			\coordinate (D) at ($(B)!0.5!(A)$);
+			\coordinate (E) at ($(C)!0.5!(A)$);
+			\fill[yellow!20] (A) -- (D) -- (E) -- cycle;
+			\draw[very thick] (B) -- (C) -- (A) -- cycle;
+			\draw[very thick] (D) -- (E);
+			\node[below left] at (B) {$B$};
+			\node[below right] at (C) {$C$};
+			\node[above] at (A) {$A$};
+			\node[left] at (D) {$D$};
+			\node[right] at (E) {$E$};
+			\node at (1.5, 1.7) {\small $S(x)$};
+		\end{tikzpicture}
+	\end{center}
+
+	Le triangle $ADE$ est tel que $D \in [AB]$, $E \in [AC]$ et $(DE) \parallel (BC)$.
+
+	Son aire $S(x)$ dépend d'une grandeur $x$.
+
+	\begin{enumerate}
+		\item Trouver l'ensemble de définition de l'aire $S(x)$ du triangle $ADE$ lorsque $x$ désigne :
+		      \begin{enumerate}
+			      \item la longueur $AD$ ;
+			      \item la longueur $AH$, où $H$ est le milieu de $[DE]$ ;
+			      \item l'angle $\widehat{CBE}$.
+		      \end{enumerate}
+		\item La longueur $BE$ conviendrait-elle comme variable ?
+	\end{enumerate}
+\end{exo}

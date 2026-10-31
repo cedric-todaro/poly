@@ -1,0 +1,39 @@
+\begin{exo}{}
+	On considère les vecteurs suivants :
+	\vspace*{2mm}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.5, >=Stealth, font=\footnotesize]
+			\draw[gray!30, thin, step=1] (-0.5,-0.5) grid (7.5,6.5);
+			\draw[->, very thick] (1,1) -- (2,3) node[midway, above, sloped] {$\vec{u}$};
+			\draw[->, very thick] (3,5) -- (7,5) node[midway, above, sloped] {$\vec{v}$};
+			\draw[->, very thick] (5,0) -- (3,1) node[midway, above, sloped] {$\vec{w}$};
+			\draw[dashed, gray] (8,-0.5) -- (8,6.5);
+			\begin{scope}[shift={(8,0)}]
+				\draw[->, very thick] (1,1) -- (2,3) node[midway, above, sloped] {$\vec{u_1}$};
+				\draw[->, very thick] (3,5) -- (7,5) node[midway, above, sloped] {$\vec{v_1}$};
+				\draw[->, very thick] (5,0) -- (3,1) node[midway, above, sloped] {$\vec{w_1}$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Reproduire le quadrillage (figure de gauche) et tracer les sommes des vecteurs définies par :
+		      \vspace*{-2mm}
+		      \begin{multicols}{2}
+		      \begin{enumerate}
+			      \item $\vec{a} = \vec{u} + \vec{v}$
+			      \item $\vec{b} = \vec{u} + \vec{w}$
+			      \item $\vec{c} = \vec{v} + \vec{w}$
+		      \end{enumerate}
+		      \end{multicols}
+		\item Reproduire la figure de droite et, à l'aide des instruments usuels, tracer les sommes des vecteurs définies par :
+		      \vspace*{-2mm}
+		      \begin{multicols}{2}
+		      \begin{enumerate}
+			      \item $\vec{a_1} = \vec{u_1} + \vec{v_1}$
+			      \item $\vec{b_1} = \vec{u_1} + \vec{w_1}$
+			      \item $\vec{c_1} = \vec{v_1} + \vec{w_1}$
+		      \end{enumerate}
+		      \end{multicols}
+	\end{enumerate}
+\end{exo}

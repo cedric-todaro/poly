@@ -1,0 +1,94 @@
+\begin{exo}{}
+	On considère la figure suivante composée de triangles équilatéraux.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.9, >=Stealth, font=\scriptsize]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (0.5, 0.866);
+			\coordinate (C) at (1, 1.732);
+			\coordinate (D) at (1.5, 2.598);
+			\coordinate (E) at (2, 3.464);
+			\coordinate (F) at (2.5, 2.598);
+			\coordinate (G) at (3, 1.732);
+			\coordinate (H) at (3.5, 0.866);
+			\coordinate (I) at (4,0);
+			\coordinate (J) at (3,0);
+			\coordinate (K) at (2,0);
+			\coordinate (L) at (1,0);
+			\coordinate (M) at (1.5, 0.866);
+			\coordinate (N) at (2, 1.732);
+			\coordinate (O) at (2.5, 0.866);
+			\fill[cyan!40] (A) -- (L) -- (B) -- cycle;
+			\fill[cyan!40] (B) -- (M) -- (C) -- cycle;
+			\fill[cyan!40] (C) -- (N) -- (D) -- cycle;
+			\fill[cyan!40] (D) -- (F) -- (E) -- cycle;
+			\fill[cyan!40] (J) -- (I) -- (H) -- cycle;
+			\fill[cyan!40] (K) -- (J) -- (O) -- cycle;
+			\fill[cyan!40] (L) -- (K) -- (M) -- cycle;
+			\fill[cyan!40] (M) -- (O) -- (N) -- cycle;
+			\fill[cyan!40] (N) -- (G) -- (F) -- cycle;
+			\fill[cyan!40] (O) -- (H) -- (G) -- cycle;
+			\draw (A) node[below left] {$A$};
+			\draw (B) node[left] {$B$};
+			\draw (C) node[left] {$C$};
+			\draw (D) node[left] {$D$};
+			\draw (E) node[above] {$E$};
+			\draw (F) node[right] {$F$};
+			\draw (G) node[right] {$G$};
+			\draw (H) node[right] {$H$};
+			\draw (I) node[below right] {$I$};
+			\draw (J) node[below] {$J$};
+			\draw (K) node[below] {$K$};
+			\draw (L) node[below] {$L$};
+			\draw (M) node[above right=-2pt] {$M$};
+			\draw (N) node[above right=-2pt] {$N$};
+			\draw (O) node[above right=-2pt] {$O$};
+			\draw[thin, black] (A) -- (I) -- (E) -- cycle;
+			\draw[thin, black] (B) -- (H);
+			\draw[thin, black] (B) -- (L);
+			\draw[thin, black] (C) -- (G);
+			\draw[thin, black] (C) -- (K);
+			\draw[thin, black] (D) -- (F);
+			\draw[thin, black] (D) -- (J);
+			\draw[thin, black] (J) -- (H);
+			\draw[thin, black] (K) -- (G);
+			\draw[thin, black] (L) -- (F);
+			\draw (A) node {$\bullet$};
+			\draw (B) node {$\bullet$};
+			\draw (C) node {$\bullet$};
+			\draw (D) node {$\bullet$};
+			\draw (E) node {$\bullet$};
+			\draw (F) node {$\bullet$};
+			\draw (G) node {$\bullet$};
+			\draw (H) node {$\bullet$};
+			\draw (I) node {$\bullet$};
+			\draw (J) node {$\bullet$};
+			\draw (K) node {$\bullet$};
+			\draw (L) node {$\bullet$};
+			\draw (M) node {$\bullet$};
+			\draw (N) node {$\bullet$};
+			\draw (O) node {$\bullet$};
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Écrire trois égalités traduisant la relation de Chasles.
+		\item Écrire trois égalités traduisant la propriété du parallélogramme.
+		\item Réduire les sommes suivantes en transformant l'égalité si nécessaire.
+		      \vspace*{-2mm}
+		      \begin{multicols}{2}
+		      \begin{enumerate}
+			      \item $\vec{AC} + \vec{AK}$
+			      \item $\vec{GC} + \vec{CK}$
+			      \item $\vec{CE} + \vec{GI}$
+			      \item $\vec{HM} + \vec{KI}$
+			      \item $\vec{DO} + \vec{LF}$
+			      \item $\vec{FO} + \vec{MN}$
+			      \item $\vec{BN} + \vec{CK}$
+			      \item $\vec{FC} + \vec{HK}$
+			      \item $\vec{AB} + \vec{MN} + \vec{OJ}$
+			      \item $\vec{MC} + \vec{KJ} + \vec{ED}$
+		      \end{enumerate}
+		      \end{multicols}
+	\end{enumerate}
+\end{exo}

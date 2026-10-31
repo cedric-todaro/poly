@@ -1,0 +1,51 @@
+\begin{exo}{}
+	Soit $ABCD$ un rectangle de centre $O$ dont la longueur est le double de la largeur. On note $R$ le milieu du segment $[AB]$, $P$ le milieu du segment $[OC]$ et $Q$ un point du segment $[BC]$ tel que $BQ = \dfrac{1}{4}BC$.
+
+	L'objectif de l'exercice est de déterminer l'aire du quadrilatère $OPQR$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=1.3, >=Stealth]
+			\draw[-] (-0.5,0) -- (4.5,0);
+			\draw[-] (0,-0.3) -- (0,2.3);
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (4,0);
+			\coordinate (C) at (4,2);
+			\coordinate (D) at (0,2);
+			\coordinate (O) at (2,1);
+			\coordinate (R) at (2,0);
+			\coordinate (P) at (3,1.5);
+			\coordinate (Q) at (4,0.5);
+			\draw[thick] (A) node {$\bullet$} -- (B) node {$\bullet$} -- (C) node {$\bullet$} -- (D) node {$\bullet$} -- cycle;
+			\draw[thick] (A) -- (C);
+			\draw[thick] (O) -- (R);
+			\node[below left] at (A) {$A$};
+			\node[below right] at (B) {$B$};
+			\node[above right] at (C) {$C$};
+			\node[above left] at (D) {$D$};
+			\node[above] at (O) {$O$};
+			\node[below, orange!80!black] at (R) {$R$};
+			\node[above] at (P) {$P$};
+			\node[right, orange!80!black] at (Q) {$Q$};
+			\fill[cyan!20, opacity=0.6] (O) node {$\bullet$} -- (P) node {$\bullet$} -- (Q) node {$\bullet$} -- (R) node {$\bullet$} -- cycle;
+			\draw[thick, cyan!80!black] (O) node {$\bullet$} -- (P) node {$\bullet$} -- (Q) node {$\bullet$} -- (R) node {$\bullet$} -- cycle;
+			\draw[thick, ->] (A) -- (R);
+			\draw[thick, ->] (A) -- (D);
+		\end{tikzpicture}
+	\end{center}
+
+	On considère le repère $\pa{A\;; \vec{AR}\;; \vec{AD}}$.
+
+	\begin{enumerate}
+		\item Expliquer pourquoi le repère $\pa{A\;; \vec{AR}\;; \vec{AD}}$ est un repère orthonormé du plan.
+		\item Donner, sans justification, les coordonnées des points $A$, $B$, $C$, $R$ et $Q$.
+		\item Calculer $AB$ et $CB$. En déduire l'aire du triangle $ABC$.
+		\item Calculer $BR$ et $BQ$. En déduire l'aire du triangle $BQR$.
+		\item Calculer les coordonnées des points $O$ et $P$.
+		\item Calculer l'aire du triangle $ARO$.
+		\item On note $H$ le projeté orthogonal de $P$ sur $(BC)$. On admet que $H$ a pour coordonnées $\coordl{2}{\dfrac{3}{4}}$.
+		      \begin{enumerate}
+			      \item Calculer $HP$ et en déduire l'aire du triangle $CQP$.
+			      \item En déduire l'aire du quadrilatère $OPQR$.
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

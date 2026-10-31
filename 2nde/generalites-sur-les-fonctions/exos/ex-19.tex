@@ -1,0 +1,51 @@
+\begin{exo}{}
+	Dans chaque cas, on a représenté dans un repère orthonormé une fonction $f$ définie sur $\R$.
+	\begin{center}
+		\begin{tabular}{ll}
+			\textbf{a.} & \textbf{b.} \\
+			\begin{tikzpicture}[scale=0.7, >=Stealth,font=\small]
+				\def\xmin{-2.5}\def\xmax{2.5}\def\ymin{-1.5}\def\ymax{2.5} \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+				\draw[gray!40, thin, step=0.5] (\xmin,\ymin) grid (\xmax,\ymax); \draw[gray!60, thick, step=1] (\xmin,\ymin) grid (\xmax,\ymax);
+				\node[fill=white, below left] at (0,0) {$0$}; \node[fill=white,below] at (1,0) {$1$}; \node[fill=white,left] at (0,1) {$1$};
+				\foreach \x in {-2,...,2} {\draw[thick] (\x,-0.1) -- (\x,0.1);} \foreach \y in {-1,...,2} {\draw[thick] (-0.1,\y) -- (0.1,\y);}
+				\draw[thick] (\xmin, 0) -- (\xmax, 0);\draw[thick] (0, \ymin) -- (0, \ymax);
+				\draw[domain=\xmin:\xmax, smooth, very thick, purple] plot (\x, {2*\x + 2});
+			\end{tikzpicture}
+			            &
+			\begin{tikzpicture}[scale=0.7, >=Stealth,font=\small]
+				\def\xmin{-2.5}\def\xmax{2.5}\def\ymin{-1.5}\def\ymax{2.5} \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+				\draw[gray!40, thin, step=0.5] (\xmin,\ymin) grid (\xmax,\ymax); \draw[gray!60, thick, step=1] (\xmin,\ymin) grid (\xmax,\ymax);
+				\node[fill=white, below left] at (0,0) {$0$}; \node[fill=white,below] at (1,0) {$1$}; \node[fill=white,left] at (0,1) {$1$};
+				\foreach \x in {-2,...,2} {\draw[thick] (\x,-0.1) -- (\x,0.1);} \foreach \y in {-1,...,2} {\draw[thick] (-0.1,\y) -- (0.1,\y);}
+				\draw[thick] (\xmin, 0) -- (\xmax, 0);\draw[thick] (0, \ymin) -- (0, \ymax);
+				\draw[domain=\xmin:\xmax, smooth, very thick, purple] plot (\x, {-\x^3 + 1});
+			\end{tikzpicture}
+			\\[5mm]
+			\textbf{c.} & \textbf{d.} \\
+			\begin{tikzpicture}[scale=0.7, >=Stealth,font=\small]
+				\def\xmin{-2.5}\def\xmax{2.5}\def\ymin{-1.5}\def\ymax{2.5} \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+				\draw[gray!40, thin, step=0.5] (\xmin,\ymin) grid (\xmax,\ymax); \draw[gray!60, thick, step=1] (\xmin,\ymin) grid (\xmax,\ymax);
+				\node[fill=white, below left] at (0,0) {$0$}; \node[fill=white,below] at (1,0) {$1$}; \node[fill=white,left] at (0,1) {$1$};
+				\foreach \x in {-2,...,2} {\draw[thick] (\x,-0.1) -- (\x,0.1);} \foreach \y in {-1,...,2} {\draw[thick] (-0.1,\y) -- (0.1,\y);}
+				\draw[thick] (\xmin, 0) -- (\xmax, 0);\draw[thick] (0, \ymin) -- (0, \ymax);
+				\draw[domain=\xmin:\xmax, smooth, very thick, purple] plot (\x, {0.5*(\x)^2});
+			\end{tikzpicture}
+			            &
+			\begin{tikzpicture}[scale=0.7, >=Stealth,font=\small]
+				\def\xmin{-2.5}\def\xmax{2.5}\def\ymin{-1.5}\def\ymax{2.5} \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+				\draw[gray!40, thin, step=0.5] (\xmin,\ymin) grid (\xmax,\ymax); \draw[gray!60, thick, step=1] (\xmin,\ymin) grid (\xmax,\ymax);
+				\node[fill=white, below left] at (0,0) {$0$}; \node[fill=white,below] at (1,0) {$1$}; \node[fill=white,left] at (0,1) {$1$};
+				\foreach \x in {-2,...,2} {\draw[thick] (\x,-0.1) -- (\x,0.1);} \foreach \y in {-1,...,2} {\draw[thick] (-0.1,\y) -- (0.1,\y);}
+				\draw[thick] (\xmin, 0) -- (\xmax, 0);\draw[thick] (0, \ymin) -- (0, \ymax);
+				\draw[domain=\xmin:\xmax, smooth, very thick, purple] plot (\x, {0.5*\x^3 - 1.5*\x});
+			\end{tikzpicture}
+		\end{tabular}
+	\end{center}
+
+
+	Pour chacune d'elle :
+	\begin{enumerate}
+		\item Déterminer graphiquement les solutions des équations : \cmath{f(x) = -0,5\ ;\ f(x) = 0\ ,\ f(x) = 1\ \text{et}\ f(x) = 2}
+		\item Déterminer, suivant les valeurs de $k$, le nombre de solutions de l'équation $f(x) = k$ où $k \in \R$.
+	\end{enumerate}
+\end{exo}

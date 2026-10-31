@@ -1,0 +1,53 @@
+\begin{exo}{}
+	On a représenté ci-dessous l'évolution du pourcentage de charge d'une batterie de téléphone mobile en fonction du temps $t$ écoulé à partir de la pleine charge (en heure), suivant s'il est en mode veille (noté ${V}(t)$ en bleu) ou en mode conversation (noté ${C}(t)$ en rouge).
+
+
+	\begin{center}
+		\begin{tikzpicture}[x=2.9mm, y=0.35mm, >=Stealth,font=\small]
+			\def\xmin{0}\def\xmax{24}\def\ymin{0}\def\ymax{100}
+			\draw[gray!40, xstep=1, ystep=10] (0,0) grid (\xmax+1,\ymax);
+			\draw[thick, ->] (-0.5, 0) -- (\xmax+1, 0) node[below] {$t$ (h)};
+			\draw[thick, ->] (0, -5) -- (0, \ymax+5) node[right] {\% de charge};
+			\node[above right, cyan!80!black,fill=white] at (9,55) {$V(t)$};
+			\node[above right, purple,fill=white] at (2.5,30) {$C(t)$};
+			\foreach \x in {0,1,...,24} \draw (\x,2) -- (\x,-2);
+			\foreach \y in {0,10,...,100} \draw (0.2,\y) -- (-0.2,\y);
+			\node[below left] at (0,0) {$0$};
+			\node[below] at (1,0) {$1$};
+			\node[below] at (5,0) {$5$};
+			\node[below] at (10,0) {$10$};
+			\node[below] at (15,0) {$15$};
+			\node[below] at (20,0) {$20$};
+			\node[left] at (0,10) {$10$};
+			\node[left] at (0,50) {$50$};
+			\node[left] at (0,100) {$100$};
+			\draw[domain=0:24, smooth, ultra thick, cyan!80!black] plot (\x, {100 - (100/24)*\x});
+			\draw[domain=0:6, smooth, ultra thick, purple] plot (\x, {100*(1 - \x/6)^1.71});
+			\draw[domain=6:24, smooth, ultra thick, purple] plot (\x, {0});
+		\end{tikzpicture}
+	\end{center}
+	\begin{enumerate}
+		\item Déterminer et interpréter ${V}(0)$ et ${C}(0)$.
+		\item Résoudre puis interpréter ${V}(t) = 0$ puis ${C}(t) = 0$.
+	\end{enumerate}
+
+
+	Voici deux modes du téléphone :
+	\begin{itemize}
+		\item mode économie d'énergie à $50$ \% de batterie
+		\item mode alerte à $20$ \% de batterie
+	\end{itemize}
+	
+	\begin{enumerate}[resume]
+		\item Situer les temps correspondant à ces deux modes en veille puis en conversation.
+	\end{enumerate}
+	
+	Une personne prend son téléphone chargé et discute pendant une heure.
+	
+	\begin{enumerate}[resume]
+			\item Combien lui reste-t-il de temps d'autonomie en mode veille ?
+			\item Cette personne décide de rappeler deux heures plus tard.
+
+			      Combien lui restera-t-il de temps de conversation ?
+	\end{enumerate}
+\end{exo}

@@ -1,0 +1,32 @@
+\begin{exo}{}
+On considère ci-après la courbe représentative d'une fonction $f$ dans un repère orthonormé.
+
+Indiquer si les affirmations suivantes sont vraies et, sinon, donner une formulation exacte.
+
+
+\begin{center}
+	\begin{tikzpicture}[x=6mm, y=6mm, >=Stealth]
+		\def\xmin{-6.5}\def\xmax{6.5}\def\ymin{-1.5}\def\ymax{5.5}
+		\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+		\draw[xstep=1, gray!40, ystep=1] (\xmin, \ymin) grid (\xmax, \ymax);
+		\draw[thick, ->] (\xmin, 0) -- (\xmax, 0);
+		\draw[thick, ->] (0, \ymin) -- (0, \ymax);
+		\foreach \x in {-5,-4,...,4,5} \draw (\x,0.1) -- (\x,-0.1);
+		\foreach \y in {-1,1,2,3,4} \draw (0.1,\y) -- (-0.1,\y);
+		\node[below left,scale=0.8] at (0,0) {$O$};
+		\node[below,scale=0.8] at (1,0) {$I$};
+		\node[left,scale=0.8] at (0,1) {$J$};
+		\draw[domain=-5:5, smooth, ultra thick, vert,samples=100] plot (\x, {sqrt(25 - (\x)*(\x))});
+		\node[vert, left] at (-2,-2.5) {$f$};
+		\foreach \pt in {(-5,0), (5,0), (0,5)} {\filldraw \pt circle (2pt);}
+	\end{tikzpicture}
+\end{center}
+\begin{enumerate}
+	\item L'ensemble de définition de $f$ est $\intff{0}{5}$.
+	\item $-3$ a pour image $4$.
+	\item $4$ a pour image $-3$.
+	\item L'antécédent de $5$ est $0$.
+	\item L'antécédent de $0$ est $5$.
+	\item Un antécédent de $2$ est $-4,6$.
+\end{enumerate}
+\end{exo}

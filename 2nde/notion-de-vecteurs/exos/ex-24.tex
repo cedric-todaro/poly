@@ -1,0 +1,31 @@
+\begin{exo}{}
+	Dans le plan, représenté ci-dessous muni d'un quadrillage, on considère les points $A$, $B$, $C$, $M$ :
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.37, >=Stealth]
+			\draw[thin, gray!50] (-2,0) grid (20,15);
+			\coordinate (A) at (5,2);
+			\coordinate (B) at (8,6);
+			\coordinate (C) at (5,8);
+			\coordinate (M) at (1,5);
+
+			% Dessin des croix pour chaque point
+			\foreach \p/\pos in {A/below right, M/below left, B/above right, C/above left} {
+					\draw[thick] (\p) ++(-0.25,-0.25) -- ++(0.5,0.5);
+					\draw[thick] (\p) ++(-0.25,0.25) -- ++(0.5,-0.5);
+					\node[\pos] at (\p) {$\p$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Donner un représentant du vecteur $\vec{u}$ défini par la relation : \vspace*{-2mm}$$\vec{u} = 2\times\vec{AB} + \vec{CB} - \vec{AC}$$
+
+		\item Placer le point $N$ tel que : $\vec{MN} = \vec{u}$.
+	\end{enumerate}
+	On définit le vecteur $\vec{v}$ par : \vspace*{-2mm}$$\vec{v} = \vec{CB} + \frac{1}{3}\times\vec{AC}$$
+	\begin{enumerate}[resume]
+		\item Montrer que $\vec{u}=3\times\vec{v}$.
+		\item Les vecteurs $\vec u$ et $\vec v$ sont-ils colinéaires ?
+	\end{enumerate}
+\end{exo}

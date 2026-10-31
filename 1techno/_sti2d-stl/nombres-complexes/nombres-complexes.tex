@@ -1,0 +1,505 @@
+\chapter{Nombres complexes}
+
+\section{L'ensemble des nombres complexes}
+
+\subsection{Définition et forme algébrique}
+
+\begin{defin}
+	Il existe un ensemble de nombres, noté $\mathbb{C}$, appelé \textbf{ensemble des nombres complexes}, qui possède les propriétés suivantes :
+	\begin{itemize}
+		\item L'ensemble $\mathbb{C}$ contient l'ensemble des réels $\mathbb{R}$.
+		\item Dans $\mathbb{C}$, on définit additions et multiplications qui suivent les mêmes règles de calcul que dans $\mathbb{R}$.
+		\item Il existe dans $\mathbb{C}$ un nombre noté $i$ tel que $i^2 = -1$.
+		\item Tout nombre complexe $z$ s'écrit de manière unique sous la forme :
+		      \[
+			      z = a + ib \quad \text{où } a \in \mathbb{R} \text{ et } b \in \mathbb{R}
+		      \]
+	\end{itemize}
+\end{defin}
+
+\begin{ex}
+	Soient $z_1=1 + 2i$ , $z_2=3-i$ et $z_3=\dfrac{2+i}{3}$. Ces nombres sont des nombres complexes.
+\end{ex}
+
+\begin{defin}
+	\nline
+	\begin{itemize}
+		\item L'écriture $z = a + ib$ est appelée la \textbf{forme algébrique} du nombre complexe $z$.
+		\item Le nombre réel $a$ est appelé la \textbf{partie réelle} de $z$, notée $\operatorname{Re}(z)$.
+		\item Le nombre réel $b$ est appelé la \textbf{partie imaginaire} de $z$, notée $\operatorname{Im}(z)$.
+	\end{itemize}
+\end{defin}
+
+\begin{rem}
+	\nline
+	\begin{itemize}
+		\item Si $b = 0$, alors $z = a$ : le nombre complexe est un \textbf{nombre réel}.
+		\item Si $a = 0$, alors $z = ib$ : le nombre complexe est un \textbf{nombre imaginaire pur}.
+	\end{itemize}
+\end{rem}
+
+\begin{ex}
+	\nline
+	\begin{itemize}
+		\item $z_1 = 3 + 4i$ a pour partie réelle $3$ et pour partie imaginaire $4$.
+		\item $z_2 = -2 - i$ a pour partie réelle $-2$ et pour partie imaginaire $-1$.
+		\item $z_3 = \dfrac{i}{3}$ a pour partie réelle $0$ et pour partie imaginaire $\dfrac{1}{3}$ (c'est un imaginaire pur).
+	\end{itemize}
+\end{ex}
+
+\subsection{Calculs algébriques dans $\mathbb{C}$}
+
+\begin{methode}[Effectuer des calculs sous forme algébrique]
+	Pour additionner, soustraire ou multiplier des nombres complexes, on procède comme avec des expressions littérales en remplaçant $i^2$ par $\pa{-1}$ dès qu'il apparaît.
+
+	Pour diviser par un nombre complexe non nul, on multiplie le numérateur et le dénominateur par le nombre complexe conjugué du dénominateur. Le nombre conjugué de $\pa{a+ib}$ est $\pa{a-ib}$.
+
+	Calculer et exprimer sous forme algébrique :
+	\begin{multicols}{4}
+		\begin{itemize}
+			\item $z_1 = 3 - 5i - (3i - 4)$
+			\item $z_2 = (3 - 2i)(-1 + 5i)$
+			\item $z_3 = (2 - 3i)^2$
+			\item $z_4 = \dfrac{1 + i}{2 - i}$
+		\end{itemize}
+	\end{multicols}
+
+	\ms
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $z_1 = 3 - 5i - 3i + 4 = 7 - 8i$
+			\item $z_2 = -3 + 15i + 2i - 10i^2 = -3 + 17i - 10(-1) = 7 + 17i$
+			\item $z_3 = 4 - 12i + (3i)^2 = 4 - 12i - 9 = -5 - 12i$
+			\item $z_4 = \dfrac{(1 + i)(2 + i)}{(2 - i)(2 + i)} = \dfrac{2 + i + 2i + i^2}{2^2 - i^2} = \dfrac{1 + 3i}{4 - (-1)} = \dfrac{1 + 3i}{5} = \dfrac{1}{5} + \dfrac{3}{5}i$
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\section{Représentation géométrique dans le plan complexe}
+
+\subsection{Affixe d'un point et d'un vecteur}
+
+\begin{defin}
+	On munit le plan d'un repère orthonormé direct $\vOIJ$.
+	\begin{itemize}
+		\item À tout point $M$ de coordonnées $(a\,;\,b)$, on associe le nombre complexe $z = a + ib$, appelé \textbf{affixe} du point $M$. On note $M(z)$.
+		\item À tout vecteur $\vec{w}$ de coordonnées $(a\,;\,b)$, on associe le nombre complexe $z = a + ib$, appelé \textbf{affixe} du vecteur $\vec{w}$. On note $\vec{w}(z)$.
+	\end{itemize}
+\end{defin}
+
+\begin{ex}
+	\nline
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=1.5]
+			\draw[gray!40, dashed] (-0.5,-0.5) grid (5.2,3.2);
+			\node[below left, fill=white] at (5.5,0) {Axe des réels};
+			\draw[->, thick] (-0.5,0) -- (5.5,0);
+			\node[below right, fill=white] at (0,3.2) {Axe des imaginaires};
+			\draw[->, thick] (0,-0.5) -- (0,3.2);
+			\node[below left] at (0,0) {$0$};
+			\draw[->, thick, red] (0,0) -- (1,0) node[below] {$\vec{u}$};
+			\draw[->, thick, red] (0,0) -- (0,1) node[left] {$\vec{v}$};
+			\coordinate (M) at (3,2);
+			\draw[dashed, thick] (3,0) node[below, black] {$3$} -- (M) -- (0,2) node[left, black] {$2$};
+			\draw[->, very thick, green!50!black] (0,0) -- (M) node[sloped, midway, above] {$\vec{w}(3 + 2i)$};
+			\fill[blue] (M) circle (2pt) node[above right] {$M(3 + 2i)$};
+		\end{tikzpicture}
+	\end{center}
+\end{ex}
+
+% TODO : j'en suis là
+
+\subsection{Utilisation des affixes en géométrie}
+
+\begin{prop}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[>=Stealth]
+			\draw[step=1cm, gray!40, dashed] (0,0) grid (5.8,3.8);
+			\draw[->, thick] (-0.5,0) -- (5.8,0);
+			\draw[->, thick] (0,-0.5) -- (0,3.8);
+			\node[below left] at (0,0) {$0$};
+			\coordinate (A) at (1,1);
+			\coordinate (B) at (4,3);
+			\draw[->, ultra thick, bleu] (A) -- (B) node[midway, sloped, above] {$\vec{AB}\pa{z_a-z_b}$};
+			\fill[bleu] (A) circle (2.5pt) node[below] {$A(z_A)$};
+			\fill[bleu] (B) circle (2.5pt) node[above right] {$B(z_B)$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Soient $A$ et $B$ deux points d'affixes respectives $z_A$ et $z_B$, et $\vec{u}$ un vecteur d'affixe $z_{\vec{u}}$.
+
+	\begin{itemize}
+		\item L'affixe du vecteur $\vec{AB}$ est :
+		      \[
+			      z_{\vec{AB}} = z_B - z_A
+		      \]
+
+		\item L'affixe du milieu $I$ du segment $[AB]$ est :
+		      \[
+			      z_I = \frac{z_A + z_B}{2}
+		      \]
+	\end{itemize}
+
+	Soient $\vec{u}$ et $\vec{v}$, deux vecteurs d'affixes respectives $z_{\vec{u}}$ et $z_{\vec{v}}$.
+
+	\begin{itemize}
+		\item $\vec{u}$ et $\vec{v}$ sont colinéaires si et seulement s'il existe un réel $k$ tel que
+		      \[
+			      z_{\vec{v}} = k \times z_{\vec{u}}
+		      \]
+
+	\end{itemize}
+\end{prop}
+
+\begin{methode}[Utiliser l'affixe en géométrie]
+	On considère les points $A(-2 + 3i)$, $B(2 + 4i)$, $C(5 + 3i)$, $D(1 + 2i)$ et $E(-7)$.
+	\begin{enumerate}
+		\item Démontrer que le quadrilatère $ABCD$ est un parallélogramme, puis calculer l'affixe de son centre $I$.
+		\item Les points $D$, $C$ et $E$ sont-ils alignés ?
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item \begin{itemize}
+				      \item Calculons l'affixe du vecteur $\vec{AB}$ :
+				            \[
+					            z_{\vec{AB}} = z_B - z_A = 2 + 4i - (-2 + 3i) = 4 + i
+				            \]
+				      \item Calculons l'affixe du vecteur $\vec{DC}$ :
+				            \[
+					            z_{\vec{DC}} = z_C - z_D = 5 + 3i - (1 + 2i) = 4 + i
+				            \]
+				            On a $z_{\vec{AB}} = z_{\vec{DC}}$, donc $\vec{AB} = \vec{DC}$, ce qui prouve que $ABCD$ est un parallélogramme.
+				      \item Le centre $I$ du parallélogramme est le milieu de $[AC]$. Son affixe est :
+				            \[
+					            z_I = \frac{z_A + z_C}{2} = \frac{-2 + 3i + 5 + 3i}{2} = \frac{3 + 6i}{2} = \frac{3}{2} + 3i
+				            \]
+			      \end{itemize}
+			\item \begin{itemize}
+				      \item Affixe de $\vec{DC}$ : $z_{\vec{DC}} = 4 + i$.
+				      \item Affixe de $\vec{DE}$ : $z_{\vec{DE}} = z_E - z_D = -7 - (1 + 2i) = -8 - 2i$.
+			      \end{itemize}
+
+			      On remarque que :
+			      \[
+				      z_{\vec{DE}} = -2(4 + i) = -2z_{\vec{DC}} \iff \vec{DE} = -2\vec{DC}
+			      \]
+
+			      Les vecteurs $\vec{DC}$ et $\vec{DE}$ sont colinéaires, par conséquent les points $D$, $C$ et $E$ sont alignés.
+		\end{enumerate}
+
+		\begin{center}
+			\begin{tikzpicture}[>=Stealth, scale=0.85]
+				\draw[gray!30, dashed] (-7.8,-0.8) grid (5.8,4.8);
+				\draw[->, thick] (-7.8,0) -- (6.2,0) node[below] {$x$};
+				\draw[->, thick] (0,-0.8) -- (0,5.2) node[below left] {$y$};
+				\node[below left] at (0,0) {$0$};
+				\draw[->, thick, red] (0,0) -- (1,0) node[below] {$\vec{u}$};
+				\draw[->, thick, red] (0,0) -- (0,1) node[left] {$\vec{v}$};
+				\coordinate (A) at (-2,3);
+				\coordinate (B) at (2,4);
+				\coordinate (C) at (5,3);
+				\coordinate (D) at (1,2);
+				\coordinate (E) at (-7,0);
+				\coordinate (I) at (1.5,3);
+				\draw[->, very thick, vert!70!black] (D) -- (E) node[sloped, fill=white, midway, below] {$\vec{DE}$};
+				\draw[->, very thick, vert!50!black] (D) -- (C) node[sloped, fill=white, midway, below right] {$\vec{DC}$};
+				\draw[thick, bleu] (A) -- (B) -- (C) -- (D) -- cycle;
+				\draw[->, very thick, bleu] (A) -- (B) node[midway, above, sloped, fill=white] {$\vec{AB}$};
+				\draw[gray!70, dashed] (A) -- (C);
+				\draw[gray!70, dashed] (B) -- (D);
+				\fill[bleu] (A) circle (2.5pt) node[left] {$A(-2 + 3i)$};
+				\fill[bleu] (B) circle (2.5pt) node[above] {$B(2 + 4i)$};
+				\fill[bleu] (C) circle (2.5pt) node[right] {$C(5 + 3i)$};
+				\fill[rouge] (E) circle (2.5pt) node[above left] {$E(-7)$};
+				\node[right, fill=white] at (I) {$I\pa{\frac{3}{2} + 3i}$};
+				\draw[->, very thick, vert!50!black] (D) -- (C);
+				\fill[bleu] (D) circle (2.5pt) node[below right] {$D(1 + 2i)$};
+				\fill[rouge] (I) circle (2.5pt);
+			\end{tikzpicture}
+		\end{center}
+
+	\end{correction}
+\end{methode}
+
+\section{Conjugué d'un nombre complexe}
+
+\subsection{Définition et propriétés géométriques}
+
+\begin{defin}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[>=Stealth, scale=0.8]
+			\draw[->, thick] (-0.5,0) -- (4.8,0) node[below] {$x$};
+			\draw[->, thick] (0,-2.5) -- (0,2.8) node[below left] {$y$};
+			\node[below left] at (0,0) {$0$};
+			\coordinate (M) at (3, 1.2);
+			\coordinate (Mbar) at (3, -1.2);
+			\draw[dashed, thick, gray!70] (0, 1.2) node[left, black] {$b$} -- (M) -- (3, 0) node[above right, black] {$a$};
+			\draw[dashed, thick, gray!70] (0, -1.2) node[left, black] {$-b$} -- (Mbar) -- (3, 0);
+			\draw[thick, bordeaux, dotted] (M) -- (Mbar);
+			\draw[->, very thick, bleu] (0,0) -- (M) node[midway, above left] {$z$};
+			\draw[->, very thick, vert!60!black] (0,0) -- (Mbar) node[midway, below left] {$\bar{z}$};
+			\fill[bleu] (M) circle (2.5pt) node[above right] {$M(z = a + ib)$};
+			\fill[vert!60!black] (Mbar) circle (2.5pt) node[below right] {$M'(\bar{z} = a - ib)$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Soit un nombre complexe $z = a + ib$ (avec $a$ et $b$ réels).
+
+	On appelle \textbf{nombre complexe conjugué} de $z$, noté $\bar{z}$, le nombre complexe défini par :
+	\[
+		\bar{z} = a - ib
+	\]
+\end{defin}
+
+\newpage
+
+\begin{ex}
+	\nline
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Si $z = 4 + 5i$, alors $\bar{z} = 4 - 5i$.
+			\item Si $z = 7 - 3i$, alors $\bar{z} = 7 + 3i$.
+			\item Si $z = i$, alors $\bar{i} = -i$.
+			\item Si $z = 5$, alors $\bar{5} = 5$.
+		\end{itemize}
+	\end{multicols}
+\end{ex}
+
+\begin{rem}
+	Dans le plan complexe, les points d'affixes $z$ et $\bar{z}$ sont symétriques par rapport à l'axe des réels.
+\end{rem}
+
+\subsection{Propriétés algébriques du conjugué}
+
+\begin{prop}
+	Soient $z$ et $z'$ deux nombres complexes. On a les propriétés suivantes :
+	\begin{multicols}{3}
+		\begin{enumerate}
+			\item $\bar{z + z'} = \bar{z} + \bar{z'}$
+			\item $\bar{z \times z'} = \bar{z} \times \bar{z'}$
+			\item $\bar{\pa{\dfrac{z}{z'}}} = \dfrac{\phantom{x}\bar{z}\phantom{x}}{\bar{z'}}$ pour $z' \neq 0$
+		\end{enumerate}
+	\end{multicols}
+	\begin{enumerate}[start=4]
+		\item Pour tout nombre complexe $z = a + ib$ :
+		      \[
+			      z\bar{z} = a^2 + b^2
+		      \]
+	\end{enumerate}
+\end{prop}
+
+\begin{demo}
+	Pour $z = a + ib$ :
+	\[
+		\def\arraystretch{1.2}
+		\begin{array}{rcll}
+			z\bar{z} & = & (a + ib)(a - ib) &             \\
+			         & = & a^2 - (ib)^2     &             \\
+			         & = & a^2 - i^2b^2     &             \\
+			         & = & a^2 - (-1)b^2    & = a^2 + b^2
+		\end{array}
+	\]
+\end{demo}
+
+\begin{methode}[Déterminer le conjugué d'un nombre complexe]
+	Déterminer le conjugué des nombres suivants et exprimer le résultat sous forme algébrique :
+	\[
+		z_1 = (2 - i)(i - 5) \qquad \text{et} \qquad z_2 = \frac{3 + 2i}{i}
+	\]
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On utilise les propriétés du conjugué :
+			      \[
+				      \def\arraystretch{1.2}
+				      \begin{array}{rcll}
+					      \bar{z}_1 & = & \bar{(2 - i)(i - 5)}               &           \\
+					                & = & \bar{(2 - i)} \times \bar{(i - 5)} &           \\
+					                & = & (2 + i)(-i - 5)                    &           \\
+					                & = & -2i - 10 - i^2 - 5i                & = -9 - 7i
+				      \end{array}
+			      \]
+
+			\item Pour $z_2$ :
+			      \[
+				      \bar{z}_2 = \bar{\left(\frac{3 + 2i}{i}\right)} = \frac{\bar{3 + 2i}}{\bar{i}} = \frac{3 - 2i}{-i} = \frac{(3 - 2i)i}{-i \times i} = \frac{3i - 2i^2}{1} = 2 + 3i
+			      \]
+
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\newpage
+
+\section{Module d'un nombre complexe}
+
+\subsection{Définition et interprétation géométrique}
+
+\begin{defin}
+	Soit $z = a + ib$ un nombre complexe (avec $a$ et $b$ réels).
+
+	On appelle \textbf{module} de $z$, noté $\abs{z}$, le nombre réel positif défini par :
+	\[
+		\abs{z} = \sqrt{a^2 + b^2}
+	\]
+\end{defin}
+
+\begin{rem}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[>=Stealth, scale=0.8]
+			\draw[->, thick] (-0.5,0) -- (4.2,0) node[below] {$x$};
+			\draw[->, thick] (0,-0.5) -- (0,3.2) node[left] {$y$};
+			\node[below left] at (0,0) {$O$};
+			\coordinate (M) at (3, 2.2);
+			\draw[dashed, thick, gray!70] (0, 2.2) node[left, black] {$b$} -- (M) -- (3, 0) node[below, black] {$a$};
+			\draw[very thick, bleu] (0,0) -- (M) node[midway, above left, black] {$\abs{z}$};
+			\fill[bleu] (M) circle (2.5pt) node[above right] {$M(z)$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Si $M$ est le point d'affixe $z$ dans le plan muni du repère orthonormé $\vOIJ$, alors le module $\abs{z}$ correspond à la distance $OM$ :
+	\[
+		\abs{z} = OM = \sqrt{a^2 + b^2}
+	\]
+
+	\rule{0mm}{10mm}
+\end{rem}
+
+\begin{prop}
+	Soient $z$ et $z'$ deux nombres complexes. On a :
+	\begin{multicols}{3}
+		\begin{enumerate}
+			\item $\abs{zz'} = \abs{z}\abs{z'}$
+			\item $\abs{\dfrac{z}{z'}} = \dfrac{\abs{z}}{\abs{z'}}$ pour $z' \neq 0$
+			\item $\abs{z^2} = \abs{z}^2$
+		\end{enumerate}
+	\end{multicols}
+\end{prop}
+
+\begin{methode}[Calculer le module d'un nombre complexe]
+	Calculer le module des nombres complexes suivants :
+	\begin{enumerate}
+		\item $z_A = 3 - 2i$
+		\item $z_B = -3i$
+		\item $z_C = \sqrt{2} + i$
+		\item $z_D = \dfrac{-3i}{(\sqrt{2} + i)^2}$
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $\abs{3 - 2i} = \sqrt{3^2 + (-2)^2} = \sqrt{9 + 4} = \sqrt{13}$
+			\item $\abs{-3i} = \abs{-3}\abs{i} = 3 \times 1 = 3$
+			\item $\abs{\sqrt{2} + i} = \sqrt{\pa{\sqrt{2}}^2 + 1^2} = \sqrt{2 + 1} = \sqrt{3}$
+			\item $\abs{\dfrac{-3i}{(\sqrt{2} + i)^2}} = \dfrac{\abs{-3i}}{\abs{(\sqrt{2} + i)^2}} = \dfrac{\abs{-3i}}{\abs{\sqrt{2} + i}^2} = \dfrac{3}{(\sqrt{3})^2} = \dfrac{3}{3} = 1$
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\section{Forme trigonométrique d'un nombre complexe}
+
+\subsection{Argument d'un nombre complexe non nul}
+
+\begin{defin}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[>=Stealth, scale=0.85]
+			\draw[->, thick] (-0.5,0) -- (4.5,0) node[below] {$x$};
+			\draw[->, thick] (0,-0.5) -- (0,3.5) node[left] {$y$};
+			\node[below left] at (0,0) {$O$};
+			\coordinate (M) at (3.2, 2.4);
+			\draw[dashed, thick, gray!70] (0, 2.4) node[left, black] {$b$} -- (M) -- (3.2, 0) node[below, black] {$a$};
+			\draw[->, thick, bordeaux] (0.9, 0) arc[start angle=0, end angle=36.87, radius=0.9];
+			\node[bordeaux] at (15.4:1.6) {$\arg(z)$};
+			\draw[->, very thick, bleu] (0,0) -- (M);
+			\fill[bleu] (M) circle (2.5pt) node[above right] {$M(z)$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Soit $z$ un nombre complexe non nul et $M$ son image dans le plan muni du repère orthonormé $\vOIJ$.
+
+	On appelle \textbf{argument} de $z$, noté $\arg(z)$, toute mesure en radians de l'angle orienté $(\vec{u}\,;\,\vec{OM})$.
+	\[
+		\arg(z) = (\vec{u}\,;\,\vec{OM}) \pmod{2\pi}
+	\]
+
+	\rule{0mm}{10mm}
+\end{defin}
+
+\begin{rem}
+	\nline
+	\begin{itemize}
+		\item Un nombre complexe non nul possède une infinité d'arguments de la forme $\arg(z) + 2k\pi$ avec $k \in \mathbb{Z}$.
+		\item Le nombre $0$ n'a pas d'argument car l'angle $(\vec{u}\,;\,\vec{OM})$ n'est pas défini lorsque $M$ est confondu avec l'origine $O$.
+	\end{itemize}
+\end{rem}
+
+\subsection{Forme trigonométrique}
+
+\begin{prop}
+	Tout nombre complexe non nul $z$ s'écrit sous la forme \textbf{trigonométrique} :
+	\[
+		z = \abs{z}(\cos\theta + i\sin\theta)
+	\]
+
+	\ldots où $\theta = \arg(z)$.
+
+	Géométriquement, la partie réelle et la partie imaginaire vérifient :
+	\[
+		a = \abs{z}\cos\theta \quad \text{et} \quad b = \abs{z}\sin\theta
+	\]
+
+\end{prop}
+
+\begin{methode}[Passer de la forme algébrique à la forme trigonométrique]
+	Écrire le nombre complexe $z = \sqrt{3} + i$ sous sa forme trigonométrique.
+
+	\begin{correction}
+		\nline
+		\begin{itemize}
+			\item On calcule le module de $z$ :
+			      \[
+				      \abs{z} = \sqrt{(\sqrt{3})^2 + 1^2} = \sqrt{3 + 1} = \sqrt{4} = 2
+			      \]
+
+			\item On factorise par le module pour faire apparaître les valeurs remarquables du cosinus et du sinus :
+			      \[
+				      z = 2\left(\frac{\sqrt{3}}{2} + \frac{1}{2}i\right)
+			      \]
+
+			      On cherche un angle $\theta$ tel que $\cos\theta = \frac{\sqrt{3}}{2}$ et $\sin\theta = \frac{1}{2}$. On peut choisir $\theta = \frac{\pi}{6}$.
+
+			\item On obtient la forme trigonométrique :
+			      \[
+				      z = 2\left(\cos\frac{\pi}{6} + i\sin\frac{\pi}{6}\right) \quad \text{avec} \quad \arg(z) = \frac{\pi}{6} \pmod{2\pi}
+			      \]
+		\end{itemize}
+		\begin{center}
+			\begin{tikzpicture}[>=Stealth, x=28mm, y=28mm]
+				\draw[step=0.5, gray!50, dashed] (0,0) grid (2.8,1.7);
+				\draw[->, thick] (-0.3,0) -- (2.8,0) node[below] {$x$};
+				\draw[->, thick] (0,-0.3) -- (0,1.7) node[left] {$y$};
+				\node[below left] at (0,0) {$0$};
+				\draw[thick] (1.732, 0.08) -- (1.732, -0.08) node[below, font=\small] {$\sqrt{3}$};
+				\draw[thick] (0.08, 1) -- (-0.08, 1) node[left, font=\small] {$1$};
+				\draw[thick] (1,0.08) -- (1, -0.08) node[below, font=\small] {$1$};
+				\draw[thick] (2,0.08) -- (2, -0.08) node[below, font=\small] {$2$};
+				\coordinate (M) at (1.732, 1);
+				\draw[dashed, thick, bordeaux!80] (1.732, 0) -- (M) -- (0, 1);
+				\draw[->, thick, bordeaux] (1, 0) arc[start angle=0, end angle=30, radius=1];
+				\node[bordeaux] at (15:1.2) {$\dfrac{\pi}{6}$};
+				\draw[dashed] (2,0) arc[start angle=0, end angle=45, radius=2];
+				\draw[->, very thick, bleu] (0,0) -- (M) node[sloped, midway, above] {$\abs{z} = 2$};
+				\fill[bleu] (M) circle (2pt) node[above right] {$M\pa{z = \sqrt{3} + i}$};
+			\end{tikzpicture}
+		\end{center}
+	\end{correction}
+\end{methode}

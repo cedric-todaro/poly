@@ -1,0 +1,29 @@
+\begin{exo}{}
+	On considère les points $A$, $B$, $C$, $I$ et $J$ suivants.
+
+	Reproduire la figure et, en laissant les traits de construction, répondre aux questions suivantes :
+	\vspace*{2mm}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8, >=Stealth]
+			\coordinate (A) at (3.5,0);
+			\coordinate (B) at (0,1);
+			\coordinate (C) at (2,3);
+			\coordinate (I) at (9,2.5);
+			\coordinate (J) at (6,1);
+			\draw (A) node {$\bullet$} node[right] {$A$};
+			\draw (B) node {$\bullet$} node[left] {$B$};
+			\draw (C) node {$\bullet$} node[right] {$C$};
+			\draw (I) node {$\bullet$} node[above right] {$I$};
+			\draw (J) node {$\bullet$} node[below right] {$J$};
+			\draw[->, very thick] (A) -- (B);
+			\draw[->, very thick] (B) -- (C);
+		\end{tikzpicture}
+	\end{center}
+	\vspace*{2mm}
+
+	\begin{enumerate}
+		\item Construire les points $R$ et $S$, images de $I$ et $J$ par la translation de vecteur $\vec{AB}$.
+		\item Construire les points $T$ et $U$, images de $R$ et $S$ par la translation de vecteur $\vec{BC}$.
+		\item Par quelle translation le point $U$ est-il l'image du point $J$ ?
+	\end{enumerate}
+\end{exo}

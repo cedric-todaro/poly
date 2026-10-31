@@ -1,0 +1,38 @@
+\begin{exo}{}
+	On considère la représentation graphique des fonctions $f$ (en rouge) et $g$ (en vert) dans un repère orthonormé.
+
+	\begin{center}
+		\begin{tikzpicture}[x=1cm, y=1cm, scale=0.85]
+			\clip (-4.5,-4.5) rectangle (4.5,3.5);
+			\draw[xstep=1, ystep=1, color=cyan!30, line width=0.6pt] (-4.5,-4.5) grid (4.5,3.5);
+			\draw[->, >=Stealth, thick] (-4.5,0) -- (4.5,0);
+			\draw[->, >=Stealth, thick] (0,-4.5) -- (0,3.5);
+			\foreach \x in {-4, 1, 4} { \draw[thick] (\x, 3pt) -- (\x, -3pt); \node[below, font=\small, inner sep=1pt] at (\x,-0.1) {$\x$}; }
+			\foreach \y in {-4, 1, 3} { \draw[thick] (3pt, \y) -- (-3pt, \y); \node[left, font=\small, inner sep=1pt] at (-0.1,\y) {$\y$}; }
+			\node[below left, font=\small] at (0,0) {$0$};
+			\node[color=red!80!black, left, font=\normalsize,fill=white] at (-1.3,-4) {$\Cf$};
+			\node[color=green!60!black, right, font=\normalsize,fill=white] at (-4.4,-4) {$\Cg$};
+			\draw[very thick, color=red!80!black, smooth, samples=100, domain=-4.5:4.5] plot (\x, {\x*(2-\x)});
+			\draw[very thick, color=green!60!black, smooth, samples=100, domain=-4.5:4.2] plot (\x, {0.125*\x^3 - 1.5*\x});
+			\fill[color=black] (0,0) circle (3pt);
+			\fill[color=black] ({-sqrt(12)},0) circle (3pt);
+			\fill[color=black] ({sqrt(12)},0) circle (3pt);
+			\fill[color=black] (2,0) circle (3pt);
+			\fill[color=black] (4,2) circle (3pt);
+			\fill[color=black] (-1,-3) circle (3pt);
+			\fill[color=black] (-2,2) circle (3pt);
+			\fill[color=black] (2,-2) circle (3pt);
+			\fill[color=black] (2.633,-1.668) circle (3pt);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Dresser le tableau de variations de chacune de ces deux fonctions sur $\mathbb{R}$.
+		\item Résoudre dans $\mathbb{R}$ les inéquations suivantes.
+		      \begin{enumerate}
+			      \item $f(x) \leqslant 3$ ; $f(x) > 0$
+			      \item $g(x) \leqslant 0$ ; $g(x) > -2$
+			      \item $f(x) \geqslant g(x)$
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

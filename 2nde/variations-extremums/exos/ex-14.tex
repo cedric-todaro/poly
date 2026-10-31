@@ -1,0 +1,37 @@
+\begin{exo}{}
+	Une entreprise vend des objets. Sa capacité de production hebdomadaire est limitée à 70 objets.
+
+	On a représenté dans un repère orthogonal la recette en euros de la vente de $x$ objets, notée $R(x)$ et la dépense correspondante notée $D(x)$.
+	\begin{center}
+		\begin{tikzpicture}[scale=0.095, >=Triangle,y=0.014cm]
+			\draw[gray!20, thin, xstep=2, ystep=200] (0,0) grid (73,2700);
+			\draw[->, thick] (0,0) -- (74,0) node[right] {$x$};
+			\draw[->, thick] (0,0) -- (0,2700) node[right] {$y$};
+			\foreach \x in {0, 10, 20, 30, 40, 50, 60, 70} { \draw (\x, 40) -- (\x, -40) node[below, scale=0.8] {\x}; }
+			\draw (1, 200) -- (-1, 200) node[left, scale=0.8] {200};
+			\draw (1, 1000) -- (-1, 1000) node[left, scale=0.8] {1 000};
+			\draw (1, 2000) -- (-1, 2000) node[left, scale=0.8] {2 000};
+			\draw (1, 2600) -- (-1, 2600) node[left, scale=0.8] {2 600};
+			\foreach \y in {400, 600, 800, 1200, 1400, 1600, 1800, 2200, 2400} { \draw (0.6, \y) -- (-0.6, \y); }
+			\draw[blue!80!black, very thick] (0, 120) -- (70, 1400) node[above] {$D$};
+			\draw[red, very thick] plot[smooth, tension=0.6] coordinates { (0, 5) (10, 50) (21, 380) (26, 600) (30, 800) (40, 1250) (50, 1800) (60, 2300) (70, 2400) } node[below] {$R$};
+			\fill[black] (26,600) circle (20pt);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Déterminer l'intervalle $E$ auquel appartient $x$.
+		\item Résoudre dans $E$ et interpréter :
+		      \vspace*{-2mm}
+		      \begin{multicols}{2}
+			      \begin{enumerate}
+				      \item $D(x) = R(x)$
+				      \item $D(x) > R(x)$
+				      \item $D(x) < R(x)$
+			      \end{enumerate}
+		      \end{multicols}
+		      \vspace*{-2mm}
+		\item Déterminer et interpréter $R(70) - D(70)$.
+	\end{enumerate}
+\end{exo}
+

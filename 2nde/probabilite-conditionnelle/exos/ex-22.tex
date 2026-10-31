@@ -1,0 +1,46 @@
+\begin{exo}
+	Une entreprise de logistique évalue la performance de ses robots trieurs de colis.
+
+	On étudie un lot de colis à l'aide de deux critères :
+
+	\begin{itemize}
+		\item $A$ : \og{} Le colis est fragile \fg{} ;
+		\item $B$ : \og{} Le colis est correctement orienté par le robot \fg{}.
+	\end{itemize}
+
+	L'ingénieur en chef a mesuré les effectifs mais une partie des données dépend du nombre de robots de type \og{} Alpha \fg{} en activité, noté $n$ (où $n$ est un entier positif).
+
+	\columnbreak
+
+	Le tableau croisé des effectifs est le suivant :
+
+	\begin{center}
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{|C{1.5cm}|C{1cm}|C{1cm}|C{1.5cm}|}
+			\hline
+			               & $B$      & $\overline{B}$ & \textbf{Total} \\ \hline
+			$A$            & $n$      & $12$           & $n + 12$       \\ \hline
+			$\overline{A}$ & $48$     & $60$           & $108$          \\ \hline
+			\textbf{Total} & $n + 48$ & $72$           & $n + 120$      \\ \hline
+		\end{tabular}
+	\end{center}
+
+	On choisit au hasard un colis dans ce lot.
+
+	\begin{enumerate}
+		\item Exprimer en fonction de $n$ les probabilités :
+		      \[
+			      P(A \cap B)\ \text{et}\ P(B)
+		      \]
+
+		\item Rappeler la formule du cours exprimant la probabilité conditionnelle $P_{B}(A)$ en fonction de $P(A \cap B)$ et $P(B)$.
+		\item En déduire que la probabilité que le colis soit fragile sachant qu'il est correctement orienté s'exprime par :
+		      \[ P_{B}(A) = \frac{n}{n + 48} \]
+	\end{enumerate}
+
+	L'ingénieur souhaite que la probabilité qu'un colis correctement orienté soit fragile soit exactement égale à $0,2$ (soit $\frac{1}{5}$).
+
+	\ber
+	\item Déterminer la valeur de $n$ pour atteindre cet objectif.
+	\end{enumerate}
+\end{exo}

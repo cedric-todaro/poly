@@ -1,0 +1,38 @@
+\begin{exo}{}
+	Par lecture graphique, proposer le couple solution de chaque système. Vérifier par le calcul.
+
+	\ms
+
+	\begin{center}
+		\begin{tikzpicture}[x=5mm, y=5mm, >=Stealth]
+			\def\xmin{-7.5}\def\xmax{8.5}\def\ymin{-4.5}\def\ymax{5.5}
+			\clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+			\draw[xstep=1, gray!40, ystep=1] (\xmin, \ymin) grid (\xmax, \ymax);
+			\draw[very thick, ->] (\xmin, 0) -- (\xmax, 0) node[below left] {$x$};
+			\draw[very thick, ->] (0, \ymin) -- (0, \ymax) node[below left] {$y$};
+			\foreach \x in {-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8} \draw (\x,0.1) -- (\x,-0.1);
+			\foreach \y in {-4,-3,-2,-1,1,2,3,4,5} \draw (0.1,\y) -- (-0.1,\y);
+			\draw[->, thick] (0,0) -- (1,0) node[midway, below] {$\vec{i}$};
+			\draw[->, thick] (0,0) -- (0,1) node[midway, left] {$\vec{j}$};
+			\node[below left] at (0,0) {$O$};
+			\node[orange, fill=white, anchor=west] at (3.0,4) {$x - y = -1$};
+			\draw[domain=-6:5, smooth, very thick, orange] plot (\x, {\x + 1});
+			\node[purple, fill=white, anchor=west] at (3.4,-2.3) {$-x + 7y = -17$};
+			\draw[domain=-8:9, smooth, very thick, purple] plot (\x, {1/7*\x - 17/7});
+			\node[bleu, fill=white, anchor=west] at (2.5,1) {$-5x - y = -13$};
+			\draw[domain=1:4, smooth, very thick, bleu] plot (\x, {-5*\x + 13});
+			\coordinate (A) at (-4,-3);
+			\coordinate (B) at (3,-2);
+			\coordinate (C) at (2,3);
+			\foreach \pt in {A,B,C} {\filldraw (\pt) circle (2pt);}
+		\end{tikzpicture}
+	\end{center}
+	\vspace*{-2mm}
+	\begin{multicols}{2}
+	\begin{enumerate}
+		\item $\begin{cases} x - y = -1 \\ -x + 7y = -17 \end{cases}$
+		\item $\begin{cases} -5x - y = -13 \\ x - y = -1 \end{cases}$
+		\item $\begin{cases} -x + 7y = -17 \\ -5x - y = -13 \end{cases}$
+	\end{enumerate}
+	\end{multicols}
+\end{exo}

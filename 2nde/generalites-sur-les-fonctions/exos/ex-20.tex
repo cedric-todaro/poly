@@ -1,0 +1,49 @@
+\begin{exo}{}
+	Un sablier est formé de deux cylindres de hauteur $25$ cm reliés par un petit tube.
+
+	On a tracé la hauteur $\text{H}$ en centimètre du sable écoulé en fonction du temps $t$ en seconde à partir du moment où on retourne le sablier.
+
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.55, >=Stealth]
+			\begin{scope}[shift={(-2.3,2.5)},scale=1.07]
+				\fill[gray!80!black] (-0.08,-0.2) rectangle (0.08,0.2);
+				\draw[thick, gray!80!black] (-0.08,-0.2) -- (-0.08,0.2);
+				\draw[thick, gray!80!black] (0.08,-0.2) -- (0.08,0.2);
+				\fill[orange!15] (-0.6, 0.2) rectangle (0.6, 1.8);
+				\fill[orange!15] (0,0.2) ellipse (0.6cm and 0.15cm);
+				\fill[orange!30] (0,1.8) ellipse (0.6cm and 0.15cm);
+				\draw[orange!80!black, thick] (0,1.8) ellipse (0.6cm and 0.15cm);
+				\draw[thick, gray!80!black] (-0.6,0.2) -- (-0.6,2.2);
+				\draw[thick, gray!80!black] (0.6,0.2) -- (0.6,2.2);
+				\draw[thick, gray!80!black] (-0.6,0.2) arc (180:360:0.6cm and 0.15cm);
+				\draw[thick, gray!80!black] (0,2.2) ellipse (0.6cm and 0.15cm);
+				\draw[thick, gray!80!black] (-0.6,-2.2) -- (-0.6,-0.2);
+				\draw[thick, gray!80!black] (0.6,-2.2) -- (0.6,-0.2);
+				\draw[thick, gray!80!black] (0,-0.2) ellipse (0.6cm and 0.15cm);
+				\draw[thick, gray!80!black] (-0.6,-2.2) arc (180:360:0.6cm and 0.15cm);
+			\end{scope}
+			\def\xmin{-0.5}\def\xmax{11.5}\def\ymin{-0.5}\def\ymax{6.5}
+			\draw[gray!40, thin, step=1] (0,0) grid (11.5,6.5);
+			\draw[thick, ->] (-0.2, 0) -- (11.5, 0) node[below] {$t$(s)};
+			\draw[thick, ->] (0, -0.2) -- (0, 6.5) node[right] {$H$(cm)};
+			\draw (0,0) node[below left] {$0$};
+			\draw (1,0.1) -- (1,-0.1) node[below] {$50$};
+			\draw (5,0.1) -- (5,-0.1) node[below] {$250$};
+			\draw (10,0.1) -- (10,-0.1) node[below] {$500$};
+			\draw (0.1,1) -- (-0.1,1) node[left] {$5$};
+			\draw (0.1,5) -- (-0.1,5) node[left] {$25$};
+			\draw[very thick, red!80!black] (0,0) -- (10,5) -- (11.5,5);
+		\end{tikzpicture}
+	\end{center}
+	\begin{enumerate}
+		\item Au bout de combien de temps le sable est-il complètement écoulé ?
+		\item Préciser la hauteur au bout de $2$ min ; $5$ min ; à mi-temps d'écoulement.
+		\item Préciser le temps écoulé lorsque le sable est à mi-hauteur du sablier.
+		\item
+		      \begin{enumerate}
+			      \item Encadrer la hauteur de sable pour un temps compris entre $3$ min $30$ s et $5$ min $30$ s.
+			      \item Encadrer le temps écoulé pour une hauteur comprise entre $10$ et $15$ cm.
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

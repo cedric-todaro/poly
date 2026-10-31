@@ -1,0 +1,61 @@
+\begin{exo}{}
+	On considère les vecteurs suivants.
+	\vspace*{2mm}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.4, >=Stealth, font=\footnotesize]
+			\draw[gray!40, thin, step=1] (-0.5,-1.5) grid (12.5,5.5);
+			\coordinate (A) at (3,4);
+			\coordinate (B) at (1,2);
+			\coordinate (C) at (4,0);
+			\coordinate (D) at (6,1);
+			\coordinate (E) at (8,1);
+			\coordinate (F) at (4,4);
+			\coordinate (J) at (7,0);
+			\coordinate (K) at (5,0);
+			\coordinate (L) at (12,0);
+			\draw (A) node[gray] {$\bullet$} node[above] {$A$};
+			\draw (B) node[gray] {$\bullet$} node[below left] {$B$};
+			\draw (C) node[gray] {$\bullet$} node[below] {$C$};
+			\draw (D) node[gray] {$\bullet$} node[above, xshift=3pt] {$D$};
+			\draw (E) node[gray] {$\bullet$} node[right] {$E$};
+			\draw (F) node[gray] {$\bullet$} node[above] {$F$};
+			\draw (J) node[gray] {$\bullet$} node[below] {$J$};
+			\draw (K) node[gray] {$\bullet$} node[below] {$K$};
+			\draw (L) node[gray] {$\bullet$} node[below] {$L$};
+			\draw[->, very thick] (A) -- (B);
+			\draw[->, very thick] (A) -- (C);
+			\draw[->, very thick] (D) -- (E);
+			\draw[->, very thick] (D) -- (F);
+			\draw[->, very thick] (J) -- (K);
+			\draw[->, very thick] (J) -- (L);
+			\begin{scope}[shift={(16,2)}]
+				\coordinate (G) at (0,0);
+				\coordinate (M) at (-2,0);
+				\coordinate (H) at (1.8,1.5);
+				\coordinate (I) at (4,-2);
+				\draw (G) node[gray] {$\bullet$} node[below] {$G$};
+				\draw (M) node[gray] {$\bullet$} node[above] {$M$};
+				\draw (H) node[gray] {$\bullet$} node[above] {$H$};
+				\draw (I) node[gray] {$\bullet$} node[below] {$I$};
+				\draw[->, very thick] (G) -- (M);
+				\draw[->, very thick] (G) -- (H);
+				\draw[->, very thick] (G) -- (I);
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Tracer les sommes des vecteurs définies par :
+		      \vspace*{-2mm}
+		      \begin{multicols}{2}
+		      \begin{enumerate}
+			      \item $\vec{AP} = \vec{AB} + \vec{AC}$
+			      \item $\vec{DR} = \vec{DE} + \vec{DF}$
+			      \item $\vec{JT} = \vec{JK} + \vec{JL}$
+			      \item $\vec{GW} = \vec{GH} + \vec{GM}$
+			      \item $\vec{GX} = \vec{GM} + \vec{GI}$
+			      \item $\vec{GZ} = \vec{GI} + \vec{GH}$
+		      \end{enumerate}
+		      \end{multicols}
+	\end{enumerate}
+\end{exo}

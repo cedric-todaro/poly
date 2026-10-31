@@ -1,0 +1,62 @@
+\begin{exo}{}
+	On considère les figures suivantes.
+	\begin{center}
+		\begin{tikzpicture}[scale=0.49, >=Stealth, font=\footnotesize]
+			\draw[gray!40, thick, step=1] (-0.5,-0.5) grid (7.5,5.5);
+			\coordinate (A) at (5,1);
+			\coordinate (B) at (1,1);
+			\coordinate (C) at (3,5);
+			\coordinate (M) at (1,5);
+			\draw (M) node {$\bullet$} node[above] {$M$};
+			\draw (A) node {$\bullet$} node[right] {$A$};
+			\draw (B) node {$\bullet$} node[left] {$B$};
+			\draw (C) node {$\bullet$} node[above right] {$C$};
+			\draw[->, thick] (A) -- (B);
+			\draw[->, thick] (B) -- (C);
+			\coordinate (W_start) at (4,4);
+			\coordinate (W_end) at (6,3);
+			\coordinate (A_end) at (7,1);
+			\draw[->, thick] (W_start) -- (W_end) node[midway, above] {$\vec{w}$};
+			\draw[->, thick] (W_end) -- (A_end) node[midway, right] {$\vec{a}$};
+			\draw[dashed, gray] (8,-0.5) -- (8,5.5);
+			\begin{scope}[shift={(8,0)}]
+				\coordinate (V_apex) at (3,1);
+				\coordinate (B_start) at (1,4);
+				\coordinate (C_start) at (3.3,4.3);
+				\draw[->, thick] (V_apex) -- (B_start) node[midway, left] {$\vec{b}$};
+				\draw[->, thick] (C_start) -- (V_apex) node[midway, right] {$\vec{c}$};
+				\coordinate (J) at (4.5,3.8);
+				\coordinate (L) at (6,2.8);
+				\coordinate (K) at (7.5,1.8);
+				\draw (J) node {$\bullet$} node[above] {$J$};
+				\draw (L) node {$\bullet$} node[above] {$L$};
+				\draw (K) node {$\bullet$} node[right] {$K$};
+				\draw[->, thick] (J) -- (K);
+				\draw[->, thick] (K) -- (L);
+				\coordinate (N) at (5.5,0.5);
+				\draw (N) node {$\bullet$} node[right] {$N$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Reproduire les figures.
+		\item Tracer les vecteurs :
+		      \vspace*{-2mm}
+		      \begin{multicols}{2}
+		      \begin{enumerate}
+			      \item $\vec{AB} + \vec{BC}$
+			      \item $\vec{w} + \vec{a}$
+			      \item $\vec{JK} + \vec{KL}$
+			      \item $\vec{b} + \vec{c}$
+		      \end{enumerate}
+		      \end{multicols}
+		      \vspace*{-2mm}
+		\item Tracer les points $R$, $S$ et $T$ tels que :
+		      \begin{enumerate}
+			      \item $\vec{MR}$ soit égal au vecteur $\vec{w} + \vec{a}$
+			      \item $\vec{NS}$ soit égal au vecteur $\vec{b} + \vec{c}$
+			      \item $\vec{NT}$ soit égal au vecteur $\vec{JK} + \vec{KL}$
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

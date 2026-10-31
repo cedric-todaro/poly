@@ -1,0 +1,27 @@
+\begin{exo}{}
+	En utilisant l'axe ci-dessous, compléter les égalités suivantes par un nombre réel.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8, >=Stealth]
+			\draw[very thick, ->] (-3.5,0) -- (6.5,0);
+			\foreach \x in {-3,-2,-1,0,1,2,3,4,5,6} {
+					\draw[thick] (\x,0.15) -- (\x,-0.15);
+					\node[below, font=\small] at (\x,-0.15) {$\x$};
+				}
+			\node[above=2pt] at (-3,0.15) {$A$};
+			\node[above=2pt] at (0,0.15) {$B$};
+			\node[above=2pt] at (2,0.15) {$E$};
+			\node[above=2pt] at (3,0.15) {$C$};
+			\node[above=2pt] at (6,0.15) {$D$};
+		\end{tikzpicture}
+	\end{center}
+	\vspace*{-2mm}
+	\begin{multicols}{2}
+	\begin{enumerate}[itemsep=2mm]
+		\item $\vec{BE} = \dots\dots\vec{EC}$
+		\item $\vec{CD} = \dots\dots\vec{BC}$
+		\item $\vec{AB} = \dots\dots\vec{DB}$
+		\item $\vec{AE} = \dots\dots\vec{DA}$
+	\end{enumerate}
+	\end{multicols}
+\end{exo}

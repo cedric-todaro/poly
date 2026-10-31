@@ -1,0 +1,594 @@
+\chapter{Primitives}
+
+\section{Primitive d'une fonction}
+
+\subsection{Définition}
+
+\begin{ex}
+	On considère les fonctions $f$ et $F$ définies sur $\R$ par $f(x) = 2x + 3$ et $F(x) = x^2 + 3x - 1$.
+
+	La fonction $F$ est dérivable sur $\R$ et, pour tout réel $x$, $F'(x) = 2x + 3 = f(x)$.
+
+	Lorsque $F' = f$, on dit que $F$ est une primitive de $f$.
+\end{ex}
+
+\begin{defin}
+	Soit $f$ une fonction définie sur un intervalle $I$.
+
+	On appelle \textbf{primitive} de $f$ sur $I$ toute fonction $F$ définie et dérivable sur $I$ telle que, pour tout $x$ de $I$ :
+	\[
+		F'(x) = f(x)
+	\]
+\end{defin}
+
+\begin{rem}
+	Dire que \og $F$ est une primitive de $f$\fg{} revient à dire que \og $f$ est la dérivée de $F$\fg{} :
+	\[
+		F \text{ primitive de } f \iff F' = f
+	\]
+
+	Déterminer une primitive d'une fonction est donc l'opération \og inverse\fg{} de la détermination de sa dérivée.
+
+\end{rem}
+
+\begin{methode}[Démontrer qu'une fonction est une primitive d'une autre]
+	Soit $f$ la fonction définie sur $\R$ par $f(x) = x + 1$.
+
+	Vérifier que la fonction $F$ définie sur $\R$ par $F(x) = \dfrac{1}{2}x^2 + x + 3$ est une primitive de $f$.
+
+	\begin{correction}
+		On dérive la fonction $F$ :
+		\[
+			\begin{array}{rccccccl}
+				F'(x) & = & 2 \times \dfrac{1}{2}x & + & 1 & + & 0 &        \\
+				      & = & x                      & + & 1 &   &   & = f(x)
+			\end{array}
+		\]
+
+		Donc $F' = f$ et $F$ est une primitive de $f$ sur $\R$.
+	\end{correction}
+\end{methode}
+
+\subsection{Ensemble des primitives d'une fonction}
+
+\begin{prop}
+	Soit $f$ une fonction définie sur un intervalle $I$ et $F$ une primitive de $f$ sur $I$.
+
+	\begin{enumerate}
+		\item Pour tout réel $C$, la fonction $x \mapsto F(x) + C$ est une primitive de $f$ sur $I$.
+		\item Toute primitive $G$ de $f$ sur $I$ est de cette forme : il existe $C\in\R$ tel que, pour tout $x$ de $I$, $G(x) = F(x) + C$.
+	\end{enumerate}
+\end{prop}
+
+\begin{demo}
+	\nline
+	\begin{enumerate}
+		\item Posons $G(x) = F(x) + C$. Alors $G'(x) = F'(x) + 0 = f(x)$ : $G$ est une primitive de $f$.
+		\item Soit $G$ une primitive de $f$ sur $I$. Alors $\big({G(x) - F(x)}\big)' = G'(x) - F'(x) = f(x) - f(x) = 0$ sur $I$.
+
+		      Une fonction dérivable de dérivée nulle sur un intervalle est constante : il existe donc un réel $C$ tel que :
+		      \[
+			      G(x) - F(x) = C \iff G(x)=F(x) + C
+		      \]
+	\end{enumerate}
+\end{demo}
+
+\begin{rem}
+	Dès qu'une fonction $f$ admet une primitive sur un intervalle $I$, elle en admet donc une infinité sur $I$, qui diffèrent toutes d'une constante.
+
+	Par exemple, en reprenant la méthode précédente, la fonction $G$ définie sur $\R$ par $G(x) = \tfrac{1}{2}x^2 + x + 10$ est également une primitive de $f(x) = x + 1$.
+
+	Toutes les primitives de $f$ sont les fonctions $x \mapsto \tfrac{1}{2}x^2 + x + C$ avec $C \in \R$.
+\end{rem}
+
+\subsection{Primitive vérifiant une condition initiale}
+
+\begin{prop}
+	Soit $f$ une fonction qui possède une primitive $F$ sur un intervalle $I$, $x_0$ un réel de $I$ et $y_0$ un réel.
+
+	Il existe une \textbf{unique} primitive $G$ de $f$ sur $I$ telle que $G\pa{x_0} = y_0$.
+\end{prop}
+
+\begin{demo}
+	Les primitives de $f$ sont les fonctions $G(x) = F(x) + C$ avec $C \in \R$.
+
+	La condition $G\pa{x_0} = y_0$ s'écrit $F\pa{x_0} + C = y_0\iff C = y_0 - F\pa{x_0}$ : il y a une seule valeur possible de $C$.
+\end{demo}
+
+\begin{methode}[Déterminer la primitive d'une fonction vérifiant une condition]
+	Soit $f$ la fonction définie sur $\R$ par $f(x) = 2x - 3$.
+
+	\begin{enumerate}
+		\item Vérifier que la fonction $F$ définie par $F(x) = x^2 - 3x$ est une primitive de $f$.
+		\item Déterminer la primitive $G$ de $f$ telle que $G(2) = 1$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $F'(x) = 2x - 3 = f(x)$ donc $F$ est une primitive de $f$.
+			\item $G$ est une primitive de $f$ donc $G$ est de la forme $G(x) = x^2 - 3x + C$ avec $C \in \R$.
+
+			      Comme $G(2) = 1$, on a :
+			      \[
+				      \begin{array}{rccccccl}
+					      G(2) = 1 & \iff & 2^2 - 3 \times 2 & + & C & = & 1 &            \\
+					               & \iff & -2               & + & C & = & 1 & \iff C = 3
+				      \end{array}
+			      \]
+			      D'où $G(x) = x^2 - 3x + 3$.
+		\end{enumerate}
+		\begin{center}
+			\begin{tikzpicture}[x=1.8cm, y=0.6cm, >=Stealth]
+				\clip (-1.8,-4.9) rectangle (5,6.3);
+				\draw[ultra thick, bleu, domain=-0.5:3.6, samples=100] plot (\x, {\x*\x - 3*\x + 3});
+				\draw[ultra thick, rouge, domain=-0.5:3.6, samples=100] plot (\x, {\x*\x - 3*\x});
+				\draw[ultra thick, vert, domain=-0.5:3.6, samples=100] plot (\x, {\x*\x - 3*\x - 2});
+				\draw[->, thick] (-0.8, 0) -- (4, 0) node[below] {$x$};
+				\draw[->, thick] (0, -4.8) -- (0, 6) node[left] {$y$};
+				\node[below left, ] at (0,0) {$0$};
+				\foreach \x in {1,2,3} { \draw[thick] (\x, 0.2) -- (\x, -0.2) node[below] {$\x$}; }
+				\foreach \y in {-4,-3,-2,-1,1,2,3,4,5} { \draw[thick] (0.05, \y) -- (-0.05, \y) node[left] {$\y$}; }
+				\draw[bleu!70, dashed] (2,0) -- (2,1) -- (0,1);
+				\fill[bleu] (2,1) circle (2pt);
+				\node[bleu, anchor=south east] at (2.05, 1.05) {$\pa{2\,;\,1}$};
+				\node[bleu, anchor=south west] at (3.6, 4.6) {$C = 3$};
+				\node[rouge, anchor=south west] at (3.6, 1.6) {$C = 0$};
+				\node[vert, anchor=north west] at (3.2, -1.2) {$C = -2$};
+			\end{tikzpicture}
+		\end{center}
+
+		Les courbes des primitives $x \mapsto x^2 - 3x + C$ se déduisent les unes des autres par translation verticale ; la courbe de $G$ est celle qui passe par le point $\coordl{2}{1}$.
+	\end{correction}
+\end{methode}
+
+\section{Calculs de primitives}
+
+\subsection{Primitives des fonctions usuelles}
+
+\begin{prop}
+	Soit $a$, $A$, $\omega$, $\varphi$ des réels avec $\omega \neq 0$ et $n$ un entier naturel. Une primitive de $f$ est la fonction $F$ donnée par le tableau suivant :
+
+	\begin{center}
+		\rnc{\arraystretch}{1.3}
+		\begin{tabular}{|c|c|} \hline
+			\ccg{Fonction $f$}                                          & \ccg{Une primitive $F$}                                \\ \hline
+			$f(x) = a$                                                  & $F(x) = ax$                                            \\ \hline
+			\rule[-4mm]{0mm}{11mm}$f(x) = x^n$                          & $F(x) = \dfrac{1}{n + 1}x^{n+1}$                       \\ \hline
+			\rule[-4mm]{0mm}{11mm}$f(t) = A\cos\pa{\omega t + \varphi}$ & $F(t) = \dfrac{A}{\omega}\sin\pa{\omega t + \varphi}$  \\ \hline
+			\rule[-4mm]{0mm}{11mm}$f(t) = A\sin\pa{\omega t + \varphi}$ & $F(t) = -\dfrac{A}{\omega}\cos\pa{\omega t + \varphi}$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{prop}
+
+\begin{demo}
+	Il suffit de dériver $F$ et de retrouver $f$.
+
+	\begin{itemize}
+		\item Si $F(x) = ax$, alors $F'(x) = a$.
+		\item Si $F(x) = \dfrac{1}{n + 1}x^{n+1}$, alors $F'(x) = \dfrac{1}{n + 1} \times (n + 1)x^n = x^n$.
+		\item Pour les fonctions trigonométriques, on utilise les dérivées de $t \mapsto \sin\pa{\omega t + \varphi}$ et de $t \mapsto \cos\pa{\omega t + \varphi}$, qui sont respectivement $t \mapsto \omega\cos\pa{\omega t + \varphi}$ et $t \mapsto -\omega\sin\pa{\omega t + \varphi}$.
+		      \begin{itemize}
+			      \item Si $F(t) = \dfrac{A}{\omega}\sin\pa{\omega t + \varphi}$, alors $F'(t) = \dfrac{A}{\omega} \times \omega\cos\pa{\omega t + \varphi} = A\cos\pa{\omega t + \varphi}$.
+			      \item Si $F(t) = -\dfrac{A}{\omega}\cos\pa{\omega t + \varphi}$, alors $F'(t) = -\dfrac{A}{\omega} \times \pa{-\omega\sin\pa{\omega t + \varphi}} = A\sin\pa{\omega t + \varphi}$.
+		      \end{itemize}
+	\end{itemize}
+\end{demo}
+
+\begin{ex}
+	\nline
+	\begin{enumerate}
+		\item Si $f(x) = \dfrac{1}{2}$, alors $F(x) = \dfrac{1}{2}x$ est une primitive de $f$.
+		\item Si $g(x) = 3x^5$, alors $G(x) = \dfrac{3}{6}x^6 = \dfrac{1}{2}x^6$ est une primitive de $g$.
+		\item Si $h(t) = 2\sin\pa{2t - \dfrac{\pi}{6}}$, alors $H(t) = -\dfrac{2}{2}\cos\pa{2t - \dfrac{\pi}{6}} = -\cos\pa{2t - \dfrac{\pi}{6}}$ est une primitive de $h$.
+	\end{enumerate}
+\end{ex}
+
+\subsection{Linéarité des primitives}
+
+\begin{prop}
+	Soit $f$ et $g$ deux fonctions définies sur un intervalle $I$ et $k$ un réel.
+
+	Si $F$ est une primitive de $f$ sur $I$ et $G$ une primitive de $g$ sur $I$, alors :
+
+	\begin{itemize}
+		\item $F + G$ est une primitive de $f + g$ sur $I$ ;
+		\item $kF$ est une primitive de $kf$ sur $I$.
+	\end{itemize}
+\end{prop}
+
+\begin{demo}
+	$\pa{F + G}' = F' + G' = f + g$ et $\pa{kF}' = kF' = kf$.
+\end{demo}
+
+\begin{rem}
+	Pour obtenir une primitive d'une fonction polynôme, il suffit donc de trouver une primitive de chacun de ses termes.
+
+	Par exemple, pour $f(x) = 2x^4 - 3x^3 + 2$, une primitive est $F(x) = \dfrac{2}{5}x^5 - \dfrac{3}{4}x^4 + 2x$, et les primitives de $f$ sont les fonctions $x \mapsto \dfrac{2}{5}x^5 - \dfrac{3}{4}x^4 + 2x + C$ avec $C \in \R$.
+\end{rem}
+
+\begin{attention}
+	Une primitive d'un produit de deux fonctions n'est pas le produit des primitives de ces deux fonctions.
+
+	Par exemple, $x \mapsto \tfrac{1}{2}x^2$ est une primitive de $x \mapsto x$, mais le produit $x \mapsto \tfrac{1}{2}x^2 \times \tfrac{1}{2}x^2 = \tfrac{1}{4}x^4$ a pour dérivée $x \mapsto x^3$, et non $x \mapsto x \times x = x^2$.
+\end{attention}
+
+\begin{methode}[Rechercher des primitives]
+	Dans chaque cas, déterminer une primitive $F$ de la fonction $f$.
+
+	\begin{multicols}{3}
+		\begin{enumerate}
+			\item $f(x) = x^4$ ;
+			\item $f(x) = 4x^3$ ;
+			\item $f(x) = x^4 + 2x^2 + 1$ ;
+			\item $f(x) = 5x^3 - 2x^2 + 2x - 6$ ;
+			\item $f(t) = 5\cos\pa{2t - \pi}$ ;
+			\item $f(t) = -3\sin\pa{5t + \dfrac{\pi}{2}}$.
+		\end{enumerate}
+	\end{multicols}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $F(x) = \pa{\dfrac{1}{4 + 1}x^{4+1}} = \dfrac{1}{5}x^5$.
+			\item $F(x) = 4 \times \pa{\dfrac{1}{3 + 1}x^{3+1}} = 4 \times \dfrac{1}{4}x^4 = x^4$.
+			\item $F(x) = \pa{\dfrac{1}{4 + 1}x^{4+1}} + 2\times \pa{\dfrac{1}{2 + 1}x^{2+1}} + \pa{x} = \dfrac{1}{5}x^5 + \dfrac{2}{3}x^3 + x$.
+			\item $F(x) = 5 \times \pa{\dfrac{1}{4}x^4} - 2 \times \pa{\dfrac{1}{3}x^3} + 2 \times \pa{\dfrac{1}{2}x^2} - 6\pa{x} = \dfrac{5}{4}x^4 - \dfrac{2}{3}x^3 + x^2 - 6x$.
+			\item Ici $A = 5$, $\omega = 2$ et $\varphi = -\pi$ :
+			      \[
+				      F(t) = \dfrac{5}{2}\sin\pa{2t - \pi}
+			      \]
+
+			\item Ici $A = -3$, $\omega = 5$ et $\varphi = \dfrac{\pi}{2}$ :
+			      \[
+				      F(t) = -\dfrac{-3}{5}\cos\pa{5t + \dfrac{\pi}{2}} = \dfrac{3}{5}\cos\pa{5t + \dfrac{\pi}{2}}
+			      \]
+
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\subsection{Primitive vérifiant une condition initiale}
+
+\begin{methode}[Déterminer une primitive vérifiant une condition initiale]
+	Dans chaque cas, déterminer la primitive de la fonction vérifiant la condition donnée.
+
+	\begin{enumerate}
+		\item $f(x) = 6x^2 - 4x + 1$ et $F(1) = 3$ ;
+		\item $g(t) = 3\cos(2t)$ et $G\pa{\dfrac{\pi}{4}} = 1$ ;
+		\item $u(t) = 10\sin(50t)$ et $U(0) = 0$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Les primitives de $f$ sont les fonctions $F(x) = 2x^3 - 2x^2 + x + C$ avec $C \in \R$.
+
+			      Comme $F(1) = 3$ :
+			      \[
+				      \begin{array}{rcll}
+					      F(1) = 3 & \iff & 2\times 1^3 - 2\times 1^2 + 1 + C = 3 &             \\
+					               & \iff & 2 - 2 + 1 + C = 3                     & \iff  C = 2
+				      \end{array}
+			      \]
+
+			      D'où $F(x) = 2x^3 - 2x^2 + x + 2$.
+
+			\item Les primitives de $g$ sont les fonctions $G(t) = \dfrac{3}{2}\sin(2t) + C$ avec $C \in \R$.
+
+			      Comme $G\pa{\dfrac{\pi}{4}} = 1$ :
+			      \[
+				      \def\arraystretch{1.8}
+				      \begin{array}{rcll}
+					      G\pa{\dfrac{\pi}{4}} = 1 & \iff & \dfrac{3}{2}\sin\pa{2\times \dfrac{\pi}{4}} + C = 1 &                         \\
+					                               & \iff & \dfrac{3}{2}\sin\pa{\dfrac{\pi}{2}} + C = 1         &                         \\
+					                               & \iff & \dfrac{3}{2} + C = 1                                & \iff  C = \dfrac{-1}{2}
+				      \end{array}
+			      \]
+
+			      D'où $G(t) = \dfrac{3}{2}\sin(2t) - \dfrac{1}{2}$.
+			\item Les primitives de $u$ sont les fonctions $U(t) = -\dfrac{10}{50}\cos(50t) + C = -0{,}2\cos(50t) + C$ avec $C \in \R$.
+
+			      Comme $U(0) = 0$ :
+			      \[
+				      \begin{array}{rcl}
+					      U(0) = 0 & \iff & -0{,}2\cos(50\times 0) + C = 0 \\
+					               & \iff & -0{,}2 + C = 0                 \\
+					               & \iff & C = 0{,}2
+				      \end{array}
+			      \]
+			      D'où $U(t) = 0{,}2 - 0{,}2\cos(50t)$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\section{Équation $y' = f(t)$}
+
+\begin{defin}
+	Soit $f$ une fonction définie sur un intervalle $I$.
+
+	\textbf{Résoudre l'équation} $y' = f(t)$ sur $I$, c'est trouver \textbf{toutes les fonctions} $y$ dérivables sur $I$ telles que, pour tout réel $t$ de $I$, $y'(t) = f(t)$.
+\end{defin}
+
+\begin{prop}
+	Les solutions de l'équation $y' = f(t)$ sont les primitives de $f$.
+
+	Pour une condition initiale $y\pa{t_0} = y_0$ donnée, il existe une seule solution.
+\end{prop}
+
+\begin{ex}[Charge d'un condensateur]
+
+	L'intensité $i$ est la dérivée de la charge $q$ : $q' = i$.
+
+	Si $i(t) = 0{,}2\cos(100\pi t)$ (en ampères) et $q(0) = 0$, alors
+	\[
+		q(t) = \dfrac{0{,}2}{100\pi}\sin(100\pi t) + C
+	\]
+
+	\ldots et $q(0) = C = 0$. Donc $q(t) = \dfrac{0{,}002}{\pi}\sin(100\pi t)$ coulombs.
+\end{ex}
+
+\begin{ex}[Freinage]
+
+	Un véhicule roulant à $20$ m/s freine avec une décélération constante de $4$ m/s$^2$.
+
+	Sa vitesse $v$ vérifie $v'(t) = -4$ et $v(0) = 20$, donc $v(t) = -4t + 20$.
+
+	Sa position $x$, avec $x(0) = 0$, vérifie $x' = v$, d'où $x(t) = -2t^2 + 20t$.
+
+	Le véhicule s'arrête quand $v(t) = 0$, soit à $t = 5$ s, après avoir parcouru $x(5) = -50 + 100 = 50$ m.
+\end{ex}
+
+\section{Méthode d'Euler}
+
+Lorsque l'on ne connaît pas de primitive de $f$, on peut construire point par point une approximation de la solution de $y' = f(t)$ avec $y\pa{t_0} = y_0$.
+
+\begin{prop}
+	Soit $h > 0$ un réel appelé \textbf{pas}.
+
+	Au voisinage de $t$, on utilise l'approximation affine $y(t + h) \approx y(t) + h\,y'(t) = y(t) + h\,f(t)$.
+
+	On construit ainsi de proche en proche des valeurs $y_k \approx y\pa{t_k}$ avec :
+	\[
+		t_{k+1} = t_k + h \qquad\text{et}\qquad y_{k+1} = y_k + h\,f\pa{t_k}
+	\]
+\end{prop}
+
+\begin{rem}
+	Plus le pas $h$ est petit, meilleure est l'approximation (mais plus il y a de calculs).
+\end{rem}
+
+\newpage
+
+\begin{methode}[Calculer une approximation d'une primitive par la méthode d'Euler]
+	Soit $f$ la fonction définie sur $\intff{1}{5}$ par $f(t) = \dfrac{1}{t}$.
+
+	À l'aide de la méthode d'Euler et avec $h=0{,}5$, déterminer une approximation de la primitive $F$ de $f$ sur $\intff{1}{5}$ telle que $F(1) = 0$.
+
+	\begin{correction}
+		Le pas est $h = 0{,}5$ : les valeurs successives de $t_k$ sont $1$ ; $1{,}5$ ; $2$ ; $2{,}5$ ; $3$ ; $3{,}5$ ; $4$ ; $4{,}5$ ; $5$.
+
+		On sait que $F(1) = 0$.
+
+		\begin{itemize}
+			\item $F(1{,}5) \approx F(1) + h\,f(1) = 0 + 0{,}5 \times \dfrac{1}{1} = 0{,}5$.
+			\item $F(2) \approx F(1{,}5) + h\,f(1{,}5) = 0{,}5 + 0{,}5 \times \dfrac{1}{1{,}5} \approx 0{,}833$.
+		\end{itemize}
+
+		On poursuit de proche en proche, ce qui donne le tableau suivant (valeurs arrondies au centième) :
+
+		\begin{center}
+			\rnc{\arraystretch}{1.6}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
+				\ccg{$t_k$}       & $1$ & $1{,}5$ & $2$      & $2{,}5$  & $3$      & $3{,}5$  & $4$      & $4{,}5$  & $5$      \\ \hline
+				\ccg{$F\pa{t_k}$} & $0$ & $0{,}5$ & $0{,}83$ & $1{,}08$ & $1{,}28$ & $1{,}45$ & $1{,}59$ & $1{,}72$ & $1{,}83$ \\ \hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tikzpicture}[x=1.8cm, y=2.4cm, >=Stealth]
+				\clip (-0.4, -0.4) rectangle (5.4, 2.2);
+				\draw[dashed, gray!40, step=0.5] (0, 0) grid (5.4, 2.2);
+				\foreach \t in {0.5, 1,..., 5} { \draw[thick] (\t, 0.05) -- (\t, -0.05) node[below] {\t}; }
+				\foreach \y in {0.5, 1, 1.5, 2} { \draw[thick] (0.05, \y) -- (-0.05, \y) node[left] {\y}; }
+				\draw[->, thick] (-0.2, 0) -- (5.3, 0) node[below] {$t$};
+				\draw[->, thick] (0, -0.2) -- (0, 2.2) node[below right] {$y$};
+				\draw[very thick, bleu, domain=1:5, samples=100] plot (\x, {ln(\x)});
+				\draw[very thick, rouge, mark=*, mark size=2pt] plot coordinates { (1, 0) (1.5, 0.5) (2, 0.833) (2.5, 1.083) (3, 1.283) (3.5, 1.450) (4, 1.593) (4.5, 1.718) (5, 1.829) };
+				\node[below left] at (0,0) {$0$};
+				\begin{scope}[shift={(3.1, 0.8)}]
+					\draw[white, fill=white, fill opacity=0.85, draw=gray!50] (0, 0) rectangle (2.2, -0.6);
+					\draw[thick, bleu] (0.15, -0.18) -- (0.6, -0.18);
+					\node[anchor=west] at (0.65, -0.18) {Solution exacte};
+					\draw[thick, rouge, mark=*, mark size=1.5pt] (0.15, -0.42) -- (0.6, -0.42);
+					\node[anchor=west] at (0.65, -0.42) {Euler ($h = 0{,}5$)};
+				\end{scope}
+			\end{tikzpicture}
+		\end{center}
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Comparer l'approximation d'Euler à la solution exacte]
+	On considère l'équation $y' = t^2$ avec $y(0) = 0$ et un pas $h = 0{,}5$.
+
+	Calculer les valeurs approchées de $y$ pour $t$ allant de $0$ à $2$ et les comparer à la solution exacte.
+
+	\begin{correction}
+		\nline
+		\begin{center}
+			\rnc{\arraystretch}{1.6}
+			\begin{tabular}{|c|c|c|c|c|c|} \hline
+				\ccg{$t_k$} & $0$ & $0{,}5$ & $1$       & $1{,}5$   & $2$      \\ \hline
+				\ccg{$y_k$} & $0$ & $0$     & $0{,}125$ & $0{,}625$ & $1{,}75$ \\ \hline
+			\end{tabular}
+		\end{center}
+
+		Par exemple, $y_3 = y_2 + 0{,}5 \times 1^2 = 0{,}125 + 0{,}5 = 0{,}625$.
+
+		La solution exacte est $y(t) = \dfrac{t^3}{3}$ (c'est la primitive de $t \mapsto t^2$ qui s'annule en $0$), qui vaut $\dfrac{8}{3} \approx 2{,}67$ en $t = 2$ : avec ce pas, l'approximation est grossière.
+
+		\begin{center}
+			\begin{tikzpicture}[x=4cm, y=1.8cm, >=Stealth]
+				\clip (-0.3, -0.3) rectangle (2.3, 3.5);
+				\draw[dashed, gray!40, thick, step=0.5] (0, 0) grid (2.2, 3.4);
+				\draw[->, thick] (-0.2, 0) -- (2.2, 0) node[below] {$t$};
+				\draw[->, thick] (0, -0.2) -- (0, 3.4) node[left] {$y$};
+				\foreach \t in {0.5, 1, 1.5, 2} { \draw[thick] (\t, 0.05) -- (\t, -0.05) node[below] {\t}; }
+				\foreach \y in {0.5, 1,..., 3} { \draw[thick] (0.02, \y) -- (-0.02, \y) node[left] {\y}; }
+				\draw[very thick, bleu, domain=0:2.0, samples=100] plot (\x, {(\x*\x*\x)/3});
+				\draw[very thick, rouge, mark=*, mark size=1.8pt] plot coordinates { (0, 0) (0.5, 0) (1, 0.125) (1.5, 0.625) (2, 1.75) };
+				\node[below left] at (0,0) {$0$};
+				\begin{scope}[shift={(0.2, 3.2)}]
+					\draw[white, fill=white, fill opacity=0.85, draw=gray!50] (0, 0) rectangle (1.5, -0.6);
+					\draw[thick, bleu] (0.15, -0.18) -- (0.4, -0.18);
+					\node[anchor=west] at (0.45, -0.18) {Solution exacte};
+					\draw[thick, rouge, mark=*, mark size=1.5pt] (0.15, -0.42) -- (0.4, -0.42);
+					\node[anchor=west] at (0.45, -0.42) {Euler ($h = 0{,}5$)};
+				\end{scope}
+			\end{tikzpicture}
+		\end{center}
+
+		La méthode d'Euler avance par segments dont la pente est $f\pa{t_k}$ : l'erreur s'accumule à chaque pas.
+	\end{correction}
+\end{methode}
+
+\begin{rem}
+	La méthode d'Euler se programme en Python.
+
+	La fonction \texttt{euler} ci-dessous renvoie l'approximation de $y\pa{t_0 + nh}$ après $n$ pas :
+
+	\begin{lstlisting}
+def euler(f, t0, y0, h, n):
+    t, y = t0, y0
+    for k in range(n):
+        y = y + h * f(t)
+        t = t + h
+    return y
+
+def f(t):
+    return t**2
+
+print(euler(f, 0, 0, 0.1, 20))  # environ 2.47
+\end{lstlisting}
+
+	Avec un pas de $0{,}1$ ($20$ pas), on obtient environ $2{,}47$, plus proche de $\dfrac{8}{3} \approx 2{,}67$ qu'avec le pas $0{,}5$.
+\end{rem}
+
+\section{Primitives et calcul d'aire}
+
+\begin{defin}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[>=Stealth,scale=1.2]
+			\fill[bleu!15, domain=1.5:4.0, variable=\x] (1.5, 0) -- plot (\x, {0.3*\x*(5.5-\x) + 0.8}) -- (4.0, 0) -- cycle;
+			\draw[->, thick] (-0.5, 0) -- (5.2, 0) node[below] {$x$};
+			\draw[->, thick] (0, -0.5) -- (0, 3.8) node[left] {$y$};
+			\node[below left] at (0,0) {$0$};
+			\draw[very thick, bleu, domain=0.8:4.8, samples=100] plot (\x, {0.3*\x*(5.5-\x) + 0.8});
+			\node[bleu, above right] at (4.2, {0.3*4.2*(5.5-4.2) + 0.8}) {$\Cf$};
+			\draw[dashed, gray!70] (1.5, 0) -- (1.5, {0.3*1.5*(5.5-1.5) + 0.8});
+			\draw[dashed, gray!70] (4.0, 0) -- (4.0, {0.3*4.0*(5.5-4.0) + 0.8});
+			\node[below] at (1.5, 0) {$a$};
+			\node[below] at (4.0, 0) {$b$};
+			\coordinate (M) at (1.9, 1.6);
+			\draw[dashed] (1.9, 1.6) -- (1.9, 0) node[below] {$x$};
+			\draw[dashed] (1.9, 1.6) -- (0, 1.6) node[left] {$y$};
+			\fill[rouge] (M) circle (2pt) node[above right] {$M(x\,;\,y)$};
+			\node[font=\Large] at (2.7, 0.7) {$\mathcal{D}$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Soit $f$ une fonction positive sur $\intff{a}{b}$.
+
+	L'aire (en unités d'aire) du domaine :
+	\[
+		\mathcal{D} = \brac{M(x\,;\,y)\ \text{ tels que }\ a \leq x \leq b\ \text{ et }\ 0 \leq y \leq f(x)}
+	\]
+
+	\ldots est appelée \textbf{intégrale} de $f$ entre $a$ et $b$ et est notée :
+	\[
+		\dint_a^b f(x)\,\dx
+	\]
+\end{defin}
+
+\newpage
+
+\begin{prop}
+	Soit $f$ une fonction positive sur $\intff{a}{b}$ et $F$ une primitive de $f$ sur $\intff{a}{b}$.
+
+	Alors (propriété admise) :
+	\[
+		\dint_a^b f(x)\,\dx = F(b) - F(a)
+	\]
+\end{prop}
+
+\begin{ex}
+	Soit $f(x) = x^2$. L'aire du domaine compris entre la courbe $\Cf$, l'axe des abscisses et les droites d'équations $x = 1$ et $x = 2$ est :
+	\[
+		\mathcal{A} = \dint_1^2 x^2\,\dx = F(2) - F(1)
+	\]
+
+	\ldots où $F(x) = \dfrac{1}{3}x^3$ est une primitive de $f$.
+
+	Donc :
+	\[
+		F(2) = \dfrac{1}{3} \times 2^3 = \dfrac{8}{3}\qquad\text{et}\quad F(1) = \dfrac{1}{3} \times 1^3 = \dfrac{1}{3}
+	\]
+
+	Et l'aire est :
+	\[
+		\begin{array}{rccccl}
+			\mathcal{A} & = & F(2)         & - & F(1)         &                                       \\
+			            & = & \dfrac{8}{3} & - & \dfrac{1}{3} & = \dfrac{7}{3}\ \text{ unités d'aire}
+		\end{array}
+	\]
+
+	\begin{center}
+		\begin{tikzpicture}[x=2.2cm,y=0.9cm, >=Stealth]
+			\fill[bleu!25] (1,0) -- plot[domain=1:2,samples=40] (\x,{\x*\x}) -- (2,0) -- cycle;
+			\draw[->] (-0.4,0) -- (2.6,0) node[below] {$x$};
+			\draw[->] (0,-0.6) -- (0,5.2) node[left] {$y$};
+			\draw[thick,bleu] plot[domain=-0.4:2.2,samples=60] (\x,{\x*\x});
+			\draw[dashed] (2,0) -- (2,4);
+			\draw[dashed] (1,0) -- (1,1);
+			\node[below] at (1,0) {$1$};
+			\node[below] at (2,0) {$2$};
+			\node[below left] at (0,0) {$0$};
+			\node[bleu,right] at (2.2,4.84) {$\Cf$};
+			\node at (1.5,0.9) {$\mathcal{A}$};
+		\end{tikzpicture}
+	\end{center}
+\end{ex}
+
+\begin{methode}[Calculer une aire à l'aide d'une primitive]
+	Calculer l'aire du domaine compris entre l'axe des abscisses, la courbe de $f$ définie par $f(x) = 0{,}5x + 1$ et les droites d'équations $x = -2$ et $x = 2$.
+
+	\begin{correction}
+		Pour $x \in \intff{-2}{2}$, la fonction $f$ est positive sur $\intff{-2}{2}$ et une primitive de $f$ est $F(x) = \dfrac{1}{4}x^2 + x$.
+
+		Donc :
+		\[
+			\def\arraystretch{1.1}
+			\begin{array}{rcll}
+				\mathcal{A} & = & \dint_{-2}^{2} f(x)\,\dx &                                                                                                               \\
+				            & = & F(2) - F(-2)             & =  \pa{\dfrac{1}{4}\times 2^2 + 2} - \pa{\dfrac{1}{4}\times \pa{-2}^2 + \pa{-2}} \quad = 3 - \pa{-1}\quad = 4
+			\end{array}
+		\]
+
+		L'aire du domaine est égale à $4$ unités d'aire.
+		\begin{center}
+			\begin{tikzpicture}[x=1.25cm,y=1.25cm, >=Stealth]
+				\fill[bleu!25] (-2,0) -- plot[domain=-2:2,samples=10] (\x,{0.5*\x+1}) -- (2,0) -- cycle;
+				\draw[->] (-3,0) -- (3,0) node[below] {$x$};
+				\draw[->] (0,-0.6) -- (0,3) node[left] {$y$};
+				\draw[thick,bleu] plot[domain=-2.4:2.4,samples=10] (\x,{0.5*\x+1});
+				\draw[dashed] (2,0) -- (2,2);
+				\filldraw (0,1) circle (1.5pt) node[above left] {$1$};
+				\node[below] at (-2,0) {$-2$};
+				\node[below] at (2,0) {$2$};
+				\node[below left] at (0,0) {$0$};
+				\node[bleu,right] at (2.2,2.54) {$\Cf$};
+				\node at (1,0.75) {$\mathcal{A}$};
+			\end{tikzpicture}
+		\end{center}
+	\end{correction}
+\end{methode}

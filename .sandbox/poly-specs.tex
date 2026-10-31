@@ -1,0 +1,202 @@
+%!TEX program = pdflatex
+\documentclass{poly}
+\title{Mathématiques~---~Mon \texttt{poly.cls}}
+\author{Todaro Cédric}
+\date{\today}
+% ----------------------------------------------------------------------------------------------------
+\begin{document}
+\maketitle
+\tableofcontents
+% ----------------------------------------------------------------------------------------------------
+\chapter{Démonstration et vue d'ensemble de la classe \texttt{poly.cls}}
+
+Ce document illustre l'utilisation de toutes les fonctionnalités, macros, couleurs et environnements fournis par la classe \texttt{poly.cls}.
+
+\section{Environnements de théorèmes et d'encadrés}
+
+\begin{thm}
+	Soit $f$ une fonction continue sur un intervalle $I \subset \R$. Alors $f$ admet des primitives sur $I$.
+\end{thm}
+
+\begin{prop}
+	Pour tous réels $a, b \in \R$, on a $(a+b)^2 = a^2 + 2ab + b^2$.
+\end{prop}
+
+\begin{df}
+	Un espace vectoriel est un ensemble muni d'une loi interne et d'une loi externe vérifiant huit axiomes fondamentaux.
+\end{df}
+
+\begin{meth}
+	Pour déterminer le signe d'un trinôme du second degré $ax^2+bx+c$, on calcule d'abord le discriminant $\Delta = b^2 - 4ac$.
+\end{meth}
+
+\begin{exercice}
+	Calculer l'intégrale suivante : $\dint_{0}^{1} x^2 \dx$.
+\end{exercice}
+
+\begin{exo}
+	Montrer que pour tout $n \in \N$, $n(n+1)$ est un nombre pair.
+\end{exo}
+
+\begin{demo}
+	Soit $n \in \N$. Si $n$ est pair, $n=2k$ donc $n(n+1) = 2k(2k+1)$. Si $n$ est impair, $n=2k+1$ donc $n(n+1) = (2k+1)(2k+2) = 2(2k+1)(k+1)$. Dans les deux cas, le produit est un multiple de 2.
+\end{demo}
+
+\begin{ex}
+	Considérons la fonction $f: x \mapsto x^2 + 1$ définie sur $\R$.
+\end{ex}
+
+\begin{rmq}
+	Cette propriété s'étend facilement aux espaces de dimension infinie.
+\end{rmq}
+
+\begin{attention}
+	Ne pas confondre la dérivée d'une composée avec le produit des dérivées.
+\end{attention}
+
+\begin{piege}
+	L'implication $f'(x) = 0 \Rarr f(x)$ admet un extremum local n'est pas toujours vraie (ex: $x \mapsto x^3$ en 0).
+\end{piege}
+
+\begin{ideerecue}
+	« Une suite bornée est toujours convergente. » C'est faux, exemple : $u_n = (-1)^n$.
+\end{ideerecue}
+
+\begin{erreur}
+	Écrire $\sqrt{a+b} = \sqrt{a} + \sqrt{b}$ est une erreur très fréquente !
+\end{erreur}
+
+\begin{fauxami}
+	Attention à la confusion entre continuité et dérivabilité.
+\end{fauxami}
+
+\begin{miseengarde}
+	Assurez-vous que le dénominateur ne s'annule pas avant de diviser.
+\end{miseengarde}
+
+\section{Macros mathématiques et ensembles}
+
+\subsection{Ensembles et symboles}
+\begin{itemize}
+	\item Ensembles usuels : $\N \subset \Z \subset \D \subset \Q \subset \R \subset \C$.
+	\item Courbes représentatives : $\Cf$, $\Cg$, $\Ch$.
+	\item Relations et flèches : $a \eqv b$, $a \iff b$, $a \rarr b$, $a \larr b$, $a \Rarr b$, $a \Larr b$, $a \Lrarr b$.
+	\item Inégalités larges : $a \leq b$, $x \geq y$, strictes : $x \lt y$, $a \gt b$.
+\end{itemize}
+
+\subsection{Vecteurs, normes, parenthèses et fractions}
+\begin{itemize}
+	\item Vecteurs et géométrie : $\vec{AB}$, $\norm{\vec{u}}$, $\abs{x}$, $\bar{Z}$, $D_1 \parallel D_2$.
+	\item Repères : $\OIJ$ et $\vOIJ$.
+	\item Coordonnées : $\coord{x}{y}$ et $\coordl{x_0}{y_0}$.
+	\item Parenthèses, crochets et accolades adaptables : $\pa{x+1}$, $\bra{0 ; 1}$, $\brac{1, 2, 3}$, $\pfrac{a}{b}$, $\bfrac{x}{y}$.
+\end{itemize}
+
+\subsection{Matrices et déterminants}
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Système ou matrice sans parenthèses : $\mat{a & b \\ c & d}$,
+		\item avec parenthèses : $\pmat{1 & 0 \\ 0 & 1}$,
+		\item avec crochets : $\bmat{x \\ y}$,
+		\item et déterminant : $\determinant{a & b \\ c & d}$.
+	\end{itemize}
+\end{multicols}
+
+\subsection{Analyse, intégrales et dérivées partielles}
+\begin{itemize}
+	\item Intégrale : $\dint_{a}^{b} f(x) \dx$, $\dy$, $\dz$, $\dt$.
+	\item Dérivées partielles : $\pd$, $\pdx{f}$, $\pdy{f}$, $\pdz{f}$, $\pdt{f}$.
+	\item Formules centrées via macro : \cmath{\lim\limits_{x \to +\infty} \dfrac{e^x}{x} = +\infty}
+\end{itemize}
+
+\subsection{Intervalles, probabilités et mise en forme}
+\begin{itemize}
+	\item Intervalles : $\intoo{a}{b}$, $\intff{a}{b}$, $\intof{a}{b}$, $\intfo{a}{b}$.
+	\item Probabilités : $\p{\bar{A}\cap B}$, $\pc{B}{A}$, $\card{E}$.
+	\item Nombres formates : $\np{1000000}$ et monnaie : $15,50 \eur$.
+\end{itemize}
+
+\section{Tableaux et couleurs}
+
+\subsection{Colonnes personnalisées et couleurs de cellules}
+\begin{center}
+	\def\arraystretch{1.5}
+	\begin{tabular}{|L{4cm}|C{5cm}|R{5cm}|} \hline
+		\ccg Alignement Gauche      & \cc{bleuClair} Alignement Centre & \cc{rougeClair} Alignement Droite \\ \hline
+		\cc{vertClair} Ligne 1      & \cc{orangeClair} Valeur A        & \cc{violetClair} 120,50 \eur      \\ \hline
+		\cc{turquoiseClair} Ligne 2 & \cc{grisLeger} Valeur B          & \cc{ocreClair} 450,00 \eur        \\ \hline
+	\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Palette de couleurs disponibles}
+\begin{multicols}{4}
+	\begin{itemize}
+		\item \textcolor{bleu}{bleu}
+		\item \textcolor{rouge}{rouge}
+		\item \textcolor{vert}{vert}
+		\item \textcolor{violet}{violet}
+		\item \textcolor{orange}{orange}
+		\item \textcolor{indigo}{indigo}
+		\item \textcolor{bordeaux}{bordeaux}
+		\item \textcolor{prune}{prune}
+		\item \textcolor{ocre}{ocre}
+		\item \textcolor{gris}{gris}
+		\item \textcolor{magenta}{magenta}
+		\item \textcolor{turquoise}{turquoise}.
+	\end{itemize}
+\end{multicols}
+
+\section{Listes, colonnes et mise en page}
+
+\subsection{Listes et environnement multicols}
+\begin{multicols}{3}
+	\begin{itemize}
+		\item Premier élément
+		\item Deuxième élément
+		\item Troisième élément
+	\end{itemize}
+\end{multicols}
+
+Numérotation :
+\begin{enumerate}
+	\item Première étape
+	\item Deuxième étape
+\end{enumerate}
+Bla\ldots Bla \ldots
+\begin{enumerate}[resume]
+	\item Étape reprise après interruption (via \texttt{[resume]})
+	      \begin{enumerate}
+		      \item Et imbrication ...
+			  \item ... of course
+	      \end{enumerate}
+\end{enumerate}
+
+\subsection{Code Python (\texttt{listings})}
+\begin{lstlisting}
+def fibonacci(n):
+    # Genere la suite de Fibonacci jusqu'a n
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a + b
+    print()
+# Appel de la fonction
+fibonacci(100)
+\end{lstlisting}
+
+\newpage
+\section{Figures TikZ intégrées}
+
+\subsection{Figure géométrique rosette (\texttt{\textbackslash figureA})}
+\figureA{scale=0.6}
+
+\subsection{Spirale de Fibonacci (\texttt{\textbackslash figureB})}
+\figureB{}
+
+% Generer la page de notes finale de la classe poly
+\pagenotes
+% ----------------------------------------------------------------------------------------------------
+\end{document}
+

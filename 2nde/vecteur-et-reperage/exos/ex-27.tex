@@ -1,0 +1,36 @@
+\begin{exo}{}
+	Dans le repère orthonormé $\vOIJ$ ci-dessous, on a placé trois points $R$, $S$ et $T$.
+
+	\ms
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.5, >=Stealth]
+			\draw[gray!30, thick] (-0.5,-0.5) grid (14.5,5.5);
+			\draw[thick, ->] (-0.5,0) -- (14.5,0);
+			\draw[thick, ->] (0,-0.5) -- (0,5.5);
+			\foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13,14} { \draw (\x,0.1) -- (\x,-0.1); }
+			\foreach \y in {1,2,3,4,5} { \draw (0.1,\y) -- (-0.1,\y); }
+			\draw[thick, ->] (0,0) -- (1,0) node[midway, below] {$\vec i$};
+			\draw[thick, ->] (0,0) -- (0,1) node[midway, left] {$\vec j$};
+			\node[below left] at (0,0) {$O$};
+			\coordinate (R) at (2,1);
+			\coordinate (S) at (9,3);
+			\coordinate (T) at (13,4);
+			\node[above right, red!80!black] at (R) {$R$};
+			\node[above right, red!80!black] at (S) {$S$};
+			\node[above right, red!80!black] at (T) {$T$};
+			\foreach \p in {R,S,T} {
+					\draw[thick, red!80!black] ($(\p)+(-0.15,-0.15)$) -- ($(\p)+(0.15,0.15)$);
+					\draw[thick, red!80!black] ($(\p)+(-0.15,0.15)$) -- ($(\p)+(0.15,-0.15)$);
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Lire les coordonnées des points $R$, $S$ et $T$.
+		\item Calculer la valeur exacte de $RS$, $ST$ et $RT$.
+		\item À l'aide de la calculatrice, donner une valeur approchée au millième de chacune de ces distances.
+		\item L'égalité $RS + ST = RT$ est-elle vérifiée ?
+		\item Que peut-on en conclure concernant l'alignement des points $R$, $S$ et $T$ ?
+	\end{enumerate}
+\end{exo}

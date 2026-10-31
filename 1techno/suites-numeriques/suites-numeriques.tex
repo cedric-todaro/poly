@@ -1,0 +1,402 @@
+\chapter{Suites numériques}
+
+\section{Définition}
+
+\subsection{Définition d'une suite}
+
+\begin{ex}
+	On considère une liste formée par tous les nombres impairs rangés dans l'ordre croissant : $1$, $3$, $5$, $\dots$
+
+	On note $(u_{n})$ l'ensemble des éléments de cette suite de nombres tel que :
+	\begin{itemize}
+		\item $u_{\pa{0}}=1$ : le premier terme de la suite
+		\item $u_{\pa{1}}=3$ : le deuxième terme
+		\item $u_{\pa{2}}=5$ : le troisième terme
+		\item $u_{\pa{3}}=7$ : \ldots
+	\end{itemize}
+
+	On a ainsi défini une suite numérique.
+\end{ex}
+
+\begin{definition}
+	Une \textbf{suite numérique} $\pa{u_n}$ est une liste ordonnée de nombres telle qu'à tout entier $n$, on associe un nombre réel noté $u_{\pa{n}}$.
+	\[
+		(u_n) : n \longmapsto u_{\pa{n}}
+	\]
+
+	\begin{itemize}
+		\item $u_{\pa{0}}$, $u_{\pa{1}}$, $u_{\pa{2}}$, $\dots$ sont appelés les \textbf{termes} de la suite.
+		\item $n$ est appelé le \textbf{rang}.
+	\end{itemize}
+
+\end{definition}
+
+\begin{rem}
+	Attention au point de départ de la suite selon l'ensemble où elle est définie :
+	\begin{itemize}
+		\item Si la suite est définie sur $\N$, on commence à compter à $n = 0$ (le premier terme est $u_{\pa{0}}$).
+		\item Si la suite est définie sur $\N^*$ (ou $\N \setminus \{0\}$), on commence à compter à $n = 1$ (le premier terme est $u_{\pa{1}}$).
+	\end{itemize}
+\end{rem}
+
+\subsection{Suites définies en fonction de $n$ (forme explicite)}
+
+\begin{definition}
+	Une suite $\pa{u_n}$ est dite définie de manière \textbf{explicite} lorsque le terme général $u_{\pa{n}}$ est exprimé directement \textbf{en fonction de $n$}.
+
+	On écrit alors $u_{\pa{n}} = f(n)$, où $f$ est une fonction définie sur $\R^+$ (ou un intervalle de $\R^+$).
+
+	Chaque terme $u_{\pa{n}}$ peut être calculé indépendamment des autres, sans connaître les termes précédents.
+
+\end{definition}
+
+\begin{ex}
+	Voici des exemples de suites explicites : $\qquad u_{\pa{n}} = 3n+2 \hspace{1cm} v_{\pa{n}} = \dfrac{n+1}{n-4} \hspace{1cm} w_{\pa{n}} = n\sqrt{n^3+1}$
+
+	\medskip
+
+	Voici comment on peut imaginer que cela fonctionne pour la suite définie par $u_{\pa{n}} = 3n + 2$ :
+	\begin{center}
+		\begin{tikzpicture}[scale=0.85, >=Stealth,
+				box/.style={draw, thick, rounded corners=3pt, minimum width=1.6cm, minimum height=1cm, align=center, fill=white},
+				arrow/.style={->, thick, blue!60!black}]
+			\node[anchor=east] at (-1, 0.5) {Rang $n$ :};
+			\node[anchor=east] at (-1, -1.5) {Valeur $u_n$ :};
+			\foreach \n/\val in {0/2, 1/5, 2/8, 3/11, 4/14} {
+					\node[box] (n\n) at (\n*2, 0.5) {$n = \n$};
+					\node[box, fill=gray!15] (u\n) at (\n*2, -1.5) {$u_{\n} = \val$};
+					\draw[arrow] (n\n) -- node[right, font=\footnotesize, text=blue!75!black] {$\times 3 + 2$} (u\n);
+				}
+		\end{tikzpicture}
+	\end{center}
+\end{ex}
+
+\newpage
+
+\begin{methode}[Calculer des termes d'une suite définie en fonction de $n$]
+	Calculons les quatre premiers termes des suites suivantes :
+	\[
+		u_{\pa{n}}=2n \quad\text{et}\quad v_{\pa{n}}=3n^{2} - 1
+	\]
+
+	\begin{correction}
+		Les premiers termes de la suite $u_{\pa{{\color{blue}n}}}=2\color{blue}n$ sont :
+		\begin{itemize}
+			\item $u_{\pa{{\color{blue}0}}}=2 \times {\color{blue}0}=0$ $\quad\leftarrow$ On remplace $\color{blue}n$ par $\color{blue}0$
+			\item $u_{\pa{{\color{blue}1}}}=2 \times {\color{blue}1}=2$ $\quad\leftarrow$ On remplace $\color{blue}n$ par $\color{blue}1$
+			\item $u_{\pa{{\color{blue}2}}}=2 \times {\color{blue}2}=4$
+			\item $u_{\pa{{\color{blue}3}}}=2 \times {\color{blue}3}=6$
+		\end{itemize}
+
+		Les premiers termes de la suite $v_{\pa{{\color{red}n}}}=3{\color{red}n}^{2} - 1$ sont :
+		\begin{itemize}
+			\item $v_{\pa{{\color{red}0}}}=3 \times {\color{red}0}^{2} - 1=-1$
+			\item $v_{\pa{{\color{red}1}}}=3 \times {\color{red}1}^{2} - 1=2$
+			\item $v_{\pa{{\color{red}2}}}=3 \times {\color{red}2}^{2} - 1=11$
+			\item $v_{\pa{{\color{red}3}}}=3 \times {\color{red}3}^{2} - 1=26$
+		\end{itemize}
+	\end{correction}
+\end{methode}
+
+\begin{ex}
+	Soit la suite $\pa{u_n}$ définie pour tout entier naturel $n$ par :
+	\[
+		u_{\pa{n}} = n^2 + 2
+	\]
+
+	Calculons ses trois premiers termes :
+	\begin{itemize}
+		\item Pour $n=0$ : $u_{\pa{0}} = 0^2 + 2 = 2$
+		\item Pour $n=1$ : $u_{\pa{1}} = 1^2 + 2 = 3$
+		\item Pour $n=2$ : $u_{\pa{2}} = 2^2 + 2 = 6$
+	\end{itemize}
+\end{ex}
+
+\subsection{Suites définies par récurrence}
+
+\begin{definition}
+	Dans ce cas, chaque terme de la suite s'obtient à partir du terme précédent.
+
+	On exprime, en général, $u_{\pa{n+1}}$ en fonction de $u_{\pa{n}}$, car les termes $u_{\pa{n}}$ et $u_{\pa{n+1}}$ se suivent.
+
+	Pour définir entièrement une suite par récurrence, il faut obligatoirement préciser deux éléments :
+
+	\begin{itemize}
+		\item \textbf{Le premier terme : } par exemple $u_{\pa{0}}$, qui donne le point de départ de la suite.
+		\item \textbf{La relation de récurrence : } c'est la \og règle \fg{} permettant de calculer le terme suivant à partir du terme précédent (elle exprime $u_{\pa{n+1}}$ en fonction de $u_{\pa{n}}$).
+	\end{itemize}
+\end{definition}
+
+\begin{ex}
+	Voici comment on peut imaginer que cela fonctionne pour une suite récurrente (par ex. $u_{\pa{n+1}} = 3 \times u_{\pa{n}}$) :
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.85, >=Stealth, box/.style={draw, thick, rounded corners=3pt, minimum width=1.4cm, minimum height=0.9cm, align=center, fill=gray!15}]
+			\node[box] (u0) at (0, 0) {$u_{\pa{0}}$};
+			\node[box] (u1) at (2.2, 0) {$u_{\pa{1}}$};
+			\node[box] (u2) at (4.4, 0) {$u_{\pa{2}}$};
+			\node[box] (u3) at (6.6, 0) {$u_{\pa{3}}$};
+			\node at (8.1, 0) {$\dots$};
+			\node[box] (un1) at (9.6, 0) {$u_{\pa{n-1}}$};
+			\node[box] (un) at (11.8, 0) {$u_{\pa{n}}$};
+			\node[box] (unplus1) at (14.0, 0) {$u_{\pa{n+1}}$};
+			\draw[->, thick, blue!80!black] (u0.south) to[out=-45, in=-135] node[below, font=\small, text=blue!80!black] {$\times 3$} (u1.south);
+			\draw[->, thick, blue!80!black] (u1.south) to[out=-45, in=-135] node[below, font=\small, text=blue!80!black] {$\times 3$} (u2.south);
+			\draw[->, thick, blue!80!black] (u2.south) to[out=-45, in=-135] node[below, font=\small, text=blue!80!black] {$\times 3$} (u3.south);
+			\draw[->, thick, blue!80!black] (un1.south) to[out=-45, in=-135] node[below, font=\small, text=blue!80!black] {$\times 3$} (un.south);
+			\draw[->, thick, blue!80!black] (un.south) to[out=-45, in=-135] node[below, font=\small, text=blue!80!black] {$\times 3$} (unplus1.south);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{itemize}
+		\item Les flèches représentent la \textbf{relation de récurrence} : elles indiquent comment passer d'un terme au suivant en appliquant l'opération (ici, multiplier par $3$).
+		\item Sur ce schéma, la valeur du premier terme $u_0$ n'est pas précisée. Si l'on fixe une valeur pour $u_0$ (par exemple $u_0 = 5$), alors on peut calculer de proche en proche tous les termes de la suite.
+	\end{itemize}
+\end{ex}
+
+\begin{methode}[Calculer des termes d'une suite définie par récurrence]
+	Calculons les quatre premiers termes des suites suivantes :
+	\[
+		(u_{n}):
+		\begin{cases}
+			u_{\pa{0}}    =  5 \\
+			u_{\pa{n+1}}  =  3u_{\pa{n}}
+		\end{cases}
+		\qquad\text{et}\qquad
+		(v_{n}):
+		\begin{cases}
+			v_{\pa{0}}    =  3 \\
+			v_{\pa{n+1}}  =  4v_{\pa{n}}-6
+		\end{cases}
+	\]
+
+	\begin{correction}
+		La suite $(u_{n})$ est définie par $u_{\pa{0}}=5$ et $u_{\pa{n+1}}=3u_{\pa{n}}$.
+
+		Les premiers termes de cette suite sont donc :
+		\begin{itemize}
+			\item ${\color{blue}u_{\pa{0}}}={\color{blue}5}$
+			\item ${\color{red}u_{\pa{1}}}=3 \times {\color{blue}u_{\pa{0}}}=3 \times {\color{blue}5}={\color{red}15}$ $\quad\leftarrow$ On remplace $u_{\pa{0}}$ par sa valeur.
+			\item ${\color{vert}u_{\pa{2}}}=3 \times {\color{red}u_{\pa{1}}}=3 \times {\color{red}15}={\color{vert}45}$
+			\item ${\color{purple}u_{\pa{3}}}=3 \times {\color{vert}u_{\pa{2}}}=3 \times {\color{vert}45}={\color{purple}135}$
+		\end{itemize}
+	\end{correction}
+
+	\begin{correction}
+		La suite $(v_{n})$ est définie par $v_{\pa{0}}=3$ et $v_{\pa{n+1}}=4v_{\pa{n}}-6$.
+
+		Les premiers termes de cette suite sont donc :
+		\begin{itemize}
+			\item ${\color{blue}v_{\pa{0}}}={\color{blue}3}$
+			\item ${\color{red}v_{\pa{1}}}=4 \times {\color{blue}v_{\pa{0}}} - 6=4 \times {\color{blue}3} - 6={\color{red}6}$
+			\item ${\color{vert}v_{\pa{2}}}=4 \times {\color{red}v_{\pa{1}}} - 6=4 \times {\color{red}6} - 6={\color{vert}18}$
+			\item ${\color{purple}v_{\pa{3}}}=4 \times {\color{vert}v_{\pa{2}}} - 6=4 \times {\color{vert}18} - 6={\color{purple}66}$
+		\end{itemize}
+	\end{correction}
+\end{methode}
+
+\begin{ex}
+	Soit la suite $\pa{u_n}$ définie par son premier terme $u_0 = 4$ et pour tout entier naturel $n$ par :
+	\[
+		u_{\pa{n+1}} = 2u_n - 3
+	\]
+
+	Calculons ses trois termes suivants :
+	\begin{itemize}
+		\item Pour $n=0$ : $u_1 = 2 \times u_0 - 3 = 2 \times 4 - 3 = 5$
+		\item Pour $n=1$ : $u_2 = 2 \times u_1 - 3 = 2 \times 5 - 3 = 7$
+		\item Pour $n=2$ : $u_3 = 2 \times u_2 - 3 = 2 \times 7 - 3 = 11$
+	\end{itemize}
+\end{ex}
+
+\begin{remarque}
+	Contrairement à une suite définie en fonction de $n$, il n'est pas possible de calculer directement un terme lointain (par exemple $u_{\pa{13}}$) sans connaître le terme précédent $u_{\pa{12}}$ pour une suite définie par récurrence.
+
+	Cependant, il est possible d'écrire un algorithme en Python calculant les termes successifs d'une telle suite.
+\end{remarque}
+
+\begin{methode}[Calculer un terme à l'aide d'un algorithme]
+	Pour tout entier $n$, on donne :
+	\[
+		(u_{n}):\begin{cases}u_{\pa{0}}=3\\u_{\pa{n+1}}=4u_{\pa{n}} - 6\end{cases}
+	\]
+
+	Le programme en Python suivant calcule les termes de la suite $\pa{u_n}$ :
+	\begin{lstlisting}
+def suite(n):
+  u = 3
+  for i in range(1, n + 1):
+    u = 4 * u - 6
+  return u\end{lstlisting}
+
+	\newpage
+
+	Résultats obtenus :
+	\begin{lstlisting}
+>>> suite(2)      # Calcul de u(2)
+18
+>>> suite(33)     # Calcul de u(33)
+73786976294838206466\end{lstlisting}
+\end{methode}
+
+\section{Représentation et variation}
+
+\subsection{Représentation graphique d'une suite}
+
+\begin{methode}[Représenter graphiquement une suite]
+	Pour tout entier $n$, on donne : $u_{\pa{n}} = \dfrac{n^{2}}{2}-3$.
+
+	\medskip
+
+	On désire représenter dans un repère les premiers termes de $\pa{u_n}$.
+
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\begin{tabular}{|r|c|c|c|c|c|c|c|c|c|}\hline
+			\ccg $n$          & $0$  & $1$      & $2$  & $3$     & $4$ & $5$     & $6$  & $7$      & $8$  \\ \hline
+			\ccg $u_{\pa{n}}$ & $-3$ & $-2{,}5$ & $-1$ & $1{,}5$ & $5$ & $9{,}5$ & $15$ & $21{,}5$ & $29$ \\ \hline
+		\end{tabular}
+	\end{center}
+
+	Dans un repère du plan, on représente la suite $\pa{u_n}$ par un \textbf{nuage de points} de coordonnées $\coordl{n}{u_{\pa{n}}}$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.45, >=Stealth, y=3mm, x=13mm]
+			\def\xmin{-0.5}\def\xmax{9.2}\def\ymin{-6.5}\def\ymax{32}
+			\draw[gray!40, xstep=1, ystep=5] (0, -7) grid (8.5, 32);
+			\draw[->, thick] (0, 0) -- (\xmax, 0) node[right] {$n$};
+			\draw[->, thick] (0, \ymin) -- (0, \ymax) node[above] {$u_n$};
+			\foreach \x in {1,2,3,4,5,6,7,8} \draw (\x, 0.5) -- (\x, -0.5) node[below, scale=0.8] {$\x$};
+			\foreach \y in {-5, 0, 5, 10, 15, 20, 25, 30} \draw (0.1, \y) -- (-0.1, \y) node[left, scale=0.8] {$\y$};
+			\foreach \n in {0,...,8} { \filldraw[red] (\n, {0.5*\n*\n - 3}) circle (4pt); }
+		\end{tikzpicture}
+	\end{center}
+
+\end{methode}
+
+\subsection{Sens de variation d'une suite}
+
+\begin{ex}
+	On a représenté ci-dessous le nuage de points des premiers termes d'une suite $(u_{n})$ :
+	\begin{center}
+		\begin{tikzpicture}[scale=0.45, >=Stealth, y=3mm, x=13mm]
+			\def\xmin{-0.5}\def\xmax{9.2}\def\ymin{-2}\def\ymax{32}
+			\draw[gray!40, xstep=1, ystep=5] (0, 0) grid (8.5, 32);
+			\draw[->, thick] (0, 0) -- (\xmax, 0) node[right] {$n$};
+			\draw[->, thick] (0, 0) -- (0, \ymax) node[above] {$u_n$};
+			\foreach \x in {1,2,3,4,5,6,7,8} \draw (\x, 0.5) -- (\x, -0.5) node[below, scale=0.8] {$\x$};
+			\foreach \y in {0, 5, 10, 15, 20, 25, 30} \draw (0.1, \y) -- (-0.1, \y) node[left, scale=0.8] {$\y$};
+			\foreach \n/\val in {0/2, 1/5, 2/12, 3/14, 4/15, 5/18, 6/22, 7/25, 8/28} { \filldraw[red] (\n, \val) circle (4pt); }
+		\end{tikzpicture}
+	\end{center}
+
+	On observe que cette suite semble \textbf{croissante}.
+
+	On constate par exemple que $u_{\pa{1}} < u_{\pa{2}}$ ou encore $u_{\pa{4}} < u_{\pa{5}}$.
+
+	De manière générale, on a $u_{\pa{n}} \le u_{\pa{n+1}}$ dans le cas où la suite est croissante.
+\end{ex}
+
+\begin{propriete}
+	\nline
+	\begin{itemize}
+		\item Dire que la suite $(u_{n})$ est \textbf{croissante} signifie que, pour tout entier $n$, on a :
+		      \[
+			      u_{\pa{n+1}} \geqslant u_{\pa{n}}
+		      \]
+
+		\item Dire que la suite $(u_{n})$ est \textbf{décroissante} signifie que, pour tout entier $n$, on a :
+		      \[
+			      u_{\pa{n+1}} \leqslant u_{\pa{n}}
+		      \]
+	\end{itemize}
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.85, >=Stealth]
+			\begin{scope}[shift={(0,0)}]
+				\draw[->, thick] (-0.5,0) -- (5.5,0);
+				\draw[->, thick] (0,-0.5) -- (0,5.5);
+				\foreach \x in {1,2,3,4,5} \draw (\x, 0.08) -- (\x, -0.08);
+				\foreach \y in {1,2,3,4,5} \draw (0.08, \y) -- (-0.08, \y);
+				\draw[dashed, thick] (2,0) node[below] {$\phantom{1}n\phantom{1}$} -- (2,1.8) -- (0,1.8) node[left] {$u_{\pa{n}}$};
+				\draw[dashed, thick] (3,0) node[below] {$n+1$} -- (3,3) -- (0,3) node[left] {$u_{\pa{n+1}}$};
+				\filldraw[red] (0, 0.9) circle (3pt);
+				\filldraw[red] (1, 1.3) circle (3pt);
+				\filldraw[red] (2, 1.8) circle (3pt);
+				\filldraw[red] (3, 3) circle (3pt);
+				\filldraw[red] (4, 4.8) circle (3pt);
+			\end{scope}
+			\begin{scope}[shift={(8,0)}]
+				\draw[->, thick] (-0.5,0) -- (5.5,0);
+				\draw[->, thick] (0,-0.5) -- (0,5.5);
+				\foreach \x in {1,2,3,4,5} \draw (\x, 0.08) -- (\x, -0.08);
+				\foreach \y in {1,2,3,4,5} \draw (0.08, \y) -- (-0.08, \y);
+				\draw[dashed, thick] (2,0) node[below] {$\phantom{1}n\phantom{1}$} -- (2,3.3) -- (0,3.3) node[left] {$u_{\pa{n}}$};
+				\draw[dashed, thick] (3,0) node[below] {$n+1$} -- (3,2.1) -- (0,2.1) node[left] {$u_{\pa{n+1}}$};
+				\filldraw[red] (0, 4.8) circle (3pt);
+				\filldraw[red] (1, 4.2) circle (3pt);
+				\filldraw[red] (2, 3.3) circle (3pt);
+				\filldraw[red] (3, 2.1) circle (3pt);
+				\filldraw[red] (4, 0.9) circle (3pt);
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+\end{propriete}
+
+\begin{remarque}
+	\nline
+	\begin{itemize}
+		\item Pour une suite constante, on a $u_{\pa{n+1}} = u_{\pa{n}}$.
+		\item Lorsqu'on a $u_{\pa{n+1}} > u_{\pa{n}}$, on dit que $\pa{u_n}$ est \textbf{strictement croissante}.
+		\item Lorsqu'on a $u_{\pa{n+1}} < u_{\pa{n}}$, on dit que $\pa{u_n}$ est \textbf{strictement décroissante}.
+	\end{itemize}
+\end{remarque}
+
+\begin{methode}[Étudier les variations d'une suite]
+	Pour tout entier $n$, on considère les suites définies par :
+	\[
+		u_{\pa{n+1}} = u_{\pa{n}} + 2 \quad\text{et}\quad v_{\pa{n}} = 4n + 4
+	\]
+
+	Démontrons que ces suites sont croissantes.
+
+	Pour cela, on étudie le signe de la différence $u_{\pa{n+1}} - u_n$ :
+	\begin{itemize}
+		\item Si $u_{\pa{n+1}} - u_{\pa{n}} > 0 \iff u_{\pa{n+1}} > u_{\pa{n}}$, alors la suite $\pa{u_n}$ est \textbf{croissante}.
+		\item Si $u_{\pa{n+1}} - u_{\pa{n}} < 0 \iff u_{\pa{n+1}} < u_{\pa{n}}$, alors la suite $\pa{u_n}$ est \textbf{décroissante}.
+	\end{itemize}
+
+	\begin{correction}
+		\nline
+		\begin{itemize}
+			\item Pour la suite $\pa{u_n}$, on a :
+			      \[
+				      \begin{array}{rl}
+					           & u_{\pa{n+1}} = u_{\pa{n}} + 2           \\
+					      \iff & u_{\pa{n+1}} - u_{\pa{n}} = 2 \quad > 0
+				      \end{array}
+			      \]
+
+			      On en déduit que la suite $(u_{n})$ est \textbf{croissante}.
+
+			\item Pour la suite $(v_n)$, exprimons d'abord $v_{\pa{n+1}}$ en fonction de $n$ :
+			      \[
+				      \begin{array}{rccl}
+					      v_{\pa{n+1}} & = & 4(n+1) + 4 &          \\
+					                   & = & 4n + 4 + 4 & = 4n + 8
+				      \end{array}
+			      \]
+
+			      Calculons ensuite la différence $v_{\pa{n+1}} - v_{\pa{n}}$ :
+			      \[
+				      \begin{array}{rccl}
+					      v_{\pa{n+1}} - v_{\pa{n}} & = & (4n + 8) - (4n + 4) &     \\
+					                                & = & 4n + 8 - 4n - 4     & = 4
+				      \end{array}
+			      \]
+
+			      Puisque $4 > 0$ pour tout entier $n$, on a $v_{\pa{n+1}} - v_{\pa{n}} > 0$, ce qui prouve que la suite $(v_{n})$ est \textbf{croissante}.
+		\end{itemize}
+	\end{correction}
+\end{methode}
+

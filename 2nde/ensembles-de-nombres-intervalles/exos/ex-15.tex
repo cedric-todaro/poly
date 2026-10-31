@@ -1,0 +1,56 @@
+\begin{exo}{}
+	Compléter le tableau comme dans l'exemple.
+
+	\renewcommand{\arraystretch}{1.5}
+	\begin{center}
+		\begin{tabular}{|c|c|C{4cm}|} \hline
+			\rowcolor{orange!80} \textbf{\color{white}\small Inégalité} & \textbf{\color{white}\small Intervalle} & \textbf{\color{white}\small Représentation graphique} \\ \hline
+			$2 \le x \le 4$                                             & $x \in \intff{2}{4}$                    &
+			\begin{tikzpicture}[scale=0.6, >=Stealth, baseline={([yshift=-0.7ex]current bounding box.center)}]
+				\draw[->, thick] (0.5,0) -- (5.5,0);
+				\foreach \x in {1,2,3,4,5} \draw (\x,0.1) -- (\x,-0.1);
+				\node[below=1mm, scale=0.8] at (1,0) {$1$};
+				\node[below=1mm, scale=0.8] at (3,0) {$3$};
+				\node[below=1mm, scale=0.8] at (5,0) {$5$};
+				\draw[line width=2pt, blue, {Bracket[width=5mm, length=1mm]}-{Bracket[width=5mm, length=1mm]}] (1.9,0) -- (4.1,0);
+				\draw[line width=2pt, white] (0,0.8) -- (4,0.8);
+				% \node[above=3mm, scale=0.8] at (2,0) {$2$};
+				% \node[above=3mm, scale=0.8] at (4,0) {$4$};
+			\end{tikzpicture}                                              \\ \hline
+			$0 < x \le 5$                                               & \phantom{$x \in \intof{0}{5}$}          &                                                       \\ \hline
+			\phantom{$2 \le x \le 4$}                                   & \phantom{$x \in \intff{2}{4}$}          &
+			\begin{tikzpicture}[scale=0.45, >=Stealth, baseline={([yshift=-0.7ex]current bounding box.center)}]
+				\draw[->, thick] (-3.5,0) -- (4.5,0);
+				\foreach \x in {-3,-2,-1,0,1,2,3,4} \draw (\x,0.1) -- (\x,-0.1);
+				\node[below=1mm, scale=0.8] at (-3,0) {$-3$};
+				\node[below=1mm, scale=0.8] at (-2,0) {$-2$};
+				\node[below=1mm, scale=0.8] at (0,0) {$0$};
+				\node[below=1mm, scale=0.8] at (2,0) {$2$};
+				\node[below=1mm, scale=0.8] at (3,0) {$3$};
+				\node[below=1mm, scale=0.8] at (4,0) {$4$};
+				\draw[line width=2pt, blue, {Bracket[width=5mm, length=1mm,reversed]}-{Bracket[width=5mm, length=1mm]}] (-1.2,0) -- (1.1,0);
+				\draw[line width=2pt, white] (0,0.8) -- (4,0.8);
+				% \node[above=3mm, scale=0.8] at (1,0) {$1$};
+				% \node[above=3mm, scale=0.8] at (-1,0) {$-1$};
+			\end{tikzpicture}                                             \\ \hline
+			                                                            & $x \in \intof{-\infty}{4}$              &                                                       \\ \hline
+			$3 \le x$                                                   &                                         &                                                       \\ \hline
+			                                                            & $x \in \intoo{-3}{7}$                   &                                                       \\ \hline
+			                                                            &                                         &
+			\begin{tikzpicture}[scale=0.45, >=Stealth, baseline={([yshift=-0.7ex]current bounding box.center)}]
+				\draw[->, thick] (-3.5,0) -- (4.5,0);
+				\foreach \x in {-3,-2,-1,0,1,2,3,4} \draw (\x,0.1) -- (\x,-0.1);
+				\node[below=1mm, scale=0.8] at (-3,0) {$-3$};
+				\node[below=1mm, scale=0.8] at (-2,0) {$-2$};
+				\node[below=1mm, scale=0.8] at (0,0) {$0$};
+				\node[below=1mm, scale=0.8] at (-1,0) {$-1$};
+				\node[below=1mm, scale=0.8] at (1,0) {$1$};
+				\node[below=1mm, scale=0.8] at (3,0) {$3$};
+				\node[below=1mm, scale=0.8] at (4,0) {$4$};
+				\draw[line width=2pt, blue, {Bracket[width=5mm, length=1mm]}-] (1.9,0) -- (4.5,0);
+				\draw[line width=2pt, white] (0,0.8) -- (4,0.8);
+				% \node[above=3mm, scale=0.8] at (2,0) {$2$};
+			\end{tikzpicture}                                                                       \\ \hline
+		\end{tabular}
+	\end{center}
+\end{exo}

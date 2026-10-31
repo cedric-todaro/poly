@@ -1,0 +1,46 @@
+\begin{exo}{}
+	On considère la figure ci-dessous composée d'un carré $ABCD$ de côté $1$ et de deux triangles équilatéraux $DIC$ et $BJC$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=1.6, >=Stealth]
+			\coordinate (I) at (1,1.732);
+			\coordinate (J) at (3.732,1);
+			\draw[dashed, gray] (0,2) -- (J);
+			\draw[thick] (0,2) node {$\bullet$} node[above left] {$A$} -- (2,2) node {$\bullet$} node[above right] {$B$} -- (2,0) node {$\bullet$} node[below right] {$C$} -- (0,0) node {$\bullet$} node[below left] {$D$} -- cycle;
+			\draw[thick] (0,0) -- (I) node {$\bullet$} node[above] {$I$} -- (2,0);
+			\draw[thick] (2,2) -- (J) node {$\bullet$} node[right] {$J$} -- (2,0);
+			\draw[->, very thick] (0,0) -- (0,2);
+			\draw[->, very thick] (0,0) -- (2,0);
+		\end{tikzpicture}
+	\end{center}
+
+	On rappelle que dans un triangle équilatéral de côté $a$, toutes ses hauteurs ont pour longueur $\dfrac{a\sqrt{3}}{2}$.
+
+	On munit le plan du repère orthonormé $(D\;; \vec{DC}\;, \vec{DA})$.
+
+	\begin{enumerate}
+		\item % Partie 1 : Coordonnées des sommets du carré
+		      Donner, par lecture graphique, les coordonnées des points $D$, $C$, $A$ et $B$.
+
+		\item % Partie 2 : Hauteur et coordonnées du point I
+		      On s'intéresse au point $I$.
+		      \begin{enumerate}
+			      \item Justifier que la hauteur issue de $I$ dans le triangle équilatéral $DIC$ mesure $\dfrac{\sqrt{3}}{2}$.
+			      \item En déduire les coordonnées exactes de $I$.
+		      \end{enumerate}
+
+		\item % Partie 3 : Hauteur et coordonnées du point J
+		      On s'intéresse au point $J$.
+		      \begin{enumerate}
+			      \item Déterminer la distance de $J$ à la droite $(BC)$.
+			      \item En déduire les coordonnées exactes de $J$.
+		      \end{enumerate}
+
+		\item % Partie 4 : Alignement
+		      On souhaite démontrer que les points $A$, $I$ et $J$ sont alignés.
+		      \begin{enumerate}
+			      \item Déterminer les coordonnées de $\vec{AI}$ et $\vec{AJ}$.
+			      \item Établir que les vecteurs $\vec{AI}$ et $\vec{AJ}$ sont colinéaires. \item Conclure quant à l'alignement de $A$, $I$ et $J$.
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

@@ -1,0 +1,23 @@
+\begin{exo}{}
+	On considère le triangle ci-dessous, dans lequel les côtés dépendent d'un nombre réel $x > 1$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.75, >=Stealth]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (6,0);
+			\coordinate (C) at (4,3);
+			\draw[very thick] (A) -- (B) node[midway, below] {$2x - 1$} -- (C) node[midway, above right] {$3x + 6$} -- cycle node[midway, above left] {$x + 9$};
+			\node[left] at (A) {$A$};
+			\node[right] at (B) {$B$};
+			\node[above] at (C) {$C$};
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Pour quelle valeur de $x$ a-t-on ${AB} = {AC}$ ?
+
+		      Pour cette valeur de $x$, quelle est la longueur de chacun des côtés de ${ABC}$ ?
+		\item Déterminer toutes les valeurs de $x$ pour lesquelles le triangle ${ABC}$ est isocèle.
+		\item Peut-on trouver une valeur de $x$ pour laquelle le triangle ${ABC}$ est équilatéral ?
+	\end{enumerate}
+\end{exo}

@@ -1,0 +1,72 @@
+\begin{exo}{}
+	$f$ est une fonction définie sur $\intff{-2}{2}$ dont on donne le tableau de valeurs suivant.
+
+
+	\begin{center}
+		\renewcommand{\arraystretch}{1.5}
+		\small
+		\begin{tabular}{|c|c|c|c|c|c|}\hline
+			\cellcolor{gray!30}$x$    & $-2$  & $-1,5$ & $-1$  & $-0,5$ & $0$ \\ \hline
+			\cellcolor{gray!30}$f(x)$ & $-1$  & $-3$   & $-1$  & $3$    & $2$ \\ \hline\hline
+			\cellcolor{gray!30}$x$    & $0,5$ & $1$    & $1,5$ & $2$    &     \\ \hline
+			\cellcolor{gray!30}$f(x)$ & $0$   & $2$    & $1$   & $3$    &     \\ \hline
+		\end{tabular}
+	\end{center}
+
+	Quatre élèves proposent ci-dessous une représentation graphique de $f$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.75, >=Stealth]
+			% Configuration commune des points
+			\def\pts{ (-2, -1), (-1.5, -3), (-1, -1), (-0.5, 3), (0, 2), (0.5, 0), (1, 2), (1.5, 1), (2, 3) }
+			\tikzset{
+				grid style/.style={gray!40, thin},
+				axis style/.style={thick, ->},
+				pt style/.style={fill=purple!80!black, draw=purple!80!black, circle, inner sep=0pt, minimum size=4pt}
+			}
+			\newcommand{\drawGridAndAxes}{
+				\draw[grid style, xstep=1, ystep=1] (-2.5, -3.5) grid (2.5, 3.5);
+				\draw[axis style] (-2.5, 0) -- (2.5, 0);
+				\draw[axis style] (0, -3.5) -- (0, 3.5);
+				\foreach \x in {-2,-1,1,2} \draw (\x, 0.1) -- (\x, -0.1);
+				\foreach \y in {-3,-2,-1,1,2,3} \draw (0.1, \y) -- (-0.1, \y);
+				\node[below left] at (0, 0) {$O$};
+				\node[below] at (1, 0) {$I$};
+				\node[left] at (0, 1) {$J$};
+			}
+			\begin{scope}[shift={(0, 7.5)}]
+				\drawGridAndAxes
+				\foreach \coord in \pts { \node[pt style] at \coord {}; }
+			\end{scope}
+
+			% --- SCOPE 2 : Haut-Droite (Ligne brisée) ---
+			\begin{scope}[shift={(5.5, 7.5)}]
+				\drawGridAndAxes
+				\draw[thick, purple!80!black]
+				(-2, -1) -- (-1.5, -3) -- (-1, -1) -- (-0.5, 3) -- (0, 2) -- (0.5, 0) -- (1.5, 1) -- (1, 2) -- (2, 3);
+				\foreach \coord in \pts { \node[pt style] at \coord {}; }
+			\end{scope}
+
+			% --- SCOPE 3 : Bas-Gauche (Courbe restreinte à l'intervalle) ---
+			\begin{scope}[shift={(0, 0)}]
+				\drawGridAndAxes
+				\draw[thick, purple!80!black, smooth] plot coordinates { (-2, -1) (-1.5, -3) (-1, -1) (-0.5, 3) (0, 2) (0.5, 0) (1, 2) (1.5, 1) (2, 3) };
+				\foreach \coord in \pts { \node[pt style] at \coord {}; }
+			\end{scope}
+
+			% --- SCOPE 4 : Bas-Droite (Courbe prolongée aux extrémités) ---
+			\begin{scope}[shift={(5.5, 0)}]
+				\drawGridAndAxes
+				\clip (-3.5, -3.5) rectangle (2.5, 3.5);
+				\draw[thick, purple!80!black, smooth] plot coordinates { (-2.5, 3) (-2, -1) (-1.5, -3) (-1, -1) (-0.5, 3) (0, 2) (0.5, 0) (1, 2) (1.5, 1) (2, 3) (2.2, 3.5) };
+				\foreach \coord in \pts {
+					\node[pt style] at \coord {};
+				}
+			\end{scope}
+
+		\end{tikzpicture}
+	\end{center}
+
+
+	Laquelle de ces courbes semble la plus satisfaisante ? Justifier.
+\end{exo}

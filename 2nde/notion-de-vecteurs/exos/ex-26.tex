@@ -1,0 +1,26 @@
+\begin{exo}{}
+	Reproduire la figure ci-dessous.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.5, >=Stealth]
+			\draw[gray!30, thin, step=1] (0,0) grid (14,8);
+
+			% Coordonnées des points d'après le quadrillage de l'image (75)
+			\coordinate (B) at (6,6);
+			\coordinate (C) at (7,2);
+			\coordinate (A) at (10,4);
+
+			% Dessin des croix pour chaque point
+			\foreach \p/\pos in {B/above, C/below, A/right} {
+					\draw[thick] (\p) ++(-0.15,-0.15) -- ++(0.3,0.3);
+					\draw[thick] (\p) ++(-0.15,0.15) -- ++(0.3,-0.3);
+					\node[\pos] at (\p) {$\p$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Construire le point $F$ tel que $\vec{AF} = 2\vec{AC} - 2\vec{BC}$.
+		\item Quelle relation existe-t-il entre les points $B$, $A$ et $F$ ? Justifier.
+	\end{enumerate}
+\end{exo}

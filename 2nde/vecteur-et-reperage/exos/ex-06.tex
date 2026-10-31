@@ -1,0 +1,41 @@
+\begin{exo}{Calculer}
+	On considère les points et les vecteurs suivants dans un repère $\vOIJ$.
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=0.5]
+			\draw[style=help lines, color=gray!30, thick] (-4.5,-4.5) grid (7.5,5.5);
+			\draw[->, thick] (-4.5,0) -- (7.5,0);
+			\draw[->, thick] (0,-4.5) -- (0,5.5);
+			\foreach \x in {-4,-3,-2,-1,1,2,3,4,5,6,7} \draw (\x,2pt) -- (\x,-2pt);
+			\foreach \y in {-4,-3,-2,-1,1,2,3,4,5} \draw (2pt,\y) -- (-2pt,\y);
+			\draw (0,0) node {$\bullet$} node[below left] {$O$};
+			\draw[->, thick] (0,0) -- (0,1) node[midway, left] {$\vec{j}$};
+			\draw[->, thick] (0,0) -- (1,0) node[midway, below] {$\vec{i}$};
+			\draw (-1,2) node[gray] {$\bullet$} node[above] {$H$};
+			\draw (-2,1) node[gray] {$\bullet$} node[below] {$B$};
+			\draw (-3,3) node[gray] {$\bullet$} node[above] {$A$};
+			\draw (2,2)  node[gray] {$\bullet$} node[left] {$F$};
+			\draw (3,-3) node[gray] {$\bullet$} node[below] {$C$};
+			\draw (6,2)  node[gray] {$\bullet$} node[above] {$D$};
+			\draw (6,4)  node[gray] {$\bullet$} node[right] {$E$};
+			\draw[->, very thick, color=black!80] (-3,3) -- (-2,1);
+			\draw[->, very thick, color=black!80] (3,-3) -- (6,2);
+			\draw[->, very thick, color=black!80] (6,4) -- (2,2);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}[itemsep=1mm]
+		\item \begin{enumerate}
+			      \item Calculer les coordonnées du vecteur $\vec{u}$ telles que $\vec{u} = \vec{AB} + \vec{CD}$.
+			      \item Construire le point $I$ tel que $\vec{OI} = \vec u$.
+		      \end{enumerate}
+		\item \begin{enumerate}
+			      \item Calculer les coordonnées du vecteur $\vec{v}$ telles que $\vec{v} = \vec{AB} + \vec{EF}$.
+			      \item Construire le point $J$ tel que $\vec{OJ} = \vec v$.
+		      \end{enumerate}
+		\item \begin{enumerate}
+			      \item Calculer les coordonnées du vecteur $\vec{w}$ telles que $\vec{w} = \vec{CD} + \vec{EF}$.
+			      \item Construire le point $H$ tel que $\vec{OH} = \vec w$.
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

@@ -1,0 +1,47 @@
+\begin{exo}{}
+	On considère les vecteurs suivants :
+	\vspace*{2mm}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.5, >=Stealth]
+			\draw[gray!40, thin, step=1] (-1.5,-1.5) grid (8.5,6.5);
+			\coordinate (A) at (4,0);
+			\coordinate (B) at (1,0);
+			\coordinate (C) at (0,1);
+			\coordinate (D) at (1,4);
+			\coordinate (E) at (5,3);
+			\coordinate (F) at (3,2);
+			\coordinate (G) at (6,5);
+			\coordinate (H) at (7,2);
+			\draw (A) node[gray] {$\bullet$} node[below] {$A$};
+			\draw (B) node[gray] {$\bullet$} node[below] {$B$};
+			\draw (C) node[gray] {$\bullet$} node[below] {$C$};
+			\draw (D) node[gray] {$\bullet$} node[above] {$D$};
+			\draw (E) node[gray] {$\bullet$} node[right] {$E$};
+			\draw (F) node[gray] {$\bullet$} node[left] {$F$};
+			\draw (G) node[gray] {$\bullet$} node[above] {$G$};
+			\draw (H) node[gray] {$\bullet$} node[below] {$H$};
+			\draw[->, very thick] (A) -- (B);
+			\draw[->, very thick] (C) -- (D);
+			\draw[->, very thick] (E) -- (F);
+			\draw[->, very thick] (G) -- (H);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Reproduire la figure et, en s'aidant du quadrillage, construire les vecteurs suivants.
+		      \vspace*{-4mm}
+		      \begin{multicols}{2}
+		      \begin{enumerate}[itemsep=1mm]
+			      \item $\vv{AB} + \vv{CD}$
+			      \item $\vv{FE} + \vv{BA}$
+			      \item $\vv{EF} + \vv{GH}$
+			      \item $\vv{AB} - \vv{CD}$
+		      \end{enumerate}
+		      \end{multicols}
+		      \vspace*{-4mm}
+		      \begin{enumerate}
+			      \setcounter{enumii}{4}
+			      \item $\vv{AK}$ tel que $\vv{AK} + \vv{EF} = \vv{AB}$
+		      \end{enumerate}
+	\end{enumerate}
+\end{exo}

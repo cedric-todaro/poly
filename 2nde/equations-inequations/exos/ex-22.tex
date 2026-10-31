@@ -1,0 +1,33 @@
+\begin{exo}{}
+	On considère un carré $ABCD$ de côté $10\text{ cm}$.
+
+	On place un point $M$ sur le segment $[AB]$ et un point $N$ sur le segment $[AD]$ tels que : \cmath{AM = AN = x}
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, x=4.5mm, y=4.5mm]
+			\draw[very thick] (0,0) rectangle (6,6);
+			\draw[very thick, fill=gray!30] (0,4) -- (2,6) -- (0,6) -- cycle;
+			\node[above left] at (0,6) {$A$};
+			\node[below right] at (6,0) {$C$};
+			\node[below left] at (0,0) {$D$};
+			\node[above right] at (6,6) {$B$};
+			\node[above right] at (2,6) {$M$};
+			\node[below left] at (0,4) {$N$};
+			\draw[<->] (0,6.5) -- (2,6.5) node[midway, above] {$x$};
+			\draw[<->] (-0.7,4) -- (-0.7,6) node[midway, left] {$x$};
+			\foreach \pt in { (0,0), (6,0), (0,6), (6,6), (0,4), (2,6)} {\filldraw \pt circle (2pt);}
+		\end{tikzpicture}
+	\end{center}
+
+	On souhaite déterminer pour quelles valeurs de $x$ l'aire du triangle $AMN$ est inférieure ou égale au quart de l'aire de $ABCD$.
+
+	\begin{enumerate}
+		\item À quel intervalle doit appartenir la variable $x$ ?
+		\item Exprimer l'aire de $AMN$ en fonction de $x$.
+		\item Montrer que le problème revient à résoudre l'inéquation :
+		      \cmath{x^2 - 50 \leqslant 0}
+		\item En déduire que cette inéquation équivaut à :
+		      \cmath{(x - 5\sqrt{2})(x + 5\sqrt{2}) \leqslant 0}
+		\item Dresser le tableau de signes de l'expression sur l'intervalle d'étude et conclure.
+	\end{enumerate}
+\end{exo}

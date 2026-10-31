@@ -1,0 +1,22 @@
+\begin{exo}{}
+	Parmi les vecteurs du repère ci-dessous, lesquels sont colinéaires ?
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.35, >=Stealth,font=\large]
+			\draw[gray!50, thin, step=1] (-7.5,-6.5) grid (15.5,6.5);
+			\draw[thick, ->] (-7.5,0) -- (15.5,0);
+			\draw[thick, ->] (0,-6.5) -- (0,6.5);
+			\node[below left] at (0,0) {\small$O$};
+			\foreach \x in {-6,-4,-2,2,4,6,8,10,12,14} { \draw (\x,0.2) -- (\x,-0.2); }
+			\foreach \y in {-6,-4,-2,2,4,6} { \draw (0.2,\y) -- (-0.2,\y); }
+			\draw[->, line width=1.5pt, orange!80!black] (-5,5) -- (-6,2) node[above, midway, sloped] {$\vec{e}$};
+			\draw[->, line width=1.5pt, teal] (-5,1) -- (1,2) node[above, midway, sloped] {$\vec{u}$};
+			\draw[->, line width=1.5pt, green!60!black] (-7,-2) -- (-3,-6) node[below, midway, sloped] {$\vec{b}$};
+			\draw[->, line width=1.5pt, violet] (1,-2) -- (3,5) node[below, midway, sloped] {$\vec{d}$};
+			\draw[->, line width=1.5pt, vert] (6,3) -- (4,5) node[above, midway, sloped] {$\vec{w}$};
+			\draw[->, line width=1.5pt, red] (9,5) -- (7,-1) node[below, midway, sloped] {$\vec{v}$};
+			\draw[->, line width=1.5pt, orange] (13,2) -- (14,1) node[above, midway, sloped] {$\vec{c}$};
+			\draw[->, line width=1.5pt, magenta] (14,-2) -- (2,-5) node[below, midway, sloped] {$\vec{a}$};
+		\end{tikzpicture}
+	\end{center}
+\end{exo}
