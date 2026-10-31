@@ -9,8 +9,607 @@
 \tableofcontents
 % ----------------------------------------------------------------------------------------------------
 
-\lipsum
+\chapter{Polynômes et fonctions troisième degré}
 
-% ----------------------------------------------------------------------------------------------------
+% TODO : à relire
+
+\section{Fonctions polynômes : vocabulaire}
+
+\begin{defin}[Fonction polynôme, degré, racine]
+	Une \textbf{fonction polynôme} est une fonction $P$ définie sur $\R$ dont l'expression peut s'écrire
+	\[
+		P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0
+	\]
+	où $n \in \N$ et où $a_0, a_1, \dots, a_n$ sont des réels appelés \textbf{coefficients}.
+
+	Si $a_n \neq 0$, l'entier $n$ est le \textbf{degré} de $P$, le réel $a_n$ est son \textbf{coefficient dominant} et $a_0$ est son \textbf{terme constant}.
+
+	Une \textbf{racine} de $P$ est un réel $r$ tel que $P(r) = 0$.
+\end{defin}
+
+\begin{rem}
+	Dans ce chapitre, on emploie indifféremment « polynôme » et « fonction polynôme ».
+
+	Les fonctions polynômes de degré $1$ sont les fonctions affines ; celles de degré $2$ sont rappelées dans la section suivante et celles de degré $3$ sont étudiées ensuite.
+\end{rem}
+
+\begin{ex}
+	\nline
+	\begin{itemize}
+		\item $f(x) = 3x - 5$ est de degré $1$ : coefficient dominant $3$, terme constant $-5$.
+		\item $g(x) = -2x^2 + x$ est de degré $2$ : coefficient dominant $-2$, terme constant $0$.
+		\item $h(x) = x^3 - 4x + 1$ est de degré $3$ : coefficient dominant $1$ (le coefficient de $x^2$ est nul).
+		\item $k(x) = (x-1)(2x+3) = 2x^2 + x - 3$ est de degré $2$.
+		\item Les fonctions $x \mapsto \dfrac{1}{x}$ et $x \mapsto \sqrt{x}$ ne sont pas des fonctions polynômes.
+	\end{itemize}
+\end{ex}
+
+\begin{attention}
+	Le degré se lit \emph{après développement et réduction}.
+
+	Par exemple $(2x-1)^2 - 4x^2 = -4x + 1$ est de degré $1$, et non $2$.
+\end{attention}
+
+\begin{prop}[Identification des coefficients]
+	Deux fonctions polynômes sont égales pour tout réel $x$ si et seulement si elles ont le même degré et si leurs coefficients des termes de même degré sont deux à deux égaux.
+
+	(admis)
+\end{prop}
+
+\begin{ex}
+	Déterminons les réels $a$, $b$, $c$ tels que, pour tout réel $x$, $2x^2 - 3x + 5 = a(x-1)^2 + b(x-1) + c$.
+
+	On développe le membre de droite : $a(x-1)^2 + b(x-1) + c = ax^2 + (-2a + b)x + (a - b + c)$.
+
+	Par identification :
+	\[
+		\begin{cases}
+			a = 2        \\
+			-2a + b = -3 \\
+			a - b + c = 5
+		\end{cases}
+		\iff
+		\begin{cases}
+			a = 2 \\
+			b = 1 \\
+			c = 4
+		\end{cases}
+	\]
+	Ainsi $2x^2 - 3x + 5 = 2(x-1)^2 + (x-1) + 4$.
+\end{ex}
+
+\section{Rappels sur le second degré}
+
+Cette section résume les résultats du chapitre « Fonctions du second degré », dont les démonstrations ne sont pas reprises ici.
+
+Ils serviront deux fois dans la suite : pour factoriser le quotient $Q$ lorsqu'on connaît une racine d'une fonction cubique, et pour étudier le signe de sa dérivée.
+
+\subsection{Forme canonique, sommet et variations}
+
+\begin{prop}[Forme canonique et variations]
+	Tout trinôme $f(x) = ax^2 + bx + c$ ($a \neq 0$) s'écrit, de manière unique, sous sa \textbf{forme canonique}
+	\[
+		f(x) = a(x - \alpha)^2 + \beta
+		\qquad \text{avec} \qquad
+		\alpha = -\dfrac{b}{2a} \quad \text{et} \quad \beta = f(\alpha).
+	\]
+	La courbe de $f$ est une \textbf{parabole} de sommet $S\coordl{\alpha}{\beta}$, d'axe de symétrie la droite d'équation $x = \alpha$.
+	\begin{itemize}
+		\item Si $a > 0$, $f$ est décroissante sur $\intof{-\infty}{\alpha}$, croissante sur $\intfo{\alpha}{+\infty}$ et admet un \textbf{minimum} $\beta$ atteint en $\alpha$.
+		\item Si $a < 0$, $f$ est croissante sur $\intof{-\infty}{\alpha}$, décroissante sur $\intfo{\alpha}{+\infty}$ et admet un \textbf{maximum} $\beta$ atteint en $\alpha$.
+	\end{itemize}
+\end{prop}
+
+\begin{ex}
+	Soit $f(x) = 2x^2 - 12x + 7$.
+
+	On a $\alpha = -\dfrac{-12}{2 \times 2} = 3$ et $\beta = f(3) = 18 - 36 + 7 = -11$.
+
+	Donc $f(x) = 2(x-3)^2 - 11$ : la parabole est tournée vers le haut, de sommet $S(3\,;\,-11)$.
+\end{ex}
+
+\begin{erreur}
+	Dans la forme canonique, on écrit $(x - \alpha)^2$ : si $\alpha = -3$, on écrit $(x+3)^2$.
+
+	Attention aussi au signe dans $\alpha = -\dfrac{b}{2a}$.
+\end{erreur}
+
+\subsection{Discriminant, racines et factorisation}
+
+\begin{prop}[Discriminant, racines et signe]
+	Soit $f(x) = ax^2 + bx + c$ avec $a \neq 0$.
+
+	On appelle \textbf{discriminant} de $f$ le réel $\Delta = b^2 - 4ac$.
+
+	\begin{center}
+		\def\arraystretch{1.5}
+		\begin{tabular}{|C{1.8cm}|L{4.6cm}|L{4.2cm}|L{4.6cm}|} \hline
+			\ccg $\Delta$ & \cc{bleuClair} \textbf{Racines de $f$}                                                                   & \cc{vertClair} \textbf{Factorisation} & \cc{orangeClair} \textbf{Signe de $f(x)$}                            \\ \hline
+			$\Delta > 0$  & Deux racines distinctes $x_1 = \dfrac{-b - \sqrt{\Delta}}{2a}$ et $x_2 = \dfrac{-b + \sqrt{\Delta}}{2a}$ & $a(x - x_1)(x - x_2)$                 & Signe de $a$ à l'extérieur des racines, signe contraire entre elles. \\ \hline
+			$\Delta = 0$  & Une racine double $x_0 = -\dfrac{b}{2a}$                                                                 & $a(x - x_0)^2$                        & Signe de $a$, sauf en $x_0$ où $f$ s'annule.                         \\ \hline
+			$\Delta < 0$  & Aucune racine réelle                                                                                     & Pas de factorisation dans $\R$        & Signe de $a$ sur $\R$.                                               \\ \hline
+		\end{tabular}
+	\end{center}
+\end{prop}
+
+\begin{prop}[Somme, produit et racines évidentes]
+	Si $f(x) = ax^2 + bx + c$ possède deux racines $x_1$ et $x_2$ (éventuellement égales), alors
+	\[
+		x_1 + x_2 = -\dfrac{b}{a} \quad \text{et} \quad x_1 \, x_2 = \dfrac{c}{a}.
+	\]
+	En particulier :
+	\begin{itemize}
+		\item si $a + b + c = 0$, alors $1$ est racine et l'autre racine est $\dfrac{c}{a}$ ;
+		\item si $a - b + c = 0$, alors $-1$ est racine et l'autre racine est $-\dfrac{c}{a}$.
+	\end{itemize}
+	Deux nombres de somme $s$ et de produit $p$ sont les solutions éventuelles de l'équation $x^2 - sx + p = 0$.
+\end{prop}
+
+\begin{methode}[Résoudre une équation du second degré]
+	\nline
+	\begin{enumerate}
+		\item On se ramène à $ax^2 + bx + c = 0$ et on cherche une résolution directe : $c = 0$ (on factorise $x(ax+b)$), $b = 0$ (on isole $x^2$), identité remarquable, ou racine évidente.
+		\item Sinon, on calcule $\Delta = b^2 - 4ac$ et on conclut selon son signe.
+		\item On écrit l'ensemble $S$ des solutions.
+	\end{enumerate}
+\end{methode}
+
+\begin{ex}
+	Résolvons $2x^2 - 5x - 3 = 0$.
+
+	On a $\Delta = (-5)^2 - 4 \times 2 \times (-3) = 49 > 0$, donc deux racines :
+	\[
+		x_1 = \dfrac{5 - 7}{4} = -\dfrac{1}{2} \quad \text{et} \quad x_2 = \dfrac{5 + 7}{4} = 3.
+	\]
+	Donc $S = \left\{-\dfrac{1}{2}\,;\,3\right\}$ et $2x^2 - 5x - 3 = 2\left(x + \dfrac{1}{2}\right)(x - 3) = (2x + 1)(x - 3)$.
+\end{ex}
+
+\begin{piege}
+	Si $b$ est négatif, les parenthèses sont indispensables dans $b^2$ : $(-5)^2 = 25$ et non $-5^2 = -25$.
+
+	Dans les formules des racines, la barre de fraction porte sur tout le numérateur $-b \pm \sqrt{\Delta}$ et le dénominateur est $2a$.
+\end{piege}
+
+\subsection{Signe d'un trinôme et inéquations}
+
+\begin{methode}[Résoudre une inéquation du second degré]
+	\nline
+	\begin{enumerate}
+		\item On se ramène à une inéquation du type $f(x) \geq 0$, $f(x) > 0$, $f(x) \leq 0$ ou $f(x) < 0$.
+		\item On calcule $\Delta$ et, s'il y en a, les racines de $f$, que l'on ordonne.
+		\item On dresse le tableau de signes de $f$ en tenant compte du signe de $a$.
+		\item On lit les intervalles solutions : les racines sont incluses si l'inégalité est large, exclues si elle est stricte.
+	\end{enumerate}
+\end{methode}
+
+\begin{ex}
+	Résolvons $2x^2 - 5x - 3 \leq 0$.
+
+	Les racines sont $-\dfrac{1}{2}$ et $3$, et $a = 2 > 0$.
+	\begin{center}
+		\begin{tikzpicture}
+			\tkzTabInit[lgt=2, espcl=2.5]{$x$/1, $2x^2-5x-3$/1}{$-\infty$, $-\frac{1}{2}$, $3$, $+\infty$}
+			\tkzTabLine{ ,+,z,-,z,+, }
+		\end{tikzpicture}
+	\end{center}
+	Donc $S = \intff{-\frac{1}{2}}{3}$.
+\end{ex}
+
+\begin{attention}
+	Ne pas oublier le coefficient dominant $a$ dans la forme factorisée $a(x - x_1)(x - x_2)$.
+
+	De plus, il faut ordonner les racines ($x_1 < x_2$) avant de dresser un tableau de signes.
+\end{attention}
+
+\section{Fonctions polynômes du troisième degré}
+
+\subsection{Forme développée et racines}
+
+\begin{defin}[Polynôme du troisième degré]
+	Une fonction polynôme de degré $3$ (ou \textbf{fonction cubique}) est une fonction $P$ définie sur $\R$ par
+	\[
+		P(x) = ax^3 + bx^2 + cx + d \quad \text{avec } a, b, c, d \in \R \text{ et } a \neq 0.
+	\]
+	Le réel $a$ est le coefficient dominant et $d$ est le terme constant : $P(0) = d$.
+\end{defin}
+
+\begin{rem}
+	Contrairement au second degré, une fonction cubique possède \emph{toujours au moins une racine réelle} (résultat admis ici, justifié en Terminale).
+
+	Elle peut en posséder une, deux ou trois :
+	$x^3 + x = x(x^2 + 1)$ n'en a qu'une ; $x^2(x-1)$ en a deux ($0$ et $1$) ; $(x+2)(x-1)(x-3)$ en a trois.
+\end{rem}
+
+\begin{prop}[Racine entière d'un polynôme à coefficients entiers]
+	Soit $P(x) = ax^3 + bx^2 + cx + d$ à coefficients entiers.
+
+	Si $r$ est une racine entière de $P$, alors $r$ divise $d$.
+\end{prop}
+
+\begin{demo}
+	Si $P(r) = 0$, alors $ar^3 + br^2 + cr + d = 0$, donc $d = -r(ar^2 + br + c)$.
+
+	Comme $ar^2 + br + c$ est un entier, $r$ divise $d$.
+\end{demo}
+
+\begin{methode}[Chercher une racine évidente]
+	Soit $P(x) = ax^3 + bx^2 + cx + d$ à coefficients entiers.
+	\begin{enumerate}
+		\item Si $d = 0$, alors $0$ est racine et $P(x) = x(ax^2 + bx + c)$ : on est ramené au second degré.
+		\item Si $d \neq 0$, on teste en priorité $1$ et $-1$, puis les diviseurs entiers (positifs et négatifs) de $d$.
+		\item On vérifie en calculant $P(r)$ : si $P(r) = 0$, $r$ est une racine.
+	\end{enumerate}
+\end{methode}
+
+\begin{ex}
+	Soit $A(x) = 3x^3 - 2x^2 - 12x + 8$.
+
+	Le terme constant vaut $8$, de diviseurs $\pm 1, \pm 2, \pm 4, \pm 8$.
+	\begin{itemize}
+		\item $A(1) = 3 - 2 - 12 + 8 = -3 \neq 0$ et $A(-1) = -3 - 2 + 12 + 8 = 15 \neq 0$.
+		\item $A(2) = 3 \times 8 - 2 \times 4 - 12 \times 2 + 8 = 24 - 8 - 24 + 8 = 0$ : $2$ est une racine de $A$.
+	\end{itemize}
+\end{ex}
+
+\subsection{Factorisation à partir d'une racine}
+
+\begin{thm}[Factorisation par une racine]
+	Soit $P(x) = ax^3 + bx^2 + cx + d$ une fonction polynôme de degré $3$ et soit $r \in \R$.
+
+	Alors
+	\[
+		P(r) = 0 \iff \text{il existe un trinôme } Q \text{ tel que, pour tout } x,\; P(x) = (x - r)\,Q(x).
+	\]
+	Dans ce cas, $Q(x) = ax^2 + (ar + b)x + (ar^2 + br + c)$.
+\end{thm}
+
+\begin{demo}
+	Si $P(x) = (x - r)Q(x)$, alors $P(r) = 0$.
+
+	Réciproquement, supposons $P(r) = 0$.
+
+	Alors
+	\begin{align*}
+		P(x) = P(x) - P(r) & = a(x^3 - r^3) + b(x^2 - r^2) + c(x - r)                  \\
+		                   & = (x - r)\left[a(x^2 + rx + r^2) + b(x + r) + c\right]    \\
+		                   & = (x - r)\left[ax^2 + (ar + b)x + (ar^2 + br + c)\right].
+	\end{align*}
+\end{demo}
+
+\begin{methode}[Factoriser une fonction cubique dont on connaît une racine]
+	Soit $P(x) = x^3 - 2x^2 - 5x + 6$.
+	\begin{enumerate}
+		\item \textbf{Racine évidente :} $P(1) = 1 - 2 - 5 + 6 = 0$, donc $1$ est racine de $P$.
+		\item \textbf{Forme factorisée partielle :} $P(x) = (x - 1)(Ax^2 + Bx + C)$.
+		\item \textbf{Identification :} on développe $(x-1)(Ax^2 + Bx + C) = Ax^3 + (B - A)x^2 + (C - B)x - C$ et on identifie avec $P(x)$ :
+		      \[
+			      \begin{cases}
+				      A = 1      \\
+				      B - A = -2 \\
+				      C - B = -5 \\
+				      -C = 6
+			      \end{cases}
+			      \iff
+			      \begin{cases}
+				      A = 1  \\
+				      B = -1 \\
+				      C = -6
+			      \end{cases}
+		      \]
+		      d'où $P(x) = (x - 1)(x^2 - x - 6)$.
+		\item \textbf{Second degré :} $\Delta = (-1)^2 - 4 \times 1 \times (-6) = 25$, donc $x^2 - x - 6$ a pour racines $\dfrac{1 - 5}{2} = -2$ et $\dfrac{1 + 5}{2} = 3$.
+		\item \textbf{Conclusion :} $P(x) = (x - 1)(x + 2)(x - 3)$ et l'ensemble des solutions de $P(x) = 0$ est $S = \{-2\,;\,1\,;\,3\}$.
+	\end{enumerate}
+\end{methode}
+
+\begin{methode}[Variante : le schéma de Horner]
+	Pour $P(x) = ax^3 + bx^2 + cx + d$ et une racine $r$, on obtient les coefficients de $Q$ en remplissant le tableau suivant : on recopie $a$, puis chaque case de la dernière ligne est la somme du coefficient situé au-dessus et du produit de $r$ par la case précédente de la dernière ligne.
+
+	\begin{center}
+		\def\arraystretch{1.3}
+		\begin{tabular}{c|cccc}
+			              & $a$ & $b$      & $c$             & $d$            \\
+			$r$           &     & $r a$    & $r(ar+b)$       & $r(ar^2+br+c)$ \\ \hline
+			\phantom{$r$} & $a$ & $ar + b$ & $ar^2 + br + c$ & $P(r) = 0$
+		\end{tabular}
+	\end{center}
+
+	Pour $P(x) = x^3 - 2x^2 - 5x + 6$ et $r = 1$ :
+	\begin{center}
+		\def\arraystretch{1.3}
+		\begin{tabular}{c|cccc}
+			        & $1$ & $-2$ & $-5$ & $6$  \\
+			$r = 1$ &     & $1$  & $-1$ & $-6$ \\ \hline
+			        & $1$ & $-1$ & $-6$ & $0$
+		\end{tabular}
+	\end{center}
+	La dernière case vaut $0$ (ce qui confirme que $1$ est racine) et les autres cases donnent $Q(x) = x^2 - x - 6$.
+\end{methode}
+
+\begin{ex}
+	Reprenons $A(x) = 3x^3 - 2x^2 - 12x + 8$ dont $2$ est racine.
+
+	Le schéma de Horner avec $r = 2$ donne :
+	\begin{center}
+		\def\arraystretch{1.3}
+		\begin{tabular}{c|cccc}
+			        & $3$ & $-2$ & $-12$ & $8$  \\
+			$r = 2$ &     & $6$  & $8$   & $-8$ \\ \hline
+			        & $3$ & $4$  & $-4$  & $0$
+		\end{tabular}
+	\end{center}
+	Donc $A(x) = (x - 2)(3x^2 + 4x - 4)$.
+
+	Pour $3x^2 + 4x - 4$, $\Delta = 16 + 48 = 64$, de racines $\dfrac{-4 - 8}{6} = -2$ et $\dfrac{-4 + 8}{6} = \dfrac{2}{3}$.
+
+	Ainsi
+	\[
+		A(x) = 3(x - 2)(x + 2)\left(x - \dfrac{2}{3}\right) = (x - 2)(x + 2)(3x - 2).
+	\]
+
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+					axis lines=center,
+					xlabel={$x$}, ylabel={$y$},
+					grid=major,
+					grid style={line width=.1pt, draw=gray!20},
+					major grid style={line width=.2pt, draw=gray!40},
+					minor tick num=0,
+					tick label style={font=\footnotesize},
+					width=10cm, height=6.5cm,
+					xmin=-3.5, xmax=4.5, ymin=-26, ymax=20, xtick distance=1, ytick distance=5]
+				\addplot[domain=-3:4, samples=100, line width=1.2pt, vert] {x^3-2*x^2-5*x+6};
+				\addplot[only marks, mark=*, mark size=2.5pt, rouge] coordinates {(-2,0) (1,0) (3,0)};
+				\node[above left, font=\small] at (axis cs:-2,0) {$-2$};
+				\node[above right, font=\small] at (axis cs:1,0) {$1$};
+				\node[above right, font=\small] at (axis cs:3,0) {$3$};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{ex}
+
+\subsection{Signe d'un polynôme de degré 3 et inéquations}
+
+\begin{methode}[Étudier le signe d'une fonction cubique]
+	\nline
+	\begin{enumerate}
+		\item On factorise $P$ en un produit de facteurs du premier degré (ou du premier et du second degré).
+		\item On dresse un tableau de signes en plaçant chaque facteur sur une ligne, puis on applique la règle des signes pour la ligne de $P(x)$.
+		\item On lit l'ensemble des solutions de l'inéquation.
+	\end{enumerate}
+\end{methode}
+
+\begin{ex}
+	Résolvons $P(x) \geq 0$ avec $P(x) = x^3 - 2x^2 - 5x + 6 = (x + 2)(x - 1)(x - 3)$.
+	\begin{center}
+		\begin{tikzpicture}
+			\tkzTabInit[lgt=2, espcl=2]{$x$/1, $x+2$/1, $x-1$/1, $x-3$/1, $P(x)$/1}{$-\infty$, $-2$, $1$, $3$, $+\infty$}
+			\tkzTabLine{ ,-,z,+,t,+,t,+, }
+			\tkzTabLine{ ,-,t,-,z,+,t,+, }
+			\tkzTabLine{ ,-,t,-,t,-,z,+, }
+			\tkzTabLine{ ,-,z,+,z,-,z,+, }
+		\end{tikzpicture}
+	\end{center}
+	Donc $S = \intff{-2}{1} \cup \intfo{3}{+\infty}$.
+
+	On vérifie : $P(0) = 6 > 0$ et $0 \in \intff{-2}{1}$.
+\end{ex}
+
+\begin{ex}[Racine double]
+	Soit $R(x) = x^3 - 3x + 2$.
+
+	On a $R(1) = 0$ et le schéma de Horner avec $r = 1$ donne $R(x) = (x - 1)(x^2 + x - 2) = (x - 1)^2(x + 2)$.
+
+	Le facteur $(x - 1)^2$ est toujours positif et ne s'annule qu'en $1$ : le signe de $R(x)$ est celui de $x + 2$, sauf en $x = 1$ où $R$ s'annule sans changer de signe.
+
+	Ainsi $R(x) \geq 0 \iff x \geq -2$ et $S = \intfo{-2}{+\infty}$.
+\end{ex}
+
+\subsection{Variations d'une fonction cubique}
+
+On rappelle que, pour tout entier $n \geq 1$, la fonction $x \mapsto x^n$ a pour dérivée $x \mapsto n x^{n-1}$.
+
+\begin{prop}[Dérivée d'une fonction cubique]
+	Soit $f$ la fonction définie sur $\R$ par $f(x) = ax^3 + bx^2 + cx + d$ avec $a \neq 0$.
+
+	Sa dérivée est le trinôme du second degré
+	\[
+		f'(x) = 3ax^2 + 2bx + c, \qquad \text{de discriminant} \quad \Delta' = (2b)^2 - 4 \times 3a \times c = 4(b^2 - 3ac).
+	\]
+\end{prop}
+
+\begin{defin}[Extremum local]
+	Soit $f$ une fonction définie sur un intervalle $I$ et $x_0$ un point de $I$ (autre qu'une borne).
+
+	On dit que $f$ admet un \textbf{maximum local} (respectivement un \textbf{minimum local}) en $x_0$ s'il existe un intervalle ouvert contenant $x_0$ sur lequel $f(x) \leq f(x_0)$ (respectivement $f(x) \geq f(x_0)$).
+
+	Un \textbf{extremum local} est un maximum local ou un minimum local.
+\end{defin}
+
+\begin{prop}[Dérivée et extremum local]
+	Soit $f$ une fonction dérivable sur un intervalle ouvert $I$ et $x_0 \in I$.
+	\begin{itemize}
+		\item Si $f$ admet un extremum local en $x_0$, alors $f'(x_0) = 0$ : la courbe a une tangente horizontale en ce point.
+		\item Si $f'$ s'annule en $x_0$ \emph{en changeant de signe}, alors $f$ admet un extremum local en $x_0$.
+	\end{itemize}
+\end{prop}
+
+\begin{piege}
+	La condition $f'(x_0) = 0$ ne suffit pas pour avoir un extremum : il faut que $f'$ \emph{change de signe}.
+
+	Par exemple, $f(x) = x^3$ vérifie $f'(0) = 0$ mais $f$ est strictement croissante sur $\R$ et n'a pas d'extremum en $0$.
+\end{piege}
+
+\begin{prop}[Allure d'une fonction cubique]
+	Soit $f(x) = ax^3 + bx^2 + cx + d$ avec $a \neq 0$ et $\Delta' = 4(b^2 - 3ac)$.
+	\begin{itemize}
+		\item \textbf{Si $\Delta' > 0$ :} $f'$ possède deux racines $x_1 < x_2$ et change de signe en chacune.
+
+		      Alors $f$ admet deux extremums locaux : si $a > 0$, un maximum local en $x_1$ et un minimum local en $x_2$ ; si $a < 0$, c'est l'inverse.
+		\item \textbf{Si $\Delta' \leq 0$ :} $f'$ garde un signe constant (le signe de $3a$) et ne s'annule qu'en un point au plus.
+
+		      Alors $f$ est strictement monotone sur $\R$ (croissante si $a > 0$, décroissante si $a < 0$) et n'admet aucun extremum.
+	\end{itemize}
+
+	\begin{center}
+		\begin{minipage}{.32\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\begin{axis}[
+						axis lines=center,
+						xlabel={$x$}, ylabel={$y$},
+						grid=major,
+						grid style={line width=.1pt, draw=gray!20},
+						major grid style={line width=.2pt, draw=gray!40},
+						minor tick num=0,
+						tick label style={font=\footnotesize},
+						width=10cm, height=6.5cm,
+						width=5.3cm, height=5cm, xmin=-2.2, xmax=2.2, ymin=-4, ymax=4,
+						xtick=\empty, ytick=\empty, grid=none,
+						title={\small $x^3 - 3x$ ; $\Delta' > 0$}]
+					\addplot[domain=-2.1:2.1, samples=80, line width=1.2pt, bleu] {x^3-3*x};
+				\end{axis}
+			\end{tikzpicture}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.32\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\begin{axis}[
+						axis lines=center,
+						xlabel={$x$}, ylabel={$y$},
+						grid=major,
+						grid style={line width=.1pt, draw=gray!20},
+						major grid style={line width=.2pt, draw=gray!40},
+						minor tick num=0,
+						tick label style={font=\footnotesize},
+						width=10cm, height=6.5cm,
+						width=5.3cm, height=5cm, xmin=-2.2, xmax=2.2, ymin=-4, ymax=4,
+						xtick=\empty, ytick=\empty, grid=none,
+						title={\small $x^3$ ; $\Delta' = 0$}]
+					\addplot[domain=-1.6:1.6, samples=80, line width=1.2pt, bleu] {x^3};
+				\end{axis}
+			\end{tikzpicture}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.32\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\begin{axis}[
+						axis lines=center,
+						xlabel={$x$}, ylabel={$y$},
+						grid=major,
+						grid style={line width=.1pt, draw=gray!20},
+						major grid style={line width=.2pt, draw=gray!40},
+						minor tick num=0,
+						tick label style={font=\footnotesize},
+						width=10cm, height=6.5cm,
+						width=5.3cm, height=5cm, xmin=-2.2, xmax=2.2, ymin=-4, ymax=4,
+						xtick=\empty, ytick=\empty, grid=none,
+						title={\small $x^3 + x$ ; $\Delta' < 0$}]
+					\addplot[domain=-1.6:1.6, samples=80, line width=1.2pt, bleu] {x^3+x};
+				\end{axis}
+			\end{tikzpicture}
+		\end{minipage}
+	\end{center}
+\end{prop}
+
+\begin{methode}[Étude complète d'une fonction cubique]
+	Soit $f(x) = x^3 - 3x^2 - 9x + 5$, que l'on étudie sur l'intervalle $\intff{-3}{5}$.
+	\begin{enumerate}
+		\item \textbf{Dérivée :} $f'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3) = 3(x + 1)(x - 3)$.
+		\item \textbf{Signe de $f'(x)$ :} les racines de $f'$ sont $-1$ et $3$ ; le coefficient dominant $3$ est positif.
+
+		      Donc $f'(x) > 0$ sur $\intfo{-3}{-1} \cup \intof{3}{5}$ et $f'(x) < 0$ sur $\intoo{-1}{3}$.
+		\item \textbf{Valeurs utiles :} $f(-3) = -27 - 27 + 27 + 5 = -22$ ; $f(-1) = -1 - 3 + 9 + 5 = 10$ ; $f(3) = 27 - 27 - 27 + 5 = -22$ ; $f(5) = 125 - 75 - 45 + 5 = 10$.
+		\item \textbf{Tableau de variations :}
+		      \begin{center}
+			      \begin{tikzpicture}
+				      \tkzTabInit[lgt=2, espcl=2.5]{$x$/1, $f'(x)$/1, $f(x)$/2}{$-3$, $-1$, $3$, $5$}
+				      \tkzTabLine{ ,+,z,-,z,+, }
+				      \tkzTabVar{-/ $-22$ , +/ $10$ , -/ $-22$ , +/ $10$ }
+			      \end{tikzpicture}
+		      \end{center}
+		\item \textbf{Extremums locaux :} $f$ admet un maximum local $f(-1) = 10$ en $x = -1$ et un minimum local $f(3) = -22$ en $x = 3$.
+
+		      En ces points, la courbe admet une tangente horizontale (d'équations $y = 10$ et $y = -22$).
+	\end{enumerate}
+
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+					axis lines=center,
+					xlabel={$x$}, ylabel={$y$},
+					grid=major,
+					grid style={line width=.1pt, draw=gray!20},
+					major grid style={line width=.2pt, draw=gray!40},
+					minor tick num=0,
+					tick label style={font=\footnotesize},
+					width=10cm, height=6.5cm,
+					xmin=-3.5, xmax=5.5, ymin=-26, ymax=14, xtick distance=1, ytick distance=5]
+				\addplot[domain=-3:5, samples=100, line width=1.2pt, vert] {x^3-3*x^2-9*x+5};
+				\addplot[only marks, mark=*, mark size=2.5pt, rouge] coordinates {(-1,10)};
+				\addplot[only marks, mark=*, mark size=2.5pt, bleu] coordinates {(3,-22)};
+				\draw[dashed, gray] (axis cs:-1,0) -- (axis cs:-1,10);
+				\draw[dashed, gray] (axis cs:3,0) -- (axis cs:3,-22);
+				\node[above right, font=\small] at (axis cs:-1,10) {Max $(-1\,;\,10)$};
+				\node[below right, font=\small] at (axis cs:3,-22) {Min $(3\,;\,-22)$};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+\end{methode}
+
+\begin{piege}
+	Les racines de la dérivée $f'$ donnent les abscisses des éventuels extremums locaux de $f$, et non les solutions de $f(x) = 0$ (qui sont les abscisses des points d'intersection de $\Cf$ avec l'axe des abscisses).
+\end{piege}
+
+\begin{rem}
+	Le tableau de variations permet aussi de dénombrer les solutions d'une équation $f(x) = k$.
+
+	Ici, $f$ prend toutes les valeurs de $\intff{-22}{10}$ au moins trois fois sur $\intff{-3}{5}$ pour $k$ compris strictement entre $-22$ et $10$ : l'équation $f(x) = 0$ possède donc trois solutions sur $\intff{-3}{5}$, bien qu'on ne sache pas les calculer exactement.
+\end{rem}
+
+\begin{ex}[Boîte de volume maximal]
+	On dispose d'une feuille de carton carrée de $12$ cm de côté.
+
+	On découpe, dans chaque coin, un carré de côté $x$ (en cm), puis on replie les bords pour former une boîte sans couvercle.
+
+	Quelle valeur de $x$ rend le volume maximal ?
+
+	\textbf{Modélisation.} La base est un carré de côté $12 - 2x$ et la hauteur est $x$, avec $0 \leq x \leq 6$ :
+	\[
+		V(x) = x(12 - 2x)^2 = 4x^3 - 48x^2 + 144x.
+	\]
+	\textbf{Étude.} $V'(x) = 12x^2 - 96x + 144 = 12(x^2 - 8x + 12) = 12(x - 2)(x - 6)$.
+
+	Sur $\intff{0}{6}$, $V'(x) > 0$ si $x < 2$ et $V'(x) < 0$ si $2 < x < 6$.
+	\begin{center}
+		\begin{tikzpicture}
+			\tkzTabInit[lgt=2, espcl=3]{$x$/1, $V'(x)$/1, $V(x)$/2}{$0$, $2$, $6$}
+			\tkzTabLine{ ,+,z,-, }
+			\tkzTabVar{-/ $0$ , +/ $128$ , -/ $0$ }
+		\end{tikzpicture}
+	\end{center}
+	\textbf{Conclusion.} Le volume est maximal pour $x = 2$ cm et vaut alors $V(2) = 2 \times 8^2 = 128$ cm$^3$.
+\end{ex}
+
+\section{Tableau récapitulatif des stratégies}
+
+\begin{center}
+	\def\arraystretch{1.5}
+	\begin{tabular}{|L{3.4cm}|C{5.8cm}|L{6.4cm}|} \hline
+		\ccg \textbf{Objectif}                          & \cc{bleuClair} \textbf{Outil privilégié}                              & \cc{vertClair} \textbf{Méthode associée}                                          \\ \hline
+		\textbf{Calculer une image}                     & Forme développée $ax^2+bx+c$ ou $ax^3+bx^2+cx+d$                      & Remplacer $x$ par la valeur.                                                      \\ \hline
+		\textbf{Sommet, extremum, variations (degré 2)} & Forme canonique $a(x-\alpha)^2+\beta$                                 & $\alpha = -\dfrac{b}{2a}$ et $\beta = f(\alpha)$.                                 \\ \hline
+		\textbf{Résoudre $f(x)=0$ (degré 2)}            & Discriminant $\Delta = b^2-4ac$                                       & $\Delta>0$ : deux racines ; $\Delta=0$ : une racine double ; $\Delta<0$ : aucune. \\ \hline
+		\textbf{Factoriser un trinôme}                  & Forme factorisée $a(x-x_1)(x-x_2)$                                    & Calcul des racines ; ne pas oublier $a$.                                          \\ \hline
+		\textbf{Signe d'un trinôme}                     & Signe de $a$ et position des racines                                  & Signe de $a$ à l'extérieur des racines.                                           \\ \hline
+		\textbf{Racines sans $\Delta$}                  & Somme $-\frac{b}{a}$ et produit $\frac{c}{a}$ ; $a+b+c=0$ ; $a-b+c=0$ & Racine évidente $1$ ou $-1$, puis produit ou somme.                               \\ \hline
+		\textbf{Factoriser une cubique}                 & Racine évidente $r$ puis $P(x)=(x-r)Q(x)$                             & Identification ou schéma de Horner, puis étude de $Q$.                            \\ \hline
+		\textbf{Signe d'un produit}                     & Tableau de signes par facteurs                                        & Règle des signes, racines doubles sans changement de signe.                       \\ \hline
+		\textbf{Variations d'une cubique}               & Dérivée $f'(x) = 3ax^2+2bx+c$                                         & Signe du trinôme $f'$, tableau de variations.                                     \\ \hline
+	\end{tabular}
+\end{center}
+
 \end{document}
-
