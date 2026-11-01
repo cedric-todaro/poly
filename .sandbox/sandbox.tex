@@ -11,7 +11,7 @@
 
 \chapter{Polynômes et fonctions troisième degré}
 
-% TODO : à relire
+% TODO : à relire .... En cours
 
 \section{Fonctions polynômes : vocabulaire}
 
@@ -20,7 +20,7 @@
 	\[
 		P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0
 	\]
-	où $n \in \N$ et où $a_0, a_1, \dots, a_n$ sont des réels appelés \textbf{coefficients}.
+	\ldots où $n \in \N$ et où $a_0, a_1, \dots, a_n$ sont des réels appelés \textbf{coefficients}.
 
 	Si $a_n \neq 0$, l'entier $n$ est le \textbf{degré} de $P$, le réel $a_n$ est son \textbf{coefficient dominant} et $a_0$ est son \textbf{terme constant}.
 
@@ -28,7 +28,7 @@
 \end{defin}
 
 \begin{rem}
-	Dans ce chapitre, on emploie indifféremment « polynôme » et « fonction polynôme ».
+	Dans ce chapitre, on emploie indifféremment \og polynôme\fg{} et \og fonction polynôme\fg{}.
 
 	Les fonctions polynômes de degré $1$ sont les fonctions affines ; celles de degré $2$ sont rappelées dans la section suivante et celles de degré $3$ sont étudiées ensuite.
 \end{rem}
@@ -38,7 +38,7 @@
 	\begin{itemize}
 		\item $f(x) = 3x - 5$ est de degré $1$ : coefficient dominant $3$, terme constant $-5$.
 		\item $g(x) = -2x^2 + x$ est de degré $2$ : coefficient dominant $-2$, terme constant $0$.
-		\item $h(x) = x^3 - 4x + 1$ est de degré $3$ : coefficient dominant $1$ (le coefficient de $x^2$ est nul).
+		\item $h(x) = x^3 - 4x + 11$ est de degré $3$ : coefficient dominant $1$ (le coefficient de $x^2$ est nul).
 		\item $k(x) = (x-1)(2x+3) = 2x^2 + x - 3$ est de degré $2$.
 		\item Les fonctions $x \mapsto \dfrac{1}{x}$ et $x \mapsto \sqrt{x}$ ne sont pas des fonctions polynômes.
 	\end{itemize}
@@ -52,14 +52,18 @@
 
 \begin{prop}[Identification des coefficients]
 	Deux fonctions polynômes sont égales pour tout réel $x$ si et seulement si elles ont le même degré et si leurs coefficients des termes de même degré sont deux à deux égaux.
-
-	(admis)
 \end{prop}
 
 \begin{ex}
-	Déterminons les réels $a$, $b$, $c$ tels que, pour tout réel $x$, $2x^2 - 3x + 5 = a(x-1)^2 + b(x-1) + c$.
+	Déterminons les réels $a$, $b$, $c$ tels que, pour tout réel $x$ :
+	\[
+		2x^2 - 3x + 5 = a(x-1)^2 + b(x-1) + c
+	\]
 
-	On développe le membre de droite : $a(x-1)^2 + b(x-1) + c = ax^2 + (-2a + b)x + (a - b + c)$.
+	On développe le membre de droite :
+	\[
+		a(x-1)^2 + b(x-1) + c = ax^2 + (-2a + b)x + (a - b + c)
+	\]
 
 	Par identification :
 	\[
@@ -75,14 +79,13 @@
 			c = 4
 		\end{cases}
 	\]
+
 	Ainsi $2x^2 - 3x + 5 = 2(x-1)^2 + (x-1) + 4$.
 \end{ex}
 
 \section{Rappels sur le second degré}
 
-Cette section résume les résultats du chapitre « Fonctions du second degré », dont les démonstrations ne sont pas reprises ici.
-
-Ils serviront deux fois dans la suite : pour factoriser le quotient $Q$ lorsqu'on connaît une racine d'une fonction cubique, et pour étudier le signe de sa dérivée.
+Cette section résume les résultats du chapitre \og Fonctions du second degré\fg{}, dont les démonstrations ne sont pas reprises ici.
 
 \subsection{Forme canonique, sommet et variations}
 
@@ -91,8 +94,9 @@ Ils serviront deux fois dans la suite : pour factoriser le quotient $Q$ lorsqu'o
 	\[
 		f(x) = a(x - \alpha)^2 + \beta
 		\qquad \text{avec} \qquad
-		\alpha = -\dfrac{b}{2a} \quad \text{et} \quad \beta = f(\alpha).
+		\alpha = \dfrac{-b}{2a} \quad \text{et} \quad \beta = f(\alpha).
 	\]
+
 	La courbe de $f$ est une \textbf{parabole} de sommet $S\coordl{\alpha}{\beta}$, d'axe de symétrie la droite d'équation $x = \alpha$.
 	\begin{itemize}
 		\item Si $a > 0$, $f$ est décroissante sur $\intof{-\infty}{\alpha}$, croissante sur $\intfo{\alpha}{+\infty}$ et admet un \textbf{minimum} $\beta$ atteint en $\alpha$.
@@ -101,17 +105,41 @@ Ils serviront deux fois dans la suite : pour factoriser le quotient $Q$ lorsqu'o
 \end{prop}
 
 \begin{ex}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=8mm,y=1mm,>=Stealth]
+			\def\xmin{-1}\def\xmax{6}
+			\def\ymin{-15}\def\ymax{20}
+			\clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+			\draw[dashed, gray!80, xstep=1, ystep=5] (0.99*\xmin,0.99*\ymin) grid (0.99*\xmax,0.99*\ymax);
+			\draw[->] (\xmin,0) -- (\xmax,0) node[below left] {$x$};
+			\draw[->] (0,\ymin) -- (0,\ymax) node[below left] {$y$};
+			\draw[very thick, dashed] (3,0) -- (3,-11) -- (0,-11);
+			\filldraw (3,0) circle (2pt) node[above] {$3$};
+			\filldraw (3,-11) circle (2pt);
+			\filldraw (0,-11) circle (2pt) node[left] {$-11$};
+			\draw[red,very thick, domain=\xmin:\xmax] plot (\x , {2*(\x -3)*(\x -3) -11}) node[left] {$\Cf$};
+		\end{tikzpicture}
+	\end{wrapstuff}
 	Soit $f(x) = 2x^2 - 12x + 7$.
 
-	On a $\alpha = -\dfrac{-12}{2 \times 2} = 3$ et $\beta = f(3) = 18 - 36 + 7 = -11$.
+	On a :
+	\[
+		\alpha = \dfrac{--12}{2 \times 2} = 3\qquad\text{et}\qquad\beta = f(3) = 18 - 36 + 7 = -11
+	\]
 
-	Donc $f(x) = 2(x-3)^2 - 11$ : la parabole est tournée vers le haut, de sommet $S(3\,;\,-11)$.
+	Donc :
+	\[
+		f(x) = 2(x-3)^2 - 11
+	\]
+
+	La parabole est tournée vers le haut, de sommet $S(3\,;\,-11)$.
 \end{ex}
 
 \begin{erreur}
 	Dans la forme canonique, on écrit $(x - \alpha)^2$ : si $\alpha = -3$, on écrit $(x+3)^2$.
 
-	Attention aussi au signe dans $\alpha = -\dfrac{b}{2a}$.
+	Attention aussi au signe dans $\alpha = \dfrac{-b}{2a}$.
 \end{erreur}
 
 \subsection{Discriminant, racines et factorisation}
@@ -122,33 +150,41 @@ Ils serviront deux fois dans la suite : pour factoriser le quotient $Q$ lorsqu'o
 	On appelle \textbf{discriminant} de $f$ le réel $\Delta = b^2 - 4ac$.
 
 	\begin{center}
-		\def\arraystretch{1.5}
-		\begin{tabular}{|C{1.8cm}|L{4.6cm}|L{4.2cm}|L{4.6cm}|} \hline
-			\ccg $\Delta$ & \cc{bleuClair} \textbf{Racines de $f$}                                                                   & \cc{vertClair} \textbf{Factorisation} & \cc{orangeClair} \textbf{Signe de $f(x)$}                            \\ \hline
-			$\Delta > 0$  & Deux racines distinctes $x_1 = \dfrac{-b - \sqrt{\Delta}}{2a}$ et $x_2 = \dfrac{-b + \sqrt{\Delta}}{2a}$ & $a(x - x_1)(x - x_2)$                 & Signe de $a$ à l'extérieur des racines, signe contraire entre elles. \\ \hline
-			$\Delta = 0$  & Une racine double $x_0 = -\dfrac{b}{2a}$                                                                 & $a(x - x_0)^2$                        & Signe de $a$, sauf en $x_0$ où $f$ s'annule.                         \\ \hline
-			$\Delta < 0$  & Aucune racine réelle                                                                                     & Pas de factorisation dans $\R$        & Signe de $a$ sur $\R$.                                               \\ \hline
+		\begin{tabular}{|C{1.8cm}|C{4.6cm}|C{3.0cm}|C{5.9cm}|} \hline
+			\rule[-3mm]{0mm}{9mm}\ccg $\Delta$ & \cc{bleuClair} \textbf{Racines de $f$}                                                  & \cc{vertClair} \textbf{Factorisation} & \cc{orangeClair} \textbf{Signe de $f(x)$}                            \\ \hline
+			\rule[-6mm]{0mm}{20mm}$\Delta > 0$ & Deux racines distinctes :\vspace{2mm} $x_{\pa{1;2}} = \dfrac{-b \pm \sqrt{\Delta}}{2a}$ & $a(x - x_1)(x - x_2)$                 & Signe de $a$ à l'extérieur des racines, signe contraire entre elles. \\ \hline
+			\rule[-6mm]{0mm}{14mm}$\Delta = 0$ & Une racine double : $x_0 = \dfrac{-b}{2a}$                                              & $a(x - x_0)^2$                        & Signe de $a$, sauf en $x_0$ où $f$ s'annule.                         \\ \hline
+			\rule[-4mm]{0mm}{15mm}$\Delta < 0$ & Aucune racine réelle                                                                    & Pas de factorisation                  & Signe de $a$ sur $\R$.                                               \\ \hline
 		\end{tabular}
 	\end{center}
 \end{prop}
 
+\newpage
+
 \begin{prop}[Somme, produit et racines évidentes]
 	Si $f(x) = ax^2 + bx + c$ possède deux racines $x_1$ et $x_2$ (éventuellement égales), alors
 	\[
-		x_1 + x_2 = -\dfrac{b}{a} \quad \text{et} \quad x_1 \, x_2 = \dfrac{c}{a}.
+		x_1 + x_2 = \dfrac{-b}{a} \quad \text{et} \quad x_1 \times x_2 = \dfrac{c}{a}.
 	\]
+
 	En particulier :
 	\begin{itemize}
 		\item si $a + b + c = 0$, alors $1$ est racine et l'autre racine est $\dfrac{c}{a}$ ;
-		\item si $a - b + c = 0$, alors $-1$ est racine et l'autre racine est $-\dfrac{c}{a}$.
+		\item si $a - b + c = 0$, alors $-1$ est racine et l'autre racine est $\dfrac{-c}{a}$.
 	\end{itemize}
+
 	Deux nombres de somme $s$ et de produit $p$ sont les solutions éventuelles de l'équation $x^2 - sx + p = 0$.
 \end{prop}
 
 \begin{methode}[Résoudre une équation du second degré]
 	\nline
 	\begin{enumerate}
-		\item On se ramène à $ax^2 + bx + c = 0$ et on cherche une résolution directe : $c = 0$ (on factorise $x(ax+b)$), $b = 0$ (on isole $x^2$), identité remarquable, ou racine évidente.
+		\item On se ramène à $ax^2 + bx + c = 0$ et on cherche une résolution directe :
+		      \begin{itemize}
+			      \item $c = 0$ $\rarr$ On factorise par $x$,
+			      \item $b = 0$ $\rarr$ On isole $x^2$,
+			      \item Identité remarquable, ou racine évidente.
+		      \end{itemize}
 		\item Sinon, on calcule $\Delta = b^2 - 4ac$ et on conclut selon son signe.
 		\item On écrit l'ensemble $S$ des solutions.
 	\end{enumerate}
@@ -159,15 +195,20 @@ Ils serviront deux fois dans la suite : pour factoriser le quotient $Q$ lorsqu'o
 
 	On a $\Delta = (-5)^2 - 4 \times 2 \times (-3) = 49 > 0$, donc deux racines :
 	\[
-		x_1 = \dfrac{5 - 7}{4} = -\dfrac{1}{2} \quad \text{et} \quad x_2 = \dfrac{5 + 7}{4} = 3.
+		x_1 = \dfrac{5 - 7}{4} = \dfrac{-1}{2} \quad \text{et} \quad x_2 = \dfrac{5 + 7}{4} = 3.
 	\]
-	Donc $S = \left\{-\dfrac{1}{2}\,;\,3\right\}$ et $2x^2 - 5x - 3 = 2\left(x + \dfrac{1}{2}\right)(x - 3) = (2x + 1)(x - 3)$.
+
+	Donc $S = \left\{\dfrac{-1}{2}\,;\,3\right\}$.
+
+	On peut factoriser le polynôme : $\quad 2x^2 - 5x - 3 = 2\pa{x + \frac{1}{2}}\pa{x-3} = \pa{2x + 1}\pa{x - 3}$.
 \end{ex}
 
 \begin{piege}
-	Si $b$ est négatif, les parenthèses sont indispensables dans $b^2$ : $(-5)^2 = 25$ et non $-5^2 = -25$.
-
-	Dans les formules des racines, la barre de fraction porte sur tout le numérateur $-b \pm \sqrt{\Delta}$ et le dénominateur est $2a$.
+	\nline
+	\begin{itemize}
+		\item Si $b$ est négatif, les parenthèses sont indispensables dans $b^2$ : $(-5)^2 = 25$ et non $-5^2 = -25$.
+		\item Dans les formules des racines, la barre de fraction porte sur tout le numérateur $-b \pm \sqrt{\Delta}$.
+	\end{itemize}
 \end{piege}
 
 \subsection{Signe d'un trinôme et inéquations}
@@ -185,14 +226,15 @@ Ils serviront deux fois dans la suite : pour factoriser le quotient $Q$ lorsqu'o
 \begin{ex}
 	Résolvons $2x^2 - 5x - 3 \leq 0$.
 
-	Les racines sont $-\dfrac{1}{2}$ et $3$, et $a = 2 > 0$.
+	Les racines sont $\pa{\dfrac{-1}{2}}$ et $3$, et $a = 2 > 0$.
 	\begin{center}
 		\begin{tikzpicture}
-			\tkzTabInit[lgt=2, espcl=2.5]{$x$/1, $2x^2-5x-3$/1}{$-\infty$, $-\frac{1}{2}$, $3$, $+\infty$}
+			\tkzTabInit[lgt=3, espcl=2.5]{$x$/0.75, $2x^2-5x-3$/0.75}{$-\infty$, $\frac{-1}{2}$, $3$, $+\infty$}
 			\tkzTabLine{ ,+,z,-,z,+, }
 		\end{tikzpicture}
 	\end{center}
-	Donc $S = \intff{-\frac{1}{2}}{3}$.
+
+	Donc $S = \intff{\dfrac{-1}{2}}{3}$.
 \end{ex}
 
 \begin{attention}
@@ -210,15 +252,27 @@ Ils serviront deux fois dans la suite : pour factoriser le quotient $Q$ lorsqu'o
 	\[
 		P(x) = ax^3 + bx^2 + cx + d \quad \text{avec } a, b, c, d \in \R \text{ et } a \neq 0.
 	\]
+
 	Le réel $a$ est le coefficient dominant et $d$ est le terme constant : $P(0) = d$.
 \end{defin}
 
 \begin{rem}
-	Contrairement au second degré, une fonction cubique possède \emph{toujours au moins une racine réelle} (résultat admis ici, justifié en Terminale).
+	Contrairement au second degré, une fonction cubique possède \emph{toujours au moins une racine réelle} (admis).
 
 	Elle peut en posséder une, deux ou trois :
-	$x^3 + x = x(x^2 + 1)$ n'en a qu'une ; $x^2(x-1)$ en a deux ($0$ et $1$) ; $(x+2)(x-1)(x-3)$ en a trois.
+	\begin{itemize}
+		\item $x^3 + x = x(x^2 + 1)$ n'en a qu'une ($0$);
+		\item $x^2(x-1)$ en a deux ($0$ et $1$);
+		\item $(x+2)(x-1)(x-3)$ en a trois ($-2$, $1$ et $3$).
+	\end{itemize}
 \end{rem}
+
+% TODO : J'en suis là
+% TODO : J'en suis là
+% TODO : J'en suis là
+% TODO : J'en suis là
+% TODO : J'en suis là
+% TODO : J'en suis là
 
 \begin{prop}[Racine entière d'un polynôme à coefficients entiers]
 	Soit $P(x) = ax^3 + bx^2 + cx + d$ à coefficients entiers.
@@ -601,7 +655,7 @@ On rappelle que, pour tout entier $n \geq 1$, la fonction $x \mapsto x^n$ a pour
 	\begin{tabular}{|L{3.4cm}|C{5.8cm}|L{6.4cm}|} \hline
 		\ccg \textbf{Objectif}                          & \cc{bleuClair} \textbf{Outil privilégié}                              & \cc{vertClair} \textbf{Méthode associée}                                          \\ \hline
 		\textbf{Calculer une image}                     & Forme développée $ax^2+bx+c$ ou $ax^3+bx^2+cx+d$                      & Remplacer $x$ par la valeur.                                                      \\ \hline
-		\textbf{Sommet, extremum, variations (degré 2)} & Forme canonique $a(x-\alpha)^2+\beta$                                 & $\alpha = -\dfrac{b}{2a}$ et $\beta = f(\alpha)$.                                 \\ \hline
+		\textbf{Sommet, extremum, variations (degré 2)} & Forme canonique $a(x-\alpha)^2+\beta$                                 & $\alpha = \dfrac{-b}{2a}$ et $\beta = f(\alpha)$.                                 \\ \hline
 		\textbf{Résoudre $f(x)=0$ (degré 2)}            & Discriminant $\Delta = b^2-4ac$                                       & $\Delta>0$ : deux racines ; $\Delta=0$ : une racine double ; $\Delta<0$ : aucune. \\ \hline
 		\textbf{Factoriser un trinôme}                  & Forme factorisée $a(x-x_1)(x-x_2)$                                    & Calcul des racines ; ne pas oublier $a$.                                          \\ \hline
 		\textbf{Signe d'un trinôme}                     & Signe de $a$ et position des racines                                  & Signe de $a$ à l'extérieur des racines.                                           \\ \hline
