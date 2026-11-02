@@ -314,6 +314,7 @@ Cette section résume les résultats du chapitre \og Fonctions du second degré\
 	\[
 		P(r) = 0 \iff \text{il existe un trinôme } Q \text{ tel que, pour tout } x,\; P(x) = (x - r)\,Q(x).
 	\]
+
 	Dans ce cas, $Q(x) = ax^2 + (ar + b)x + (ar^2 + br + c)$.
 \end{thm}
 
@@ -324,18 +325,29 @@ Cette section résume les résultats du chapitre \og Fonctions du second degré\
 
 	Alors
 	\begin{align*}
-		P(x) = P(x) - P(r) & = a(x^3 - r^3) + b(x^2 - r^2) + c(x - r)                  \\
-		                   & = (x - r)\left[a(x^2 + rx + r^2) + b(x + r) + c\right]    \\
-		                   & = (x - r)\left[ax^2 + (ar + b)x + (ar^2 + br + c)\right].
+		P(x) = P(x) - P(r) & = \pa{ax^3 + bx^2 + cx + d} - \pa{ar^3 + br^2 + cr + d}         \\
+		                   & = ax^3 + bx^2 + cx + d - ar^3 - br^2 - cr - d                   \\
+		                   & = a\pa{x^3 - r^3} + b\pa{x^2 - r^2} + c\pa{x - r}               \\
+		                   & = (x - r)\left[a\pa{x^2 + rx + r^2} + b\pa{x + r} + c\right]    \\
+		                   & = (x - r)\left[ax^2 + \pa{ar + b}x + \pa{ar^2 + br + c}\right].
 	\end{align*}
 \end{demo}
 
 \begin{methode}[Factoriser une fonction cubique dont on connaît une racine]
 	Soit $P(x) = x^3 - 2x^2 - 5x + 6$.
 	\begin{enumerate}
-		\item \textbf{Racine évidente :} $P(1) = 1 - 2 - 5 + 6 = 0$, donc $1$ est racine de $P$.
-		\item \textbf{Forme factorisée partielle :} $P(x) = (x - 1)(Ax^2 + Bx + C)$.
-		\item \textbf{Identification :} on développe $(x-1)(Ax^2 + Bx + C) = Ax^3 + (B - A)x^2 + (C - B)x - C$ et on identifie avec $P(x)$ :
+		\item \textbf{Racine évidente :}
+
+		      $P(1) = 1 - 2 - 5 + 6 = 0$, donc $1$ est racine de $P$.
+
+		\item \textbf{Forme factorisée partielle :}
+		      \[
+			      P(x) = (x - 1)(Ax^2 + Bx + C)
+		      \]
+
+		\item \textbf{Identification :}
+
+		      On développe $(x-1)(Ax^2 + Bx + C) = Ax^3 + (B - A)x^2 + (C - B)x - C$ et on identifie avec $P(x)$ :
 		      \[
 			      \begin{cases}
 				      A = 1      \\
@@ -350,9 +362,15 @@ Cette section résume les résultats du chapitre \og Fonctions du second degré\
 				      C = -6
 			      \end{cases}
 		      \]
-		      d'où $P(x) = (x - 1)(x^2 - x - 6)$.
-		\item \textbf{Second degré :} $\Delta = (-1)^2 - 4 \times 1 \times (-6) = 25$, donc $x^2 - x - 6$ a pour racines $\dfrac{1 - 5}{2} = -2$ et $\dfrac{1 + 5}{2} = 3$.
-		\item \textbf{Conclusion :} $P(x) = (x - 1)(x + 2)(x - 3)$ et l'ensemble des solutions de $P(x) = 0$ est $S = \{-2\,;\,1\,;\,3\}$.
+
+		      \ldots d'où $P(x) = (x - 1)(x^2 - x - 6)$.
+		\item \textbf{Second degré :}
+
+		      $\Delta = (-1)^2 - 4 \times 1 \times (-6) = 25$, donc $x^2 - x - 6$ a pour racines $\dfrac{1 - 5}{2} = -2$ et $\dfrac{1 + 5}{2} = 3$
+
+		\item \textbf{Conclusion :}
+
+		      $P(x) = (x - 1)(x + 2)(x - 3)$ et l'ensemble des solutions de $P(x) = 0$ est $S = \{-2\,;\,1\,;\,3\}$
 	\end{enumerate}
 \end{methode}
 
