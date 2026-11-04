@@ -134,7 +134,7 @@
 % ---------------------------------------------------------------------------------------------------- 
 \RequirePackage{tikz,pgfplots,tkz-tab}
 \usetikzlibrary{calc, patterns, positioning, backgrounds}
-\usetikzlibrary{arrows.meta, decorations.markings, decorations.text, decorations.fractals, shapes.geometric}
+\usetikzlibrary{arrows.meta, decorations.markings, decorations.text, decorations.fractals, shapes.geometric, lindenmayersystems}
 \pgfplotsset{compat=1.18}
 \tikzset{arrow style/.style={thick, >={Stealth[scale=1.5]}, ->, shorten <=5pt, shorten >=5pt}}
 \tikzset{double style/.style={double distance=3pt, line width=0.5pt}}
@@ -289,6 +289,22 @@ literate=
 			\draw[line width=2pt, fibGold] (11,18) arc[start angle=90,  end angle=180, radius=13];
 			\draw[line width=2pt, fibGold] (-2,5)  arc[start angle=180, end angle=270, radius=21];
 			\fill[fibNavy] (13, 8) circle (6pt);
+		\end{tikzpicture}
+	\end{center}
+}
+
+\pgfdeclarelindenmayersystem{Gosper}{
+	\rule{A -> A-B--B+A++AA+B-}
+	\rule{B -> +A-BB--B-A++A+B}
+	\symbol{A}{\pgflsystemdrawforward}
+	\symbol{B}{\pgflsystemdrawforward}
+	\symbol{+}{\pgflsystemturnleft}
+	\symbol{-}{\pgflsystemturnright}
+}
+\nc{\figureC}[1]{
+	\begin{center}
+		\begin{tikzpicture}[scale=1,#1]
+			\draw[lindenmayer system={Gosper, axiom=A, order=4, step=2.5mm, angle=60}, line join=round] lindenmayer system;
 		\end{tikzpicture}
 	\end{center}
 }
