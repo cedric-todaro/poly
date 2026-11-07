@@ -1,0 +1,492 @@
+\chapter{Variables aléatoires réelles}
+
+\section{Notion de variable aléatoire et loi de probabilité}
+
+\subsection{Définition et exemple introductif}
+
+\begin{defin}
+	Soit $\Omega$ l'univers (fini) associé à une expérience aléatoire.
+
+	Une \textbf{variable aléatoire réelle} $X$ est une fonction définie sur l'univers $\Omega$ et à valeurs dans $\R$ :
+	\[
+		X : \Omega \longrightarrow \R
+	\]
+
+	Elle associe un nombre réel à chaque issue de l'expérience aléatoire.
+
+	L'ensemble des valeurs prises par $X$ est noté $X(\Omega)$.
+\end{defin}
+
+\begin{ex}
+	On lance un dé équilibré à $6$ faces.
+
+	L'univers est $\Omega = \brac{\epsdice{1}\,;\,\epsdice{2}\,;\,\epsdice{3}\,;\,\epsdice{4}\,;\,\epsdice{5}\,;\,\epsdice{6}}$.
+
+	On considère le jeu suivant :
+	\begin{itemize}
+		\item si le résultat est pair ($\epsdice{2}$, $\epsdice{4}$ ou $\epsdice{6}$), on gagne $2\eur$ ;
+		\item si le résultat est le $\epsdice{1}$, on gagne $3\eur$ ;
+		\item si le résultat est le $\epsdice{3}$ ou le $\epsdice{5}$, on perd $4\eur$ (soit un gain de $-4\eur$).
+	\end{itemize}
+
+	On définit ainsi une variable aléatoire $X$ sur $\Omega$ qui correspond au gain algébrique du joueur.
+
+	L'ensemble des valeurs prises par $X$ est $X(\Omega) = \brac{-4\,;\,2\,;\,3}$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8, >=Stealth, thick]
+			\draw[bleu, rounded corners=12pt, fill=bleu!10] (0,0) rectangle (4,6);
+			\node[above] at (2,6) {\large $\Omega$};
+			\node[font=\Large] (d1) at (1.6,5) {$\epsdice{1}$};
+			\node[font=\Large] (d2) at (1.0,3.5) {$\epsdice{2}$};
+			\node[font=\Large] (d4) at (2.7,2.9) {$\epsdice{4}$};
+			\node[font=\Large] (d6) at (1.5,2.1) {$\epsdice{6}$};
+			\node[font=\Large] (d3) at (1.1,1.2) {$\epsdice{3}$};
+			\node[font=\Large] (d5) at (2.7,0.7) {$\epsdice{5}$};
+			\draw[rouge, rounded corners=12pt, fill=rouge!10] (7,0) rectangle (10,6);
+			\node[above] at (8.5,6) {\large $X(\Omega)$};
+			\node[font=\large] (v3) at (8.5,5) {$3$};
+			\node[font=\large] (v2) at (8.5,3) {$2$};
+			\node[font=\large] (vm) at (8.5,1) {$-4$};
+			\draw[->, bleu, ultra thick] (d1) to[out=20, in=160] (v3);
+			\draw[->, vert, ultra thick] (d2) to[out=15, in=150] (v2);
+			\draw[->, vert, ultra thick] (d4) to[out=10, in=170] (v2);
+			\draw[->, vert, ultra thick] (d6) to[out=0, in=190] (v2);
+			\draw[->, rouge, ultra thick] (d3) to[out=15, in=160] (vm);
+			\draw[->, rouge, ultra thick] (d5) to[out=-10, in=190] (vm);
+		\end{tikzpicture}
+	\end{center}
+\end{ex}
+
+\subsection{Événements associés et loi de probabilité}
+
+\begin{defin}
+	Soit $X$ une variable aléatoire définie sur un univers $\Omega$, prenant les valeurs réelles distinctes $x_1, x_2, \dots, x_n$.
+
+	\begin{itemize}
+		\item L'événement \og $X$ prend la valeur $x_i$ \fg{}, noté $\brac{X = x_i}$, est constitué de toutes les issues de $\Omega$ auxquelles $X$ associe la valeur $x_i$.
+
+		      Sa probabilité est notée $\p{X = x_i}$ ou $p_i$.
+		\item L'événement \og $X$ prend une valeur inférieure ou égale à $a$ \fg{} est noté $\brac{X \leq a}$.
+
+		      Sa probabilité $\p{X \leq a}$ s'obtient en additionnant les probabilités $\p{X = x_i}$ des valeurs $x_i \leq a$.
+	\end{itemize}
+\end{defin}
+
+\newpage
+
+\begin{remarque}[Passer du langage courant à la notation symbolique]
+	\nline
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\begin{tabular}{|l|c|c|} \hline
+			\ccg\textbf{Expression en français}            & \ccg\textbf{Notation} & \ccg\textbf{Probabilité}       \\ \hline
+			\og $X$ prend la valeur $a$ \fg{}              & $\brac{X = a}$        & $\p{X = a}$                    \\ \hline
+			\og $X$ est au plus égale à $a$ \fg{}          & $\brac{X \leq a}$     & $\p{X \leq a} = 1 - \p{X > a}$ \\ \hline
+			\og $X$ est au moins égale à $a$ \fg{}         & $\brac{X \geq a}$     & $\p{X \geq a} = 1 - \p{X < a}$ \\ \hline
+			\og $X$ est strictement supérieure à $a$ \fg{} & $\brac{X > a}$        & $\p{X > a} = 1 - \p{X \leq a}$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{remarque}
+
+\begin{defin}
+	Définir la \textbf{loi de probabilité} d'une variable aléatoire $X$, c'est déterminer l'ensemble de ses valeurs possibles $x_1, x_2, \dots, x_n$ et associer à chaque valeur $x_i$ sa probabilité $p_i = \p{X = x_i}$.
+\end{defin}
+
+\begin{rem}
+	La loi de probabilité de $X$ se présente sous la forme d'un tableau :
+
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\begin{tabular}{|c|c|c|c|c|} \hline
+			\ccg\textbf{Valeur} $x_i$               & $x_1$ & $x_2$ & $\dots$ & $x_n$ \\ \hline
+			\ccg\rule[-4mm]{0mm}{11mm}$\p{X = x_i}$ & $p_1$ & $p_2$ & $\dots$ & $p_n$ \\ \hline
+		\end{tabular}
+	\end{center}
+
+	Chaque issue de $\Omega$ réalise exactement un des événements $\brac{X = x_1}, \brac{X = x_2}, \dots, \brac{X = x_n}$ : ils sont deux à deux incompatibles et leur réunion est $\Omega$.
+
+	Par conséquent :
+	\[
+		p_1 + p_2 + \dots + p_n = \sum_{i=1}^{n} p_i = 1
+	\]
+
+\end{rem}
+
+\begin{ex}
+	Pour le jeu de dé précédent, on a $\p{X = 2} = \dfrac{3}{6}$, $\p{X = 3} = \dfrac{1}{6}$ et $\p{X = -4} = \dfrac{2}{6}$.
+
+	La loi de probabilité de $X$ est :
+
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\begin{tabular}{|c|c|c|c|} \hline
+			\ccg$x_i$                                   & $-4$           & $2$            & $3$            \\ \hline
+			\ccg\ccg\rule[-4mm]{0mm}{11mm}$\p{X = x_i}$ & $\dfrac{2}{6}$ & $\dfrac{3}{6}$ & $\dfrac{1}{6}$ \\ \hline
+		\end{tabular}
+	\end{center}
+
+	Par exemple, $\p{X \leq 2} = \p{X = -4} + \p{X = 2} = \dfrac{5}{6}$.
+\end{ex}
+
+\begin{methode}[Déterminer la loi de probabilité d'une variable aléatoire]
+	On tire au hasard une carte dans un jeu de $32$ cartes.
+	\begin{itemize}
+		\item Si l'on tire un Cœur, on gagne $2\eur$.
+		\item Si l'on tire un Roi, on gagne $5\eur$.
+		\item Si l'on tire toute autre carte, on perd $1\eur$ (gain de $-1\eur$).
+	\end{itemize}
+
+	Les gains se cumulent : le Roi de Cœur rapporte à la fois le gain d'un Cœur et celui d'un Roi.
+
+	Soit $X$ la variable aléatoire correspondant au gain algébrique du joueur.
+
+	\begin{enumerate}
+		\item Déterminer les valeurs prises par $X$.
+		\item Établir la loi de probabilité de $X$.
+		\item Calculer $\p{X \geq 5}$.
+	\end{enumerate}
+
+	\newpage
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Les cartes sont des Cœurs qui ne sont pas des Rois ($7$ cartes), des Rois qui ne sont pas des Cœurs ($3$ cartes), le Roi de Cœur ($1$ carte) ou d'autres cartes ($32 - 11 = 21$ cartes).
+			      \begin{itemize}
+				      \item Pour un Cœur non Roi : gain de $2\eur$.
+				      \item Pour un Roi non Cœur : gain de $5\eur$.
+				      \item Pour le Roi de Cœur : cumul des gains, soit $2 + 5 = 7\eur$.
+				      \item Pour une autre carte : gain de $-1\eur$.
+			      \end{itemize}
+			      La variable $X$ prend donc les valeurs $-1$, $2$, $5$ et $7$.
+
+			\item Les $32$ cartes étant équiprobables :
+			      \begin{multicols}{4}
+				      \begin{itemize}
+					      \item $\p{X = -1} = \dfrac{21}{32}$
+					      \item $\p{X = 2} = \dfrac{7}{32}$
+					      \item $\p{X = 5} = \dfrac{3}{32}$
+					      \item $\p{X = 7} = \dfrac{1}{32}$
+				      \end{itemize}
+			      \end{multicols}
+
+			      D'où la loi de probabilité de $X$ :
+			      \begin{center}
+				      \rnc{\arraystretch}{1.5}
+				      \begin{tabular}{|c|c|c|c|c|} \hline
+					      \ccg$x_i$                               & $-1$             & $2$             & $5$             & $7$             \\ \hline
+					      \ccg\rule[-4mm]{0mm}{11mm}$\p{X = x_i}$ & $\dfrac{21}{32}$ & $\dfrac{7}{32}$ & $\dfrac{3}{32}$ & $\dfrac{1}{32}$ \\ \hline
+				      \end{tabular}
+			      \end{center}
+
+			      \ms
+
+			      On contrôle que la somme vaut bien $\dfrac{21 + 7 + 3 + 1}{32} = \dfrac{32}{32} = 1$.
+
+			\item L'événement $\brac{X \geq 5}$ est la réunion des événements incompatibles $\brac{X = 5}$ et $\brac{X = 7}$ :
+			      \[
+				      \begin{array}{rcl}
+					      \p{X \geq 5} & = & \p{X = 5} + \p{X = 7}                  \\[1mm]
+					                   & = & \dfrac{3}{32} + \dfrac{1}{32}          \\[3mm]
+					                   & = & \dfrac{4}{32} = \dfrac{1}{8} = 0{,}125
+				      \end{array}
+			      \]
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\section{Indicateurs d'une variable aléatoire}
+
+\subsection{Espérance mathématique}
+
+\begin{defin}
+	Soit $X$ une variable aléatoire prenant les valeurs $x_1, x_2, \dots, x_n$ avec les probabilités $p_1, p_2, \dots, p_n$.
+
+	L'\textbf{espérance mathématique} de $X$, notée $E(X)$, est le nombre réel défini par :
+	\[
+		E(X) = p_1 x_1 + p_2 x_2 + \dots + p_n x_n = \sum_{i=1}^{n} p_i x_i
+	\]
+\end{defin}
+
+\begin{rem}
+	L'espérance $E(X)$ est la moyenne des valeurs de $X$ pondérées par leurs probabilités.
+
+	Elle représente la valeur moyenne que l'on peut espérer obtenir pour $X$ si l'on répète l'expérience aléatoire un grand nombre de fois (voir la dernière section du chapitre).
+\end{rem}
+
+\begin{definition}[Modélisation d'un jeu de hasard]
+	Lorsque $X$ représente le gain algébrique d'un joueur à un jeu de hasard :
+	\begin{itemize}
+		\item si $E(X) = 0$, le jeu est dit \textbf{équitable} ;
+		\item si $E(X) > 0$, le jeu est \textbf{favorable} au joueur ;
+		\item si $E(X) < 0$, le jeu est \textbf{défavorable} au joueur.
+	\end{itemize}
+\end{definition}
+
+\begin{ex}
+	Calculons l'espérance du gain pour le jeu de cartes précédent :
+	\[
+		\def\arraystretch{2}
+		\begin{array}{rcl}
+			E(X) & = & \left(-1 \times \dfrac{21}{32}\right) + \left(2 \times \dfrac{7}{32}\right) + \left(5 \times \dfrac{3}{32}\right) + \left(7 \times \dfrac{1}{32}\right) \\
+			     & = & \dfrac{-21 + 14 + 15 + 7}{32} = \dfrac{15}{32} \approx 0{,}47\eur
+		\end{array}
+	\]
+
+	En moyenne, sur un grand nombre de parties, le joueur peut espérer gagner environ $0{,}47\eur$ par partie.
+
+	Le jeu lui est donc favorable.
+\end{ex}
+
+\begin{methode}[Déterminer la mise d'un jeu équitable]
+	Un joueur mise $m$ euros pour participer au jeu suivant : il lance un dé équilibré à $6$ faces ; s'il obtient $6$, il reçoit $12\eur$, sinon il ne reçoit rien.
+
+	Sa mise n'est jamais remboursée.
+
+	On note $X$ le gain algébrique du joueur (mise déduite).
+
+	\begin{enumerate}
+		\item Déterminer la loi de probabilité de $X$.
+		\item Calculer $E(X)$ en fonction de $m$.
+		\item Pour quelle mise le jeu est-il équitable ?
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Si le joueur obtient $6$, son gain est $12 - m$ ; sinon, son gain est $-m$.
+			      \begin{center}
+				      \rnc{\arraystretch}{1.5}
+				      \begin{tabular}{|c|c|c|} \hline
+					      \ccg$x_i$                               & $-m$           & $12 - m$       \\ \hline
+					      \ccg\rule[-4mm]{0mm}{11mm}$\p{X = x_i}$ & $\dfrac{5}{6}$ & $\dfrac{1}{6}$ \\ \hline
+				      \end{tabular}
+			      \end{center}
+			\item On calcule :
+			      \[
+				      \begin{array}{rcl}
+					      E(X) & = & \dfrac{5}{6} \times (-m) + \dfrac{1}{6} \times (12 - m) \\[3mm]
+					           & = & \dfrac{-5m + 12 - m}{6}                                 \\[3mm]
+					           & = & \dfrac{12 - 6m}{6} = 2 - m
+				      \end{array}
+			      \]
+			\item Le jeu est équitable si et seulement si $E(X) = 0$, c'est-à-dire $2 - m = 0$, soit $m = 2$.
+
+			      La mise équitable est de $2\eur$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\subsection{Variance et écart-type}
+
+\begin{defin}
+	Soit $X$ une variable aléatoire prenant les valeurs $x_1, x_2, \dots, x_n$ avec les probabilités $p_1, p_2, \dots, p_n$.
+
+	\begin{itemize}
+		\item La \textbf{variance} de $X$, notée $V(X)$, est la moyenne pondérée des carrés des écarts à l'espérance :
+		      \[
+			      V(X) = \sum_{i=1}^{n} p_i \pa{x_i - E(X)}^2
+		      \]
+		\item L'\textbf{écart-type} de $X$, noté $\sigma(X)$, est la racine carrée de sa variance :
+		      \[
+			      \sigma(X) = \sqrt{V(X)}
+		      \]
+	\end{itemize}
+\end{defin}
+
+\begin{rem}
+	La variance et l'écart-type mesurent la dispersion des valeurs de $X$ autour de son espérance $E(X)$.
+
+	L'écart-type s'exprime dans la même unité que la variable aléatoire $X$.
+\end{rem}
+
+\begin{theoreme}[Formule de König-Huygens]
+	Pour toute variable aléatoire $X$, la variance peut également se calculer par :
+	\[
+		V(X) = E(X^2) - \pa{E(X)}^2
+	\]
+
+	\ldots où $E(X^2) = \displaystyle\sum_{i=1}^{n} p_i x_i^2$.
+\end{theoreme}
+
+\begin{demonstration}
+	Posons $E(X) = \mu$.
+
+	Par définition de la variance :
+	\[
+		\def\arraystretch{1.3}
+		\begin{array}{rcl}
+			V(X) & = & \displaystyle\sum_{i=1}^{n} p_i (x_i - \mu)^2                                                  \\
+			     & = & \displaystyle\sum_{i=1}^{n} p_i \pa{x_i^2 - 2\mu x_i + \mu^2}                                  \\
+			     & = & \displaystyle\sum_{i=1}^{n} p_i x_i^2 - 2\mu \sum_{i=1}^{n} p_i x_i + \mu^2 \sum_{i=1}^{n} p_i
+		\end{array}
+	\]
+
+	Or :
+	\begin{multicols}{4}
+		\begin{itemize}
+			\item $\displaystyle\sum_{i=1}^{n} p_i x_i^2 = E(X^2)$
+			\item $\displaystyle\sum_{i=1}^{n} p_i x_i = E(X) = \mu$
+			\item $\displaystyle\sum_{i=1}^{n} p_i = 1$
+		\end{itemize}
+	\end{multicols}
+
+	Ainsi :
+	\[
+		\begin{array}{rcl}
+			V(X) & = & E(X^2) - 2\mu \times \mu + \mu^2 \times 1 \\[1mm]
+			     & = & E(X^2) - \mu^2 = E(X^2) - \pa{E(X)}^2
+		\end{array}
+	\]
+
+\end{demonstration}
+
+\begin{erreur}
+	Ne pas confondre $E(X^2)$ (l'espérance des carrés) et $\pa{E(X)}^2$ (le carré de l'espérance).
+
+	En général, $E(X^2) \neq \pa{E(X)}^2$ : la différence est précisément la variance de $X$.
+\end{erreur}
+
+\begin{methode}[Calculer la variance et l'écart-type]
+	Reprenons la loi de probabilité du gain $X$ du jeu de cartes :
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\begin{tabular}{|c|c|c|c|c|} \hline
+			\ccg$x_i$                               & $-1$             & $2$             & $5$             & $7$             \\ \hline
+			\ccg\rule[-4mm]{0mm}{11mm}$\p{X = x_i}$ & $\dfrac{21}{32}$ & $\dfrac{7}{32}$ & $\dfrac{3}{32}$ & $\dfrac{1}{32}$ \\ \hline
+		\end{tabular}
+	\end{center}
+
+	Calculer la variance $V(X)$ à l'aide de la formule de König-Huygens, puis l'écart-type $\sigma(X)$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On sait déjà que $E(X) = \dfrac{15}{32}$.
+			\item Calcul de $E(X^2)$ :
+			      \[
+				      \def\arraystretch{1.5}
+				      \begin{array}{rcl}
+					      E(X^2) & = & \pa{(-1)^2 \times \dfrac{21}{32}}+ \pa{2^2 \times \dfrac{7}{32}} + \pa{5^2 \times \dfrac{3}{32}} + \pa{7^2 \times \dfrac{1}{32}} \\[3mm]
+					             & = & \dfrac{21 + 28 + 75 + 49}{32} = \dfrac{173}{32}
+				      \end{array}
+			      \]
+
+			\item Application de la formule de König-Huygens :
+			      \[
+				      V(X) = E(X^2) - \pa{E(X)}^2 = \dfrac{173}{32} - \pfrac{15}{32}^2 = \dfrac{5536}{1024} - \dfrac{225}{1024} = \dfrac{5311}{1024} \approx 5{,}19
+			      \]
+
+			\item Déduction de l'écart-type :
+			      \[
+				      \sigma(X) = \sqrt{V(X)} = \sqrt{\dfrac{5311}{1024}} \approx 2{,}28\eur
+			      \]
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\subsection{Transformations affines d'une variable aléatoire}
+
+\begin{prop}
+	Soit $X$ une variable aléatoire.
+
+	Pour tous nombres réels $a$ et $b$, on définit la variable aléatoire $Y = aX + b$.
+	\begin{itemize}
+		\item \textbf{Linéarité de l'espérance :} $E(aX + b) = a E(X) + b$ ;
+		\item \textbf{Variance :} $V(aX + b) = a^2 V(X)$ ;
+		\item \textbf{Écart-type :} $\sigma(aX + b) = \abs{a} \, \sigma(X)$.
+	\end{itemize}
+\end{prop}
+
+\begin{demonstration}
+	Soit $X$ prenant les valeurs $x_i$ avec les probabilités $p_i$.
+
+	La variable $Y = aX + b$ prend les valeurs $y_i = a x_i + b$ avec les mêmes probabilités $p_i$.
+	\begin{itemize}
+		\item Pour l'espérance :
+		      \[
+			      \def\arraystretch{1.5}
+			      \begin{array}{rcl}
+				      E(aX + b) & = & \displaystyle\sum_{i=1}^{n} p_i (a x_i + b)                               \\[3mm]
+				                & = & a \displaystyle\sum_{i=1}^{n} p_i x_i + b \displaystyle\sum_{i=1}^{n} p_i \\[3mm]
+				                & = & a E(X) + b \times 1 = a E(X) + b
+			      \end{array}
+		      \]
+		\item Pour la variance :
+		      \[
+			      \def\arraystretch{1.5}
+			      \begin{array}{rcl}
+				      V(aX + b) & = & \displaystyle\sum_{i=1}^{n} p_i \pa{(a x_i + b) - E(aX + b)}^2     \\[3mm]
+				                & = & \displaystyle\sum_{i=1}^{n} p_i \pa{a x_i + b - \pa{a E(X) + b}}^2 \\[3mm]
+				                & = & \displaystyle\sum_{i=1}^{n} p_i \pa{a \pa{x_i - E(X)}}^2           \\[3mm]
+				                & = & a^2 \displaystyle\sum_{i=1}^{n} p_i \pa{x_i - E(X)}^2 = a^2 V(X)
+			      \end{array}
+		      \]
+		\item Pour l'écart-type :
+		      \[
+			      \begin{array}{rcl}
+				      \sigma(aX + b) & = & \sqrt{V(aX + b)}              \\[2mm]
+				                     & = & \sqrt{a^2 V(X)}               \\[2mm]
+				                     & = & \sqrt{a^2} \times \sqrt{V(X)} \\[2mm]
+				                     & = & \abs{a} \, \sigma(X)
+			      \end{array}
+		      \]
+	\end{itemize}
+\end{demonstration}
+
+\begin{methode}[Utiliser la linéarité pour simplifier les calculs]
+	Une entreprise fabrique des pièces métalliques.
+
+	Le diamètre théorique doit être de $1{,}3\,\text{cm}$.
+
+	On mesure le diamètre d'une pièce prélevée au hasard et on le modélise par la variable aléatoire $X$.
+
+	Sa loi de probabilité est :
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\begin{tabular}{|c|c|c|c|c|c|} \hline
+			\ccg$x_i$                               & $1{,}298$ & $1{,}299$ & $1{,}300$ & $1{,}301$ & $1{,}302$ \\ \hline
+			\ccg\rule[-4mm]{0mm}{11mm}$\p{X = x_i}$ & $0{,}2$   & $0{,}1$   & $0{,}2$   & $0{,}4$   & $0{,}1$   \\ \hline
+		\end{tabular}
+	\end{center}
+
+	Calculer $E(X)$ et $\sigma(X)$ en introduisant la variable auxiliaire $Y = 1000X - 1300$.
+
+	\newpage
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Déterminons la loi de probabilité de $Y = 1000X - 1300$ : chaque valeur $x_i$ est transformée en $1000 x_i - 1300$, avec la même probabilité.
+			      \begin{center}
+				      \rnc{\arraystretch}{1.5}
+				      \begin{tabular}{|c|c|c|c|c|c|} \hline
+					      \ccg$y_i$                               & $-2$    & $-1$    & $0$     & $1$     & $2$     \\ \hline
+					      \ccg\rule[-4mm]{0mm}{11mm}$\p{Y = y_i}$ & $0{,}2$ & $0{,}1$ & $0{,}2$ & $0{,}4$ & $0{,}1$ \\ \hline
+				      \end{tabular}
+			      \end{center}
+
+			\item Calcul des indicateurs de $Y$ :
+			      \begin{itemize}
+				      \item $E(Y) = \pa{(-2) \times 0{,}2} + \pa{(-1) \times 0{,}1} + \pa{0 \times 0{,}2} + \pa{1 \times 0{,}4} + \pa{2 \times 0{,}1} = 0{,}1$
+				      \item $E(Y^2) = \pa{(-2)^2 \times 0{,}2} + \pa{(-1)^2 \times 0{,}1} + \pa{0^2 \times 0{,}2} + \pa{1^2 \times 0{,}4} + \pa{2^2 \times 0{,}1} = 1{,}7$
+				      \item $V(Y) = E(Y^2) - \pa{E(Y)}^2 = 1{,}7 - 0{,}1^2 = 1{,}69\qquad$ donc $\sigma(Y) = \sqrt{1{,}69} = 1{,}3$
+			      \end{itemize}
+
+			\item Application des propriétés pour retrouver $E(X)$ et $\sigma(X)$ :
+			      \begin{itemize}
+				      \item $E(Y) = 1000\,E(X) - 1300$ donc :
+				            \[
+					            E(X) = \dfrac{E(Y) + 1300}{1000} = \dfrac{0{,}1 + 1300}{1000} = 1{,}3001\,\text{cm}
+				            \]
+
+				      \item $\sigma(Y) = \abs{1000} \, \sigma(X)\quad$ donc :
+				            \[
+					            \sigma(X) = \dfrac{\sigma(Y)}{1000} = \dfrac{1{,}3}{1000} = 0{,}0013\,\text{cm}
+				            \]
+			      \end{itemize}
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
