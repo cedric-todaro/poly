@@ -69,7 +69,7 @@
 \nc{\ccg}{\cellcolor{gray!40}}
 \nc{\cc}[1]{\cellcolor{#1}}
 % ----------------------------------------------------------------------------------------------------
-\RequirePackage{amsfonts, mathtools, mathrsfs, interval, xfp, relsize, siunitx, esvect, epsdice, numprint, cancel, colortbl}
+\RequirePackage{amsfonts, mathtools, mathrsfs, interval, xfp, relsize, siunitx, esvect, epsdice, numprint, cancel, colortbl, xfrac}
 \mathsurround=1pt
 \nc{\R}{\mathbb{R}}
 \nc{\D}{\mathbb{D}}
