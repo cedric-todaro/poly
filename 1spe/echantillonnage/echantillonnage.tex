@@ -1,0 +1,302 @@
+\chapter{Échantillonnage}
+
+\section{Vocabulaire et moyenne observée d'un échantillon}
+
+\subsection{Notion d'échantillon}
+
+\begin{defin}
+	On appelle \textbf{échantillon} de taille $n$ une liste de $n$ résultats obtenus en répétant $n$ fois de suite, de manière indépendante et dans les mêmes conditions, une même expérience aléatoire.
+
+	Si l'expérience est modélisée par une variable aléatoire $X$, un échantillon de taille $n$ est noté $(x_1, x_2, \dots, x_n)$, où chaque $x_i$ est une valeur observée de $X$.
+\end{defin}
+
+\begin{ex}
+	On lance un dé équilibré à $6$ faces $20$ fois de suite et on relève le résultat de chaque lancer.
+
+	On obtient une liste de $20$ nombres compris entre $1$ et $6$ : c'est un échantillon de taille $n = 20$ de la variable aléatoire $X$ donnant le résultat du lancer.
+\end{ex}
+
+\subsection{Moyenne observée}
+
+\begin{defin}
+	Soit $(x_1, x_2, \dots, x_n)$ un échantillon de taille $n$ d'une variable aléatoire $X$.
+
+	La \textbf{moyenne observée} de cet échantillon, notée $m$, est le nombre réel défini par :
+	\[
+		m = \dfrac{x_1 + x_2 + \dots + x_n}{n} = \dfrac{1}{n} \sum_{i=1}^{n} x_i
+	\]
+
+\end{defin}
+
+\begin{attention}
+	Il est fondamental de bien distinguer :
+	\begin{itemize}
+		\item l'\textbf{espérance} $\mu = E(X)$, qui est la moyenne \textbf{théorique} fixée par le modèle probabiliste ;
+		\item la \textbf{moyenne observée} $m$, qui est calculée à partir des données d'un échantillon particulier et qui varie d'un échantillon à l'autre.
+	\end{itemize}
+\end{attention}
+
+\section{Fluctuation d'échantillonnage}
+
+\begin{defin}
+	La \textbf{fluctuation d'échantillonnage} est le phénomène selon lequel deux échantillons de même taille, prélevés dans les mêmes conditions, ne fournissent pas exactement la même moyenne observée $m$.
+\end{defin}
+
+\begin{ex}
+	On lance un dé équilibré $10$ fois de suite, à deux reprises.
+	\begin{itemize}
+		\item Premier échantillon obtenu : $1, 2, 6, 4, 3, 5, 6, 1, 2, 4$. Sa moyenne observée est $m_1 = \dfrac{34}{10} = 3{,}4$.
+		\item Second échantillon obtenu : $6, 6, 5, 5, 4, 6, 2, 3, 6, 5$. Sa moyenne observée est $m_2 = \dfrac{48}{10} = 4{,}8$.
+	\end{itemize}
+	Bien que les deux échantillons proviennent de la même expérience avec le même modèle, leurs moyennes observées diffèrent en raison du hasard.
+\end{ex}
+
+\begin{rem}
+	Une moyenne observée $m$ différente de l'espérance $\mu$ ne signifie pas nécessairement que le modèle probabiliste est faux : il s'agit d'une variation naturelle liée au hasard.
+\end{rem}
+
+\section{Comparaison entre moyenne observée et espérance}
+
+\subsection{Mesure de l'écart et critère de compatibilité}
+
+Pour savoir si un échantillon est compatible avec un modèle d'espérance $\mu$ et d'écart-type $\sigma$, on mesure la distance entre la moyenne observée $m$ et l'espérance $\mu$, c'est-à-dire la valeur absolue :
+\[
+	\abs{m - \mu}
+\]
+
+\begin{definition}[Critère de compatibilité]
+	Soit un échantillon de taille $n$ d'une variable aléatoire d'espérance $\mu$ et d'écart-type $\sigma$, de moyenne observée $m$.
+
+	On dit que la moyenne observée $m$ est \textbf{compatible} avec le modèle si :
+	\[
+		\abs{m - \mu} \leq \dfrac{2\sigma}{\sqrt{n}}
+	\]
+
+	Dans le cas contraire, on dit que $m$ n'est pas compatible avec le modèle.
+\end{definition}
+
+\begin{rem}
+	Le nombre $\dfrac{2\sigma}{\sqrt{n}}$ représente la marge de fluctuation naturelle de la moyenne d'un échantillon de taille $n$.
+
+	\begin{itemize}
+		\item Lorsque $n$ augmente, $\sqrt{n}$ augmente et le seuil $\dfrac{2\sigma}{\sqrt{n}}$ diminue.
+
+		      Les moyennes observées sont globalement de plus en plus proches de l'espérance $\mu$.
+		\item Si le modèle est correct et que $n$ est assez grand, les simulations montrent qu'environ $95\,\%$ des échantillons de taille $n$ vérifient l'inégalité du critère.
+
+		      Ne pas la vérifier est donc un événement rare, qui peut conduire à douter du modèle.
+		\item À l'inverse, vérifier l'inégalité ne prouve pas que le modèle est exact.
+
+		      Cela signifie seulement que l'échantillon n'est pas en contradiction avec le modèle.
+	\end{itemize}
+\end{rem}
+
+\begin{center}
+	\begin{tikzpicture}[x=10cm, >=Stealth, thick]
+		\draw[->] (2.95,0) -- (4.05,0) node[right] {$m$};
+		\fill[vert!30] (3.158,-0.15) rectangle (3.842,0.15);
+		\draw[vert, ultra thick] (3.158,-0.25) -- (3.158,0.25);
+		\draw[vert, ultra thick] (3.842,-0.25) -- (3.842,0.25);
+		\draw[bleu, ultra thick] (3.5,-0.25) -- (3.5,0.25);
+		\node[below, font=\small] at (3.158,-0.3) {$\mu - \dfrac{2\sigma}{\sqrt{n}} = 3{,}158$};
+		\node[below, font=\small] at (3.842,-0.3) {$\mu + \dfrac{2\sigma}{\sqrt{n}} = 3{,}842$};
+		\node[below, font=\small, bleu] at (3.5,-0.3) {$\mu$};
+		\node[circle, fill=vert, inner sep=2pt] at (3.62,0) {};
+		\node[above, font=\small] at (3.62,0.3) {$m = 3{,}62$};
+		\node[circle, fill=rouge, inner sep=2pt] at (3.95,0) {};
+		\node[above, font=\small] at (3.95,0.3) {$m = 3{,}95$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{methode}[Comparer une moyenne observée à une espérance théorique]
+	On lance un dé cubique bien équilibré.
+
+	On note $X$ la variable aléatoire correspondant au résultat obtenu.
+
+	On effectue $n = 100$ lancers de ce dé et l'on observe une moyenne de $m = 3{,}62$.
+
+	Ce résultat est-il compatible avec le modèle du dé équilibré ?
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Identifions les paramètres du modèle et de l'échantillon :
+
+			      La loi de probabilité est donnée par :
+
+			      \begin{center}
+				      \rnc{\arraystretch}{1.4}
+				      \begin{tabular}{|c|c|c|c|c|c|c|} \hline
+					      \ccg$x_i$                               & $1$            & $2$            & $3$            & $4$            & $5$            & $6$            \\ \hline
+					      \ccg\rule[-4mm]{0mm}{11mm}$\p{X = x_i}$ & $\dfrac{1}{6}$ & $\dfrac{1}{6}$ & $\dfrac{1}{6}$ & $\dfrac{1}{6}$ & $\dfrac{1}{6}$ & $\dfrac{1}{6}$ \\ \hline
+				      \end{tabular}
+			      \end{center}
+
+			      \ms
+
+			      Son espérance théorique est donc :
+			      \[
+				      \mu = E(X) = \pa{1 \times \dfrac{1}{6}} + \pa{2 \times \dfrac{1}{6}} + \pa{3 \times \dfrac{1}{6}} + \pa{4 \times \dfrac{1}{6}} + \pa{5 \times \dfrac{1}{6}} + \pa{6 \times \dfrac{1}{6}} = \dfrac{21}{6} = 3{,}5
+			      \]
+
+			      Et en utilisant la formule de König-Huygens $V(X) = E(X^2) - (E(X))^2$, on obtient son écart-type :
+			      \[
+				      \def\arraystretch{1.8}
+				      \begin{array}{rccccl}
+					      V(X) & = & E(X^2)                                                                                                                                                                                        & - & (E(X))^2      &                  \\
+					           & = & \bra{\pa{1^2 \times \dfrac{1}{6}} + \pa{2^2 \times \dfrac{1}{6}} + \pa{3^2 \times \dfrac{1}{6}} + \pa{4^2 \times \dfrac{1}{6}} + \pa{5^2 \times \dfrac{1}{6}} + \pa{6^2 \times \dfrac{1}{6}}} & - & \pa{3{,}5^2}  &                  \\
+					           & = & \dfrac{91}{6}                                                                                                                                                                                 & - & \dfrac{49}{4} & = \dfrac{35}{12} \\
+				      \end{array}
+			      \]
+
+			      Donc : $\sigma = \sigma(X) = \sqrt{\dfrac{35}{12}} \approx 1{,}71$.
+
+			      On a :
+
+			      \[
+				      \mu = 3{,}5, \quad \sigma \approx 1{,}71, \quad n = 100, \quad m = 3{,}62
+			      \]
+
+			\item Calculons l'écart entre la moyenne observée et l'espérance :
+			      \[
+				      \abs{m - \mu} = \abs{3{,}62 - 3{,}5} = 0{,}12
+			      \]
+
+			\item Calculons le seuil de fluctuation :
+			      \[
+				      \dfrac{2\sigma}{\sqrt{n}} = \dfrac{2 \times 1{,}71}{\sqrt{100}} = \dfrac{3{,}42}{10} = 0{,}342
+			      \]
+
+			\item Comparons les deux valeurs : $0{,}12 \leq 0{,}342$.
+
+			      L'écart observé est inférieur au seuil.
+			\item \textbf{Conclusion :}
+
+			      La moyenne observée $m = 3{,}62$ est compatible avec le modèle du dé équilibré.
+
+			      L'écart constaté relève de la fluctuation d'échantillonnage.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Détecter une moyenne incompatible avec le modèle]
+	Avec le même dé et le même modèle ($\mu = 3{,}5$ et $\sigma \approx 1{,}71$), un joueur effectue $n = 100$ lancers et observe cette fois une moyenne $m = 3{,}95$.
+
+	Ce résultat est-il compatible avec le modèle du dé équilibré ?
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item L'écart entre la moyenne observée et l'espérance est :
+			      \[
+				      \abs{m - \mu} = \abs{3{,}95 - 3{,}5} = 0{,}45
+			      \]
+
+			\item Le seuil de fluctuation est toujours $\dfrac{2\sigma}{\sqrt{n}} = 0{,}342$.
+			\item Comme $0{,}45 > 0{,}342$, la moyenne observée n'est pas compatible avec le modèle.
+			\item \textbf{Conclusion :}
+
+			      Si le dé est équilibré, un tel écart est rare (environ $5\,\%$ des échantillons s'écartent de plus que le seuil).
+
+			      On a donc de bonnes raisons de douter que le dé soit équilibré, sans pour autant en avoir la certitude.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\newpage
+
+\section{Simulation et algorithmique}
+
+Pour étudier la fluctuation d'échantillonnage et observer le comportement des moyennes observées, on utilise des programmes de simulation en Python.
+
+\begin{ex}[Simuler un échantillon et calculer sa moyenne observée]
+	La fonction \texttt{echantillon\_de} simule un échantillon de $n$ lancers de dé sous la forme d'une liste, et la fonction \texttt{moyenne} calcule la moyenne observée d'une liste de nombres :
+
+	\begin{lstlisting}
+from random import randint
+
+def echantillon_de(n):
+    liste = []
+    for i in range(n):
+        liste.append(randint(1, 6))
+    return liste
+
+def moyenne(liste):
+    somme = 0
+    for x in liste:
+        somme = somme + x
+    return somme / len(liste)
+\end{lstlisting}
+
+	L'instruction \texttt{moyenne(echantillon\_de(100))} calcule la moyenne d'un échantillon de taille $100$.
+	\begin{lstlisting}
+>>> moyenne( echantillon_de(100) )
+3.81
+\end{lstlisting}
+
+\end{ex}
+
+\begin{rem}
+	Pour observer la fluctuation d'échantillonnage, on simule plusieurs échantillons de même taille à l'aide d'une boucle :
+
+	\begin{lstlisting}
+for k in range(10):
+    print(moyenne(echantillon_de(100)))
+\end{lstlisting}
+
+	Les valeurs affichées diffèrent d'une exécution à l'autre, ce qui illustre concrètement la fluctuation d'échantillonnage.
+\end{rem}
+
+\begin{ex}[Influence de la taille de l'échantillon]
+	La fonction suivante simule $N$ échantillons de taille $n$ et renvoie la moyenne des écarts $\abs{m - 3{,}5}$ entre leur moyenne observée et l'espérance $\mu = 3{,}5$ :
+
+	\begin{lstlisting}
+def ecart_moyen(N, n):
+    total = 0
+    for k in range(N):
+        total = total + abs(moyenne(echantillon_de(n)) - 3.5)
+    return total / N
+\end{lstlisting}
+
+	En comparant \texttt{ecart\_moyen(300, n)} pour $n=10$, $n=100$ et $n=\np{1000}$, on constate que l'écart moyen diminue lorsque la taille $n$ augmente
+
+	\begin{lstlisting}
+>>> ecart_moyen(300,10)
+0.44299999999999995
+>>> ecart_moyen(300,100)
+0.13280000000000008
+>>> ecart_moyen(300,1000)
+0.04430999999999999
+\end{lstlisting}
+
+	Il est environ divisé par $\sqrt{10} \approx 3{,}2$ chaque fois que $n$ est multiplié par $10$, en accord avec le seuil $\dfrac{2\sigma}{\sqrt{n}}$.
+
+\end{ex}
+
+\begin{ex}[Proportion d'échantillons compatibles avec le modèle]
+	La fonction suivante simule $N$ échantillons de taille $n$ et renvoie la proportion de ceux dont la moyenne observée vérifie le critère $\abs{m - \mu} \leq \dfrac{2\sigma}{\sqrt{n}}$ :
+
+	\ms
+
+	\begin{lstlisting}
+from math import sqrt
+
+def proportion_compatibles(N, n, mu, sigma):
+    compteur = 0
+    for k in range(N):
+        m = moyenne(echantillon_de(n))
+        if abs(m - mu) <= 2 * sigma / sqrt(n):
+            compteur = compteur + 1
+    return compteur / N
+\end{lstlisting}
+
+	Pour le dé équilibré, l'appel \texttt{proportion\_compatibles(1000, 100, 3.5, 1.71)} renvoie en général une valeur proche de $0{,}95$,
+
+	\begin{lstlisting}
+>>> proportion_compatibles(1000,100,3.5,1.71)
+0.957
+\end{lstlisting}
+
+	Cette valeur est cohérente avec la remarque faite sur le critère de compatibilité.
+\end{ex}
+
