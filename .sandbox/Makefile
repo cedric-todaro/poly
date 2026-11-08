@@ -3,7 +3,7 @@ FLAGS = --quiet --silent
 SRC = $(wildcard *.tex)
 PDFS = $(SRC:.tex=.pdf)
 
-DEPS = $(shell find .2nde .1techno -type f 2>/dev/null)
+DEPS = $(shell find . -mindepth 2 -type f 2>/dev/null)
 
 EXTRA_CLEAN = *.synctex* *-blx.bib *.run.xml *.nav *.snm *.vrb *.fdb_latexmk *.log
 
@@ -11,7 +11,7 @@ EXTRA_CLEAN = *.synctex* *-blx.bib *.run.xml *.nav *.snm *.vrb *.fdb_latexmk *.l
 
 all: $(PDFS)
 
-%.pdf: %.tex $(DEPS)
+%.pdf: %.tex $(DEPS) poly.cls
 	@$(LLMK) $(FLAGS) $<
 	@$(LLMK) --quiet --clean $<
 	@rm -f $(EXTRA_CLEAN)

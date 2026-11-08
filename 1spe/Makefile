@@ -11,7 +11,7 @@ EXTRA_CLEAN = *.synctex* *-blx.bib *.run.xml *.nav *.snm *.vrb *.fdb_latexmk *.l
 
 all: $(PDFS)
 
-%.pdf: %.tex $(DEPS)
+%.pdf: %.tex $(DEPS) poly.cls
 	@$(LLMK) $(FLAGS) $<
 	@$(LLMK) --quiet --clean $<
 	@rm -f $(EXTRA_CLEAN)
