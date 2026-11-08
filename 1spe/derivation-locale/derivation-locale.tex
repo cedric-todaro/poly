@@ -1,0 +1,382 @@
+\chapter{Dérivation locale}
+
+\section{Taux de variation : la variation moyenne}
+
+\begin{defin}
+	Soit $f$ une fonction définie sur un intervalle $I$ et soient $a$ et $b$ deux réels distincts de $I$.
+
+	Le \textbf{taux de variation} (ou taux d'accroissement) de $f$ entre $a$ et $b$ est le nombre réel défini par :
+	\[
+		\tau(a, b) = \dfrac{f(b) - f(a)}{b - a}
+	\]
+
+\end{defin}
+
+\begin{rem}
+	Graphiquement, dans un repère, ce taux de variation est le coefficient directeur de la droite $(AB)$, appelée \textbf{sécante} à la courbe, passant par les points $A\coordl{a}{f(a)}$ et $B\coordl{b}{f(b)}$.
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, thick]
+			\draw[->] (-0.3,0) -- (5.8,0) node[right] {$x$};
+			\draw[->] (0,-0.3) -- (0,6.4) node[above] {$y$};
+			\draw[bleu, domain=0:5.2, samples=60] plot (\x,{0.2*\x*\x+0.5});
+			\node[bleu, right] at (5.2,{0.2*5.2*5.2+0.5}) {$\Cf$};
+			\draw[rouge, domain=0.8:5, samples=2] plot (\x,{0.95+1.2*(\x-1.5)});
+			\draw[dashed] (1.5,0.95) -- (4.5,0.95);
+			\draw[dashed] (4.5,0.95) -- (4.5,4.55);
+			\draw[dotted] (1.5,0.95) -- (1.5,0) node[below] {$a$};
+			\draw[dotted] (4.5,0.95) -- (4.5,0) node[below] {$b$};
+			\draw[dotted] (1.5,0.95) -- (0,0.95) node[left] {$f(a)$};
+			\draw[dotted] (4.5,4.55) -- (0,4.55) node[left] {$f(b)$};
+			\node[circle, fill=rouge, inner sep=1.5pt] at (1.5,0.95) {};
+			\node[circle, fill=rouge, inner sep=1.5pt] at (4.5,4.55) {};
+			\node[above left] at (1.5,0.95) {$A$};
+			\node[above left] at (4.5,4.55) {$B$};
+			\node[below] at (3,0.95) {$b - a$};
+			\node[right] at (4.5,2.75) {$f(b) - f(a)$};
+		\end{tikzpicture}
+	\end{center}
+
+	Le rapport de la hauteur $f(b) - f(a)$ à la largeur $b - a$ du triangle rectangle ainsi dessiné est le coefficient directeur de la sécante $(AB)$.
+\end{rem}
+
+En posant $b = a + h$ (où $h \neq 0$ est un écart tel que $a + h \in I$), le taux de variation s'écrit sous la forme très utilisée :
+\[
+	\tau_a(h) = \dfrac{f(a + h) - f(a)}{h}
+\]
+
+Ce nombre mesure la variation moyenne de la fonction $f$ entre $a$ et $a + h$.
+
+\begin{ex}
+	Soit $f$ la fonction définie sur $\R$ par $f(x) = x^2$.
+
+	Le taux de variation de $f$ entre $1$ et $3$ est :
+	\[
+		\tau(1, 3) = \dfrac{f(3) - f(1)}{3 - 1} = \dfrac{9 - 1}{2} = 4
+	\]
+
+	La sécante à la courbe de $f$ passant par les points d'abscisses $1$ et $3$ a pour coefficient directeur $4$.
+\end{ex}
+
+\section{Nombre dérivé : la variation instantanée}
+
+\begin{defin}
+	Soit $f$ une fonction définie sur un intervalle $I$ contenant $a$.
+
+	On dit que $f$ est \textbf{dérivable en $a$} si le taux de variation $\dfrac{f(a + h) - f(a)}{h}$ admet une limite finie lorsque $h$ tend vers $0$.
+
+	Cette limite est appelée le \textbf{nombre dérivé} de $f$ en $a$ et se note $f'(a)$ :
+	\[
+		f'(a) = \lim\limits_{h \to 0}\pa{\dfrac{f(a + h) - f(a)}{h}}
+	\]
+
+\end{defin}
+
+\begin{rem}
+	Le nombre dérivé $f'(a)$ représente la variation instantanée de la fonction $f$ en $a$.
+\end{rem}
+
+\begin{ex}[Vitesse moyenne et vitesse instantanée]
+	Un objet lâché sans vitesse initiale a parcouru la distance $d(t) = 5t^2$ (en mètres) au bout de $t$ secondes.
+
+	\begin{itemize}
+		\item La vitesse \textbf{moyenne} entre $t = 1$ et $t = 3$ est le taux de variation :
+		      \[
+			      \dfrac{d(3) - d(1)}{3 - 1} = \dfrac{45 - 5}{2} = 20 \text{ m/s}
+		      \]
+
+		\item La vitesse \textbf{instantanée} à $t = 3$ est le nombre dérivé $d'(3)$.
+
+		      Pour $h \neq 0$ :
+		      \[
+			      \begin{array}{rccl}
+				      \dfrac{d(3 + h) - d(3)}{h} & = & \dfrac{5(3 + h)^2 - 45}{h}      &           \\
+				                                 & = & \dfrac{45 + 30h + 5h^2 - 45}{h} & = 30 + 5h
+			      \end{array}
+		      \]
+
+		      On a :
+		      \[
+			      d'(3) = \lim\limits_{h\to 0}\pa{\dfrac{d(3 + h) - d(3)}{h}} = \lim\limits_{h\to 0}\pa{30+5h} = 30
+		      \]
+
+		      Donc $d'(3) = 30 \text{ m/s}$.
+	\end{itemize}
+\end{ex}
+
+\begin{methode}[Calculer un nombre dérivé à l'aide de la définition]
+	Soit $f$ la fonction définie sur $\R$ par $f(x) = x^2$.
+
+	Calculer le nombre dérivé de $f$ en $a = 3$.
+
+	\begin{correction}
+		Pour tout $h \neq 0$, formons le taux de variation en $3$ :
+		\[
+			\def\arraystretch{2}
+			\begin{array}{rcll}
+				\dfrac{f(3 + h) - f(3)}{h} & = & \dfrac{(3 + h)^2 - 3^2}{h}  &         \\
+				                           & = & \dfrac{9 + 6h + h^2 - 9}{h} &         \\
+				                           & = & \dfrac{6h + h^2}{h}         &         \\
+				                           & = & \dfrac{h(6 + h)}{h}         & = 6 + h
+			\end{array}
+		\]
+
+		Lorsque $h$ tend vers $0$, la quantité $6 + h$ tend vers $6$.
+		\[
+			f'(3)=\lim\limits_{h\to 0}\pa{\dfrac{f(3+h)-f(3)}{h}}=\lim\limits_{h\to 0}\pa{6+h}=6
+		\]
+
+		Par conséquent, la fonction $f$ est dérivable en $3$ et son nombre dérivé est : $f'(3) = 6$.
+
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Calculer un nombre dérivé avec un quotient]
+	Soit $f$ la fonction définie sur $\intoo{0}{+\infty}$ par $f(x) = \dfrac{1}{x}$.
+
+	Calculer le nombre dérivé de $f$ en $a = 2$.
+
+	\begin{correction}
+		Pour tout $h \neq 0$ tel que $2 + h > 0$, on met le numérateur au même dénominateur :
+		\[
+			\def\arraystretch{2}
+			\begin{array}{rcll}
+				\dfrac{f(2 + h) - f(2)}{h} & = & \dfrac{1}{h}\times\pa{\dfrac{1}{2 + h} - \dfrac{1}{2}} &                        \\
+				                           & = & \dfrac{1}{h}\times\pa{\dfrac{2 - (2 + h)}{2(2 + h)}}   &                        \\
+				                           & = & \dfrac{-h}{2(2 + h)h}                                  & = \dfrac{-1}{2(2 + h)}
+			\end{array}
+		\]
+
+		Lorsque $h$ tend vers $0$, $2(2 + h)$ tend vers $4$, donc le taux de variation tend vers $\dfrac{-1}{4}$.
+		\[
+			f'(2)=\lim\limits_{h\to 0}\pa{\dfrac{f(2+h)-f(2)}{h}}=\lim\limits_{h\to 0}\pa{\dfrac{-1}{2(2 + h)}}=\dfrac{-1}{4}
+		\]
+
+		La fonction $f$ est donc dérivable en $2$ et $f'(2) = \dfrac{-1}{4}$.
+	\end{correction}
+\end{methode}
+
+\section{Tangente à une courbe}
+
+\subsection{Interprétation géométrique du nombre dérivé}
+
+\begin{defin}
+	Soit $f$ une fonction dérivable en $a$.
+
+	La \textbf{tangente} à la courbe représentative de $f$ au point $A\coordl{a}{f(a)}$ est la droite passant par $A$ dont le coefficient directeur (la pente) est égal au nombre dérivé $f'(a)$.
+\end{defin}
+
+\begin{rem}
+	Lorsque $B$ se rapproche de $A$ sur la courbe, la sécante $(AB)$ se rapproche de la tangente en $A$ : son coefficient directeur, qui est le taux de variation, tend vers $f'(a)$.
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, thick]
+			\clip (-0.3,-0.3) rectangle (6.4,6.4);
+			\draw[->] (-0.3,0) -- (6.4,0) node[right] {$x$};
+			\draw[->] (0,-0.3) -- (0,6.4) node[above] {$y$};
+			\draw[bleu, domain=0:5.2, samples=60] plot (\x,{0.2*\x*\x+0.5});
+			\node[bleu, right] at (5.2,{0.2*5.2*5.2+0.5}) {$\Cf$};
+			\draw[rouge!70, domain=-0.6:4.8, samples=2] plot (\x,{0.95+1.2*(\x-1.5)}) node[right] {$(AB_1)$};
+			\draw[rouge!70, domain=-0.6:4.8, samples=2] plot (\x,{0.95+1.0*(\x-1.5)}) node[right] {$(AB_2)$};
+			\draw[rouge!70, domain=-0.6:4.8, samples=2] plot (\x,{0.95+0.8*(\x-1.5)}) node[right] {$(AB_3)$};
+			\draw[vert, ultra thick, domain=-0.6:4.8, samples=2] plot (\x,{0.95+0.6*(\x-1.5)}) node[right] {$T$};
+			\node[gray!80, above left] at (4.5,4.55) {$B_1$};
+			\node[gray!80, above left] at (3.5,2.95) {$B_2$};
+			\node[gray!80, above left] at (2.5,1.75) {$B_3$};
+			\node[circle, fill=rouge, inner sep=1.5pt] at (4.5,4.55) {};
+			\node[circle, fill=rouge, inner sep=1.5pt] at (3.5,2.95) {};
+			\node[circle, fill=rouge, inner sep=1.5pt] at (2.5,1.75) {};
+			\node[circle, fill=black, inner sep=1.8pt] at (1.5,0.95) {};
+			\node[above left] at (1.5,0.95) {$A$};
+		\end{tikzpicture}
+	\end{center}
+
+	Les points $B_1$, $B_2$ et $B_3$ se rapprochent successivement de $A$ ; les sécantes $(AB_1)$, $(AB_2)$ et $(AB_3)$ tendent vers la tangente $T$.
+\end{rem}
+
+\subsection{Équation de la tangente}
+
+\begin{theoreme}[Équation de la tangente]
+	Si une fonction $f$ est dérivable en $a$, alors une équation de la tangente $T$ à la courbe de $f$ au point d'abscisse $a$ est :
+	\[
+		y = f'(a)(x - a) + f(a)
+	\]
+
+\end{theoreme}
+
+\begin{demo}
+	La tangente est une droite de coefficient directeur $f'(a)$, donc elle n'est pas verticale et son équation réduite est de la forme $y = mx + p$, avec $m = f'(a)$.
+
+	L'équation est donc de la forme $y = f'(a)x + p$.
+
+	De plus, cette tangente passe par le point de contact $A\coordl{a}{f(a)}$.
+
+	Ses coordonnées vérifient donc l'équation :
+	\[
+		f(a) = f'(a) \times a + p \implies p = f(a) - f'(a) \times a
+	\]
+
+	En remplaçant $p$ dans l'équation, on obtient :
+	\[
+		y = f'(a)x + f(a) - f'(a)a \eqv y = f'(a)(x - a) + f(a)
+	\]
+
+\end{demo}
+
+\begin{methode}[Déterminer l'équation d'une tangente]
+	Soit $f(x) = x^2 - 5x + 2$ définie sur $\R$.
+
+	Déterminer une équation de la tangente à la courbe de $f$ au point d'abscisse $1$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On calcule l'ordonnée du point de contact : $f(1) = 1^2 - 5 \times 1 + 2 = -2$.
+			\item On calcule le nombre dérivé $f'(1)$ à partir de la définition :
+			      \[
+				      \def\arraystretch{2}
+				      \begin{array}{rcll}
+					      \dfrac{f(1 + h) - f(1)}{h} & = & \dfrac{(1 + h)^2 - 5(1 + h) + 2 - (-2)}{h} &                                  \\
+					                                 & = & \dfrac{1 + 2h + h^2 - 5 - 5h + 4}{h}       & = \dfrac{-3h + h^2}{h} =  -3 + h
+				      \end{array}
+			      \]
+
+			      Lorsque $h$ tend vers $0$, $-3 + h$ tend vers $-3$, donc $f'(1) = -3$.
+
+			\item On applique la formule de l'équation de la tangente :
+			      \[
+				      \begin{array}{rcl}
+					      y = f'(1)(x - 1) + f(1) & \iff & y = -3(x - 1) - 2 \\
+					                              & \iff & y = -3x + 1
+				      \end{array}
+			      \]
+
+		\end{enumerate}
+
+		Une équation de la tangente est donc $y = -3x + 1$.
+
+		\begin{center}
+			\begin{tikzpicture}[x=10mm, y=4mm, >=Stealth, thick]
+				\draw[->] (-1,0) -- (5.6,0) node[right] {$x$};
+				\draw[->] (0,-5.8) -- (0,5.4) node[above] {$y$};
+				\foreach \x in {1,2,3,4,5} {
+						\draw (\x,0.1) -- (\x,-0.1) node[below] {$\x$};
+					}
+				\foreach \y in {-4,-2,2,4} {
+						\draw (0.1,\y) -- (-0.1,\y) node[left] {$\y$};
+					}
+				\draw[bleu, domain=-0.5:4.8, samples=60] plot (\x,{\x*\x-5*\x+2});
+				\node[bleu, right] at (4.8,1.04) {$\Cf$};
+				\draw[rouge, ultra thick, domain=-0.4:2.1, samples=2] plot (\x,{-3*\x+1});
+				\node[rouge, above] at (-0.4,2.2) {$T$};
+				\draw[dashed] (1,-2) -- (2,-2) node[midway, above] {$+1$};
+				\draw[dashed] (2,-2) -- (2,-5) node[midway, right] {$-3$};
+				\node[circle, fill=black, inner sep=1.8pt] at (1,-2) {};
+				\node[below left] at (1,-2) {$A$};
+			\end{tikzpicture}
+		\end{center}
+
+		Sur le graphique, en avançant d'une unité vers la droite à partir de $A$, la tangente descend de $3$ unités : on retrouve bien la pente $f'(1) = -3$.
+	\end{correction}
+\end{methode}
+
+\section{Cas particulier de la fonction valeur absolue}
+
+\begin{defin}
+	La fonction \textbf{valeur absolue} est la fonction $f$ définie sur $\R$ par $f(x) = \abs{x}$.
+
+	C'est-à-dire :
+	\[
+		\abs{x} = \begin{cases}
+			x  & \text{si } x \geq 0 \\
+			-x & \text{si } x \leq 0
+		\end{cases}
+	\]
+
+\end{defin}
+
+\begin{prop}
+	La fonction valeur absolue est strictement décroissante sur l'intervalle $\intof{-\infty}{0}$ et strictement croissante sur l'intervalle $\intfo{0}{+\infty}$.
+\end{prop}
+
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, thick]
+		\draw[->] (-3,0) -- (3,0) node[right] {$x$};
+		\draw[->] (0,-0.3) -- (0,2.8) node[above] {$y$};
+		\draw[bleu, ultra thick] (-2.5,2.5) -- (0,0) node[midway, above, sloped, rouge] {pente $-1$};
+		\draw[bleu, ultra thick] (0,0) -- (2.5,2.5) node[midway, above, sloped, rouge] {pente $1$};
+		\node[bleu, right] at (2.5,2.5) {$\Cf$};
+		\node[font=\small, below right] at (0.1,-0.05) {point anguleux};
+	\end{tikzpicture}
+\end{center}
+
+\begin{methode}[Non-dérivabilité de la valeur absolue en $0$]
+	Démontrer que la fonction valeur absolue $f(x) = \abs{x}$ n'est pas dérivable en $0$.
+
+	\begin{correction}
+		Calculons le taux de variation de $f$ en $0$ pour $h \neq 0$ :
+		\[
+			\dfrac{f(0 + h) - f(0)}{h} = \dfrac{\abs{0 + h} - \abs{0}}{h} = \dfrac{\abs{h}}{h}
+		\]
+
+		Selon le signe de $h$ :
+		\begin{itemize}
+			\item si $h > 0$, alors $\abs{h} = h$, donc $\dfrac{\abs{h}}{h} = \dfrac{h}{h} = 1$ ;
+			\item si $h < 0$, alors $\abs{h} = -h$, donc $\dfrac{\abs{h}}{h} = \dfrac{-h}{h} = -1$.
+		\end{itemize}
+
+		Donc :
+		\begin{itemize}
+			\item Lorsque $h$ tend vers $0$ par valeurs supérieures, le taux de variation tend vers $1$;
+			\item Lorsque $h$ tend vers $0$ par valeurs inférieures, il tend vers $-1$.
+		\end{itemize}
+
+		Le taux de variation n'admet donc pas de limite unique lorsque $h$ tend vers $0$ : la fonction valeur absolue n'est \textbf{pas dérivable en $0$}.
+
+		Géométriquement, la courbe présente un point anguleux en $0$ et n'admet pas de tangente en ce point.
+	\end{correction}
+\end{methode}
+
+\newpage
+
+\section{Algorithmique : approcher un nombre dérivé}
+
+Pour une valeur de $h$ proche de $0$, le taux de variation $\dfrac{f(a + h) - f(a)}{h}$ est une valeur approchée du nombre dérivé $f'(a)$, lorsque $f$ est dérivable en $a$.
+
+\begin{ex}[Calcul d'un taux de variation avec Python]
+	Soit une fonction $f$ définie sur $\R$ tel que :
+	\[
+		f(x)=x^2-5x+2
+	\]
+
+	La fonction \texttt{taux} renvoie le taux de variation de la fonction \texttt{f} entre \texttt{a} et \texttt{a + h} :
+
+	\begin{lstlisting}
+def taux(f, a, h):
+    return (f(a + h) - f(a)) / h
+
+def f(x):
+    return x ** 2 - 5 * x + 2
+
+def calcul_de_taux():
+    for k in range(1, 10):
+        h = 10 ** (-k)
+        print(h, taux(f, 1, h))
+\end{lstlisting}
+
+	\begin{lstlisting}
+>>> calcul_de_taux()
+0.1 -2.9000000000000004
+0.01 -2.9899999999999594
+0.001 -2.9989999999990857
+0.0001 -2.999900000002498
+1e-05 -2.999989999974417
+1e-06 -2.999998999442255
+1e-07 -2.9999999018315293
+1e-08 -2.999999981767587
+1e-09 -3.000000248221113
+\end{lstlisting}
+
+	Les valeurs affichées se rapprochent de $-3$ lorsque $h$ se rapproche de $0$, ce qui est cohérent avec le résultat $f'(1) = -3$ obtenu dans la méthode précédente.
+\end{ex}
+
