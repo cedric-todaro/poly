@@ -1,0 +1,12 @@
+%!TEX program = pdflatex
+\documentclass{poly}
+% - Pour virer le numéro de chapitre -----------------------------------------------------------------
+\makeatletter\let\oldchapter\chapter\rnc{\chapter}{\@ifstar{\oldchapter*}{\oldchapter*}}\makeatother
+\rnc{\thesection}{\arabic{section}}\rnc{\thesubsection}{\arabic{section}.\arabic{subsection}}
+% ----------------------------------------------------------------------------------------------------
+\begin{document}
+\input{../1spe/fonction-derivee-et-operation/fonction-derivee-et-operation.tex}
+% \pagenotes
+% ----------------------------------------------------------------------------------------------------
+\end{document}
+
