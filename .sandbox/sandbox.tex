@@ -32,40 +32,37 @@
 	Ainsi, la courbe est symétrique par rapport à l'axe des ordonnées si et seulement si $M'$ appartient à la courbe pour tout $x$, c'est-à-dire $f(-x) = f(x)$.
 
 	Elle est symétrique par rapport à l'origine si et seulement si $M''$ appartient à la courbe pour tout $x$, c'est-à-dire $f(-x) = -f(x)$.
-\end{demonstration}
 
-\begin{center}
-	\begin{tikzpicture}[scale=0.9, >=Stealth, thick]
-		% Fonction paire
-		\begin{scope}
-			\draw[->] (-2.4,0) -- (2.6,0) node[right] {$x$};
-			\draw[->] (0,-1) -- (0,3) node[above] {$y$};
-			\draw[bleu, domain=-2:2, samples=60] plot (\x,{0.5*\x*\x*\x*\x-1.5*\x*\x+0.5});
-			\node[above] at (0,3.2) {fonction paire};
-			\node[below] at (0,-1.2) {$x \longmapsto \frac{x^4}{2} - \frac{3x^2}{2} + \frac{1}{2}$};
-		\end{scope}
-		% Fonction impaire
-		\begin{scope}[shift={(7,0)}]
-			\draw[->] (-2.4,0) -- (2.6,0) node[right] {$x$};
-			\draw[->] (0,-1.6) -- (0,1.8) node[above] {$y$};
-			\draw[rouge, domain=-2:2, samples=60] plot (\x,{0.5*\x*\x*\x-1.5*\x});
-			\node[above] at (0,2.0) {fonction impaire};
-			\node[below] at (0,-1.8) {$x \longmapsto \frac{x^3}{2} - \frac{3x}{2}$};
-		\end{scope}
-	\end{tikzpicture}
-\end{center}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.9, >=Stealth, thick]
+			\begin{scope}
+				\draw[->] (-2.4,0) -- (2.6,0) node[above] {$x$};
+				\draw[->] (0,-0.75) -- (0,3) node[right] {$y$};
+				\draw[bleu, domain=-2:2, samples=60] plot (\x,{0.5*\x*\x*\x*\x-1.5*\x*\x+0.5});
+				\node[above] at (0,-1.5) {fonction paire};
+			\end{scope}
+			\begin{scope}[shift={(7,0.5)}]
+				\draw[->] (-2.4,0) -- (2.6,0) node[above] {$x$};
+				\draw[->] (0,-1.25) -- (0,1.8) node[right] {$y$};
+				\draw[rouge, domain=-2:2, samples=60] plot (\x,{0.5*\x*\x*\x-1.5*\x});
+				\node[above] at (0,-2) {fonction impaire};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+\end{demonstration}
 
 \begin{methode}[Étudier la parité d'une fonction]
 	Étudier la parité de chacune des fonctions suivantes :
-	\begin{enumerate}
-		\item $f(x) = x^4 - 3x^2$ sur $\R$ ;
-		\item $g(x) = x^3 - 5x$ sur $\R$ ;
-		\item $h(x) = x^2 + x$ sur $\R$ ;
-		\item $k(x) = \sqrt{x}$ sur $\intfo{0}{+\infty}$.
-	\end{enumerate}
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item $f(x) = x^4 - 3x^2$ sur $\R$ ;
+			\item $g(x) = x^3 - 5x$ sur $\R$ ;
+			\item $h(x) = x^2 + x$ sur $\R$ ;
+			\item $k(x) = \sqrt{x}$ sur $\intfo{0}{+\infty}$.
+		\end{enumerate}
+	\end{multicols}
 
 	\begin{correction}
-		\nline
 		Dans les trois premiers cas, l'ensemble de définition $\R$ est symétrique par rapport à $0$.
 		\begin{enumerate}
 			\item Pour tout réel $x$, $f(-x) = (-x)^4 - 3(-x)^2 = x^4 - 3x^2 = f(x)$ : $f$ est \textbf{paire}.
@@ -85,9 +82,11 @@
 \end{rem}
 
 \begin{attention}
-	Pour montrer qu'une fonction n'est pas paire, il suffit d'un seul réel $x$ tel que $f(-x) \neq f(x)$.
-
-	Pour montrer qu'elle l'est, il faut un calcul valable pour \textbf{tout} $x$ de l'ensemble de définition : l'égalité $f(-1) = f(1)$ ne prouve rien.
+	\nline
+	\begin{itemize}
+		\item Pour montrer qu'une fonction n'est pas paire, il suffit d'un seul réel $x$ tel que $f(-x) \neq f(x)$.
+		\item Pour montrer qu'elle l'est, il faut un calcul valable pour \textbf{tout} $x$ de l'ensemble de définition : l'égalité $f(-1) = f(1)$ ne prouve rien.
+	\end{itemize}
 \end{attention}
 
 \section{Sens de variation et signe de la dérivée}
@@ -101,8 +100,7 @@
 		\item Si $f'(x) \leq 0$ pour tout $x \in I$, alors $f$ est décroissante sur $I$.
 		\item Si $f'(x) = 0$ pour tout $x \in I$, alors $f$ est constante sur $I$.
 		\item Si $f'(x) > 0$ pour tout $x \in I$, sauf éventuellement en un nombre fini de points où $f'$ s'annule, alors $f$ est strictement croissante sur $I$.
-
-		      De même, si $f'(x) < 0$ sauf en un nombre fini de points, alors $f$ est strictement décroissante sur $I$.
+		\item De même, si $f'(x) < 0$ sauf en un nombre fini de points, alors $f$ est strictement décroissante sur $I$.
 	\end{itemize}
 \end{theoreme}
 
@@ -141,9 +139,7 @@
 \begin{remarque}[Variations sur un intervalle]
 	Le théorème s'applique sur un \textbf{intervalle}.
 
-	Par exemple, la fonction inverse a une dérivée strictement négative sur $\R^*$, mais elle n'est pas décroissante sur $\R^*$ : $-1 < 1$ et pourtant $\dfrac{1}{-1} < \dfrac{1}{1}$.
-
-	Elle est décroissante sur $\intoo{-\infty}{0}$ et sur $\intoo{0}{+\infty}$, pris séparément.
+	Par exemple, la fonction inverse a une dérivée strictement négative sur $\R^*$, mais elle n'est pas décroissante sur $\R^*$. Elle est décroissante sur $\intoo{-\infty}{0}$ et sur $\intoo{0}{+\infty}$, pris séparément.
 
 	De même, une fonction peut être strictement croissante sans que sa dérivée soit strictement positive partout : la fonction cube est strictement croissante sur $\R$, bien que $f'(0) = 0$.
 \end{remarque}
@@ -173,11 +169,33 @@
 
 			      La fonction $f'$ est affine de coefficient directeur $4 > 0$ : elle est croissante, donc négative avant $x = 2$ et positive après.
 			\item On calcule $f(2) = 2 \times 2^2 - 8 \times 2 + 1 = -7$ et on dresse le tableau :
+
+			      \ms
+
 			      \begin{center}
 				      \begin{tikzpicture}
-					      \tkzTabInit[lgt=2,espcl=3]{$x$/1,$f'(x)$/1,$f(x)$/2}{$-\infty$,$2$,$+\infty$}
+					      \tkzTabInit[lgt=2,espcl=3]{$x$/1,$f'(x)$/1,$f(x)$/1.5}{$-\infty$,$2$,$+\infty$}
 					      \tkzTabLine{,-,z,+,}
 					      \tkzTabVar{+/ ,-/$-7$,+/ }
+				      \end{tikzpicture}
+			      \end{center}
+
+			      \begin{center}
+				      \begin{tikzpicture}[x=15mm, y=5mm, >=Stealth, thick]
+					      \draw[help lines, gray!30, dashed] (-1.2,-8.2) grid (4.2,4.2);
+					      \draw[->] (-1.2,0) -- (4.5,0) node[above] {$x$};
+					      \draw[->] (0,-8.2) -- (0,4.5) node[left] {$y$};
+					      \foreach \x in {1,2,3,4} \draw (\x,0.1) -- (\x,-0.1) node[below, font=\small] {$\x$};
+					      \foreach \y in {-6,-4,-2,2} \draw (0.1,\y) -- (-0.1,\y) node[right, font=\small] {$\y$};
+					      \draw (0.1,-7) -- (-0.1,-7) node[left, font=\small] {$-7$};
+					      \draw (0.1,1) -- (-0.1,1) node[left, font=\small] {$1$};
+					      \node[below left] at (0,0) {$0$};
+					      \draw[bleu, domain=-0.25:4.25, samples=100, line width=1.5pt] plot (\x,{2*\x*\x - 8*\x + 1}) node[bleu, above] {$\mathcal{C}_f$};
+					      \node[circle, fill=rouge, inner sep=2pt] at (2,-7) {};
+					      \node[below, font=\small] at (2,-7) {$S(2\,;\,-7)$};
+					      \node[circle, fill=vert, inner sep=1.8pt] at (0,1) {};
+					      \node[right, font=\small] at (0,1) {$(0\,;\,1)$};
+					      \draw[rouge, dashed] (2,0) -- (2,-7) -- (0,-7);
 				      \end{tikzpicture}
 			      \end{center}
 		\end{enumerate}
@@ -195,11 +213,34 @@
 			\item $f$ est dérivable sur $\R$ et $f'(x) = 3x^2 - 6x - 9 = 3\pa{x^2 - 2x - 3} = 3(x + 1)(x - 3)$.
 			\item Le trinôme $3(x + 1)(x - 3)$ a pour racines $-1$ et $3$ et son coefficient dominant $3$ est positif : $f'$ est positive à l'extérieur des racines et négative entre elles.
 			\item On calcule $f(-1) = -1 - 3 + 9 + 1 = 6$ et $f(3) = 27 - 27 - 27 + 1 = -26$ :
+
+			      \ms
+
 			      \begin{center}
 				      \begin{tikzpicture}
-					      \tkzTabInit[lgt=2,espcl=3]{$x$/1,$f'(x)$/1,$f(x)$/2}{$-\infty$,$-1$,$3$,$+\infty$}
+					      \tkzTabInit[lgt=2,espcl=3]{$x$/1,$f'(x)$/1,$f(x)$/1.5}{$-\infty$,$-1$,$3$,$+\infty$}
 					      \tkzTabLine{,+,z,-,z,+,}
 					      \tkzTabVar{-/ ,+/$6$,-/$-26$,+/ }
+				      \end{tikzpicture}
+			      \end{center}
+
+			      \begin{center}
+				      \begin{tikzpicture}[x=15mm, y=1mm, >=Stealth, thick]
+					      \draw[help lines, gray!30, dashed] (-2.2,-30) grid (4.2,10);
+					      \draw[->] (-2.2,0) -- (4.5,0) node[above] {$x$};
+					      \draw[->] (0,-30) -- (0,12) node[right] {$y$};
+					      \foreach \x in {-2,-1,1,2,3,4} \draw (\x,0.5) -- (\x,-0.5) node[below, font=\small] {$\x$};
+					      \foreach \y in {-20,-10,10} \draw (0.05,\y) -- (-0.05,\y) node[left, font=\small] {$\y$};
+					      \draw (0.05,6) -- (-0.05,6) node[right, font=\small] {$6$};
+					      \draw (0.05,-26) -- (-0.05,-26) node[left, font=\small] {$-26$};
+					      \node[below left] at (0,0) {$0$};
+					      \draw[bleu, domain=-2.05:4.05, samples=100, line width=1.5pt] plot (\x,{\x*\x*\x - 3*\x*\x - 9*\x + 1}) node[bleu, right] {$\mathcal{C}_f$};
+					      \node[circle, fill=rouge, inner sep=2pt] at (-1,6) {};
+					      \node[above, font=\small] at (-1,6) {$M(-1\,;\,6)$};
+					      \draw[rouge, dashed] (-1,0) -- (-1,6) -- (0,6);
+					      \node[circle, fill=rouge, inner sep=2pt] at (3,-26) {};
+					      \node[below, font=\small] at (3,-26) {$m(3\,;\,-26)$};
+					      \draw[rouge, dashed] (3,0) -- (3,-26) -- (0,-26);
 				      \end{tikzpicture}
 			      \end{center}
 		\end{enumerate}
@@ -214,13 +255,38 @@
 	\begin{correction}
 		\nline
 		\begin{enumerate}
-			\item $f = \dfrac{u}{v}$ avec $u(x) = x + 3$, $u'(x) = 1$, $v(x) = 2 - x$ et $v'(x) = -1$ :
+			\item $f = \dfrac{u}{v}$ avec $\begin{cases}u(x) = x + 3\\u'(x) = 1\end{cases}$ et $\begin{cases}v(x) = 2 - x\\v'(x) = -1\end{cases}$ :
 			      \[
 				      f'(x) = \dfrac{1 \times (2 - x) - (x + 3) \times (-1)}{(2 - x)^2} = \dfrac{2 - x + x + 3}{(2 - x)^2} = \dfrac{5}{(2 - x)^2}
 			      \]
 
 			\item Pour tout $x \neq 2$, $(2 - x)^2 > 0$, donc $f'(x) > 0$.
 			\item La fonction $f$ est donc strictement croissante sur $\intoo{-\infty}{2}$ et strictement croissante sur $\intoo{2}{+\infty}$, mais pas sur $\R \setminus \brac{2}$ tout entier, la valeur $2$ étant interdite.
+
+			      \ms
+
+			      \begin{center}
+				      \begin{tikzpicture}
+					      \tkzTabInit[lgt=2,espcl=3]{$x$/1,$f'(x)$/1,$f(x)$/1.5}{$-\infty$,$2$,$+\infty$}
+					      \tkzTabLine{,+,d,+,}
+					      \tkzTabVar{-/, +D- //, +/}
+				      \end{tikzpicture}
+			      \end{center}
+
+			      \begin{center}
+				      \begin{tikzpicture}[x=7mm, y=4mm, >=Stealth, thick]
+					      \clip (-7.2,-6.2) rectangle (11.2,6.7);
+					      \draw[help lines, gray!30, dashed, step=1] (-6.2,-6.2) grid (10.2,6.2);
+					      \draw[->] (-6.2,0) -- (10.5,0) node[above] {$x$};
+					      \draw[->] (0,-6.2) -- (0,6.5) node[right] {$y$};
+					      \foreach \x in {-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9} \draw (\x,0.1) -- (\x,-0.1) node[below, font=\tiny] {$\x$};
+					      \foreach \y in {-6,-5,-4,-3,-2,-1,1,2,3,4,5,6} \draw (0.1,\y) -- (-0.1,\y) node[left, font=\tiny] {$\y$};
+					      \draw[rouge, dashed, thin] (2,-6) -- (2,6) node[right, font=\small] {$x = 2$};
+					      \draw[rouge, dashed, thin] (-6,-1) -- (9,-1) node[right, font=\small] {$y = -1$};
+					      \draw[bleu, domain=-6:1.8, samples=100, line width=1.5pt] plot (\x,{(\x + 3)/(2 - \x)});
+					      \draw[bleu, domain=2.2:10, samples=100, line width=1.5pt] plot (\x,{(\x + 3)/(2 - \x)}) node[bleu, below] {$\mathcal{C}_f$};
+				      \end{tikzpicture}
+			      \end{center}
 		\end{enumerate}
 	\end{correction}
 \end{methode}
@@ -235,12 +301,26 @@
 		\item Un \textbf{extremum} est un maximum ou un minimum.
 		\item L'extremum est dit \textbf{global} sur $I$ lorsque l'inégalité est vraie pour tout $x \in I$.
 	\end{itemize}
+	\begin{center}
+		\begin{tikzpicture}[x=15mm, y=7.5mm, >=Stealth, thick]
+			\draw[->] (-2.6,0) -- (2.8,0) node[above] {$x$};
+			\draw[->] (0,-3.2) -- (0,3.4) node[right] {$y$};
+			\draw[bleu, domain=-2.1:2.1, samples=60] plot (\x,{\x*\x*\x-3*\x});
+			\node[bleu, right] at (2.1,{2.961}) {$\Cf$};
+			\draw[rouge, dashed, domain=-1.8:-0.2, samples=2] plot (\x,2);
+			\draw[rouge, dashed, domain=0.2:1.8, samples=2] plot (\x,-2);
+			\node[circle, fill=black, inner sep=1.5pt] at (-1,2) {};
+			\node[circle, fill=black, inner sep=1.5pt] at (1,-2) {};
+			\node[above, font=\small, fill=white] at (-1,2.1) {maximum local};
+			\node[below, font=\small, fill=white] at (1,-2.1) {minimum local};
+		\end{tikzpicture}
+	\end{center}
 \end{defin}
 
 \begin{theoreme}[Nombre dérivé en un extremum (admis)]
 	Soit $f$ une fonction dérivable sur un intervalle ouvert $I$.
 
-	Si $f$ admet un extremum local en $a \in I$, alors $f'(a) = 0$ : la tangente à $\Cf$ au point d'abscisse $a$ est horizontale.
+	Si $f$ admet un extremum local en $a \in I$, alors $f'(a) = 0$ : la tangente à $\Cf$ en $x=a$ est horizontale.
 \end{theoreme}
 
 \begin{propriete}[Dérivée qui change de signe]
@@ -256,26 +336,10 @@
 \begin{demonstration}
 	Supposons que $f'$ passe de positive à négative en $a$.
 
-	D'après le théorème sur les variations, $f$ est croissante juste avant $a$ et décroissante juste après : $f(x) \leq f(a)$ au voisinage de $a$, c'est un maximum local.
+	On a $f$ est croissante juste avant $a$ et décroissante juste après : $f(x) \leq f(a)$ au voisinage de $a$, c'est un maximum local.
 
 	Le raisonnement est analogue pour un minimum.
 \end{demonstration}
-
-\begin{center}
-	\begin{tikzpicture}[>=Stealth, thick]
-		\draw[->] (-2.6,0) -- (2.8,0) node[right] {$x$};
-		\draw[->] (0,-3.2) -- (0,3.4) node[above] {$y$};
-		\draw[bleu, domain=-2.1:2.1, samples=60] plot (\x,{\x*\x*\x-3*\x});
-		\node[bleu, right] at (2.1,{2.961}) {$\Cf$};
-		\draw[rouge, dashed, domain=-1.8:-0.2, samples=2] plot (\x,2);
-		\draw[rouge, dashed, domain=0.2:1.8, samples=2] plot (\x,-2);
-		\node[circle, fill=black, inner sep=1.5pt] at (-1,2) {};
-		\node[circle, fill=black, inner sep=1.5pt] at (1,-2) {};
-		\node[above, font=\small] at (-1,2.1) {maximum local, $f'(-1) = 0$};
-		\node[below, font=\small] at (1,-2.1) {minimum local, $f'(1) = 0$};
-		\node[below] at (0,-3.4) {$f(x) = x^3 - 3x$};
-	\end{tikzpicture}
-\end{center}
 
 \begin{piege}
 	La réciproque du théorème sur le nombre dérivé en un extremum est \textbf{fausse} : $f'(a) = 0$ n'entraîne pas que $f$ admet un extremum en $a$.
@@ -283,64 +347,21 @@
 	Par exemple, pour $f(x) = x^3$, on a $f'(x) = 3x^2$, donc $f'(0) = 0$.
 
 	Pourtant $f'(x) = 3x^2 \geq 0$ ne change pas de signe : $f$ est strictement croissante sur $\R$ et n'a pas d'extremum en $0$ ; la courbe traverse sa tangente horizontale.
+
+	\begin{center}
+		\begin{tikzpicture}[x=16mm, y=8mm, >=Stealth, thick]
+			\draw[help lines, gray!30, dashed] (-1.7,-2.2) grid (1.7,2.2);
+			\draw[->] (-1.7,0) -- (1.7,0) node[above] {$x$};
+			\draw[->] (0,-2.2) -- (0,2.4) node[right] {$y$};
+			\foreach \x in {-1,1} \draw (\x,0.1) -- (\x,-0.1) node[below, font=\small] {$\x$};
+			\foreach \y in {-2,-1,1,2} \draw (0.05,\y) -- (-0.05,\y) node[left, font=\small] {$\y$};
+			\node[below left] at (0,0) {$0$};
+			\draw[bleu, domain=-1.3:1.3, samples=100, line width=1.5pt] plot (\x,{\x*\x*\x}) node[bleu, right] {$\mathcal{C}_f$};
+			\node[circle, fill=rouge, inner sep=2pt] at (0,0) {};
+		\end{tikzpicture}
+	\end{center}
+
 \end{piege}
-
-\begin{propriete}[Extremum d'une fonction du second degré]
-	Soit $f$ la fonction définie sur $\R$ par $f(x) = ax^2 + bx + c$ avec $a \neq 0$.
-
-	Elle admet un extremum global en $x = \dfrac{-b}{2a}$, égal à $c - \dfrac{b^2}{4a}$ :
-	\begin{itemize}
-		\item un minimum si $a > 0$ ;
-		\item un maximum si $a < 0$.
-	\end{itemize}
-\end{propriete}
-
-\begin{demonstration}
-	On a $f'(x) = 2ax + b = 2a\pa{x + \dfrac{b}{2a}}$, qui s'annule en $\alpha = \dfrac{-b}{2a}$.
-
-	Si $a > 0$, $f'$ est négative avant $\alpha$ et positive après : $f$ décroît puis croît, avec un minimum en $\alpha$.
-
-	Si $a < 0$, c'est l'inverse : $f$ admet un maximum en $\alpha$.
-
-	Enfin :
-	\[
-		f(\alpha) = a \times \dfrac{b^2}{4a^2} - \dfrac{b^2}{2a} + c = \dfrac{b^2}{4a} - \dfrac{b^2}{2a} + c = c - \dfrac{b^2}{4a}
-	\]
-
-\end{demonstration}
-
-\begin{ex}
-	Pour $f(x) = -2x^2 + 8x - 3$, on a $a = -2 < 0$ : $f$ admet un maximum en $x = \dfrac{-8}{2 \times (-2)} = 2$, égal à $f(2) = -8 + 16 - 3 = 5$.
-\end{ex}
-
-\begin{methode}[Déterminer un extremum et la tangente en ce point]
-	Soit $f$ la fonction définie sur $\R$ par $f(x) = 5x^2 - 10x + 1$.
-	\begin{enumerate}
-		\item Dresser le tableau de variations de $f$.
-		\item En déduire que $f$ admet un extremum sur $\R$ et préciser en quelle valeur il est atteint.
-		\item Déterminer l'équation de la tangente à la courbe en ce point.
-	\end{enumerate}
-
-	\begin{correction}
-		\nline
-		\begin{enumerate}
-			\item $f'(x) = 10x - 10$, qui s'annule en $x = 1$ ; $f'$ est affine de coefficient directeur $10 > 0$, donc négative avant $1$ et positive après.
-
-			      On a $f(1) = 5 - 10 + 1 = -4$.
-			      \begin{center}
-				      \begin{tikzpicture}
-					      \tkzTabInit[lgt=2,espcl=3]{$x$/1,$f'(x)$/1,$f(x)$/2}{$-\infty$,$1$,$+\infty$}
-					      \tkzTabLine{,-,z,+,}
-					      \tkzTabVar{+/ ,-/$-4$,+/ }
-				      \end{tikzpicture}
-			      \end{center}
-			\item On lit dans le tableau que $f$ admet un minimum égal à $-4$, atteint en $x = 1$.
-			\item Comme $f'(1) = 0$, la tangente en ce point est horizontale.
-
-			      Son équation est $y = f'(1)(x - 1) + f(1)$, soit $y = -4$.
-		\end{enumerate}
-	\end{correction}
-\end{methode}
 
 \section{Applications de la dérivation}
 
@@ -357,29 +378,71 @@
 \end{methode}
 
 \begin{ex}[Une boîte sans couvercle]
-	Dans une feuille de carton carrée de $30\,\text{cm}$ de côté, on découpe aux quatre coins des carrés de côté $x$ (en cm), puis on replie les bords : on obtient une boîte sans couvercle de volume $V(x) = x(30 - 2x)^2$, pour $0 < x < 15$.
+	\nline
+	\begin{wrapstuff}
+		\begin{tikzpicture}[scale=0.5, >=Stealth, thick]
+			\draw[fill=gray!10, draw=black, line width=1.2pt] (0,0) coordinate (O) -- (10,0) coordinate (A) -- (10,10) coordinate (B) -- (0,10) coordinate (C) -- cycle;
+			\def\xval{1.8}
+			\fill[rouge!15] (0,0) rectangle (\xval,\xval);
+			\fill[rouge!15] (10-\xval,0) rectangle (10,\xval);
+			\fill[rouge!15] (10-\xval,10-\xval) rectangle (10,10);
+			\fill[rouge!15] (0,10-\xval) rectangle (\xval,10);
+			\draw[rouge, dashed] (\xval,0) -- (\xval,\xval) -- (0,\xval);
+			\draw[rouge, dashed] (10-\xval,0) -- (10-\xval,\xval) -- (10,\xval);
+			\draw[rouge, dashed] (10-\xval,10) -- (10-\xval,10-\xval) -- (10,10-\xval);
+			\draw[rouge, dashed] (\xval,10) -- (\xval,10-\xval) -- (0,10-\xval);
+			\draw[bleu, dashed, line width=1.2pt] (\xval,\xval) -- (10-\xval,\xval);
+			\draw[bleu, dashed, line width=1.2pt] (\xval,10-\xval) -- (10-\xval,10-\xval);
+			\draw[bleu, dashed, line width=1.2pt] (\xval,\xval) -- (\xval,10-\xval);
+			\draw[bleu, dashed, line width=1.2pt] (10-\xval,\xval) -- (10-\xval,10-\xval);
+			\draw[<->] (0,-0.6) -- (10,-0.6) node[midway, below, font=\small] {$30\,\text{cm}$};
+			\draw[<->] (-0.6,0) -- (-0.6,10) node[midway, left, font=\small] {$30\,\text{cm}$};
+			\draw[<->] (0,1) -- (\xval,1) node[midway, below, font=\footnotesize] {$x$};
+			\draw[<->] (1,10-\xval) -- (1,10) node[midway, left, font=\footnotesize] {$x$};
+			\draw[<->, bleu] (\xval,-1.5) -- (10-\xval,-1.5) node[midway, below, font=\small, bleu] {$30 - 2x$};
+			\draw[bleu, dotted] (\xval,0) -- (\xval,-1.7);
+			\draw[bleu, dotted] (10-\xval,0) -- (10-\xval,-1.7);
+			\node[font=\small, bleu] at (5,5) {Fond de la boîte};
+			\draw[black, line width=1.2pt] (0,0) coordinate (O) -- (10,0) coordinate (A) -- (10,10) coordinate (B) -- (0,10) coordinate (C) -- cycle;
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Dans une feuille de carton carrée de $30\,\text{cm}$ de côté, on découpe aux quatre coins des carrés de côté $x$ (en cm), puis on replie les bords.
+
+	Pour $0 < x < 15$, on obtient une boîte sans couvercle de volume :
+	\[
+		V(x) = x(30 - 2x)^2
+	\]
 
 	Pour $x \in \intoo{0}{15}$, $V = uv$ avec $u(x) = x$ et $v(x) = (30 - 2x)^2$.
 
 	Comme $v'(x) = 2(30 - 2x) \times (-2) = -4(30 - 2x)$ :
 	\[
-		V'(x) = (30 - 2x)^2 + x \times \pa{-4(30 - 2x)} = (30 - 2x)\pa{(30 - 2x) - 4x} = (30 - 2x)(30 - 6x)
+		\begin{array}{rcl}
+			V'(x) & = & u'v + uv'                               \\
+			      & = & (30 - 2x)^2 + x \times \pa{-4(30 - 2x)} \\
+			      & = & (30 - 2x)\pa{(30 - 2x) - 4x}            \\
+			      & = & (30 - 2x)(30 - 6x)
+		\end{array}
 	\]
 
-	Sur $\intoo{0}{15}$, $30 - 2x > 0$, donc $V'(x)$ est du signe de $30 - 6x$ : positive pour $x < 5$, négative pour $x > 5$.
+	Sur $\intoo{0}{15}$, $30 - 2x > 0$, donc $V'(x)$ est du signe de $30 - 6x$ :
+	\[
+		30-6x>0 \iff -6x > -30 \iff x < 5
+	\]
 
 	On a $V(5) = 5 \times 20^2 = 2\,000$.
 
 	\begin{center}
 		\begin{tikzpicture}
-			\tkzTabInit[lgt=2,espcl=3]{$x$/1,$V'(x)$/1,$V(x)$/2}{$0$,$5$,$15$}
+			\tkzTabInit[lgt=2,espcl=3]{$x$/0.75,$V'(x)$/0.75,$V(x)$/1.5}{$0$,$5$,$15$}
 			\tkzTabLine{ ,+,z,-, }
 			\tkzTabVar{-/$0$,+/$2000$,-/$0$}
 		\end{tikzpicture}
 	\end{center}
 
 	\begin{center}
-		\begin{tikzpicture}[x=0.55cm, y=1cm, >=Stealth, thick]
+		\begin{tikzpicture}[x=0.55cm, y=12mm, >=Stealth, thick]
 			\draw[->] (-0.5,0) -- (16.5,0) node[right] {$x$};
 			\draw[->] (0,-0.3) -- (0,3.6) node[above] {$V(x)$};
 			\draw[bleu, domain=0:15, samples=80] plot (\x,{\x*(30-2*\x)*(30-2*\x)/700});
@@ -393,6 +456,8 @@
 
 	Le volume est maximal pour $x = 5\,\text{cm}$ et vaut alors $2\,000\,\text{cm}^3$.
 \end{ex}
+
+% TODO : Içi Içi Içi Içi Içi Içi Içi Içi Içi Içi
 
 \begin{methode}[Optimiser une aire]
 	Un enclos rectangulaire est bordé d'un côté par un mur ; on dispose de $40\,\text{m}$ de grillage pour les trois autres côtés.
