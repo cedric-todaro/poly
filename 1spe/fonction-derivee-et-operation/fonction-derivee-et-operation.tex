@@ -1,0 +1,592 @@
+\chapter{Fonction dérivée et opérations}
+
+\section{La fonction dérivée}
+
+\begin{defin}
+	Soit $f$ une fonction définie sur un intervalle $I$.
+
+	On dit que $f$ est \textbf{dérivable sur $I$} si elle est dérivable en tout réel $a$ de $I$.
+
+	Dans ce cas, la fonction qui, à tout réel $x$ de $I$, associe le nombre dérivé $f'(x)$ est appelée \textbf{fonction dérivée} de $f$ et se note $f'$.
+\end{defin}
+
+\begin{rem}
+	Pour tout $x \in I$, le nombre $f'(x)$ est le coefficient directeur de la tangente à la courbe $\Cf$ au point d'abscisse $x$ : c'est la vitesse de variation instantanée de $f$ en $x$ (vitesse, coût marginal, etc.).
+
+	Il ne faut pas confondre la \textbf{fonction} $f'$ avec le \textbf{nombre} $f'(a)$, qui est la valeur de cette fonction en $a$.
+\end{rem}
+
+\section{Dérivées des fonctions de référence}
+
+\subsection{Fonctions constantes, affines, carré et cube}
+
+\begin{propriete}[Fonctions constantes et affines]
+	Soient $m$ et $p$ deux réels.
+
+	La fonction $f$ définie sur $\R$ par $f(x) = mx + p$ est dérivable sur $\R$ et, pour tout réel $x$ :
+	\[
+		f'(x) = m
+	\]
+
+	En particulier, la dérivée d'une fonction constante est la fonction nulle.
+\end{propriete}
+
+\begin{demonstration}
+	Soient $a \in \R$ et $h \neq 0$.
+
+	Alors :
+	\[
+		\tau\pa{a,a+h} = \dfrac{f(a + h) - f(a)}{h} = \dfrac{\pa{m(a + h) + p} - \pa{ma + p}}{h} = \dfrac{mh}{h} = m
+	\]
+
+	Ce taux de variation est constant égal à $m$ donc $f'(a) = m$ pour tout réel $a$.
+\end{demonstration}
+
+\begin{propriete}[Dérivée de la fonction carré]
+	La fonction carré $f : x \longmapsto x^2$ est dérivable sur $\R$ et, pour tout réel $x$ :
+	\[
+		f'(x) = 2x
+	\]
+
+\end{propriete}
+
+\begin{demonstration}
+	Soit $a$ un réel quelconque.
+
+	Pour tout $h \neq 0$, le taux de variation de $f$ en $a$ est :
+	\[
+		\tau\pa{a,a+h} = \dfrac{f(a + h) - f(a)}{h} = \dfrac{(a + h)^2 - a^2}{h} = \dfrac{a^2 + 2ah + h^2 - a^2}{h} = \dfrac{h(2a + h)}{h} = 2a + h
+	\]
+
+	Lorsque $h$ tend vers $0$, $2a + h$ tend vers $2a$.
+
+	Ainsi $f$ est dérivable en tout réel $a$ et $f'(a) = 2a$ : la fonction dérivée de $f$ est la fonction $x \longmapsto 2x$.
+\end{demonstration}
+
+\begin{rem}[Visualisation graphique de la fonction carré $f$ et de sa fonction dérivée $f'$]
+	Le nombre dérivé $f'(x)$ en un point d'abscisse $x$ représente la pente de la tangente à la courbe de $f$ en ce point.
+
+	Par exemple, au point d'abscisse $x = 1$, la tangente a une pente de $f'(1)=2\times 1=2$.
+
+	De même, pour $x = -1$, la pente est de $f'(-1) = 2\times -1 = -2$.
+
+	Sur les graphiques ci-dessous, chaque carreau représente une unité sur les deux axes.
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, thick]
+			\begin{scope}
+				\draw[help lines, gray!40, dashed] (-2.5,-1.5) grid (2.5,4.5);
+				\draw[->] (-2.5,0) -- (2.6,0) node[right] {$x$};
+				\draw[->] (0,-1.5) -- (0,4.8) node[above] {$y$};
+				\foreach \x in {-2,-1,1,2}
+				\draw (\x,0.1) -- (\x,-0.1) node[below, font=\small] {$\x$};
+				\foreach \y in {-1,1,2,3,4}
+				\draw (0.1,\y) -- (-0.1,\y) node[left, font=\small] {$\y$};
+				\node[below left] at (0,0) {$0$};
+				\draw[bleu, domain=-2.1:2.1, samples=50] plot (\x,{\x*\x});
+				\node[bleu, left] at (2.1,4.2) {$\Cf$};
+				\draw[rouge, domain=-0.2:2.4, samples=2] plot (\x,{2*\x-1});
+				\draw[rouge, domain=-2.4:0.2, samples=2] plot (\x,{-2*\x-1});
+				\node[circle, fill=rouge, inner sep=1.5pt] at (1,1) {};
+				\node[circle, fill=rouge, inner sep=1.5pt] at (-1,1) {};
+				\node[circle, fill=vert, inner sep=1.5pt] at (0,0) {};
+				\node[rouge, below, rotate=60, font=\small] at (2,3) {pente $=2$};
+				\node[rouge, below, rotate=-60, font=\small] at (-2,3) {pente $=\pa{-2}$};
+			\end{scope}
+			\begin{scope}[shift={(8,1)}]
+				\draw[help lines, gray!40, dashed] (-2.5,-2.5) grid (2.5,2.5);
+				\draw[->] (-2.5,0) -- (2.6,0) node[right] {$x$};
+				\draw[->] (0,-2.5) -- (0,2.8) node[above] {$y$};
+				\foreach \x in {-2,-1,1,2}
+				\draw (\x,0.1) -- (\x,-0.1) node[below, font=\small] {$\x$};
+				\foreach \y in {-2,-1,1,2}
+				\draw (0.1,\y) -- (-0.1,\y) node[left, font=\small] {$\y$};
+				\node[below left] at (0,0) {$0$};
+				\draw[rouge, domain=-1.2:1.2, samples=2] plot (\x,{2*\x});
+				\node[rouge, right] at (1.2,2.2) {$\mathcal{C}_{f'}$};
+				\node[circle, fill=black, inner sep=1.5pt] at (1,2) {};
+				\node[below right, font=\small] at (1,2) {$(1\,;\,2)$};
+				\node[circle, fill=black, inner sep=1.5pt] at (-1,-2) {};
+				\node[above left, font=\small] at (-1,-2) {$(-1\,;\,-2)$};
+				\node[circle, fill=black, inner sep=1.5pt] at (0,0) {};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+\end{rem}
+
+\begin{propriete}[Dérivée de la fonction cube]
+	La fonction cube $f : x \longmapsto x^3$ est dérivable sur $\R$ et, pour tout réel $x$ :
+	\[
+		f'(x) = 3x^2
+	\]
+
+\end{propriete}
+
+\begin{demonstration}
+	Soient $a \in \R$ et $h \neq 0$.
+
+	Comme $(a + h)^3 = a^3 + 3a^2 h + 3a h^2 + h^3$ :
+	\[
+		\tau\pa{a,a+h} = \dfrac{(a + h)^3 - a^3}{h} = \dfrac{3a^2 h + 3a h^2 + h^3}{h} = 3a^2 + 3ah + h^2
+	\]
+
+	Lorsque $h$ tend vers $0$, ce nombre tend vers $3a^2$.
+
+	Donc $f'(a) = 3a^2$ pour tout réel $a$.
+\end{demonstration}
+
+\subsection{La fonction inverse}
+
+\begin{propriete}[Dérivée de la fonction inverse]
+	La fonction inverse $f : x \longmapsto \dfrac{1}{x}$ est dérivable sur $\R^*$ et, pour tout réel $x \neq 0$ :
+	\[
+		f'(x) = \dfrac{-1}{x^2}
+	\]
+
+\end{propriete}
+
+\begin{demonstration}
+	Soit $a \in \R^*$. Pour $h \neq 0$ tel que $a + h \neq 0$ :
+	\[
+		\tau\pa{a,a+h} = \dfrac{f(a + h) - f(a)}{h} = \dfrac{\dfrac{1}{a + h} - \dfrac{1}{a}}{h} = \dfrac{\dfrac{a - (a + h)}{a(a + h)}}{h} = \dfrac{\dfrac{-h}{a(a + h)}}{h} = \dfrac{-1}{a(a + h)}
+	\]
+
+	Lorsque $h$ tend vers $0$, le dénominateur $a(a + h)$ tend vers $a^2 \neq 0$, donc le taux de variation tend vers $\dfrac{-1}{a^2}$.
+
+	La fonction inverse est donc dérivable en tout réel $a \neq 0$, avec $f'(a) = \dfrac{-1}{a^2}$.
+\end{demonstration}
+
+\subsection{La fonction racine carrée}
+
+\begin{propriete}[Dérivée de la fonction racine carrée]
+	La fonction racine carrée $f : x \longmapsto \sqrt{x}$, définie sur $\intfo{0}{+\infty}$, est dérivable sur $\intoo{0}{+\infty}$ et, pour tout réel $x > 0$ :
+	\[
+		f'(x) = \dfrac{1}{2\sqrt{x}}
+	\]
+
+\end{propriete}
+
+\begin{demonstration}
+	Soient $a > 0$ et $h \neq 0$ tel que $a + h > 0$.
+
+	On multiplie le numérateur et le dénominateur par la quantité conjuguée $\sqrt{a + h} + \sqrt{a}$ :
+	\[
+		\tau\pa{a,a+h} = \dfrac{\sqrt{a + h} - \sqrt{a}}{h} = \dfrac{\pa{\sqrt{a + h} - \sqrt{a}}\pa{\sqrt{a + h} + \sqrt{a}}}{h\pa{\sqrt{a + h} + \sqrt{a}}} = \dfrac{(a + h) - a}{h\pa{\sqrt{a + h} + \sqrt{a}}} = \dfrac{1}{\sqrt{a + h} + \sqrt{a}}
+	\]
+
+	Lorsque $h$ tend vers $0$, $\sqrt{a + h}$ se rapproche de $\sqrt{a}$, donc ce nombre tend vers $\dfrac{1}{2\sqrt{a}}$.
+
+	Ainsi $f'(a) = \dfrac{1}{2\sqrt{a}}$ pour tout réel $a > 0$.
+\end{demonstration}
+
+\section{Fonctions non dérivables en un point}
+
+\begin{propriete}[Non-dérivabilité de la fonction racine carrée en $0$]
+	La fonction racine carrée est définie en $0$, mais elle n'est \textbf{pas dérivable en $0$}.
+
+	Sa courbe représentative admet une \textbf{tangente verticale} à l'origine.
+\end{propriete}
+
+\begin{demonstration}
+	Pour $h > 0$, le taux de variation de la fonction racine carrée en $0$ est :
+	\[
+		\tau\pa{0,0+h} = \dfrac{\sqrt{0 + h} - \sqrt{0}}{h} = \dfrac{\sqrt{h}}{h} = \dfrac{\sqrt{h}}{\sqrt{h}\sqrt{h}} = \dfrac{1}{\sqrt{h}}
+	\]
+
+	Lorsque $h$ tend vers $0$ par valeurs supérieures, $\sqrt{h}$ devient aussi petit que l'on veut et $\dfrac{1}{\sqrt{h}}$ devient aussi grand que l'on veut : par exemple $\dfrac{1}{\sqrt{0{,}0001}} = 100$ et $\dfrac{1}{\sqrt{0{,}000001}} = 1\,000$.
+
+	\ms
+
+	Le taux de variation n'admet donc pas de limite finie : la fonction n'est pas dérivable en $0$.
+
+	Graphiquement, les sécantes issues de l'origine deviennent de plus en plus raides et la courbe admet une tangente verticale en ce point.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=1.5, >=Stealth, thick]
+			\draw[help lines, gray!30, dashed] (-0.5,-0.5) grid (4.5,2.5);
+			\draw[->] (-0.5,0) -- (4.8,0) node[above] {$x$};
+			\draw[->] (0,-0.5) -- (0,2.8) node[left] {$y$};
+			\foreach \x in {1,2,3,4} \draw (\x,0.1) -- (\x,-0.1) node[below, font=\small] {$\x$};
+			\foreach \y in {1,2} \draw (0.1,\y) -- (-0.1,\y) node[left, font=\small] {$\y$};
+			\node[below left] at (0,0) {$0$};
+			\draw[bleu, domain=0:4.3, samples=100, line width=1.2pt] plot (\x,{sqrt(\x)});
+			\node[bleu, below] at (4.3,2.1) {$\mathcal{C}_f$};
+			\draw[rouge, ultra thick, ->] (0,0) -- (0,2.2) node[right, font=\small, align=left] {Tangente en $0$ verticale\\(pente \og infinie\fg{})};
+			\draw[dashed, vert, domain=0.2:3.5, samples=2] plot (\x,{0.5*\x + 0.5});
+			\node[vert, right, font=\small] at (3.5,2.25) {Tangente en $1$ (pente $0{.}5$)};
+			\node[circle, fill=rouge, inner sep=2pt] at (0,0) {};
+			\node[circle, fill=vert, inner sep=1.8pt] at (1,1) {};
+		\end{tikzpicture}
+	\end{center}
+\end{demonstration}
+
+\newpage
+
+\begin{propriete}[Non-dérivabilité de la fonction valeur absolue en $0$]
+	La fonction valeur absolue $x \longmapsto \abs{x}$ n'est pas dérivable en $0$.
+\end{propriete}
+
+\begin{demo}
+	Pour $h \neq 0$, le taux de variation en $0$ est $\dfrac{\abs{h}}{h}$.
+
+	Il vaut $1$ si $h > 0$ et $-1$ si $h < 0$ : il n'admet donc pas de limite unique lorsque $h$ tend vers $0$.
+
+	La courbe présente un point anguleux en $0$, avec deux demi-tangentes de pentes $-1$ et $1$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=1.5, >=Stealth, thick]
+			\draw[help lines, gray!30, dashed] (-2.5,-0.5) grid (2.5,2.5);
+			\draw[->] (-2.5,0) -- (2.8,0) node[right] {$x$};
+			\draw[->] (0,-0.5) -- (0,2.8) node[above] {$y$};
+			\foreach \x in {-2,-1,1,2} \draw (\x,-0.1) -- (\x,0.1) node[above, font=\small] {$\x$};
+			\foreach \y in {1,2} \draw (0.1,\y) -- (-0.1,\y) node[left, font=\small] {$\y$};
+			\draw[bleu, domain=-2.2:2.2, samples=50, line width=1.2pt] plot (\x,{abs(\x)});
+			\node[bleu, right] at (2.2,2.2) {$\mathcal{C}_f$};
+			\draw[rouge, domain=-2.2:0, samples=2, line width=1.2pt] plot (\x,{-\x});
+			\node[rouge, rotate=-45, font=\small, fill=white] at (-1.5,1.5) {pente $-1$};
+			\draw[rouge, domain=0:2.2, samples=2, line width=1.2pt] plot (\x,{\x});
+			\node[rouge, rotate=45, font=\small, fill=white] at (1.5,1.5) {pente $1$};
+			\node[circle, fill=rouge, inner sep=2pt] at (0,0) {};
+			\node[below, font=\small, fill=white] at (0,-0.1) {point anguleux};
+		\end{tikzpicture}
+	\end{center}
+\end{demo}
+
+\begin{rem}[Interprétation géométrique de la dérivabilité]
+
+	De manière générale, une fonction est dérivable sur un intervalle lorsque sa courbe représentative y est \textbf{\og lisse\fg{}}, c'est-à-dire sans rupture de pente ni changement brutal de direction.
+
+	\begin{itemize}
+		\item \textbf{Absence de point anguleux :} En un point anguleux (comme en $0$ pour la fonction valeur absolue), la courbe subit une \og brisure\fg{}. On peut y tracer deux demi-tangentes de pentes différentes, mais il est impossible d'y définir une tangente unique : la fonction n'est donc pas dérivable en ce point.
+		\item \textbf{Absence de tangente verticale :} Même lorsque la courbe paraît lisse sans point anguleux (comme en $0$ pour la fonction racine carrée), la tangente peut être verticale. Son coefficient directeur n'étant pas un nombre réel (la pente est \og infinie\fg{}), la fonction n'est pas non plus dérivable en ce point.
+	\end{itemize}
+
+	\textit{Note :} Bien que cette vision d'une courbe \og lisse\fg{} donne une excellente intuition géométrique du concept de dérivabilité, il existe en mathématiques des cas plus complexes (fonctions très oscillantes) où l'intuition visuelle ne suffit plus et où seul le calcul de la limite du taux de variation permet de conclure rigoureusement.
+\end{rem}
+
+\section{Opérations sur les fonctions dérivables}
+
+\begin{propriete}[Règles de dérivation]
+	Soient $u$ et $v$ deux fonctions dérivables sur un intervalle $I$ et $k$ un nombre réel.
+	\begin{itemize}
+		\item \textbf{Somme :} la fonction $u + v$ est dérivable sur $I$ et :
+		      \[
+			      (u + v)' = u' + v'
+		      \]
+
+		\item \textbf{Produit par une constante :} la fonction $ku$ est dérivable sur $I$ et :
+		      \[
+			      (ku)' = ku'
+		      \]
+
+		\item \textbf{Produit :} la fonction $uv$ est dérivable sur $I$ et :
+		      \[
+			      (uv)' = u'v + uv'
+		      \]
+
+		\item \textbf{Inverse :} si $v$ ne s'annule pas sur $I$, la fonction $\dfrac{1}{v}$ est dérivable sur $I$ et :
+		      \[
+			      \pa{\dfrac{1}{v}}' = \dfrac{-v'}{v^2}
+		      \]
+
+		\item \textbf{Quotient :} si $v$ ne s'annule pas sur $I$, la fonction $\dfrac{u}{v}$ est dérivable sur $I$ et :
+		      \[
+			      \pa{\dfrac{u}{v}}' = \dfrac{u'v - uv'}{v^2}
+		      \]
+
+	\end{itemize}
+\end{propriete}
+
+\begin{demonstration}
+	Soient $a \in I$ et $h \neq 0$ tel que $a + h \in I$.
+
+	On note $\tau_u(h)$ et $\tau_v(h)$ les taux de variation de $u$ et $v$ en $a$ : ils tendent vers $u'(a)$ et $v'(a)$ lorsque $h$ tend vers $0$.
+	\[
+		\tau_u(h) = \dfrac{u(a + h) - u(a)}{h}\quad\text{et}\quad\tau_v(h) = \dfrac{v(a + h) - v(a)}{h}
+	\]
+
+	On admet que, $v$ étant dérivable en $a$, $v(a + h)$ tend vers $v(a)$ lorsque $h$ tend vers $0$ (et de même pour $u$).
+
+	\begin{itemize}
+		\item \textbf{Somme}
+
+		      On a : $\dfrac{(u + v)(a + h) - (u + v)(a)}{h} = \tau_u(h) + \tau_v(h)$, qui tend vers $u'(a) + v'(a)$.
+
+		\item \textbf{Produit par une constante}
+
+		      On a : $\dfrac{ku(a + h) - ku(a)}{h} = k\,\tau_u(h)$, qui tend vers $ku'(a)$.
+
+		\item \textbf{Produit}
+
+		      En ajoutant et en retranchant $u(a)v(a + h)$ au numérateur :
+		      \[
+			      \def\arraystretch{1.5}
+			      \begin{array}{rcl}
+				      \dfrac{u(a + h)v(a + h) - u(a)v(a)}{h} & = & \dfrac{u(a + h)v(a + h) {\color{bleu}- u(a)v(a + h) + u(a)v(a + h)} - u(a)v(a)}{h}  \\
+				                                             & = & \dfrac{u(a + h) - u(a)}{h} \times v(a + h) + u(a) \times \dfrac{v(a + h) - v(a)}{h}
+			      \end{array}
+		      \]
+
+		      Lorsque $h$ tend vers $0$, cette quantité tend vers $u'(a)v(a) + u(a)v'(a)$.
+
+		\item \textbf{Inverse}
+		      Si $v$ ne s'annule pas sur $I$ :
+		      \[
+			      \dfrac{\dfrac{1}{v(a + h)} - \dfrac{1}{v(a)}}{h} = \dfrac{v(a) - v(a + h)}{h \, v(a + h)v(a)} = -\tau_v(h) \times \dfrac{1}{v(a + h)v(a)}
+		      \]
+
+		      \ldots qui tend vers $-v'(a) \times \dfrac{1}{v(a)^2} = \dfrac{-v'(a)}{v(a)^2}$.
+
+		\item \textbf{Quotient}
+		      On écrit $\dfrac{u}{v} = u \times \dfrac{1}{v}$ et on utilise les règles du produit et de l'inverse :
+		      \[
+			      \pa{\dfrac{u}{v}}' = u' \times \dfrac{1}{v} + u \times \pa{\dfrac{-v'}{v^2}} = \dfrac{u'v}{v^2} - \dfrac{uv'}{v^2} = \dfrac{u'v - uv'}{v^2}
+		      \]
+
+	\end{itemize}
+\end{demonstration}
+
+\begin{erreur}
+	\nline
+	\begin{itemize}
+		\item Le produit ne se dérive pas facteur par facteur : en général $(uv)' \neq u'v'$.
+
+		      Par exemple, avec $u(x) = v(x) = x$, on a $(x \times x)' = (x^2)' = 2x$ alors que $u'v' = 1$.
+
+		\item De même, $\pa{\dfrac{u}{v}}' \neq \dfrac{u'}{v'}$, et dans le numérateur $u'v - uv'$ l'ordre des termes compte.
+	\end{itemize}
+\end{erreur}
+
+\subsection{Dérivées des puissances entières}
+
+\begin{propriete}[Dérivée de $x \longmapsto x^n$]
+	Soit $n$ un entier relatif non nul.
+	\begin{itemize}
+		\item Si $n \geq 1$, la fonction $x \longmapsto x^n$ est dérivable sur $\R$ et sa dérivée est $x \longmapsto nx^{n-1}$.
+		\item Si $n \leq -1$, la fonction $x \longmapsto x^n = \dfrac{1}{x^{-n}}$ est dérivable sur $\R^*$ et sa dérivée est $x \longmapsto nx^{n-1}$.
+	\end{itemize}
+\end{propriete}
+
+\begin{ex}
+	\nline
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $\pa{x^5}' = 5x^4$
+			\item $\pa{x^{-3}}' = -3x^{-4} = \dfrac{-3}{x^4}$ pour $x \neq 0$
+			\item $\pa{\dfrac{1}{x^2}}' = \pa{x^{-2}}' = -2x^{-3} = \dfrac{-2}{x^3}$ pour $x \neq 0$.
+		\end{itemize}
+	\end{multicols}
+\end{ex}
+
+\subsection{Choisir la bonne règle}
+
+\begin{methode}[Dériver une somme ou un produit]
+	On procède ainsi :
+	\begin{enumerate}
+		\item repérer la dernière opération qui définit la fonction (somme, produit, quotient) ;
+		\item nommer $u$ et $v$ et calculer $u'$ et $v'$ à part ;
+		\item appliquer la formule, puis simplifier (et factoriser quand c'est utile) ;
+		\item préciser l'ensemble sur lequel le calcul est valable.
+	\end{enumerate}
+\end{methode}
+\begin{ex}
+	Calculer la dérivée de chacune des fonctions suivantes :
+	\begin{multicols}{2}
+		\begin{enumerate}[label=\alph*)]
+			\item $f(x) = 3x^4 - 2x^2 + 5x - 1$ sur $\R$ ;
+			\item $g(x) = 3x^2 + 4\sqrt{x}$ sur $\intoo{0}{+\infty}$ ;
+			\item $h(x) = \pa{3x^2 + 4x}(5x - 1)$ sur $\R$ ;
+			\item $k(x) = (2x + 1)\sqrt{x}$ sur $\intoo{0}{+\infty}$.
+		\end{enumerate}
+	\end{multicols}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}[label=\alph*)]
+			\item $f$ est une somme de termes de la forme $kx^n$ :
+			      \[
+				      \begin{array}{rcl}
+					      f'(x) & = & 3 \times 4x^3 - 2 \times 2x + 5 \\
+					            & = & 12x^3 - 4x + 5
+				      \end{array}
+			      \]
+
+			\item $g = u + v$ avec $\begin{cases}u(x) = 3x^2\\u'(x) = 6x\end{cases}$, et $\begin{cases}v(x) = 4\sqrt{x}\\v'(x) = 4 \times \dfrac{1}{2\sqrt{x}} = \dfrac{2}{\sqrt{x}}\end{cases}$, donc :
+			      \[
+				      g'(x) = u'(x) + v'(x) = 6x + \dfrac{2}{\sqrt{x}}
+			      \]
+
+			\item $h = uv$ avec $\begin{cases}u(x) = 3x^2 + 4x\\u'(x) = 6x + 4\end{cases}$ et $\begin{cases}v(x) = 5x - 1\\v'(x) = 5\end{cases}$, donc :
+			      \[
+				      \def\arraystretch{1.3}
+				      \begin{array}{rcl}
+					      h'(x) & = & u'(x)v(x) + u(x)v'(x)                      \\
+					            & = & (6x + 4)(5x - 1) + \pa{3x^2 + 4x} \times 5 \\
+					            & = & 30x^2 - 6x + 20x - 4 + 15x^2 + 20x         \\
+					            & = & 45x^2 + 34x - 4
+				      \end{array}
+			      \]
+
+			\item $k = uv$ avec $\begin{cases}u(x) = 2x + 1\\u'(x) = 2\end{cases}$ et $\begin{cases}v(x) = \sqrt{x}\\v'(x) = \dfrac{1}{2\sqrt{x}}\end{cases}$, donc :
+			      \[
+				      \begin{array}{rcl}
+					      k'(x) & = & u'(x)v(x) + u(x)v'(x)                                                                                                 \\
+					            & = & 2\sqrt{x} + (2x + 1) \times \dfrac{1}{2\sqrt{x}} \quad=\dfrac{4x + 2x + 1}{2\sqrt{x}}\quad =\dfrac{6x + 1}{2\sqrt{x}}
+				      \end{array}
+			      \]
+
+		\end{enumerate}
+	\end{correction}
+\end{ex}
+
+\begin{methode}[Dériver un inverse ou un quotient]
+	Calculer la dérivée de chacune des fonctions suivantes :
+	\begin{multicols}{2}
+		\begin{enumerate}[label=\alph*)]
+			\item $f(x) = \dfrac{1}{2x^2 + 5x}$ sur $\R \setminus \brac{\dfrac{-5}{2}\,;\,0}$ ;
+			\item $g(x) = \dfrac{6x - 5}{x^2 - 2x - 1}$ sur $\R \setminus \brac{1 - \sqrt{2}\,;\,1 + \sqrt{2}}$ ;
+			\item $h(x) = \dfrac{x^2 + 1}{x - 2}$ sur $\intoo{-\infty}{2}\cup\intoo{2}{+\infty}$.
+		\end{enumerate}
+	\end{multicols}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}[label=\alph*)]
+			\item $f = \dfrac{1}{v}$ avec $\begin{cases}v(x) = 2x^2 + 5x\\v'(x) = 4x + 5\end{cases}$, donc :
+			      \[
+				      f'(x) = \dfrac{-v'(x)}{v(x)^2} = \dfrac{-4x + 5}{\pa{2x^2 + 5x}^2}
+			      \]
+
+			\item Le dénominateur $x^2 - 2x - 1$ s'annule en $\pa{1 - \sqrt{2}}$ et en $\pa{1 + \sqrt{2}}$.
+
+			      On a $g = \dfrac{u}{v}$ avec $\begin{cases}u(x) = 6x - 5\\u'(x) = 6\end{cases}$ et $\begin{cases}v(x) = x^2 - 2x - 1\\v'(x) = 2x - 2\end{cases}$, donc :
+			      \[
+				      g'(x) = \dfrac{u'(x)v(x) - u(x)v'(x)}{\pa{v(x)}^2} = \dfrac{6\pa{x^2 - 2x - 1} - (6x - 5)(2x - 2)}{\pa{x^2 - 2x - 1}^2}
+			      \]
+
+			      On développe et on réduit le numérateur :
+			      \[
+				      6x^2 - 12x - 6 - \pa{12x^2 - 22x + 10} = -6x^2 + 10x - 16
+			      \]
+
+			      Par conséquent :
+			      \[
+				      g'(x) = \dfrac{-6x^2 + 10x - 16}{\pa{x^2 - 2x - 1}^2}
+			      \]
+
+			\item $h = \dfrac{u}{v}$ avec $\begin{cases}u(x) = x^2 + 1\\u'(x) = 2x\end{cases}$ et $\begin{cases}v(x) = x - 2\\v'(x) = 1\end{cases}$, donc :
+			      \[
+				      h'(x) = \dfrac{u'(x)v(x) - u(x)v'(x)}{\pa{v(x)}^2} = \dfrac{2x(x - 2) - \pa{x^2 + 1} \times 1}{(x - 2)^2} = \dfrac{x^2 - 4x - 1}{(x - 2)^2}
+			      \]
+
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\newpage
+
+\section{Synthèse : formulaire de dérivation}
+
+\begin{propriete}[Dérivées des fonctions de référence]
+	\nline
+	\begin{center}
+		\rnc{\arraystretch}{1.6}
+		\begin{tabular}{|c|c|c|} \hline
+			\ccg\textbf{Fonction $f(x)$}         & \ccg\textbf{Dérivée $f'(x)$} & \ccg\textbf{Ensemble de dérivabilité}      \\ \hline
+			$k$ (constante)                      & $0$                          & $\R$                                       \\ \hline
+			$mx + p$                             & $m$                          & $\R$                                       \\ \hline
+			$x^2$                                & $2x$                         & $\R$                                       \\ \hline
+			$x^3$                                & $3x^2$                       & $\R$                                       \\ \hline
+			$x^n$ ($n \in \N^*$)                 & $nx^{n-1}$                   & $\R$                                       \\ \hline
+			\rule[-4mm]{0mm}{11mm}$\dfrac{1}{x}$ & $\dfrac{-1}{x^2}$            & $\intoo{-\infty}{0}\cup\intoo{0}{+\infty}$ \\ \hline
+			$x^n$ ($n \in \Z$, $n \leq -1$)      & $nx^{n-1}$                   & $\intoo{-\infty}{0}\cup\intoo{0}{+\infty}$ \\ \hline
+			\rule[-4mm]{0mm}{11mm}$\sqrt{x}$     & $\dfrac{1}{2\sqrt{x}}$       & $\intoo{0}{+\infty}$                       \\ \hline
+		\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{propriete}[Opérations sur les dérivées]
+	\nline
+	\begin{center}
+		\rnc{\arraystretch}{1.6}
+		\begin{tabular}{|c|c|c|} \hline
+			\ccg\textbf{Fonction}                & \ccg\textbf{Dérivée}     & \ccg\textbf{Condition}      \\ \hline
+			$u + v$                              & $u' + v'$                &                             \\ \hline
+			$ku$ ($k \in \R$)                    & $ku'$                    &                             \\ \hline
+			$uv$                                 & $u'v + uv'$              &                             \\ \hline
+			\rule[-4mm]{0mm}{11mm}$\dfrac{1}{v}$ & $\dfrac{-v'}{v^2}$       & $v$ ne s'annule pas sur $I$ \\ \hline
+			\rule[-4mm]{0mm}{11mm}$\dfrac{u}{v}$ & $\dfrac{u'v - uv'}{v^2}$ & $v$ ne s'annule pas sur $I$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{propriete}
+
+\section{Approximation affine}
+
+\begin{propriete}[Approximation affine]
+	Si $f$ est dérivable en $a$, alors pour tout nombre $h$ proche de $0$ :
+	\[
+		f(a + h) \approx f(a) + f'(a)\,h
+	\]
+
+\end{propriete}
+
+\begin{rem}
+	Pour $h$ proche de $0$, le taux de variation $\dfrac{f(a + h) - f(a)}{h}$ est proche de $f'(a)$, donc :
+	\[
+		f'\pa{a}\approx\dfrac{f(a + h) - f(a)}{h}~\iff~f(a + h) - f(a) \approx f'(a)\,h
+	\]
+
+	Le nombre $f(a) + f'(a)\,h$ est l'ordonnée, pour l'abscisse $a + h$, du point de la tangente à $\Cf$ en $a$ : on remplace localement la courbe par sa tangente.
+\end{rem}
+
+\newpage
+
+\begin{ex}
+	Pour $f(x) = \sqrt{x}$, $a = 4$ et $h = 0{,}1$, on a : $f(4) = 2$ et $f'(4) = \dfrac{1}{2\sqrt{4}} = \dfrac{1}{4}$ :
+	\[
+		f(4 + 0.1) \approx f(4) + f'(4)\times 0.1~\iff~\sqrt{4{,}1} \approx 2 + \dfrac{1}{4} \times 0{,}1 = 2{,}025
+	\]
+\end{ex}
+
+\begin{methode}[Calculer une valeur approchée]
+	Déterminer une valeur approchée de $\dfrac{1}{2{,}003^2}$.
+
+	\begin{correction}
+		On considère la fonction $f(x) = \dfrac{1}{x^2} = x^{-2}$, dont la dérivée est $f'(x) = -2x^{-3} = \dfrac{-2}{x^3}$.
+
+		On choisit $a = 2$ et $h = 0{,}003$ :
+		\[
+			\dfrac{1}{2{,}003^2} = f(2 + 0{,}003) \approx f(2) + f'(2) \times 0{,}003
+		\]
+
+		Comme $f(2) = \dfrac{1}{4} = 0{,}25$ et $f'(2) = \dfrac{-2}{8} = -0{,}25$ :
+		\[
+			\dfrac{1}{2{,}003^2} \approx 0{,}25 + (-0{,}25) \times 0{,}003 = 0{,}25 - 0{,}00075 = 0{,}24925
+		\]
+
+	\end{correction}
+\end{methode}
+
+\begin{ex}[Vérifier une approximation affine avec Python]
+	Le script suivant compare la valeur approchée obtenue par approximation affine à la valeur exacte pour $f(x) = \dfrac{1}{x^2}$, $a = 2$ et $h = 0{,}003$ :
+
+	\ms
+
+	\begin{lstlisting}
+def approximation_affine(f, df, a, h):
+    return f(a) + df(a) * h
+
+def f(x):
+    return 1 / x ** 2
+
+def df(x):
+    return -2 / x ** 3
+
+approx = approximation_affine(f, df, 2, 0.003)
+exact = f(2.003)
+print(approx, exact, abs(exact - approx))
+\end{lstlisting}
+
+	On obtient une valeur approchée égale à $0{,}24925$, une valeur \og exacte\fg{} proche de $0{,}249252$, et un écart de l'ordre de $10^{-6}$.
+\end{ex}
+
