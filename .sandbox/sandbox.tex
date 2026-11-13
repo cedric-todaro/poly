@@ -5,5 +5,596 @@
 \date{\today}
 \begin{document}
 % \tableofcontents
-\lipsum
+
+\chapter{Trigonométrie}
+
+\section{Cercle trigonométrique et radian}
+
+\subsection{Le cercle trigonométrique}
+
+\begin{defin}[Cercle trigonométrique]
+	Dans le plan muni d'un repère orthonormé $\vOIJ$, le \textbf{cercle trigonométrique} est le cercle de centre $O$ et de rayon $1$.
+
+	Sur un cercle, on appelle \textbf{sens direct}, \textbf{sens positif} ou \textbf{sens trigonométrique} le sens contraire des aiguilles d'une montre.
+
+	Le sens inverse est appelé \textbf{sens indirect} ou \textbf{sens négatif}.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=2.2, >=Stealth, thick]
+			\draw[help lines, gray!40, dashed] (-1.3,-1.3) grid (1.3,1.3);
+			\draw[->] (-1.4,0) -- (1.5,0) node[right] {$x$};
+			\draw[->] (0,-1.4) -- (0,1.5) node[above] {$y$};
+			\draw[->, vert, line width=1.2pt] (0,0) -- (1,0) node[midway, below] {$\vec{i}$};
+			\draw[->, vert, line width=1.2pt] (0,0) -- (0,1) node[midway, left] {$\vec{j}$};
+			\draw[bleu, line width=1.5pt] (0,0) circle (1);
+			\node[circle, fill=rouge, inner sep=1.5pt] at (1,0) {};
+			\node[below right, font=\small] at (1,0) {$I(1\,;\,0)$};
+			\node[circle, fill=rouge, inner sep=1.5pt] at (0,1) {};
+			\node[above left, font=\small] at (0,1) {$J(0\,;\,1)$};
+			\node[circle, fill=black, inner sep=1.5pt] at (0,0) {};
+			\node[below left, font=\small] at (0,0) {$O$};
+			\draw (-1,0.05) -- (-1,-0.05) node[below, font=\small] {$-1$};
+			\draw (0.05,-1) -- (-0.05,-1) node[left, font=\small] {$-1$};
+			\draw[->, rouge] (8:1.15) arc[start angle=8, end angle=65, radius=1.15];
+			\node[rouge, rotate=-45, font=\footnotesize] at (1.0,0.85) {sens direct (+)};
+		\end{tikzpicture}
+	\end{center}
+\end{defin}
+
+\subsection{Longueur d'arc et radian}
+
+\begin{defin}[Le radian]
+	Le \textbf{radian} (noté $\text{rad}$) est l'unité de mesure d'angle définie ainsi : un angle au centre qui intercepte, sur le cercle trigonométrique, un arc de longueur $1$ mesure $1\,\text{rad}$.
+
+	Plus généralement, un angle au centre de mesure $\theta\,\text{rad}$ intercepte sur le cercle trigonométrique un arc de longueur $\theta$.
+\end{defin}
+
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, thick]
+		\draw[bleu] (0,0) circle (2.5);
+		\draw (0,0) -- (2.5,0) node[midway, below] {$1$};
+		\draw (0,0) -- ({2.5*cos(57.2958)},{2.5*sin(57.2958)});
+		\draw[rouge, ultra thick] (2.5,0) arc (0:57.2958:2.5);
+		\draw[rouge, ultra thick] (2.5,0) -- (2.5,2.5);
+		\draw (0.6,0) arc (0:57.2958:0.6);
+		\node[font=\small] at (1.0,0.3) {$1\,\text{rad}$};
+		\node[font=\small] at (1.95,1.15) {$1$};
+		\node[rouge, right, font=\small] at (2.5,1.25) {longueur $1$};
+		\node[circle, fill=black, inner sep=1.5pt] at (0,0) {};
+		\node[circle, fill=black, inner sep=1.5pt] at (2.5,0) {};
+		\node[circle, fill=black, inner sep=1.5pt] at ({2.5*cos(57.2958)},{2.5*sin(57.2958)}) {};
+		\node[below left] at (0,0) {$O$};
+		\node[below right] at (2.5,0) {$I$};
+		\node[above right] at ({2.5*cos(57.2958)},{2.5*sin(57.2958)}) {$M$};
+	\end{tikzpicture}
+\end{center}
+
+Le périmètre du cercle trigonométrique est $2\pi \times 1 = 2\pi$.
+
+Un tour complet correspond donc à un arc de longueur $2\pi$ : il mesure $2\pi\,\text{rad}$, soit $360^\circ$.
+
+\begin{propriete}[Longueur d'un arc de cercle]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[>=Stealth, thick]
+			\def\R{1.8}
+			\def\thetaDeg{55}
+			\draw[bleu!60, line width=1pt] (0,0) circle (\R);
+			\draw[black] (0,0) -- (\R,0) node[midway, below, font=\small] {$R$};
+			\draw[black] (0,0) -- (\thetaDeg:\R) node[midway, above left, font=\small] {$R$};
+			\draw[rouge, line width=2pt] (\R,0) arc[start angle=0, end angle=\thetaDeg, radius=\R];
+			\node[rouge, right, font=\small] at ({\thetaDeg/2}:{\R + 0.12}) {$\ell = R\theta$};
+			\draw[vert, line width=1pt] (0.5,0) arc[start angle=0, end angle=\thetaDeg, radius=0.5];
+			\node[vert,right, font=\small] at ({\thetaDeg/2}:0.5) {$\theta\,\text{rad}$};
+			\node[circle, fill=black, inner sep=1.5pt] at (0,0) {};
+			\node[below left, font=\small] at (0,0) {$O$};
+			\node[circle, fill=rouge, inner sep=1.5pt] at (\R,0) {};
+			\node[circle, fill=rouge, inner sep=1.5pt] at (\thetaDeg:\R) {};
+		\end{tikzpicture}
+	\end{wrapstuff}	Sur un cercle de rayon $R$, un arc intercepté par un angle au centre de mesure $\theta\,\text{rad}$ a pour longueur :
+	\[
+		\ell = R\,\theta
+	\]
+
+	\rule{0mm}{20mm}
+\end{propriete}
+
+\begin{demonstration}
+	Sur le cercle trigonométrique, l'arc a pour longueur $\theta$ d'après la définition du radian.
+
+	Un cercle de rayon $R$ est l'image du cercle trigonométrique par une homothétie de rapport $R$, qui multiplie toutes les longueurs par $R$ et conserve les angles : l'arc a donc pour longueur $R\theta$.
+\end{demonstration}
+
+\begin{propriete}[Correspondance degrés / radians]
+	Les mesures en degrés $d$ et en radians $\theta$ d'un même angle sont proportionnelles :
+	\[
+		\theta = \dfrac{\pi}{180}\,d
+	\]
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|} \hline
+			\ccg Degrés                                       & $0$ & $30$             & $45$             & $60$             & $90$             & $120$             & $135$             & $150$             & $180$ & $270$             & $360$  \\ \hline
+			\rule[-4mm]{0mm}{11mm}\ccg Radians ($\text{rad}$) & $0$ & $\dfrac{\pi}{6}$ & $\dfrac{\pi}{4}$ & $\dfrac{\pi}{3}$ & $\dfrac{\pi}{2}$ & $\dfrac{2\pi}{3}$ & $\dfrac{3\pi}{4}$ & $\dfrac{5\pi}{6}$ & $\pi$ & $\dfrac{3\pi}{2}$ & $2\pi$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{methode}[Passer des degrés aux radians et réciproquement]
+	\nline
+	\begin{enumerate}[label=\alph*)]
+		\item Convertir $33^\circ$ en radians.
+		\item Convertir $\dfrac{3\pi}{8}\,\text{rad}$ en degrés.
+		\item Calculer la longueur d'un arc de $60^\circ$ sur un cercle de rayon $5\,\text{cm}$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}[label=\alph*)]
+			\item $\theta = 33 \times \dfrac{\pi}{180} = \dfrac{11\pi}{60}\,\text{rad}$.
+			\item $d = \dfrac{3\pi}{8} \times \dfrac{180}{\pi} = \dfrac{3 \times 180}{8} = 67{,}5^\circ$.
+			\item On a $60^\circ = \dfrac{\pi}{3}\,\text{rad}$ donc $\ell = R\theta = 5 \times \dfrac{\pi}{3} = \dfrac{5\pi}{3} \approx 5{,}24\,\text{cm}$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\subsection{Enroulement de la droite numérique et image d'un réel}
+
+\begin{defin}[Image d'un nombre réel]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[scale=0.8, >=Stealth, thick]
+			\draw[->, gris] (-3.4,0) -- (3.4,0);
+			\draw[->, gris] (0,-3.4) -- (0,3.4);
+			\draw[bleu, thick] (0,0) circle (3);
+			\draw[dashed] (3,-4) -- (3,4) node[right] {$(d)$};
+			\node[below right] at (3,0) {$I$};
+			\node[above left] at (0,3) {$J$};
+			\foreach \ag/\lb in {0/{0}, 30/{\frac{\pi}{6}}, 45/{\frac{\pi}{4}}, 60/{\frac{\pi}{3}}, 90/{\frac{\pi}{2}}, 120/{\frac{2\pi}{3}}, 135/{\frac{3\pi}{4}}, 150/{\frac{5\pi}{6}}, 180/{\pi}, 210/{\frac{7\pi}{6}}, 225/{\frac{5\pi}{4}}, 240/{\frac{4\pi}{3}}, 270/{\frac{3\pi}{2}}, 300/{\frac{5\pi}{3}}, 315/{\frac{7\pi}{4}}, 330/{\frac{11\pi}{6}}} {
+			\draw[gris, thin] (0,0) -- ({3*cos(\ag)},{3*sin(\ag)});
+			\fill[bleu] ({3*cos(\ag)},{3*sin(\ag)}) circle (2pt);
+			\node[font=\small] at ({3.85*cos(\ag)},{3.85*sin(\ag)}) {$\lb$};
+			}
+			\draw[rouge, line width=1.5pt] (3,0) arc[start angle=0, end angle=75, radius=3];
+			\draw[rouge, dashed, thin] (0,0) -- ({3*cos(75)},{3*sin(75)});
+			\fill[rouge] ({3*cos(75)},{3*sin(75)}) circle (2.5pt);
+			\node[above, rouge, font=\small] at ({3*cos(75)},{3*sin(75)}) {$M(x)$};
+			\draw[->, vert, line width=1.2pt] (0,0) -- (3,0) node[midway, below] {$\vec{i}$};
+			\draw[->, vert, line width=1.2pt] (0,0) -- (0,3) node[midway, left] {$\vec{j}$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Dans le repère $\vOIJ$, on considère le cercle trigonométrique et la droite $(d)$ tangente au cercle en $I(1\,;\,0)$, munie du repère $\pa{I\,;\,\vec{j}}$.
+
+	On \og enroule \fg{} la droite $(d)$ autour du cercle : les réels positifs dans le sens direct, les réels négatifs dans le sens indirect.
+
+	À tout réel $x$ on associe ainsi un unique point $M$ du cercle, appelé \textbf{image} de $x$ et noté $M(x)$.
+
+	L'arc orienté $IM$ a pour longueur $\abs{x}$.
+
+	\rule{0mm}{30mm}
+\end{defin}
+
+\begin{propriete}[Périodicité de l'enroulement]
+	Pour tous réels $x$ et $y$, les réels $x$ et $y$ ont la même image sur le cercle trigonométrique si et seulement si $y = x + 2k\pi$ avec $k \in \Z$.
+
+	En particulier, pour tout $k \in \Z$ :
+	\[
+		M(x + 2k\pi) = M(x)
+	\]
+\end{propriete}
+
+\begin{demonstration}
+	Le périmètre du cercle trigonométrique est $2\pi$.
+
+	Ajouter $2k\pi$ à $x$ revient à effectuer $\abs{k}$ tours complets supplémentaires (dans le sens direct si $k > 0$, indirect si $k < 0$) : on revient au même point.
+
+	Réciproquement, deux réels ayant la même image diffèrent d'un nombre entier de tours, c'est-à-dire d'un multiple entier de $2\pi$.
+\end{demonstration}
+
+\begin{methode}[Placer l'image d'un réel sur le cercle trigonométrique]
+	Pour placer l'image d'un réel $x$, on le ramène à un réel $y \in \intof{-\pi}{\pi}$ de même image en retirant ou en ajoutant des multiples de $2\pi$, puis on place le point.
+
+	Déterminer le réel de $\intof{-\pi}{\pi}$ qui a la même image que $\dfrac{25\pi}{4}$, puis que $-\dfrac{11\pi}{3}$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $\dfrac{25\pi}{4} = \dfrac{24\pi}{4} + \dfrac{\pi}{4} = \dfrac{\pi}{4} + 3 \times 2\pi$.
+
+			      Le réel $\dfrac{25\pi}{4}$ a donc la même image que $\dfrac{\pi}{4}$, qui appartient à $\intof{-\pi}{\pi}$.
+			\item $-\dfrac{11\pi}{3} = \dfrac{\pi}{3} - \dfrac{12\pi}{3} = \dfrac{\pi}{3} + (-2) \times 2\pi$.
+
+			      Le réel $-\dfrac{11\pi}{3}$ a donc la même image que $\dfrac{\pi}{3}$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\section{Cosinus et sinus d'un nombre réel}
+
+\begin{defin}[Cosinus et sinus]
+	Soit $x$ un nombre réel et soit $M$ son image sur le cercle trigonométrique.
+	\begin{itemize}
+		\item Le \textbf{cosinus} de $x$, noté $\cos(x)$, est l'abscisse du point $M$.
+		\item Le \textbf{sinus} de $x$, noté $\sin(x)$, est l'ordonnée du point $M$.
+	\end{itemize}
+	On a ainsi : $M\coordl{\cos(x)}{\sin(x)}$.
+\end{defin}
+
+\begin{propriete}[Propriétés fondamentales]
+	Pour tout nombre réel $x$ et pour tout entier relatif $k$ :
+	\begin{enumerate}
+		\item $-1 \leq \cos(x) \leq 1$ et $-1 \leq \sin(x) \leq 1$ ;
+		\item $\cos^2(x) + \sin^2(x) = 1$ ;
+		\item $\cos(x + 2k\pi) = \cos(x)$ et $\sin(x + 2k\pi) = \sin(x)$.
+	\end{enumerate}
+\end{propriete}
+
+\begin{demonstration}
+	Soit $M$ l'image de $x$.
+	\begin{enumerate}
+		\item Le cercle trigonométrique étant de rayon $1$, les coordonnées de tout point du cercle sont comprises entre $-1$ et $1$.
+		\item Soit $H$ le projeté orthogonal de $M$ sur l'axe des abscisses.
+
+		      Si $M$ est sur un axe, l'égalité est immédiate (l'une des coordonnées est nulle, l'autre vaut $\pm 1$).
+
+		      Sinon, le triangle $OHM$ est rectangle en $H$ et le théorème de Pythagore donne $OH^2 + HM^2 = OM^2$.
+
+		      Or $OH = \abs{\cos(x)}$, $HM = \abs{\sin(x)}$ et $OM = 1$, d'où $\cos^2(x) + \sin^2(x) = 1$.
+		\item Les réels $x$ et $x + 2k\pi$ ont la même image, donc les mêmes coordonnées.
+	\end{enumerate}
+\end{demonstration}
+
+\begin{propriete}[Lien avec le triangle rectangle]
+	Soit $x \in \intoo{0}{\dfrac{\pi}{2}}$.
+
+	Dans un triangle rectangle dont un angle aigu mesure $x\,\text{rad}$ :
+	\[
+		\cos(x) = \dfrac{\text{côté adjacent}}{\text{hypoténuse}} \quad \text{et} \quad \sin(x) = \dfrac{\text{côté opposé}}{\text{hypoténuse}}
+	\]
+\end{propriete}
+
+\begin{demonstration}
+	Soit $ABC$ un triangle rectangle en $B$ dont l'angle en $A$ mesure $x\,\text{rad}$.
+
+	On place $A$ en $O$ et $B$ sur la demi-droite $[OI)$, avec $C$ dans le demi-plan des ordonnées positives.
+
+	La demi-droite $[OC)$ coupe le cercle trigonométrique en $M$ d'image $x$.
+
+	Soit $H$ le projeté orthogonal de $M$ sur $(OI)$ : les droites $(HM)$ et $(BC)$ sont parallèles, et le théorème de Thalès donne :
+	\[
+		\dfrac{OH}{OB} = \dfrac{HM}{BC} = \dfrac{OM}{OC} = \dfrac{1}{AC}
+	\]
+	Ainsi $\cos(x) = OH = \dfrac{AB}{AC}$ et $\sin(x) = HM = \dfrac{BC}{AC}$.
+\end{demonstration}
+
+\section{Angles associés}
+
+\begin{propriete}[Angles associés]
+	Pour tout nombre réel $x$ :
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\begin{tabular}{|c|c|c|l|} \hline
+			\ccg Réel associé    & \ccg $\cos$ & \ccg $\sin$ & \ccg Transformation de $M(x)$ en l'image du réel associé \\ \hline
+			$-x$                 & $\cos(x)$   & $-\sin(x)$  & symétrie par rapport à l'axe des abscisses               \\ \hline
+			$\pi - x$            & $-\cos(x)$  & $\sin(x)$   & symétrie par rapport à l'axe des ordonnées               \\ \hline
+			$\pi + x$            & $-\cos(x)$  & $-\sin(x)$  & symétrie par rapport à l'origine $O$                     \\ \hline
+			$\dfrac{\pi}{2} - x$ & $\sin(x)$   & $\cos(x)$   & symétrie par rapport à la droite d'équation $y = x$      \\ \hline
+			$\dfrac{\pi}{2} + x$ & $-\sin(x)$  & $\cos(x)$   & quart de tour de centre $O$ dans le sens direct          \\ \hline
+		\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.9, >=Stealth, thick]
+		\draw[->, gris] (-3.6,0) -- (3.6,0);
+		\draw[->, gris] (0,-3.6) -- (0,3.6);
+		\draw[bleu] (0,0) circle (3);
+		\draw[gris, dashed] (3.3,3.3) -- (-3.3,-3.3) node[below left, font=\small] {$y = x$};
+		\draw[dotted] ({3*cos(35)},{3*sin(35)}) -- ({3*cos(35)},{-3*sin(35)});
+		\draw[dotted] ({3*cos(35)},{3*sin(35)}) -- ({-3*cos(35)},{3*sin(35)});
+		\draw[dotted] ({3*cos(35)},{3*sin(35)}) -- ({-3*cos(35)},{-3*sin(35)});
+		\draw[dotted] ({3*cos(35)},{3*sin(35)}) -- ({3*cos(55)},{3*sin(55)});
+		\node[circle, fill=rouge, inner sep=1.8pt] at ({3*cos(35)},{3*sin(35)}) {};
+		\node[right, font=\small] at ({3*cos(35)},{3*sin(35)}) {$M(x)$};
+		\node[circle, fill=vert, inner sep=1.8pt] at ({3*cos(55)},{3*sin(55)}) {};
+		\node[above right, font=\small] at ({3*cos(55)},{3*sin(55)}) {$M\pa{\frac{\pi}{2} - x}$};
+		\node[circle, fill=vert, inner sep=1.8pt] at ({3*cos(145)},{3*sin(145)}) {};
+		\node[above left, font=\small] at ({3*cos(145)},{3*sin(145)}) {$M(\pi - x)$};
+		\node[circle, fill=vert, inner sep=1.8pt] at ({3*cos(215)},{3*sin(215)}) {};
+		\node[below left, font=\small] at ({3*cos(215)},{3*sin(215)}) {$M(\pi + x)$};
+		\node[circle, fill=vert, inner sep=1.8pt] at ({3*cos(325)},{3*sin(325)}) {};
+		\node[below right, font=\small] at ({3*cos(325)},{3*sin(325)}) {$M(-x)$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{demonstration}
+	Soit $M(x)$ de coordonnées $\coordl{\cos(x)}{\sin(x)}$.
+
+	Chaque symétrie ci-dessous conserve les longueurs et le cercle trigonométrique.
+	\begin{itemize}
+		\item La symétrie d'axe $(Ox)$ laisse $I$ invariant et change le sens de parcours : elle envoie $M(x)$ sur $M(-x)$, de coordonnées $\coordl{\cos(x)}{-\sin(x)}$.
+		\item La symétrie d'axe $(Oy)$ envoie $I$ sur le point $M(\pi)$ de coordonnées $(-1\,;\,0)$ et change le sens de parcours : elle envoie $M(x)$ sur $M(\pi - x)$, de coordonnées $\coordl{-\cos(x)}{\sin(x)}$.
+		\item La symétrie de centre $O$ envoie $M(x)$ sur le point diamétralement opposé, c'est-à-dire sur $M(x + \pi)$ (demi-tour), de coordonnées $\coordl{-\cos(x)}{-\sin(x)}$.
+		\item La symétrie d'axe la droite d'équation $y = x$ échange $I$ et $J = M\pa{\dfrac{\pi}{2}}$ et change le sens de parcours : elle envoie $M(x)$ sur $M\pa{\dfrac{\pi}{2} - x}$.
+
+		      Elle échange les coordonnées : $\cos\pa{\dfrac{\pi}{2} - x} = \sin(x)$ et $\sin\pa{\dfrac{\pi}{2} - x} = \cos(x)$.
+		\item Enfin, $\dfrac{\pi}{2} + x = \dfrac{\pi}{2} - (-x)$, donc $\cos\pa{\dfrac{\pi}{2} + x} = \sin(-x) = -\sin(x)$ et $\sin\pa{\dfrac{\pi}{2} + x} = \cos(-x) = \cos(x)$.
+	\end{itemize}
+\end{demonstration}
+
+\section{Valeurs remarquables}
+
+\begin{propriete}[Valeurs remarquables]
+	\nline
+	\begin{center}
+		\rnc{\arraystretch}{1.6}
+		\begin{tabular}{|c|c|c|c|c|c|} \hline
+			\ccg $x$ (en rad) & $0$ & $\dfrac{\pi}{6}$      & $\dfrac{\pi}{4}$      & $\dfrac{\pi}{3}$      & $\dfrac{\pi}{2}$ \\ \hline
+			\ccg $\cos(x)$    & $1$ & $\dfrac{\sqrt{3}}{2}$ & $\dfrac{\sqrt{2}}{2}$ & $\dfrac{1}{2}$        & $0$              \\ \hline
+			\ccg $\sin(x)$    & $0$ & $\dfrac{1}{2}$        & $\dfrac{\sqrt{2}}{2}$ & $\dfrac{\sqrt{3}}{2}$ & $1$              \\ \hline
+		\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{demonstration}[Valeurs pour $\dfrac{\pi}{4}$]
+	La mesure $\dfrac{\pi}{4}\,\text{rad}$ correspond à $45^\circ$.
+
+	Soit $M$ l'image de $\dfrac{\pi}{4}$ et $H$ son projeté orthogonal sur l'axe des abscisses.
+
+	Le triangle $OHM$ est rectangle en $H$ et l'angle en $O$ mesure $45^\circ$ : l'angle en $M$ mesure $180^\circ - 90^\circ - 45^\circ = 45^\circ$, donc le triangle est isocèle en $H$.
+
+	Ainsi $OH = HM$, c'est-à-dire $\cos\pa{\dfrac{\pi}{4}} = \sin\pa{\dfrac{\pi}{4}}$ (les deux nombres sont positifs car $M$ est dans le premier quadrant).
+
+	La relation fondamentale donne alors :
+	\[
+		2\sin^2\pa{\dfrac{\pi}{4}} = 1 \implies \sin^2\pa{\dfrac{\pi}{4}} = \dfrac{1}{2}
+	\]
+	Comme $\sin\pa{\dfrac{\pi}{4}} > 0$, on obtient $\sin\pa{\dfrac{\pi}{4}} = \dfrac{1}{\sqrt{2}} = \dfrac{\sqrt{2}}{2}$, et de même $\cos\pa{\dfrac{\pi}{4}} = \dfrac{\sqrt{2}}{2}$.
+\end{demonstration}
+
+\begin{demonstration}[Valeurs pour $\dfrac{\pi}{3}$]
+	La mesure $\dfrac{\pi}{3}\,\text{rad}$ correspond à $60^\circ$.
+
+	Soit $M$ l'image de $\dfrac{\pi}{3}$ et $I(1\,;\,0)$.
+
+	Le triangle $OIM$ est isocèle en $O$ ($OI = OM = 1$) avec un angle de $60^\circ$ au sommet : il est donc équilatéral.
+
+	La hauteur issue de $M$ est aussi la médiatrice de $[OI]$ : son pied $H$ est le milieu de $[OI]$, d'où :
+	\[
+		\cos\pa{\dfrac{\pi}{3}} = OH = \dfrac{1}{2}
+	\]
+	La relation fondamentale donne ensuite :
+	\[
+		\pa{\dfrac{1}{2}}^2 + \sin^2\pa{\dfrac{\pi}{3}} = 1 \implies \sin^2\pa{\dfrac{\pi}{3}} = 1 - \dfrac{1}{4} = \dfrac{3}{4}
+	\]
+	Comme $\sin\pa{\dfrac{\pi}{3}} > 0$, on obtient $\sin\pa{\dfrac{\pi}{3}} = \dfrac{\sqrt{3}}{2}$.
+\end{demonstration}
+
+\begin{rem}
+	Les valeurs en $0$ et en $\dfrac{\pi}{2}$ se lisent directement : les images de $0$ et $\dfrac{\pi}{2}$ sont $I(1\,;\,0)$ et $J(0\,;\,1)$.
+
+	Pour $\dfrac{\pi}{6}$, on utilise l'angle associé $\dfrac{\pi}{2} - x$ avec $x = \dfrac{\pi}{3}$ :
+	\[
+		\cos\pa{\dfrac{\pi}{6}} = \sin\pa{\dfrac{\pi}{3}} = \dfrac{\sqrt{3}}{2} \quad \text{et} \quad \sin\pa{\dfrac{\pi}{6}} = \cos\pa{\dfrac{\pi}{3}} = \dfrac{1}{2}
+	\]
+\end{rem}
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.9, >=Stealth, thick]
+		\draw[->] (-0.3,0) -- (4.7,0) node[right] {$x$};
+		\draw[->] (0,-0.3) -- (0,4.7) node[above] {$y$};
+		\draw[bleu] (4,0) arc (0:90:4);
+		\foreach \ag in {30,45,60} {
+				\draw[gris, thin] (0,0) -- ({4*cos(\ag)},{4*sin(\ag)});
+				\fill[rouge] ({4*cos(\ag)},{4*sin(\ag)}) circle (2pt);
+			}
+		\node[fill=white, inner sep=1pt, font=\small] at ({2.4*cos(30)},{2.4*sin(30)}) {$\frac{\pi}{6}$};
+		\node[fill=white, inner sep=1pt, font=\small] at ({2.4*cos(45)},{2.4*sin(45)}) {$\frac{\pi}{4}$};
+		\node[fill=white, inner sep=1pt, font=\small] at ({2.4*cos(60)},{2.4*sin(60)}) {$\frac{\pi}{3}$};
+		\node[right, font=\small] at ({4*cos(30)},{4*sin(30)}) {$\pa{\frac{\sqrt{3}}{2}\,;\,\frac{1}{2}}$};
+		\node[above right, font=\small] at ({4*cos(45)},{4*sin(45)}) {$\pa{\frac{\sqrt{2}}{2}\,;\,\frac{\sqrt{2}}{2}}$};
+		\node[above, font=\small] at ({4*cos(60)},{4*sin(60)}) {$\pa{\frac{1}{2}\,;\,\frac{\sqrt{3}}{2}}$};
+		\node[below] at (4,0) {$I$};
+		\node[left] at (0,4) {$J$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{methode}[Calculer un cosinus ou un sinus à l'aide des angles associés]
+	Déterminer la valeur exacte de $\cos\pa{\dfrac{5\pi}{6}}$, $\sin\pa{\dfrac{7\pi}{4}}$, $\cos\pa{\dfrac{4\pi}{3}}$ et $\sin\pa{\dfrac{4\pi}{3}}$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $\dfrac{5\pi}{6} = \pi - \dfrac{\pi}{6}$, donc $\cos\pa{\dfrac{5\pi}{6}} = -\cos\pa{\dfrac{\pi}{6}} = -\dfrac{\sqrt{3}}{2}$.
+			\item $\dfrac{7\pi}{4} = -\dfrac{\pi}{4} + 2\pi$, donc $\sin\pa{\dfrac{7\pi}{4}} = \sin\pa{-\dfrac{\pi}{4}} = -\sin\pa{\dfrac{\pi}{4}} = -\dfrac{\sqrt{2}}{2}$.
+			\item $\dfrac{4\pi}{3} = \pi + \dfrac{\pi}{3}$, donc $\cos\pa{\dfrac{4\pi}{3}} = -\cos\pa{\dfrac{\pi}{3}} = -\dfrac{1}{2}$ et $\sin\pa{\dfrac{4\pi}{3}} = -\sin\pa{\dfrac{\pi}{3}} = -\dfrac{\sqrt{3}}{2}$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\section{Les fonctions cosinus et sinus}
+
+\begin{defin}[Fonctions cosinus et sinus]
+	La fonction \textbf{cosinus} est la fonction $x \longmapsto \cos(x)$ et la fonction \textbf{sinus} est la fonction $x \longmapsto \sin(x)$, toutes deux définies sur $\R$.
+\end{defin}
+
+\begin{propriete}[Parité]
+	La fonction cosinus est \textbf{paire} et la fonction sinus est \textbf{impaire} : pour tout réel $x$,
+	\[
+		\cos(-x) = \cos(x) \quad \text{et} \quad \sin(-x) = -\sin(x)
+	\]
+	Graphiquement, la courbe du cosinus est symétrique par rapport à l'axe des ordonnées et la courbe du sinus est symétrique par rapport à l'origine du repère.
+\end{propriete}
+
+\begin{demonstration}
+	Ce sont les relations sur l'angle associé $-x$ : $\R$ est symétrique par rapport à $0$, et les égalités sont vraies pour tout réel $x$.
+\end{demonstration}
+
+\begin{defin}[Fonction périodique]
+	Une fonction $f$ définie sur $\R$ est \textbf{périodique} de période $T > 0$ si, pour tout réel $x$, $f(x + T) = f(x)$.
+\end{defin}
+
+\begin{propriete}[Périodicité]
+	Les fonctions cosinus et sinus sont périodiques de période $2\pi$ : pour tout réel $x$,
+	\[
+		\cos(x + 2\pi) = \cos(x) \quad \text{et} \quad \sin(x + 2\pi) = \sin(x)
+	\]
+	Graphiquement, il suffit de tracer la courbe sur un intervalle de longueur $2\pi$, par exemple $\intff{0}{2\pi}$ ; on obtient le reste de la courbe par des translations de vecteur $2k\pi\,\vec{i}$ ($k \in \Z$).
+\end{propriete}
+
+\begin{rem}
+	Pour tout réel $x$, $\cos(x) = \sin\pa{x + \dfrac{\pi}{2}}$ (angle associé $\dfrac{\pi}{2} + x$).
+
+	La courbe du cosinus se déduit donc de celle du sinus par la translation de vecteur $-\dfrac{\pi}{2}\,\vec{i}$.
+\end{rem}
+
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, thick]
+		% Cercle trigonométrique
+		\draw[->, gris] (-1.9,0) -- (1.9,0);
+		\draw[->, gris] (0,-1.9) -- (0,1.9);
+		\draw[bleu] (0,0) circle (1.5);
+		\draw[rouge, ultra thick] (1.5,0) arc (0:57.2958:1.5);
+		\node[circle, fill=black, inner sep=1.5pt] at ({1.5*cos(57.2958)},{1.5*sin(57.2958)}) {};
+		\node[above left, font=\small] at ({1.5*cos(57.2958)},{1.5*sin(57.2958)}) {$M(1)$};
+		% Courbe du sinus
+		\draw[->, gris] (3,0) -- (13,0) node[right] {$x$};
+		\draw[->, gris] (3,-1.9) -- (3,1.9);
+		\draw[rouge, domain=0:6.4, samples=100] plot ({3+1.5*\x},{1.5*sin(\x r)});
+		\foreach \kk/\lb in {1/{\frac{\pi}{2}}, 2/{\pi}, 3/{\frac{3\pi}{2}}, 4/{2\pi}} {
+		\draw ({3+1.5*\kk*pi/2},0.08) -- ({3+1.5*\kk*pi/2},-0.08);
+		\node[below, font=\small, fill=white, inner sep=1pt] at ({3+1.5*\kk*pi/2},-0.1) {$\lb$};
+		}
+		% Report de l'ordonnée de M
+		\draw[dashed, gris] ({1.5*cos(57.2958)},{1.5*sin(57.2958)}) -- ({3+1.5*1},{1.5*sin(57.2958)});
+		\draw[dotted] ({3+1.5*1},{1.5*sin(57.2958)}) -- ({3+1.5*1},0);
+		\node[circle, fill=black, inner sep=1.5pt] at ({3+1.5*1},{1.5*sin(57.2958)}) {};
+		\node[below right, font=\small] at ({3+1.5*1},{1.5*sin(57.2958)}) {$\pa{1\,;\,\sin(1)}$};
+		\node[below, font=\small] at (4.5,-0.45) {$1$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, thick]
+		% Cosinus
+		\begin{scope}
+			\draw[->] (-6.9,0) -- (6.9,0) node[right] {$x$};
+			\draw[->] (0,-1.7) -- (0,2.1) node[above] {$y$};
+			\draw[bleu, domain=-6.4:6.4, samples=200] plot (\x,{1.4*cos(\x r)});
+			\foreach \kk/\lb in {-4/{-2\pi}, -3/{-\frac{3\pi}{2}}, -2/{-\pi}, -1/{-\frac{\pi}{2}}, 1/{\frac{\pi}{2}}, 2/{\pi}, 3/{\frac{3\pi}{2}}, 4/{2\pi}} {
+			\draw ({\kk*pi/2},0.08) -- ({\kk*pi/2},-0.08);
+			\node[below, font=\small, fill=white, inner sep=1pt] at ({\kk*pi/2},-0.1) {$\lb$};
+			}
+			\draw (0.08,1.4) -- (-0.08,1.4) node[left, font=\small] {$1$};
+			\draw (0.08,-1.4) -- (-0.08,-1.4) node[left, font=\small] {$-1$};
+			\draw[<->, vert] (0,1.75) -- ({2*pi},1.75) node[midway, above, font=\small] {période $2\pi$};
+			\node[bleu] at (-5.3,1.9) {$y = \cos(x)$};
+		\end{scope}
+		% Sinus
+		\begin{scope}[shift={(0,-4.4)}]
+			\draw[->] (-6.9,0) -- (6.9,0) node[right] {$x$};
+			\draw[->] (0,-1.7) -- (0,2.1) node[above] {$y$};
+			\draw[rouge, domain=-6.4:6.4, samples=200] plot (\x,{1.4*sin(\x r)});
+			\foreach \kk/\lb in {-4/{-2\pi}, -3/{-\frac{3\pi}{2}}, -2/{-\pi}, -1/{-\frac{\pi}{2}}, 1/{\frac{\pi}{2}}, 2/{\pi}, 3/{\frac{3\pi}{2}}, 4/{2\pi}} {
+			\draw ({\kk*pi/2},0.08) -- ({\kk*pi/2},-0.08);
+			\node[below, font=\small, fill=white, inner sep=1pt] at ({\kk*pi/2},-0.1) {$\lb$};
+			}
+			\draw (0.08,1.4) -- (-0.08,1.4) node[left, font=\small] {$1$};
+			\draw (0.08,-1.4) -- (-0.08,-1.4) node[left, font=\small] {$-1$};
+			\node[rouge] at (-5.3,1.9) {$y = \sin(x)$};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+\begin{rem}
+	On lit sur ces courbes les valeurs aux multiples de $\dfrac{\pi}{2}$ :
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\begin{tabular}{|c|c|c|c|c|c|} \hline
+			\ccg $x$       & $0$ & $\dfrac{\pi}{2}$ & $\pi$ & $\dfrac{3\pi}{2}$ & $2\pi$ \\ \hline
+			\ccg $\cos(x)$ & $1$ & $0$              & $-1$  & $0$               & $1$    \\ \hline
+			\ccg $\sin(x)$ & $0$ & $1$              & $0$   & $-1$              & $0$    \\ \hline
+		\end{tabular}
+	\end{center}
+	On observe aussi (lecture graphique) que le cosinus décroît de $1$ à $-1$ sur $\intff{0}{\pi}$ et croît de $-1$ à $1$ sur $\intff{\pi}{2\pi}$, tandis que le sinus croît de $-1$ à $1$ sur $\intff{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}$ et décroît de $1$ à $-1$ sur $\intff{\dfrac{\pi}{2}}{\dfrac{3\pi}{2}}$.
+\end{rem}
+
+\begin{methode}[Résoudre une équation trigonométrique simple à l'aide du cercle]
+	Pour résoudre $\cos(x) = a$ (resp.
+
+	$\sin(x) = a$), on trace sur le cercle la droite verticale d'abscisse $a$ (resp.
+
+	horizontale d'ordonnée $a$), on lit les points d'intersection avec le cercle et les réels de l'intervalle d'étude qui les ont pour images.
+
+	Résoudre $\cos(x) = \dfrac{1}{2}$ dans $\intff{0}{2\pi}$ et $\sin(x) = -\dfrac{1}{2}$ dans $\intof{-\pi}{\pi}$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On sait que $\cos\pa{\dfrac{\pi}{3}} = \dfrac{1}{2}$.
+
+			      Les points du cercle d'abscisse $\dfrac{1}{2}$ sont symétriques par rapport à l'axe des abscisses : ce sont les images de $\dfrac{\pi}{3}$ et de $-\dfrac{\pi}{3}$, c'est-à-dire de $2\pi - \dfrac{\pi}{3} = \dfrac{5\pi}{3}$ dans $\intff{0}{2\pi}$.
+
+			      L'ensemble des solutions est $\brac{\dfrac{\pi}{3}\,;\,\dfrac{5\pi}{3}}$.
+			\item On sait que $\sin\pa{\dfrac{\pi}{6}} = \dfrac{1}{2}$, donc $\sin\pa{-\dfrac{\pi}{6}} = -\dfrac{1}{2}$.
+
+			      Les points du cercle d'ordonnée $-\dfrac{1}{2}$ sont symétriques par rapport à l'axe des ordonnées : ce sont les images de $-\dfrac{\pi}{6}$ et de $\pi - \pa{-\dfrac{\pi}{6}} = \dfrac{7\pi}{6}$, soit, dans $\intof{-\pi}{\pi}$, de $-\dfrac{\pi}{6}$ et de $\dfrac{7\pi}{6} - 2\pi = -\dfrac{5\pi}{6}$.
+
+			      L'ensemble des solutions est $\brac{-\dfrac{5\pi}{6}\,;\,-\dfrac{\pi}{6}}$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\section{Algorithmique : la méthode d'Archimède}
+
+Archimède encadrait le cercle par des polygones réguliers inscrits et circonscrits.
+
+On considère ici les polygones réguliers inscrits dans le cercle trigonométrique : on note $c_n$ la longueur du côté du polygone régulier à $n$ côtés.
+
+Le périmètre $n\,c_n$ est inférieur à celui du cercle, donc $\dfrac{n\,c_n}{2} < \pi$, et l'on s'approche de $\pi$ en doublant le nombre de côtés.
+
+\begin{propriete}[Relation de récurrence d'Archimède]
+	Pour le polygone régulier inscrit dans le cercle trigonométrique, l'hexagone ($n = 6$) a pour côté $c_6 = 1$ et, lorsque l'on double le nombre de côtés :
+	\[
+		c_{2n} = \sqrt{2 - \sqrt{4 - c_n^2}}
+	\]
+\end{propriete}
+
+\begin{demonstration}
+	Pour l'hexagone, le triangle $OAB$ ($A$ et $B$ sommets consécutifs) est isocèle en $O$ avec un angle de $60^\circ$ : il est équilatéral, donc $c_6 = AB = 1$.
+
+	Soit $A$ et $B$ deux sommets consécutifs d'un polygone à $n$ côtés, $K$ le milieu de $[AB]$ et $M$ le point du cercle situé sur la demi-droite $[OK)$ (milieu de l'arc $AB$).
+
+	Le segment $[AM]$ est un côté du polygone à $2n$ côtés.
+
+	Le triangle $OKA$ est rectangle en $K$ et $AK = \dfrac{c_n}{2}$, donc :
+	\[
+		OK = \sqrt{1 - \dfrac{c_n^2}{4}} \quad \text{puis} \quad KM = 1 - OK
+	\]
+	Le triangle $AKM$ est rectangle en $K$ (la droite $(OM)$ est la médiatrice de $[AB]$), donc :
+	\[
+		c_{2n}^2 = AK^2 + KM^2 = \dfrac{c_n^2}{4} + 1 - 2\,OK + OK^2 = \dfrac{c_n^2}{4} + 1 - 2\,OK + 1 - \dfrac{c_n^2}{4} = 2 - 2\sqrt{1 - \dfrac{c_n^2}{4}} = 2 - \sqrt{4 - c_n^2}
+	\]
+	d'où le résultat, $c_{2n}$ étant positif.
+\end{demonstration}
+
+\begin{methode}[Approcher $\pi$ par la méthode d'Archimède]
+	La fonction suivante effectue \texttt{etapes} doublements du nombre de côtés à partir de l'hexagone et renvoie le demi-périmètre $\dfrac{n\,c_n}{2}$ du polygone obtenu :
+
+	\begin{lstlisting}
+from math import sqrt
+
+def archimede(etapes):
+    n = 6
+    c = 1.0
+    for k in range(etapes):
+        c = sqrt(2 - sqrt(4 - c ** 2))
+        n = 2 * n
+    return n * c / 2
+\end{lstlisting}
+
+	Pour \texttt{etapes = 0}, on obtient l'hexagone et la valeur $3$.
+
+	Pour \texttt{etapes = 1}, \texttt{2}, \texttt{3}, \texttt{4}, \texttt{5}, on obtient respectivement des valeurs voisines de $3{,}1058$, $3{,}1326$, $3{,}1394$, $3{,}1410$ et $3{,}1415$, qui se rapprochent de $\pi \approx 3{,}14159$ en restant inférieures à $\pi$.
+\end{methode}
 \end{document}
