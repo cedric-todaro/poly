@@ -227,19 +227,12 @@ Un tour complet correspond donc à un arc de longueur $2\pi$ : il mesure $2\pi\,
 \section{Cosinus et sinus d'un nombre réel}
 
 \begin{defin}[Cosinus et sinus]
-	Soit $x$ un nombre réel et soit $M$ son image sur le cercle trigonométrique.
-	\begin{itemize}
-		\item Le \textbf{cosinus} de $x$, noté $\cos(x)$, est l'abscisse du point $M$.
-		\item Le \textbf{sinus} de $x$, noté $\sin(x)$, est l'ordonnée du point $M$.
-	\end{itemize}
-
-	On a ainsi : $M\coordl{\cos(x)}{\sin(x)}$.
-
-	\begin{center}
-		\begin{tikzpicture}[scale=2.2, >=Stealth, thick]
-			\draw[help lines, gray!30, dashed] (-1.3,-1.3) grid (1.3,1.3);
-			\draw[->] (-1.4,0) -- (1.5,0);
-			\draw[->] (0,-1.4) -- (0,1.5);
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[scale=2, >=Stealth, thick]
+			\draw[help lines, gray!30, dashed] (-1.2,-1.2) grid (1.2,1.2);
+			\draw[->] (-1.2,0) -- (1.2,0);
+			\draw[->] (0,-1.2) -- (0,1.2);
 			\node[below left] at (0,0) {$O$};
 			\draw[bleu, line width=1.2pt] (0,0) circle (1);
 			\def\ang{50}
@@ -253,15 +246,71 @@ Un tour complet correspond donc à un arc de longueur $2\pi$ : il mesure $2\pi\,
 			\draw[->, orange] (0.4,0) arc[start angle=0, end angle=\ang, radius=0.4];
 			\node[orange, right, font=\small] at (0.35,0.2) {$x$};
 		\end{tikzpicture}
-	\end{center}
+	\end{wrapstuff}
+
+	Soit $x$ un nombre réel et soit $M$ son image sur le cercle trigonométrique.
+
+	\begin{itemize}
+		\item Le \textbf{cosinus} de $x$, noté $\cos(x)$, est l'abscisse du point $M$.
+		\item Le \textbf{sinus} de $x$, noté $\sin(x)$, est l'ordonnée du point $M$.
+	\end{itemize}
+
+	On a ainsi : $M\coordl{\cos(x)}{\sin(x)}$.
+
+	\rule{0mm}{23mm}
 \end{defin}
-% TODO : ici ici ici
+
+\begin{methode}[Lire le cosinus et le sinus d'un réel]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[scale=2.4, >=Stealth, thick]
+			\draw[help lines, gray!30, dashed] (-0.2,-0.2) grid (1.2,1.2);
+			\draw[->] (-0.2,0) -- (1.3,0) node[right] {$x$};
+			\draw[->] (0,-0.2) -- (0,1.3) node[above] {$y$};
+			\node[below left] at (0,0) {$O$};
+			\draw[bleu, line width=1.2pt] (1,0) arc[start angle=0, end angle=90, radius=1];
+			\def\ang{60}
+			\coordinate (M) at ({cos(\ang)},{sin(\ang)});
+			\draw[rouge, dashed] (M) -- ({cos(\ang)},0) node[below, font=\small] {$\dfrac{1}{2}$};
+			\draw[vert, dashed] (M) -- (0,{sin(\ang)}) node[left, font=\small] {$\dfrac{\sqrt{3}}{2}$};
+			\draw[black] (0,0) -- (M);
+			\draw[black, dotted] (1,0) -- (M);
+			\node[circle, fill=black, inner sep=1.5pt] at (M) {};
+			\node[above right, font=\small] at (M) {$M\left(\dfrac{1}{2}\,;\,\dfrac{\sqrt{3}}{2}\right)$};
+			\node[circle, fill=black, inner sep=1.2pt] at (1,0) {};
+			\node[below right, font=\small] at (1,0) {$1$};
+			\node[circle, fill=black, inner sep=1.2pt] at (0,1) {};
+			\node[circle, fill=black, inner sep=1.2pt] at (0,0.866025) {};
+			\node[circle, fill=black, inner sep=1.2pt] at (0.5,0) {};
+			\node[above right, font=\small] at (0,1) {$1$};
+			\draw[->, orange] (0.3,0) arc[start angle=0, end angle=\ang, radius=0.3];
+			\node[orange, right, font=\small] at (0.25,0.2) {$\dfrac{\pi}{3}$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Pour lire ou déterminer le cosinus et le sinus d'un nombre réel $x$ :
+
+	\begin{enumerate}
+		\item On repère le point $M$ associé à $x$ sur le cercle trigonométrique.
+		\item On projette orthogonalement le point $M$ sur $[Ox)$ pour lire $\cos(x)$.
+		\item On projette orthogonalement le point $M$ sur $[Oy)$ pour lire $\sin(x)$.
+	\end{enumerate}
+
+	Pour le réel $x = \dfrac{\pi}{3}$ (soit $60^\circ$) :
+
+	\begin{itemize}
+		\item Le point image $M$ a pour coordonnées remarquables $\left(\dfrac{1}{2}\,;\,\dfrac{\sqrt{3}}{2}\right)$.
+		\item En lisant l'abscisse de $M$, on obtient : $\cos\left(\dfrac{\pi}{3}\right) = \dfrac{1}{2}$.
+		\item En lisant l'ordonnée de $M$, on obtient : $\sin\left(\dfrac{\pi}{3}\right) = \dfrac{\sqrt{3}}{2}$.
+	\end{itemize}
+\end{methode}
+
 \begin{propriete}[Propriétés fondamentales]
 	Pour tout nombre réel $x$ et pour tout entier relatif $k$ :
 	\begin{enumerate}
-		\item $-1 \leq \cos(x) \leq 1$ et $-1 \leq \sin(x) \leq 1$ ;
+		\item $-1 \leq \cos(x) \leq 1\quad$ et $\quad -1 \leq \sin(x) \leq 1$ ;
+		\item $\cos(x + 2k\pi) = \cos(x)\quad$ et $\quad\sin(x + 2k\pi) = \sin(x)$.
 		\item $\cos^2(x) + \sin^2(x) = 1$ ;
-		\item $\cos(x + 2k\pi) = \cos(x)$ et $\sin(x + 2k\pi) = \sin(x)$.
 	\end{enumerate}
 \end{propriete}
 
@@ -269,39 +318,223 @@ Un tour complet correspond donc à un arc de longueur $2\pi$ : il mesure $2\pi\,
 	Soit $M$ l'image de $x$.
 	\begin{enumerate}
 		\item Le cercle trigonométrique étant de rayon $1$, les coordonnées de tout point du cercle sont comprises entre $-1$ et $1$.
+		\item Les réels $x$ et $x + 2k\pi$ ont la même image, donc les mêmes coordonnées.
 		\item Soit $H$ le projeté orthogonal de $M$ sur l'axe des abscisses.
 
-		      Si $M$ est sur un axe, l'égalité est immédiate (l'une des coordonnées est nulle, l'autre vaut $\pm 1$).
-
-		      Sinon, le triangle $OHM$ est rectangle en $H$ et le théorème de Pythagore donne $OH^2 + HM^2 = OM^2$.
+		      Le triangle $OHM$ est rectangle en $H$ et le théorème de Pythagore donne $OH^2 + HM^2 = OM^2$.
 
 		      Or $OH = \abs{\cos(x)}$, $HM = \abs{\sin(x)}$ et $OM = 1$, d'où $\cos^2(x) + \sin^2(x) = 1$.
-		\item Les réels $x$ et $x + 2k\pi$ ont la même image, donc les mêmes coordonnées.
 	\end{enumerate}
+	\begin{center}
+		\begin{tikzpicture}[scale=4.2, >=Stealth, thick]
+			\clip (-0.1,-0.1) rectangle (1.4,1.3);
+			\draw[help lines, gray!30, dashed] (-1.3,-1.3) grid (1.2,1.2);
+			\draw[->] (-1.2,0) -- (1.2,0) node[above] {$x$};
+			\draw[->] (0,-1.2) -- (0,1.2) node[right] {$y$};
+			\node[below left] at (0,0) {$O$};
+			\def\ang{50}
+			\coordinate (M) at ({cos(\ang)},{sin(\ang)});
+			\coordinate (H) at ({cos(\ang)},0);
+			\draw[orange, fill=orange!10, opacity=0.8] (0,0) -- (H) -- (M) -- cycle;
+			\draw[rouge, dashed] (M) -- (H) node[rotate=-90, above, fill=white, midway, font=\small] {$HM = |\sin(x)|$};
+			\draw[bleu, line width=1.2pt] (0,0) circle (1);
+			\draw[vert, dashed] (0,0) -- (H) node[midway, below, font=\small] {$OH = |\cos(x)|$};
+			\draw[black] (0,0) -- (M) node[midway, above, rotate=\ang, font=\small] {$OM = 1$};
+			\draw (H) ++(0, 0.1) -- ++(-0.1, 0) -- ++(0, -0.1);
+			\node[circle, fill=black, inner sep=1.5pt] at (M) {};
+			\node[above right, font=\small] at (M) {$M(\cos(x)\,;\,\sin(x))$};
+			\node[circle, fill=black, inner sep=1.2pt] at (H) {};
+			\node[below, font=\small] at (H) {$H$};
+			\draw[->, violet] (0.35,0) arc[start angle=0, end angle=\ang, radius=0.35];
+			\node[violet, right, font=\small] at (0.3,0.15) {$x$};
+		\end{tikzpicture}
+	\end{center}
 \end{demonstration}
 
-\begin{propriete}[Lien avec le triangle rectangle]
-	Soit $x \in \intoo{0}{\dfrac{\pi}{2}}$.
-
-	Dans un triangle rectangle dont un angle aigu mesure $x\,\text{rad}$ :
+\begin{rem}[Rappel de troisième : Cosinus et sinus dans un triangle rectangle]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[scale=2, >=Stealth, thick]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (2,0);
+			\coordinate (C) at (2,1.2);
+			\draw[orange, line width=1.2pt] (A) -- (B) -- (C) -- cycle node[midway, sloped, above, font=\footnotesize, black] {hypothénuse};
+			\draw (B) ++(-0.12, 0) -- ++(0, 0.12) -- ++(0.12, 0);
+			\node[left, font=\small] at (A) {$A$};
+			\node[below right, font=\small] at (B) {$B$};
+			\node[above, font=\small] at (C) {$C$};
+			\node[below, font=\footnotesize] at (1,0) {côté adjacent};
+			\node[below, rotate=90, font=\footnotesize] at (2,0.6) {côté opposé};
+			\draw[->, violet] (0.4,0) arc[start angle=0, end angle=31, radius=0.4];
+			\node[violet, right, font=\small] at (0.35,0.12) {$x$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+	Pour un angle aigu $x$ (exprimé en radians ou en degrés) placé dans un triangle rectangle, les rapports trigonométriques se définissent ainsi :
 	\[
-		\cos(x) = \dfrac{\text{côté adjacent}}{\text{hypoténuse}} \quad \text{et} \quad \sin(x) = \dfrac{\text{côté opposé}}{\text{hypoténuse}}
+		\cos(x) = \dfrac{\text{côté adjacent}}{\text{hypoténuse}}\qquad\text{et}\qquad\sin(x) = \dfrac{\text{côté opposé}}{\text{hypoténuse}}
 	\]
+
+	Ces formules historiques du collège se prolongent naturellement sur le cercle trigonométrique pour tout nombre réel $x$.
+\end{rem}
+
+\section{Valeurs remarquables}
+
+\begin{propriete}[Valeurs remarquables]
+	En utilisant les longueurs d'arcs et les triangles rectangles de référence sur le cercle trigonométrique, on obtient les valeurs exactes des cosinus et sinus des angles remarquables résumées dans le tableau ci-dessous :
+
+	\begin{center}
+		\rnc{\arraystretch}{1.6}
+		\begin{tabular}{|C{2cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|} \hline
+			\rule[-4mm]{0mm}{11mm}\ccg $x$ (en rad) & $0$ & $\dfrac{\pi}{6}$      & $\dfrac{\pi}{4}$      & $\dfrac{\pi}{3}$      & $\dfrac{\pi}{2}$ \\ \hline
+			\rule[-4mm]{0mm}{11mm}\ccg $\cos(x)$    & $1$ & $\dfrac{\sqrt{3}}{2}$ & $\dfrac{\sqrt{2}}{2}$ & $\dfrac{1}{2}$        & $0$              \\ \hline
+			\rule[-4mm]{0mm}{11mm}\ccg $\sin(x)$    & $0$ & $\dfrac{1}{2}$        & $\dfrac{\sqrt{2}}{2}$ & $\dfrac{\sqrt{3}}{2}$ & $1$              \\ \hline
+		\end{tabular}
+	\end{center}
 \end{propriete}
 
-\begin{demonstration}
-	Soit $ABC$ un triangle rectangle en $B$ dont l'angle en $A$ mesure $x\,\text{rad}$.
+\begin{demonstration}[Valeurs pour $\frac{\pi}{4}$]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[scale=2.5, >=Stealth, thick]
+			\draw[help lines, gray!30, dashed] (-0.2,-0.2) grid (1.2,1.2);
+			\draw[->] (-0.2,0) -- (1.3,0) node[above] {$x$};
+			\draw[->] (0,-0.2) -- (0,1.3) node[right] {$y$};
+			\node[below left] at (0,0) {$O$};
+			\draw[bleu, line width=1.2pt] (1,0) arc[start angle=0, end angle=90, radius=1];
+			\def\ang{45}
+			\coordinate (M) at ({cos(\ang)},{sin(\ang)});
+			\coordinate (H) at ({cos(\ang)},0);
+			\draw[orange, fill=orange!10, opacity=0.7] (0,0) -- (H) -- (M) -- cycle;
+			\draw[rouge, dashed] (M) -- (H) node[fill=white, midway, right, font=\small] {$\dfrac{\sqrt{2}}{2}$};
+			\draw[vert, dashed] (0,0) -- (H) node[midway, below, font=\small] {$\dfrac{\sqrt{2}}{2}$};
+			\draw[black] (0,0) -- (M) node[midway, above left, font=\small] {$1$};
+			\draw (H) ++(0, 0.08) -- ++(-0.08, 0) -- ++(0, -0.08);
+			\node[circle, fill=black, inner sep=1.5pt] at (M) {};
+			\node[above right] at (M) {$M$};
+			\node[circle, fill=black, inner sep=1.2pt] at (H) {};
+			\node[below, font=\small] at (H) {$H$};
+			\node[circle, fill=black, inner sep=1.2pt] at (1,0) {};
+			\node[circle, fill=black, inner sep=1.2pt] at (0,1) {};
+			% \node[below, font=\small] at (1,0) {$1$};
+			\draw[->, violet] (0.3,0) arc[start angle=0, end angle=\ang, radius=0.3];
+			\node[violet, right, font=\small] at (0.25,0.18) {$\dfrac{\pi}{4}$};
+		\end{tikzpicture}
+	\end{wrapstuff}
 
-	On place $A$ en $O$ et $B$ sur la demi-droite $[OI)$, avec $C$ dans le demi-plan des ordonnées positives.
+	\ms
 
-	La demi-droite $[OC)$ coupe le cercle trigonométrique en $M$ d'image $x$.
+	La mesure $\dfrac{\pi}{4}\,\text{rad}$ correspond à $45^\circ$.
 
-	Soit $H$ le projeté orthogonal de $M$ sur $(OI)$ : les droites $(HM)$ et $(BC)$ sont parallèles, et le théorème de Thalès donne :
+	Soit $M$ l'image de $\dfrac{\pi}{4}$ et $H$ son projeté orthogonal sur l'axe des abscisses.
+
+	Le triangle $OHM$ est rectangle en $H$ et l'angle en $O$ mesure $45^\circ$.
+
+	L'angle en $M$ mesure $180^\circ - 90^\circ - 45^\circ = 45^\circ$, donc le triangle est isocèle en $H$.
+
+	Ainsi :
 	\[
-		\dfrac{OH}{OB} = \dfrac{HM}{BC} = \dfrac{OM}{OC} = \dfrac{1}{AC}
+		OH = HM=\cos\pa{\dfrac{\pi}{4}} = \sin\pa{\dfrac{\pi}{4}}
 	\]
-	Ainsi $\cos(x) = OH = \dfrac{AB}{AC}$ et $\sin(x) = HM = \dfrac{BC}{AC}$.
+
+	La relation fondamentale donne alors :
+	\[
+		\cos^2\pa{\dfrac{\pi}{4}} + \sin^2\pa{\dfrac{\pi}{4}} = 2\sin^2\pa{\dfrac{\pi}{4}} = 1 \implies \sin^2\pa{\dfrac{\pi}{4}} = \dfrac{1}{2}
+	\]
+
+	Comme $\sin\pa{\dfrac{\pi}{4}} > 0$, on obtient $\sin\pa{\dfrac{\pi}{4}} = \dfrac{1}{\sqrt{2}} = \dfrac{\sqrt{2}}{2}$, et de même $\cos\pa{\dfrac{\pi}{4}} = \dfrac{\sqrt{2}}{2}$.
+
 \end{demonstration}
+
+\begin{demonstration}[Valeurs pour $\frac{\pi}{3}$]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[scale=2.5, >=Stealth, thick]
+			\draw[help lines, gray!30, dashed] (-0.2,-0.2) grid (1.2,1.2);
+			\draw[->] (-0.2,0) -- (1.3,0) node[above] {$x$};
+			\draw[->] (0,-0.2) -- (0,1.3) node[right] {$y$};
+			\node[below left] at (0,0) {$O$};
+			\draw[bleu, line width=1.2pt] (1,0) arc[start angle=0, end angle=90, radius=1];
+			\def\ang{60}
+			\coordinate (M) at ({cos(\ang)},{sin(\ang)});
+			\coordinate (H) at ({cos(\ang)},0);
+			\draw[rouge, dashed] (M) -- (1,0);
+			\draw[orange, fill=orange!10, opacity=0.7] (0,0) -- (H) -- (M) -- cycle;
+			\draw[rouge, dashed] (M) -- (H) node[fill=white, midway, right, font=\small] {$\dfrac{\sqrt{3}}{2}$};
+			\draw[bleu, line width=1.2pt] (1,0) arc[start angle=0, end angle=90, radius=1];
+			\draw[vert, dashed] (0,0) -- (H) node[midway, below, font=\small] {$\dfrac{1}{2}$};
+			\draw[black] (0,0) -- (M) node[midway, above left, font=\small] {$1$};
+			\draw (H) ++(0, 0.08) -- ++(-0.08, 0) -- ++(0, -0.08);
+			\node[circle, fill=black, inner sep=1.5pt] at (M) {};
+			\node[above right, font=\small] at (M) {$M$};
+			\node[circle, fill=black, inner sep=1.2pt] at (H) {};
+			\node[below, font=\small] at (H) {$H$};
+			\node[circle, fill=black, inner sep=1.2pt] at (0,1) {};
+			\node[circle, fill=black, inner sep=1.2pt] at (1,0) {};
+			\node[below, font=\small] at (1,0) {$I$};
+			\draw[->, violet] (0.3,0) arc[start angle=0, end angle=\ang, radius=0.3];
+			\node[violet, right, font=\small] at (0.25,0.2) {$\dfrac{\pi}{3}$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	\ms
+
+	La mesure $\dfrac{\pi}{3}\,\text{rad}$ correspond à $60^\circ$.
+
+	Soit $M$ l'image de $\dfrac{\pi}{3}$ et $I(1\,;\,0)$.
+
+	Le triangle $OIM$ est isocèle en $O$ ($OI = OM = 1$) avec un angle de $60^\circ$ au sommet : il est donc équilatéral.
+
+	La hauteur issue de $M$ est aussi la médiatrice de $[OI]$ : son pied $H$ est le milieu de $[OI]$, d'où :
+	\[
+		\cos\pa{\dfrac{\pi}{3}} = OH = \dfrac{1}{2}
+	\]
+
+	La relation fondamentale donne ensuite :
+	\[
+		\cos^2\pa{\dfrac{\pi}{3}} + \sin^2\pa{\dfrac{\pi}{3}} = \pa{\dfrac{1}{2}}^2 + \sin^2\pa{\dfrac{\pi}{3}} = 1 \implies \sin^2\pa{\dfrac{\pi}{3}} = 1 - \dfrac{1}{4} = \dfrac{3}{4}
+	\]
+
+	Comme $\sin\pa{\dfrac{\pi}{3}} > 0$, on obtient $\sin\pa{\dfrac{\pi}{3}} = \dfrac{\sqrt{3}}{2}$.
+\end{demonstration}
+
+\begin{rem}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[scale=1.2, >=Stealth, thick]
+			\draw[->] (-0.3,0) -- (4.7,0) node[above] {$x$};
+			\draw[->] (0,-0.3) -- (0,4.7) node[right] {$y$};
+			\draw[bleu] (4,0) arc (0:90:4);
+			\foreach \ag in {30,45,60} {
+					\draw[gris, thin] (0,0) -- ({4*cos(\ag)},{4*sin(\ag)});
+					\fill[rouge] ({4*cos(\ag)},{4*sin(\ag)}) circle (2pt);
+				}
+			\node[fill=white, inner sep=1pt] at ({2.4*cos(30)},{2.4*sin(30)}) {$\dfrac{\pi}{6}$};
+			\node[fill=white, inner sep=1pt] at ({2.4*cos(45)},{2.4*sin(45)}) {$\dfrac{\pi}{4}$};
+			\node[fill=white, inner sep=1pt] at ({2.4*cos(60)},{2.4*sin(60)}) {$\dfrac{\pi}{3}$};
+			\node[right, font=\small] at ({4*cos(30)},{4*sin(30)}) {$\pa{\dfrac{\sqrt{3}}{2}\,;\,\dfrac{1}{2}}$};
+			\node[above right, font=\small] at ({4*cos(45)},{4*sin(45)}) {$\pa{\dfrac{\sqrt{2}}{2}\,;\,\dfrac{\sqrt{2}}{2}}$};
+			\node[above, font=\small] at ({4*cos(60)},{4*sin(60)}) {$\pa{\dfrac{1}{2}\,;\,\dfrac{\sqrt{3}}{2}}$};
+			\node[below] at (4,0) {$I$};
+			\node[left] at (0,4) {$J$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	\begin{itemize}
+		\item Les valeurs en $0$ et en $\dfrac{\pi}{2}$ se lisent directement
+
+		      Les images de $0$ et $\dfrac{\pi}{2}$ sont $I(1\,;\,0)$ et $J(0\,;\,1)$.
+
+		\item Pour $\pa{\dfrac{\pi}{6}}$, la situation est symétrique à celle de $\pa{\dfrac{\pi}{3}}$ par rapport à la droite d'équation $y = x$.
+
+		      On s'appuye sur le point $J(0\,;\,1)$ de l'axe des ordonnées au lieu de $I$ donc les rôles du cosinus et du sinus s'inversent :
+		      \[
+			      \cos\pa{\dfrac{\pi}{6}} = \dfrac{\sqrt{3}}{2} \quad \text{et} \quad \sin\pa{\dfrac{\pi}{6}} = \dfrac{1}{2}
+		      \]
+	\end{itemize}
+\end{rem}
+
+% TODO : ICICICICICICICICI
+\newpage
 
 \section{Angles associés}
 
@@ -357,83 +590,6 @@ Un tour complet correspond donc à un arc de longueur $2\pi$ : il mesure $2\pi\,
 		\item Enfin, $\dfrac{\pi}{2} + x = \dfrac{\pi}{2} - (-x)$, donc $\cos\pa{\dfrac{\pi}{2} + x} = \sin(-x) = -\sin(x)$ et $\sin\pa{\dfrac{\pi}{2} + x} = \cos(-x) = \cos(x)$.
 	\end{itemize}
 \end{demonstration}
-
-\section{Valeurs remarquables}
-
-\begin{propriete}[Valeurs remarquables]
-	\nline
-	\begin{center}
-		\rnc{\arraystretch}{1.6}
-		\begin{tabular}{|c|c|c|c|c|c|} \hline
-			\ccg $x$ (en rad) & $0$ & $\dfrac{\pi}{6}$      & $\dfrac{\pi}{4}$      & $\dfrac{\pi}{3}$      & $\dfrac{\pi}{2}$ \\ \hline
-			\ccg $\cos(x)$    & $1$ & $\dfrac{\sqrt{3}}{2}$ & $\dfrac{\sqrt{2}}{2}$ & $\dfrac{1}{2}$        & $0$              \\ \hline
-			\ccg $\sin(x)$    & $0$ & $\dfrac{1}{2}$        & $\dfrac{\sqrt{2}}{2}$ & $\dfrac{\sqrt{3}}{2}$ & $1$              \\ \hline
-		\end{tabular}
-	\end{center}
-\end{propriete}
-
-\begin{demonstration}[Valeurs pour $\dfrac{\pi}{4}$]
-	La mesure $\dfrac{\pi}{4}\,\text{rad}$ correspond à $45^\circ$.
-
-	Soit $M$ l'image de $\dfrac{\pi}{4}$ et $H$ son projeté orthogonal sur l'axe des abscisses.
-
-	Le triangle $OHM$ est rectangle en $H$ et l'angle en $O$ mesure $45^\circ$ : l'angle en $M$ mesure $180^\circ - 90^\circ - 45^\circ = 45^\circ$, donc le triangle est isocèle en $H$.
-
-	Ainsi $OH = HM$, c'est-à-dire $\cos\pa{\dfrac{\pi}{4}} = \sin\pa{\dfrac{\pi}{4}}$ (les deux nombres sont positifs car $M$ est dans le premier quadrant).
-
-	La relation fondamentale donne alors :
-	\[
-		2\sin^2\pa{\dfrac{\pi}{4}} = 1 \implies \sin^2\pa{\dfrac{\pi}{4}} = \dfrac{1}{2}
-	\]
-	Comme $\sin\pa{\dfrac{\pi}{4}} > 0$, on obtient $\sin\pa{\dfrac{\pi}{4}} = \dfrac{1}{\sqrt{2}} = \dfrac{\sqrt{2}}{2}$, et de même $\cos\pa{\dfrac{\pi}{4}} = \dfrac{\sqrt{2}}{2}$.
-\end{demonstration}
-
-\begin{demonstration}[Valeurs pour $\dfrac{\pi}{3}$]
-	La mesure $\dfrac{\pi}{3}\,\text{rad}$ correspond à $60^\circ$.
-
-	Soit $M$ l'image de $\dfrac{\pi}{3}$ et $I(1\,;\,0)$.
-
-	Le triangle $OIM$ est isocèle en $O$ ($OI = OM = 1$) avec un angle de $60^\circ$ au sommet : il est donc équilatéral.
-
-	La hauteur issue de $M$ est aussi la médiatrice de $[OI]$ : son pied $H$ est le milieu de $[OI]$, d'où :
-	\[
-		\cos\pa{\dfrac{\pi}{3}} = OH = \dfrac{1}{2}
-	\]
-	La relation fondamentale donne ensuite :
-	\[
-		\pa{\dfrac{1}{2}}^2 + \sin^2\pa{\dfrac{\pi}{3}} = 1 \implies \sin^2\pa{\dfrac{\pi}{3}} = 1 - \dfrac{1}{4} = \dfrac{3}{4}
-	\]
-	Comme $\sin\pa{\dfrac{\pi}{3}} > 0$, on obtient $\sin\pa{\dfrac{\pi}{3}} = \dfrac{\sqrt{3}}{2}$.
-\end{demonstration}
-
-\begin{rem}
-	Les valeurs en $0$ et en $\dfrac{\pi}{2}$ se lisent directement : les images de $0$ et $\dfrac{\pi}{2}$ sont $I(1\,;\,0)$ et $J(0\,;\,1)$.
-
-	Pour $\dfrac{\pi}{6}$, on utilise l'angle associé $\dfrac{\pi}{2} - x$ avec $x = \dfrac{\pi}{3}$ :
-	\[
-		\cos\pa{\dfrac{\pi}{6}} = \sin\pa{\dfrac{\pi}{3}} = \dfrac{\sqrt{3}}{2} \quad \text{et} \quad \sin\pa{\dfrac{\pi}{6}} = \cos\pa{\dfrac{\pi}{3}} = \dfrac{1}{2}
-	\]
-\end{rem}
-
-\begin{center}
-	\begin{tikzpicture}[scale=0.9, >=Stealth, thick]
-		\draw[->] (-0.3,0) -- (4.7,0) node[right] {$x$};
-		\draw[->] (0,-0.3) -- (0,4.7) node[above] {$y$};
-		\draw[bleu] (4,0) arc (0:90:4);
-		\foreach \ag in {30,45,60} {
-				\draw[gris, thin] (0,0) -- ({4*cos(\ag)},{4*sin(\ag)});
-				\fill[rouge] ({4*cos(\ag)},{4*sin(\ag)}) circle (2pt);
-			}
-		\node[fill=white, inner sep=1pt, font=\small] at ({2.4*cos(30)},{2.4*sin(30)}) {$\frac{\pi}{6}$};
-		\node[fill=white, inner sep=1pt, font=\small] at ({2.4*cos(45)},{2.4*sin(45)}) {$\frac{\pi}{4}$};
-		\node[fill=white, inner sep=1pt, font=\small] at ({2.4*cos(60)},{2.4*sin(60)}) {$\frac{\pi}{3}$};
-		\node[right, font=\small] at ({4*cos(30)},{4*sin(30)}) {$\pa{\frac{\sqrt{3}}{2}\,;\,\frac{1}{2}}$};
-		\node[above right, font=\small] at ({4*cos(45)},{4*sin(45)}) {$\pa{\frac{\sqrt{2}}{2}\,;\,\frac{\sqrt{2}}{2}}$};
-		\node[above, font=\small] at ({4*cos(60)},{4*sin(60)}) {$\pa{\frac{1}{2}\,;\,\frac{\sqrt{3}}{2}}$};
-		\node[below] at (4,0) {$I$};
-		\node[left] at (0,4) {$J$};
-	\end{tikzpicture}
-\end{center}
 
 \begin{methode}[Calculer un cosinus ou un sinus à l'aide des angles associés]
 	Déterminer la valeur exacte de $\cos\pa{\dfrac{5\pi}{6}}$, $\sin\pa{\dfrac{7\pi}{4}}$, $\cos\pa{\dfrac{4\pi}{3}}$ et $\sin\pa{\dfrac{4\pi}{3}}$.
