@@ -42,6 +42,8 @@
 \newtheorem*{exemple}{Exemple}
 \newtheorem*{remarque}{Remarque}
 \newtheorem*{correction}{Correction}
+\newtheorem*{representation}{Représentation}
+\newtheorem*{notation}{Notation}
 \newtheorem*{attention}{\faExclamationTriangle\,\normalfont\bfseries\ Attention}
 \newtheorem*{piege}{\faExclamationTriangle\,\normalfont\bfseries Piège classique}
 \newtheorem*{ideerecue}{\faExclamationTriangle\,\normalfont\bfseries Idée reçue}
