@@ -1,0 +1,846 @@
+\chapter{Produit scalaire dans le plan}
+
+Le produit scalaire est un outil fondamental de géométrie plane qui permet de relier les longueurs, les angles et l'orthogonalité.
+
+Il possède plusieurs expressions équivalentes (géométrique, par projection orthogonale, par les normes, analytique dans un repère orthonormé) que l'on choisit selon les données de la situation étudiée.
+
+\section{Définition et premières expressions}
+
+\subsection{Définition géométrique}
+
+\begin{defin}[Norme d'un vecteur]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[scale=1.1, >=Stealth, thick]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,1.6);
+			\draw[bleu, line width=1.1pt] (A) -- (B);
+			\draw[->, rouge, line width=1.3pt] (A) -- (B) node[midway, above, rouge, sloped] {$\vec{u} = \vec{AB}$};
+			\fill (A) circle (1.8pt) node[below left] {$A$};
+			\fill (B) circle (1.8pt) node[above right] {$B$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Soit $A$ et $B$ deux points du plan.
+
+	La \textbf{norme} du vecteur $\vec{AB}$, notée $\norm{\vec{AB}}$, est la distance $AB$.
+
+	Plus généralement, pour tout vecteur $\vec{u} = \vec{AB}$, on a $\norm{\vec{u}} = AB$.
+
+	\rule{0mm}{12mm}
+\end{defin}
+
+\begin{defin}[Produit scalaire]
+	Soit $\vec{u}$ et $\vec{v}$ deux vecteurs du plan.
+	\begin{itemize}
+		\item Si $\vec{u} = \vec{0}$ ou $\vec{v} = \vec{0}$, le \textbf{produit scalaire} de $\vec{u}$ par $\vec{v}$, noté $\vec{u} \cdot \vec{v}$, vaut $0$.
+		\item Si $\vec{u}$ et $\vec{v}$ sont non nuls, le produit scalaire de $\vec{u}$ par $\vec{v}$ est le réel :
+		      \[
+			      \vec{u} \cdot \vec{v} = \norm{\vec{u}}\times\norm{\vec{v}}\times\cos\pa{\vec{u}\,;\,\vec{v}}
+		      \]
+	\end{itemize}
+\end{defin}
+
+\begin{rem}
+	Le produit scalaire $\vec{u} \cdot \vec{v}$ se lit \og $\vec{u}$ scalaire $\vec{v}$ \fg{}.
+
+	Il est indépendant du choix des points $A$, $B$, $C$ représentant les vecteurs, car il ne dépend que des normes et de l'angle.
+\end{rem}
+
+\begin{exemple}
+	On considère deux vecteurs $\vec{u}$ et $\vec{v}$, tels que $\norm{\vec{u}} = 1$, $\norm{\vec{v}} = 2$, et $\pa{\vec{u} ; \vec{v}}=\frac{\pi}{6}$.
+
+	On a :
+	\[
+		\begin{array}{rccccccl}
+			\vec{u} \cdot \vec{v} & = & \norm{\vec{u}} & \times & \norm{\vec{v}} & \times & \cos\pa{\vec{u}\,;\,\vec{v}} &                                           \\
+			                      & = & 1              & \times & 2              & \times & \cos(\frac{\pi}{6})          & = 2 \times \dfrac{\sqrt{3}}{2} = \sqrt{3}
+		\end{array}
+	\]
+
+	\begin{center}
+		\begin{tikzpicture}[scale=2, >=Stealth, thick]
+			\draw[dashed, rouge, thin,domain=-1.2:1.2] plot (\x , {sqrt(3)*\x / 3});
+			\draw[dashed, bleu, thin,domain=-1.2:3] plot (\x , -0.5);
+			\draw[->] (0,-0.5) -- ({2},{-0.5}) node[above,sloped,midway] {$\vec{v}$};
+			\draw[->] (0,0) -- ({cos(30)},{sin(30)}) node[above,sloped,midway] {$\vec{u}$};
+			\coordinate (I) at ({-sqrt(3)/2}, -0.5);
+			\draw[thin, black] ($(I) + (0.45,0)$) arc[start angle=0, end angle=30, radius=0.45];
+			\node at ($(I) + (13:0.70)$) {\footnotesize $\frac{\pi}{6}\ \text{rad}$};
+		\end{tikzpicture}
+	\end{center}
+\end{exemple}
+
+\begin{attention}
+	Le produit scalaire de deux vecteurs est un \textbf{nombre réel}, et non un vecteur.
+
+	Écrire $\vec{u} \cdot \vec{v} = \vec{0}$ est une erreur : il faut écrire $\vec{u} \cdot \vec{v} = 0$.
+\end{attention}
+
+\begin{exemple}
+	On considère un carré $ABCD$ de côté $3$. On souhaite calculer le produit scalaire $\vec{AB} \cdot \vec{AC}$.
+
+	Dans le carré $ABCD$, la diagonale $[AC]$ mesure $AC = 3\sqrt{2}$ et l'angle géométrique $\widehat{BAC}$ vaut $\dfrac{\pi}{4}$ (soit $45^\circ$).
+
+	On a alors :
+	\[
+		\begin{array}{rccccccl}
+			\vec{AB} \cdot \vec{AC} & = & AB & \times & AC        & \times & \cos\pa{\vec{AB}\,;\,\vec{AC}} &                                            \\
+			                        & = & 3  & \times & 3\sqrt{2} & \times & \cos\pa{\dfrac{\pi}{4}}        & = 9\sqrt{2} \times \dfrac{\sqrt{2}}{2} = 9
+		\end{array}
+	\]
+
+	\begin{center}
+		\begin{tikzpicture}[scale=1.1, >=Stealth, thick]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,0);
+			\coordinate (C) at (3,3);
+			\coordinate (D) at (0,3);
+			\draw[black] (A) -- (B) -- (C) -- (D) -- cycle;
+			\draw[thin, gris] (2.75,0) -- (2.75,0.25) -- (3,0.25);
+			\draw[->, bleu, line width=1.5pt] (A) -- (B) node[midway, below, bleu] {$\vec{AB}$};
+			\draw[->, rouge, line width=1.5pt] (A) -- (C) node[midway, above, sloped, rouge] {$\vec{AC}$};
+			\draw[thin, black] (0.75,0) arc[start angle=0, end angle=45, radius=0.75];
+			\node at (17:1.25) {$\frac{\pi}{4}\ \text{rad}$};
+			\fill (A) circle (1.8pt) node[below left] {$A$};
+			\fill (B) circle (1.8pt) node[below right] {$B$};
+			\fill (C) circle (1.8pt) node[above right] {$C$};
+			\fill (D) circle (1.8pt) node[above left] {$D$};
+		\end{tikzpicture}
+	\end{center}
+\end{exemple}
+\begin{propriete}[Carré scalaire]
+	Pour tout vecteur $\vec{u} = \vec{AB}$, le produit scalaire $\vec{u} \cdot \vec{u}$ est appelé \textbf{carré scalaire} de $\vec{u}$ et noté $\vec{u}^2$.
+
+	On a :
+	\[
+		\vec{u} \cdot \vec{u} = \vec{u}^2 = \norm{\vec{u}}^2 \qquad \text{et} \qquad \vec{AB} \cdot \vec{AB} = \vec{AB}^2 = AB^2
+	\]
+\end{propriete}
+
+\begin{demonstration}
+	Si $\vec{u} = \vec{0}$, les deux membres sont nuls.
+
+	Sinon, l'angle entre $\vec{u}$ et lui-même est $\theta = 0$ et $\cos(0) = 1$, donc $\vec{u} \cdot \vec{u} = \norm{\vec{u}} \times \norm{\vec{u}} \times 1 = \norm{\vec{u}}^2$.
+\end{demonstration}
+
+\begin{propriete}[Signe du produit scalaire et cas particuliers]
+	Soit $\vec{u}$ et $\vec{v}$ deux vecteurs non nuls formant un angle géométrique $\theta \in \intff{0}{\pi}$.
+
+	Comme $\norm{\vec{u}}\times \norm{\vec{v}} > 0$, le produit scalaire a le signe de $\cos(\theta)$ :
+	\begin{itemize}
+		\item Si $\theta \in \intfo{0}{\dfrac{\pi}{2}}$ (angle aigu), alors $\vec{u} \cdot \vec{v} > 0$.
+
+		      En particulier, si $\vec{u}$ et $\vec{v}$ sont colinéaires et de même sens ($\theta = 0$), alors $\vec{u} \cdot \vec{v} = \norm{\vec{u}}\times\norm{\vec{v}}$.
+		\item Si $\theta = \dfrac{\pi}{2}$ (angle droit), alors $\vec{u} \cdot \vec{v} = 0$.
+		\item Si $\theta \in \intof{\dfrac{\pi}{2}}{\pi}$ (angle obtus), alors $\vec{u} \cdot \vec{v} < 0$.
+
+		      En particulier, si $\vec{u}$ et $\vec{v}$ sont colinéaires et de sens contraires ($\theta = \pi$), alors $\vec{u} \cdot \vec{v} = -\norm{\vec{u}}\times\norm{\vec{v}}$.
+	\end{itemize}
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.85, >=Stealth, thick]
+			\foreach \dx/\an/\txt in {0/50/{angle aigu \\ $\vec{u} \cdot \vec{v} > 0$}, 6/90/{angle droit \\ $\vec{u} \cdot \vec{v} = 0$}, 12/130/{angle obtus \\ $\vec{u} \cdot \vec{v} < 0$}} {
+			\begin{scope}[shift={(\dx,0)}]
+				\draw[->, bleu, ultra thick] (0,0) -- (2.8,0) node[below] {$\vec{u}$};
+				\draw[->, rouge, ultra thick] (0,0) -- ({2.4*cos(\an)},{2.4*sin(\an)}) node[above] {$\vec{v}$};
+				\draw (0.7,0) arc (0:\an:0.7);
+				\node at ({1.05*cos(\an/2)},{1.05*sin(\an/2)}) {$\theta$};
+				\node[align=center, below] at (1.4,-0.5) {\txt};
+			\end{scope}
+			}
+		\end{tikzpicture}
+	\end{center}
+\end{propriete}
+
+\newpage
+
+\begin{exemple}
+	On considère deux hexagones réguliers centrés en $O$ : $ABCDEF$ de côté $1$ et $A'B'C'D'E'F'$ de côté $2$, dont les sommets sont alignés avec $O$.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=1.6, >=Stealth, thick]
+			\coordinate (O) at (0,0);
+			\foreach \i/\nom in {0/A, 60/B, 120/C, 180/D, 240/E, 300/F} { \coordinate (\nom) at (\i:1); }
+			\foreach \i/\nom in {0/Ap, 60/Bp, 120/Cp, 180/Dp, 240/Ep, 300/Fp} { \coordinate (\nom) at (\i:2); }
+			\foreach \i in {0, 60, 120, 180, 240, 300} { \draw[dashed, gris, thin] (O) -- (\i:2); }
+			\draw[noir] (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- cycle;
+			\draw[noir] (Ap) -- (Bp) -- (Cp) -- (Dp) -- (Ep) -- (Fp) -- cycle;
+			\draw[->, vert, line width=1.2pt] (O) -- (B) node[midway, sloped, below, vert] {$\vec{OB}$};
+			\draw[->, rouge, line width=1.2pt] (O) -- (C) node[midway, sloped, above, rouge] {$\vec{OC}$};
+			\draw[->, orange, line width=1.2pt] (O) -- (D) node[midway, below, orange] {$\vec{OD}$};
+			\draw[->, violet, line width=1.2pt] (E) -- (Ep) node[midway, above, sloped, violet] {$\vec{EE'}$};
+			\draw[->, cyan, line width=1.2pt] (F) -- (Fp) node[midway, sloped, below, cyan] {$\vec{FF'}$};
+			\draw[->, teal, line width=1.2pt] (O) -- (Dp) node[near end, above, teal] {$\vec{OD'}$};
+			\draw[->, magenta, line width=1.2pt] (Fp) -- (Bp) node[near start, sloped, right, below, magenta] {$\vec{F'B'}$};
+			\draw[->, brown, line width=1.2pt] (Fp) -- (Ap) node[midway, below, sloped, brown] {$\vec{F'A'}$};
+			\draw[->, bleu, line width=1.3pt] (O) -- (Ap) node[midway, above, bleu, fill=white] {$\vec{OA'}$};
+			\node[below right, font=\footnotesize] at (A) {$A$};
+			\node[above right, font=\footnotesize] at (B) {$B$};
+			\node[above left, font=\footnotesize] at (C) {$C$};
+			\node[below left, font=\footnotesize] at (D) {$D$};
+			\node[below left, font=\footnotesize] at (E) {$E$};
+			\node[below right, font=\footnotesize] at (F) {$F$};
+			\node[right, font=\footnotesize] at (Ap) {$A'$};
+			\node[above right, font=\footnotesize] at (Bp) {$B'$};
+			\node[above left, font=\footnotesize] at (Cp) {$C'$};
+			\node[left, font=\footnotesize] at (Dp) {$D'$};
+			\node[below left, font=\footnotesize] at (Ep) {$E'$};
+			\node[below right, font=\footnotesize] at (Fp) {$F'$};
+			\fill (O) circle (1.4pt) node[below, font=\footnotesize] {$O$};
+		\end{tikzpicture}
+	\end{center}
+
+	Dans un hexagone régulier, les triangles formés avec le centre $O$ sont équilatéraux, donc chaque angle au centre entre deux sommets consécutifs vaut $\dfrac{\pi}{3}$ (soit $60^\circ$). On a ainsi :
+
+	\begin{itemize}
+		\item \textbf{Angle aigu :} les vecteurs $\vec{OA'}$ et $\vec{OB}$ forment un angle de $\dfrac{\pi}{3}$, donc :
+		      \[
+			      \vec{OA'} \cdot \vec{OB} = OA' \times OB \times \cos\pa{\dfrac{\pi}{3}} = 2 \times 1 \times \dfrac{1}{2} = 1 > 0
+		      \]
+
+		\item \textbf{Angle obtus :} les vecteurs $\vec{OA'}$ et $\vec{OC}$ forment un angle de $\dfrac{2\pi}{3}$, donc :
+		      \[
+			      \vec{OA'} \cdot \vec{OC} = OA' \times OC \times \cos\pa{\dfrac{2\pi}{3}} = 2 \times 1 \times \pa{-\dfrac{1}{2}} = -1 < 0
+		      \]
+
+		\item \textbf{Vecteurs colinéaires de sens contraires :} les vecteurs $\vec{OA'}$ et $\vec{OD}$ forment un angle plat $\pi$, donc :
+		      \[
+			      \vec{OA'} \cdot \vec{OD} = -OA' \times OD = -2 \times 1 = -2 < 0
+		      \]
+		\item \textbf{Vecteurs colinéaires de même sens :} les vecteurs $\vec{EE'}$ et $\vec{FF'}$ ont des directions faisant un angle de $\dfrac{\pi}{3}$, avec $EE' = 1$ et $FF' = 1$, donc :
+		      \[
+			      \vec{EE'} \cdot \vec{FF'} = EE' \times FF' \times \cos\pa{\dfrac{\pi}{3}} = 1 \times 1 \times \dfrac{1}{2} = \dfrac{1}{2}
+		      \]
+		\item \textbf{Vecteurs orthogonaux :} En revanche, la droite $(OD')$ est perpendiculaire à $(F'B'$, donc $\vec{OD'}$ et $\vec{F'B'}$ sont orthogonaux :
+		      \[
+			      \vec{OD'} \cdot \vec{F'B'} = 0
+		      \]
+		\item \textbf{Vecteurs n'ayant pas la même origine :} le triangle $OF'A'$ étant équilatéral de côté $2$, le vecteur $\vec{F'A'}$ est égal au vecteur $\vec{OB'}$ (de norme $2$). Les directions de $\vec{OD'}$ et $\vec{F'A'}$ forment donc un angle de $\dfrac{2\pi}{3}$, d'où :
+		      \[
+			      \vec{OD'} \cdot \vec{F'A'} = OD' \times F'A' \times \cos\pa{\dfrac{2\pi}{3}} = 2 \times 2 \times \pa{-\dfrac{1}{2}} = -2
+		      \]
+	\end{itemize}
+\end{exemple}
+
+\newpage
+
+\begin{methode}[Calculer un produit scalaire avec la formule du cosinus]
+	Pour calculer $\vec{u} \cdot \vec{v}$ à l'aide de la définition géométrique :
+	\begin{enumerate}
+		\item on détermine les normes $\norm{\vec{u}}$ et $\norm{\vec{v}}$ ;
+		\item on ramène les deux vecteurs à la \textbf{même origine} afin d'identifier l'angle géométrique $\theta$ formé par leurs directions ;
+		\item on applique $\vec{u} \cdot \vec{v} = \norm{\vec{u}}\times\norm{\vec{v}}\cos(\theta)$ et on vérifie la cohérence du signe.
+	\end{enumerate}
+
+	\ms
+	Soit $ABC$ un triangle équilatéral de côté $5$ et $I$ le milieu de $[AB]$.
+
+	Calculer $\vec{AB} \cdot \vec{AC}$ et $\vec{AI} \cdot \vec{BC}$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Les vecteurs $\vec{AB}$ et $\vec{AC}$ ont la même origine $A$, avec $AB = AC = 5$ et $\widehat{BAC} = \dfrac{\pi}{3}$ :
+			      \[
+				      \vec{AB} \cdot \vec{AC} = 5 \times 5 \times \cos\pa{\dfrac{\pi}{3}} = 25 \times \dfrac{1}{2} = \dfrac{25}{2} = 12{,}5
+			      \]
+			\item Les vecteurs $\vec{AI}$ et $\vec{BC}$ n'ont pas la même origine.
+
+			      On construit le point $D$ tel que $\vec{AD} = \vec{BC}$.
+
+			      Alors $\widehat{IAD} = \pi - \dfrac{\pi}{3} = \dfrac{2\pi}{3}$, $AI = 2{,}5$ et $AD = BC = 5$ :
+			      \[
+				      \vec{AI} \cdot \vec{BC} = \vec{AI} \cdot \vec{AD} = 2{,}5 \times 5 \times \cos\pa{\dfrac{2\pi}{3}} = 12{,}5 \times \pa{-\dfrac{1}{2}} = -6{,}25
+			      \]
+		\end{enumerate}
+
+		\begin{center}
+			\begin{tikzpicture}[scale=0.65, >=Stealth, thick]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (5,0);
+				\coordinate (C) at (60:5);
+				\coordinate (I) at (2.5,0);
+				\coordinate (D) at (120:5);
+				\draw[->, rouge, line width=1.5pt] (A) -- (D) node[midway, below, sloped] {$\vec{AD} = \vec{BC}$};
+				\draw[vert, fill=vert!15] (0.9,0) arc[start angle=0, end angle=120, radius=0.9] -- (A) -- cycle;
+				\node[vert, above] at (90:0.9) {$\frac{2\pi}{3}$};
+				\node[below left] at (A) {$A$};
+				\node[below right] at (B) {$B$};
+				\node[above] at (C) {$C$};
+				\node[below] at (I) {$I$};
+				\node[above left] at (D) {$D$};
+				\draw[black] (A) -- (B) -- (C) -- cycle;
+				\draw[->, rouge, line width=1.5pt] (A) -- (I) node[midway, below] {$\vec{AI}$};
+				\draw[->, rouge, line width=1.5pt] (B) -- (C) node[midway, above, sloped] {$\vec{BC}$};
+				\foreach \pt in {A,B,C,D,I} \filldraw (\pt) circle (2pt);
+			\end{tikzpicture}
+		\end{center}
+	\end{correction}
+\end{methode}
+
+\subsection{Expression par projection orthogonale}
+
+\begin{defin}[Projeté orthogonal sur une droite]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=7mm, y=7mm, >=Stealth, thick]
+			\coordinate (D1) at (-1.5, -0.45);
+			\coordinate (D2) at (4.5, 1.35);
+			\draw[bleu, line width=1.1pt] (D1) -- (D2) node[above left, bleu] {$(d)$};
+			\coordinate (H) at (1.5, 0.45);
+			\coordinate (M) at ($(H) + (-0.6, 2.0)$);
+			\draw[dashed, gris] ($(H) - (-0.21, 0.7)$) -- ($(M) + (-0.21, 0.7)$);
+			\coordinate (U) at ($(H) + (0.28, 0.084)$);
+			\coordinate (V) at ($(H) + (-0.084, 0.28)$);
+			\draw[thin, noir] (U) -- ($(U) + (-0.084, 0.28)$) -- (V);
+			\fill[rouge] (M) circle (1.8pt) node[above right, rouge] {$M$};
+			\fill[vert] (H) circle (1.8pt) node[below right, vert] {$H$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Soit $(d)$ une droite et $M$ un point du plan.
+
+	Le \textbf{projeté orthogonal} de $M$ sur $(d)$ est le point d'intersection $H$ de la droite $(d)$ et de la perpendiculaire à $(d)$ passant par $M$.
+
+	\rule{0mm}{10mm}
+\end{defin}
+
+\begin{propriete}[Produit scalaire et projection orthogonale]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=7mm, y=7mm, >=Stealth, thick]
+			\coordinate (O) at (0, 0);
+			\coordinate (A) at (4.5, 1.35);
+			\coordinate (H) at (2.8, 0.84);
+			\coordinate (B) at ($(H) + (-0.66, 2.2)$);
+			\draw[dashed, gris, thin] (-1.2, -0.36) -- (5.5, 1.65);
+			\draw[dashed, gris] (B) -- (H);
+			\draw[thin, noir] ($(H) + (0.28, 0.084)$) -- ($(H) + (0.196, 0.364)$) -- ($(H) + (-0.084, 0.28)$);
+			\draw[->, bleu, line width=1.2pt] (O) -- (A);
+			\draw[->, rouge, line width=1.2pt] (O) -- (B);
+			\draw[->, vert, line width=1.2pt] (O) -- (H);
+			\fill[noir] (O) circle (1.8pt) node[below, noir] {$O$};
+			\fill[bleu] (A) circle (1.8pt) node[below, bleu] {$A$};
+			\fill[rouge] (B) circle (1.8pt) node[above, rouge] {$B$};
+			\fill[vert] (H) circle (1.8pt) node[below, vert] {$H$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Soit $O$, $A$ et $B$ trois points du plan tels que $O \neq A$, et soit $H$ le projeté orthogonal de $B$ sur la droite $(OA)$.
+
+	Alors :
+	\[
+		\vec{OA} \cdot \vec{OB} = \vec{OA} \cdot \vec{OH} =
+		\begin{cases}
+			OA \times OH  & \,\text{si }\,\vec{OA} \text{ et } \vec{OH}\,\text{ sont de même sens,}       \\
+			-OA \times OH & \,\text{si }\,\vec{OA} \text{ et } \vec{OH}\,\text{ sont de sens contraires.}
+		\end{cases}
+	\]
+\end{propriete}
+
+\newpage
+
+\begin{demonstration}
+	Si $B$ est sur $(OA)$, alors $H = B$ et le résultat est le cas de vecteurs colinéaires.
+
+	Si $\vec{OB} = \vec{0}$ ou si $H = O$, alors $\vec{OA}$ et $\vec{OB}$ sont orthogonaux, les deux produits sont nuls.
+
+	Sinon, soit $\theta = \widehat{AOB}$ :
+	\begin{itemize}
+		\item Si $\theta$ est aigu, $H$ est sur la demi-droite $[OA)$.
+
+		      Dans le triangle $OHB$ rectangle en $H$, on a : $OH = OB\cos(\theta)$.
+
+		      Alors :
+		      \[
+			      \vec{OA} \cdot \vec{OB} = OA \times OB \times \cos(\theta) = OA \times OH
+		      \]
+
+		      \ldots avec $\vec{OA}$, $\vec{OH}$ de même sens.
+		\item Si $\theta$ est obtus, $H$ est de l'autre côté de $O$.
+
+		      On a $OH = OB\cos(\pi - \theta) = -OB\cos(\theta)$.
+
+		      Alors :
+
+		      \[
+			      \vec{OA} \cdot \vec{OB} = OA \times OB \times \cos(\theta) = -OA \times OH
+		      \]
+
+		      \ldots avec $\vec{OA}$, $\vec{OH}$ de sens contraires.
+	\end{itemize}
+
+	Dans les deux cas, $\vec{OA} \cdot \vec{OH}$ vaut respectivement $OA \times OH$ et $-OA \times OH$, d'où l'égalité $\vec{OA} \cdot \vec{OB} = \vec{OA} \cdot \vec{OH}$.
+
+	\begin{center}
+		\begin{tikzpicture}[x=9mm, y=9mm, >=Stealth, thick]
+			\begin{scope}[shift={(0,0)}]
+				\coordinate (O) at (0,0);
+				\coordinate (A) at (4.5,0);
+				\coordinate (B) at (3,2.2);
+				\coordinate (H) at (3,0);
+				\draw[->, bleu, line width=1.2pt] (O) -- (A) node[right] {$A$};
+				\draw[->, rouge, line width=1.2pt] (O) -- (B) node[above right] {$B$};
+				\draw[dashed, gris] (B) -- (H);
+				\draw (H) ++(0,0.25) -- ++(0.25,0) -- ++(0,-0.25);
+				\draw[vert, ultra thick] (0,-0.16) -- (3,-0.16);
+				\draw[thin, noir] (0.8,0) arc[start angle=0, end angle=36.25, radius=0.8];
+				\node[font=\footnotesize] at (18.1:1.1) {$\theta$};
+				\fill[rouge] (B) circle (2pt);
+				\fill (O) circle (2pt) node[below left] {$O$};
+				\fill[vert] (H) circle (2pt) node[below right, vert] {$H$};
+				\node[font=\footnotesize, below] at (2.25,-0.6) {$\vec{OA} \cdot \vec{OB} = OA \times OH > 0$};
+			\end{scope}
+			\begin{scope}[shift={(7.5,0)}]
+				\coordinate (O) at (1.5,0);
+				\coordinate (A) at (5,0);
+				\coordinate (B) at (0,2.2);
+				\coordinate (H) at (0,0);
+				\draw[dashed, gris] (-0.4,0) -- (O);
+				\draw[->, bleu, line width=1.2pt] (O) -- (A) node[right] {$A$};
+				\draw[->, rouge, line width=1.2pt] (O) -- (B) node[above left] {$B$};
+				\draw[dashed, gris] (B) -- (H);
+				\draw (H) ++(0,0.25) -- ++(0.25,0) -- ++(0,-0.25);
+				\draw[vert, ultra thick] (1.5,-0.16) -- (0,-0.16);
+				\fill (O) circle (2pt) node[below right] {$O$};
+				\fill[rouge] (B) circle (2pt);
+				\draw[thin, noir] ($(O) + (0.65,0)$) arc[start angle=0, end angle=124.29, radius=0.65];
+				\node[font=\footnotesize] at ($(O) + (62.1:0.92)$) {$\theta$};
+				\fill[vert] (H) circle (2pt) node[below left, vert] {$H$};
+				\node[font=\footnotesize, below] at (2.5,-0.6) {$\vec{OA} \cdot \vec{OB} = -OA \times OH < 0$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+\end{demonstration}
+
+\begin{methode}[Calculer un produit scalaire par projection orthogonale]
+	Soit $ABCD$ un carré de côté $4$.
+
+	Calculer $\vec{AB} \cdot \vec{AC}$, $\vec{AB} \cdot \vec{AD}$ et $\vec{AD} \cdot \vec{CB}$.
+
+	\begin{correction}
+		\nline
+		\begin{wrapstuff}[r]
+			\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (4,0);
+				\coordinate (C) at (4,4);
+				\coordinate (D) at (0,4);
+				\draw[noir] (A) -- (B) -- (C) -- (D) -- cycle;
+				\draw[thin, gris] (3.7,0) -- (3.7,0.3) -- (4,0.3);
+				\draw[->, bleu, line width=1.5pt] (A) -- (B);
+				\draw[->, rouge, line width=1.5pt] (A) -- (C);
+				\draw[->, vert, line width=1.5pt] (A) -- (D);
+				\draw[->, orange, line width=1.5pt] (C) -- (B);
+				\node[below, font=\footnotesize] at (2,-0.15) {$4$};
+				\fill (A) circle (1.8pt) node[below left] {$A$};
+				\fill (B) circle (1.8pt) node[below right] {$B$};
+				\fill (C) circle (1.8pt) node[above right] {$C$};
+				\fill (D) circle (1.8pt) node[above left] {$D$};
+			\end{tikzpicture}
+		\end{wrapstuff}
+		\begin{enumerate}
+			\item Le point $B$ est le projeté orthogonal de $C$ sur la droite $(AB)$, donc :
+			      \[
+				      \def\arraystretch{1.5}
+				      \begin{array}{rcl}
+					      \vec{AB} \cdot \vec{AC} & = & \vec{AB} \cdot \vec{AB} \\
+					                              & = & AB^2 = 4^2 = 16
+				      \end{array}
+			      \]
+			\item Les côtés $[AB]$ et $[AD]$ sont perpendiculaires, donc $\vec{AB} \cdot \vec{AD} = 0$.
+			\item Comme $ABCD$ est un carré, $\vec{CB} = \vec{DA} = -\vec{AD}$, d'où :
+			      \[
+				      \def\arraystretch{1.5}
+				      \begin{array}{rcl}
+					      \vec{AD} \cdot \vec{CB} & = & \vec{AD} \cdot \pa{-\vec{AD}} \\
+					                              & = & -AD^2                         \\
+					                              & = & -4^2 = -16
+				      \end{array}
+			      \]
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\newpage
+
+\section{Propriétés algébriques et formules de polarisation}
+
+\subsection{Symétrie et bilinéarité}
+
+\begin{propriete}[Symétrie et bilinéarité du produit scalaire]
+	Pour tous vecteurs $\vec{u}$, $\vec{v}$, $\vec{w}$ du plan et tout nombre réel $k$ :
+	\begin{itemize}
+		\item \textbf{Symétrie :}
+		      \begin{itemize}[itemsep=2mm]
+			      \item $\vec{u} \cdot \vec{v} = \vec{v} \cdot \vec{u}$
+		      \end{itemize}
+		\item \textbf{Bilinéarité :}
+		      \begin{itemize}[itemsep=2mm]
+			      \item $\vec{u} \cdot \pa{\vec{v} + \vec{w}} = \vec{u} \cdot \vec{v} + \vec{u} \cdot \vec{w}$
+			      \item $\pa{\vec{u} + \vec{v}} \cdot \vec{w} = \vec{u} \cdot \vec{w} + \vec{v} \cdot \vec{w}$
+			      \item $\pa{k\vec{u}} \cdot \vec{v} = \vec{u} \cdot \pa{k\vec{v}} = k\pa{\vec{u} \cdot \vec{v}}$
+		      \end{itemize}
+	\end{itemize}
+\end{propriete}
+
+\begin{demonstration}
+	\nline
+	\begin{itemize}
+		\item \textbf{Symétrie :}
+
+		      Si $\vec{u} = \vec{0}$ ou $\vec{v} = \vec{0}$, alors $\vec{u} \cdot \vec{v} = 0 = \vec{v} \cdot \vec{u}$.
+
+		      Si $\vec{u} \neq \vec{0}$ et $\vec{v} \neq \vec{0}$, les angles géométriques $\pa{\vec{u}\,;\,\vec{v}}$ et $\pa{\vec{v}\,;\,\vec{u}}$ sont égaux, donc par définition :
+		      \[
+			      \vec{u} \cdot \vec{v} = \norm{\vec{u}}\norm{\vec{v}}\cos\pa{\vec{u}\,;\,\vec{v}} = \norm{\vec{v}}\norm{\vec{u}}\cos\pa{\vec{v}\,;\,\vec{u}} = \vec{v} \cdot \vec{u}
+		      \]
+
+		\item \textbf{Multiplication par un réel $k$ :}
+
+		      Si $k = 0$, $\vec{u} = \vec{0}$ ou $\vec{v} = \vec{0}$, les trois membres valent $0$.
+
+		      Supposons désormais $k \neq 0$, $\vec{u} \neq \vec{0}$ et $\vec{v} \neq \vec{0}$ :
+		      \begin{itemize}
+			      \item Si $k > 0$, alors $\norm{k\vec{u}} = k\norm{\vec{u}}$ et $k\vec{u}$ a le même sens que $\vec{u}$, donc $\cos\pa{k\vec{u}\,;\,\vec{v}} = \cos\pa{\vec{u}\,;\,\vec{v}}$. D'où :
+			            \[
+				            \pa{k\vec{u}} \cdot \vec{v} = \norm{k\vec{u}}\times \norm{\vec{v}}\cos\pa{k\vec{u}\,;\,\vec{v}} = k\norm{\vec{u}}\times\norm{\vec{v}}\cos\pa{\vec{u}\,;\,\vec{v}} = k\pa{\vec{u} \cdot \vec{v}}
+			            \]
+			      \item Si $k < 0$, alors $\norm{k\vec{u}} = -k\norm{\vec{u}}$ et $k\vec{u}$ est de sens contraire à $\vec{u}$, donc $\pa{k\vec{u}\,;\,\vec{v}} = \pi - \pa{\vec{u}\,;\,\vec{v}}$, ce qui donne $\cos\pa{k\vec{u}\,;\,\vec{v}} = -\cos\pa{\vec{u}\,;\,\vec{v}}$. D'où :
+			            \[
+				            \pa{k\vec{u}} \cdot \vec{v} = \pa{-k\norm{\vec{u}}}\times\norm{\vec{v}}\pa{-\cos\pa{\vec{u}\,;\,\vec{v}}} = k\norm{\vec{u}}\times\norm{\vec{v}}\cos\pa{\vec{u}\,;\,\vec{v}} = k\pa{\vec{u} \cdot \vec{v}}
+			            \]
+		      \end{itemize}
+
+		      Par symétrie, on obtient également $\vec{u} \cdot \pa{k\vec{v}} = \pa{k\vec{v}} \cdot \vec{u} = k\pa{\vec{v} \cdot \vec{u}} = k\pa{\vec{u} \cdot \vec{v}}$.
+	\end{itemize}
+
+	\begin{itemize}
+		\item \textbf{Distributivité :}
+
+		      Si $\vec{u} = \vec{0}$, l'égalité est évidente.
+
+		      Supposons $\vec{u} \neq \vec{0}$ et posons $\vec{u} = \vec{AB}$, $\vec{v} = \vec{BC}$ et $\vec{w} = \vec{CD}$.
+		      \begin{center}
+			      \begin{tikzpicture}[>=Stealth, thick]
+				      \coordinate (A) at (1,0);
+				      \coordinate (B) at (3.2,0);
+				      \coordinate (C) at (4.7,1.8);
+				      \coordinate (D) at (6.2,1.1);
+				      \coordinate (Cp) at (4.7,0);
+				      \coordinate (Dp) at (6.2,0);
+				      \draw[dashed, gris] (0.2,0) -- (7.2,0);
+				      \draw[dashed, gris] (C) -- (Cp);
+				      \draw[dashed, gris] (D) -- (Dp);
+				      \draw[thin, noir] (4.75,0.25) -- (5,0.25) -- (5,0);
+				      \draw[thin, noir] (6.2,0.25) -- (6.45,0.25) -- (6.45,0);
+				      \draw[->, bleu, line width=1.2pt] (A) -- (B) node[sloped, midway, below, bleu] {$\vec{u}$};
+				      \draw[->, rouge, line width=1.2pt] (B) -- (C) node[sloped, midway, above, rouge] {$\vec{v}$};
+				      \draw[->, vert, line width=1.2pt] (C) -- (D) node[sloped, midway, above, vert] {$\vec{w}$};
+				      \draw[->, orange, line width=1.1pt] (B) -- (D) node[sloped, midway, above, orange, fill=white] {$\vec{v}+\vec{w}$};
+				      \draw[->, rouge, line width=1.1pt] (B) -- (Cp);% node[sloped, midway, below, rouge] {\footnotesize $\vec{BC'}$};
+				      \draw[->, vert, line width=1.1pt] (Cp) -- (Dp);% node[sloped, midway, below, vert] {\footnotesize $\vec{C'D'}$};
+				      \fill (A) circle (1.6pt) node[below] {$A$};
+				      \fill (B) circle (1.6pt) node[below] {$B$};
+				      \fill (C) circle (1.6pt) node[above] {$C$};
+				      \fill (D) circle (1.6pt) node[above] {$D$};
+				      \fill[rouge] (Cp) circle (1.6pt) node[below, rouge] {$C'$};
+				      \fill[vert] (Dp) circle (1.6pt) node[below, vert] {$D'$};
+			      \end{tikzpicture}
+		      \end{center}
+		      D'après la relation de Chasles, on a $\vec{v} + \vec{w} = \vec{BC} + \vec{CD} = \vec{BD}$.
+
+		      Notons $C'$ et $D'$ les projetés orthogonaux respectifs de $C$ et $D$ sur la droite $(AB)$.
+
+		      Par propriété du produit scalaire et de la projection orthogonale :
+		      \begin{itemize}
+			      \item $\vec{u} \cdot \vec{v} = \vec{AB} \cdot \vec{BC} = \vec{AB} \cdot \vec{BC'}$
+			      \item $\vec{u} \cdot \vec{w} = \vec{AB} \cdot \vec{CD} = \vec{AB} \cdot \vec{C'D'}$
+			      \item $\vec{u} \cdot \pa{\vec{v} + \vec{w}} = \vec{AB} \cdot \vec{BD} = \vec{AB} \cdot \vec{BD'}$
+		      \end{itemize}
+
+		      Comme $C'$ et $D'$ appartiennent à la droite $(AB)$, les vecteurs $\vec{AB}$, $\vec{BC'}$ et $\vec{C'D'}$ sont colinéaires à $(AB)$, et par relation de Chasles on a $\vec{BC'} + \vec{C'D'} = \vec{BD'}$.
+
+		      En étudiant les sens de ces vecteurs colinéaires sur la droite $(AB)$ (avec $\vec{AB}$ non nul), on obtient :
+		      \[
+			      \vec{AB} \cdot \vec{BC'} + \vec{AB} \cdot \vec{C'D'} = \vec{AB} \cdot \vec{BD'}
+		      \]
+
+		      Soit :
+		      \[
+			      \vec{u} \cdot \vec{v} + \vec{u} \cdot \vec{w} = \vec{u} \cdot \pa{\vec{v} + \vec{w}}
+		      \]
+
+		      Enfin, par symétrie du produit scalaire :
+		      \[
+			      \pa{\vec{u} + \vec{v}} \cdot \vec{w} = \vec{w} \cdot \pa{\vec{u} + \vec{v}} = \vec{w} \cdot \vec{u} + \vec{w} \cdot \vec{v} = \vec{u} \cdot \vec{w} + \vec{v} \cdot \vec{w}
+		      \]
+	\end{itemize}
+\end{demonstration}
+
+\begin{propriete}[Identités remarquables scalaires]
+	Pour tous vecteurs $\vec{u}$ et $\vec{v}$ du plan :
+	\begin{enumerate}
+		\item $\norm{\vec{u} + \vec{v}}^2 = \pa{\vec{u} + \vec{v}}^2 = \norm{\vec{u}}^2 + 2\,\vec{u} \cdot \vec{v} + \norm{\vec{v}}^2$ ;
+		\item $\norm{\vec{u} - \vec{v}}^2 = \pa{\vec{u} - \vec{v}}^2 = \norm{\vec{u}}^2 - 2\,\vec{u} \cdot \vec{v} + \norm{\vec{v}}^2$ ;
+		\item $\pa{\vec{u} + \vec{v}} \cdot \pa{\vec{u} - \vec{v}} = \norm{\vec{u}}^2 - \norm{\vec{v}}^2$.
+	\end{enumerate}
+\end{propriete}
+
+\begin{demonstration}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (3,0.5);
+			\coordinate (B) at (1,3);
+			\coordinate (C) at (4,3.5);
+			\draw[dashed, gris] (A) -- (C) -- (B);
+			\draw[->, bleu, ultra thick] (O) -- (A) node[sloped, midway, below, font=\footnotesize] {$\vec{u}$};
+			\draw[->, rouge, ultra thick] (O) -- (B) node[sloped, midway, above, font=\footnotesize] {$\vec{v}$};
+			\draw[->, vert, ultra thick] (O) -- (C) node[sloped, pos=0.7, below, font=\footnotesize] {$\vec{u} + \vec{v}$};
+			\draw[->, orange, ultra thick] (B) -- (A) node[sloped, pos=0.52, below left, font=\footnotesize] {$\vec{u} - \vec{v}$};
+			\fill (O) circle (2pt) node[below left] {$O$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Par bilinéarité et symétrie du produit scalaire :
+
+	\begin{enumerate}
+		\item $\norm{\vec{u} + \vec{v}}^2 = \vec{u} \cdot \vec{u} + \vec{u} \cdot \vec{v} + \vec{v} \cdot \vec{u} + \vec{v} \cdot \vec{v} = \norm{\vec{u}}^2 + 2\,\vec{u} \cdot \vec{v} + \norm{\vec{v}}^2$
+		\item $\norm{\vec{u} - \vec{v}}^2 = \vec{u} \cdot \vec{u} - \vec{u} \cdot \vec{v} - \vec{v} \cdot \vec{u} + \vec{v} \cdot \vec{v} = \norm{\vec{u}}^2 - 2\,\vec{u} \cdot \vec{v} + \norm{\vec{v}}^2$
+		\item $\pa{\vec{u} + \vec{v}} \cdot \pa{\vec{u} - \vec{v}}= \vec{u} \cdot \vec{u} - \vec{u} \cdot \vec{v} + \vec{v} \cdot \vec{u} - \vec{v} \cdot \vec{v} = \norm{\vec{u}}^2 - \norm{\vec{v}}^2$
+	\end{enumerate}
+
+	\rule{0mm}{10mm}
+\end{demonstration}
+
+\begin{methode}[Développer et calculer avec les propriétés algébriques]
+	Soit $\vec{u}$ et $\vec{v}$ deux vecteurs tels que $\norm{\vec{u}} = 2$, $\norm{\vec{v}} = 3$ et $\vec{u} \cdot \vec{v} = 1$.
+
+	Calculer :
+	\begin{enumerate}
+		\item $\pa{\vec{u} + \vec{v}} \cdot \pa{\vec{u} - \vec{v}}$ ;
+		\item $\norm{\vec{u} + \vec{v}}$ ;
+		\item $\pa{-2\vec{v}} \cdot \pa{3\vec{u} - \vec{v}}$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $\pa{\vec{u} + \vec{v}} \cdot \pa{\vec{u} - \vec{v}} = \norm{\vec{u}}^2 - \norm{\vec{v}}^2 = 2^2 - 3^2 = -5$.
+			\item $\norm{\vec{u} + \vec{v}}^2 = \norm{\vec{u}}^2 + 2\,\vec{u} \cdot \vec{v} + \norm{\vec{v}}^2 = 4 + 2 + 9 = 15$, donc $\norm{\vec{u} + \vec{v}} = \sqrt{15}$.
+			\item $\pa{-2\vec{v}} \cdot \pa{3\vec{u} - \vec{v}} = -6\pa{\vec{v} \cdot \vec{u}} + 2\norm{\vec{v}}^2 = -6 \times 1 + 2 \times 9 = 12$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\subsection{Formules de polarisation (expression avec les normes)}
+
+\begin{propriete}[Formules de polarisation]
+	Pour tous vecteurs $\vec{u}$ et $\vec{v}$ du plan :
+	\vspace{-3mm}
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $\vec{u} \cdot \vec{v} = \dfrac{1}{2}\pa{\norm{\vec{u}}^2 + \norm{\vec{v}}^2 - \norm{\vec{u} - \vec{v}}^2}$
+			\item $\vec{u} \cdot \vec{v} = \dfrac{1}{2}\pa{\norm{\vec{u} + \vec{v}}^2 - \norm{\vec{u}}^2 - \norm{\vec{v}}^2}$
+		\end{itemize}
+	\end{multicols}
+
+	En particulier, pour tous points $A$, $B$ et $C$ (en posant $\vec{u} = \vec{AB}$ et $\vec{v} = \vec{AC}$, d'où $\vec{u} - \vec{v} = \vec{CB}$) :
+	\[
+		\vec{AB} \cdot \vec{AC} = \dfrac{1}{2}\pa{AB^2 + AC^2 - BC^2}
+	\]
+\end{propriete}
+
+\begin{demonstration}
+	D'après les identités remarquables scalaires :
+	\[
+		\def\arraystretch{1.5}
+		\begin{array}{rcl}
+			\norm{\vec{u} + \vec{v}}^2 = \norm{\vec{u}}^2 + 2\,\vec{u} \cdot \vec{v} + \norm{\vec{v}}^2 & \eqv & 2\,\vec{u} \cdot \vec{v} = \norm{\vec{u} + \vec{v}}^2 - \norm{\vec{u}}^2 - \norm{\vec{v}}^2 \\
+			\norm{\vec{u} - \vec{v}}^2 = \norm{\vec{u}}^2 - 2\,\vec{u} \cdot \vec{v} + \norm{\vec{v}}^2 & \eqv & 2\,\vec{u} \cdot \vec{v} = \norm{\vec{u}}^2 + \norm{\vec{v}}^2 - \norm{\vec{u} - \vec{v}}^2
+		\end{array}
+	\]
+	En divisant par $2$, on obtient les deux expressions.
+\end{demonstration}
+
+\begin{exemple}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=5mm, y=5mm, >=Stealth, thick]
+			\coordinate (C) at (0,0);
+			\coordinate (F) at (7,0);
+			\coordinate (G) at ({6*19/21},{6*4*sqrt(5)/21});
+
+			\draw[noir] (C) -- (F) -- (G) -- cycle;
+			\draw[->, bleu, line width=1.2pt] (C) -- (G) node[midway, above, sloped, bleu] {$\vec{CG}$};
+			\draw[->, rouge, line width=1.2pt] (C) -- (F) node[midway, below, sloped, rouge] {$\vec{CF}$};
+			\fill (C) circle (2pt) node[below left] {$C$};
+			\fill (F) circle (2pt) node[below right] {$F$};
+			\fill (G) circle (2pt) node[above] {$G$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Soit $CFG$ un triangle tel que $CG = 6$, $CF = 7$ et $GF = 3$.
+
+	Alors :
+	\[
+		\vec{CG} \cdot \vec{CF} = \dfrac{1}{2}\pa{CG^2 + CF^2 - GF^2} = \dfrac{1}{2}\pa{36 + 49 - 9} = \dfrac{76}{2} = 38
+	\]
+\end{exemple}
+
+\section{Produit scalaire dans un repère orthonormé}
+
+Dans toute cette section, le plan est muni d'un repère orthonormé $\vOIJ$.
+
+\begin{propriete}[Expression analytique du produit scalaire]
+	Soit $\vec{u}\coord{x}{y}$ et $\vec{v}\coord{x'}{y'}$ deux vecteurs du plan.
+
+	Alors :
+	\[
+		\vec{u} \cdot \vec{v} = xx' + yy' \qquad \text{et} \qquad \norm{\vec{u}} = \sqrt{x^2 + y^2}
+	\]
+
+	\begin{center}
+		\begin{tikzpicture}[x=11mm, y=11mm, >=Stealth, thick]
+			\draw[->, gris] (-0.4,0) -- (3.8,0);
+			\draw[->, gris] (0,-0.4) -- (0,3.2);
+			\draw[->, noir, line width=1.1pt] (0,0) -- (1,0) node[midway, sloped, below] {$\vec{\imath}$};
+			\draw[->, noir, line width=1.1pt] (0,0) -- (0,1) node[midway, sloped, above] {$\vec{\jmath}$};
+			\coordinate (U) at (3,1.5);
+			\coordinate (V) at (1.25,2.5);
+			\draw[dashed, bleu, thin] (3,0) -- (U) -- (0,1.5);
+			\draw[dashed, rouge, thin] (1.25,0) -- (V) -- (0,2.5);
+			\draw[->, bleu, line width=1.3pt] (0,0) -- (U) node[pos=0.55, sloped, above, bleu] {$\vec{u}$};
+			\draw[->, rouge, line width=1.3pt] (0,0) -- (V) node[midway, sloped, below, rouge] {$\vec{v}$};
+			\node[below, bleu] at (3,0) {$x$};
+			\node[left, bleu] at (0,1.5) {$y$};
+			\node[below, rouge] at (1.25,0) {$x'$};
+			\node[left, rouge] at (0,2.5) {$y'$};
+			\fill (0,0) circle (1.5pt) node[below left] {$O$};
+		\end{tikzpicture}
+	\end{center}
+\end{propriete}
+
+\begin{demonstration}
+	Le repère étant orthonormé, $\norm{\vec{i}} = \norm{\vec{j}} = 1$ et $\vec{i} \cdot \vec{j} = 0$ (les vecteurs sont orthogonaux).
+
+	En décomposant $\vec{u} = x\vec{i} + y\vec{j}$ et $\vec{v} = x'\vec{i} + y'\vec{j}$, la bilinéarité donne :
+	\[
+		\vec{u} \cdot \vec{v} = \pa{x\vec{i} + y\vec{j}}\cdot\pa{x'\vec{i} + y'\vec{j}}
+	\]
+
+	Donc :
+	\[
+		\begin{array}{rccccccccl}
+			\vec{u} \cdot \vec{v} & = & xx'\,\vec{i}^2 & + & xy'\pa{\vec{i} \cdot \vec{j}} & + & yx'\pa{\vec{j} \cdot \vec{i}} & + & yy'\,\vec{j}^2 &             \\
+			                      & = & xx'            & + & 0                             & + & 0                             & + & yy'            & = xx' + yy'
+		\end{array}
+	\]
+
+	En particulier, $\norm{\vec{u}}^2 = \vec{u} \cdot \vec{u} = x^2 + y^2$, d'où $\norm{\vec{u}} = \sqrt{x^2 + y^2}$.
+\end{demonstration}
+
+\begin{attention}
+	Cette formule n'est valable \textbf{que dans un repère orthonormé}.
+
+	Si le repère est quelconque, on peut avoir $\vec{i} \cdot \vec{j} \neq 0$ ou des vecteurs de base de norme différente de $1$, et la formule est fausse.
+\end{attention}
+
+\newpage
+
+\begin{propriete}[Coordonnées et distance]
+	Pour tout vecteur $\vec{u}\coord{x}{y}$ :
+	\[
+		x = \vec{u} \cdot \vec{i}\qquad\text{et}\qquad y = \vec{u} \cdot \vec{j}
+	\]
+
+	De plus, pour $A\coordl{x_A}{y_A}$ et $B\coordl{x_B}{y_B}$ :
+	\[
+		AB = \sqrt{\pa{x_B - x_A}^2 + \pa{y_B - y_A}^2}
+	\]
+\end{propriete}
+
+\begin{demonstration}
+	Par l'expression analytique :
+	\[
+		\vec{u} \cdot \vec{i} = x \times 1 + y \times 0 = x\qquad\text{et}\qquad\vec{u} \cdot \vec{j} = x \times 0 + y \times 1 = y
+	\]
+
+	De plus, $\vec{AB}\coord{x_B - x_A}{y_B - y_A}$ et $AB = \norm{\vec{AB}}=\sqrt{\pa{x_B - x_A}^2 + \pa{y_B - y_A}^2}$.
+\end{demonstration}
+
+\begin{methode}[Calculer un angle à l'aide de deux expressions du produit scalaire]
+	Dans un repère orthonormé, on considère les points $A\coordl{-1}{2}$, $B\coordl{4}{1}$, $C\coordl{4}{3}$ et $D\coordl{2}{-1}$.
+	\begin{center}
+		\begin{tikzpicture}[x=9mm, y=9mm, >=Stealth, thick]
+			\coordinate (A) at (-1,2);
+			\coordinate (B) at (4,1);
+			\coordinate (C) at (4,3);
+			\coordinate (D) at (2,-1);
+			\coordinate (O) at ({34/11},{13/11});
+			\draw[xstep=1, ystep=1, gris!40, dashed, thin] (-1.2,-1.2) grid (5.5,4.2);
+			\fill[bleu] (A) circle (2pt) node[left, bleu, fill=white, font=\footnotesize] {$A$};
+			\fill[bleu] (B) circle (2pt) node[right, bleu, fill=white, font=\footnotesize] {$B$};
+			\fill[rouge] (C) circle (2pt) node[above right, rouge, font=\footnotesize] {$C$};
+			\fill[rouge] (D) circle (2pt) node[below left, rouge, font=\footnotesize, fill=white] {$D$};
+			\fill[noir] (O) circle (2pt) node[above, xshift=-2, font=\footnotesize, fill=white] {$O$};
+			\draw[->, gris] (-1.2,0) -- (5.5,0) node[above, font=\footnotesize] {$x$};
+			\draw[->, gris] (0,-1.2) -- (0,4.2) node[right, font=\footnotesize] {$y$};
+			\draw[->, noir, line width=1.1pt] (0,0) -- (1,0) node[midway, sloped, below, font=\footnotesize] {$\vec{\imath}$};
+			\draw[->, noir, line width=1.1pt] (0,0) -- (0,1) node[midway, sloped, above, font=\footnotesize] {$\vec{\jmath}$};
+			\draw[thin, noir] (0.25,0) -- (0.25,0.25) -- (0,0.25);
+			\draw[dashed, gris] (A) -- (B);
+			\draw[dashed, gris] (C) -- (D);
+			\draw[->, bleu, line width=1.2pt] (A) -- (B) node[sloped, midway, above, bleu, font=\footnotesize] {$\vec{AB}$};
+			\draw[->, rouge, line width=1.2pt] (C) -- (D) node[sloped, pos=0.2, above, rouge, font=\footnotesize] {$\vec{CD}$};
+			\draw[->, vert, line width=1.2pt] (O) -- (B);
+			\draw[thin, noir] ($(O) + (-14:0.55)$) arc[start angle=-14, end angle=-115, radius=0.55];
+			\node[font=\footnotesize] at ($(O) + (-65:0.95)$) {$\widehat{BOD}$};
+			\fill[bleu] (A) circle (2pt);
+			\fill[bleu] (B) circle (2pt);
+			\fill[rouge] (C) circle (2pt);
+			\fill[rouge] (D) circle (2pt);
+			\fill[noir] (O) circle (2pt);
+		\end{tikzpicture}
+	\end{center}
+	Les droites $(AB)$ et $(CD)$ se coupent en $O$.
+
+	Déterminer une valeur approchée au dixième de degré de l'angle $\widehat{BOD}$.
+
+	\begin{correction}
+		On vérifie d'abord que $O \in [AB] \cap [CD]$ : on trouve $O\coordl{\dfrac{34}{11}}{\dfrac{13}{11}}$, qui appartient aux deux segments.
+
+		Les vecteurs $\vec{OB}$ et $\vec{AB}$ ont donc même sens, de même que $\vec{OD}$ et $\vec{CD}$ : l'angle $\widehat{BOD}$ est l'angle géométrique entre $\vec{AB}$ et $\vec{CD}$.
+
+		On calcule $\vec{AB} \cdot \vec{CD}$ de deux façons :
+		\begin{itemize}
+			\item \textbf{Par les coordonnées :}
+
+			      $\vec{AB}\coord{5}{-1}$ et $\vec{CD}\coord{-2}{-4}$, d'où :
+			      \[
+				      \vec{AB} \cdot \vec{CD} = 5 \times (-2) + (-1) \times (-4) = -6
+			      \]
+
+			\item \textbf{Par la formule du cosinus :}
+
+			      $AB = \sqrt{26}$ et $CD = \sqrt{20}$, d'où :
+			      \[
+				      \begin{array}{rccl}
+					      \vec{AB} \cdot \vec{CD} & = & \sqrt{26} \times \sqrt{20} \times \cos\pa{\widehat{BOD}} &     \\
+					                              & = & \sqrt{520}\cos\pa{\widehat{BOD}}                         & =-6
+				      \end{array}
+			      \]
+		\end{itemize}
+
+		Donc :
+		\[
+			\cos\pa{\widehat{BOD}} = \dfrac{-6}{\sqrt{520}} = \dfrac{-3}{\sqrt{130}}
+		\]
+
+		À la calculatrice, $\widehat{BOD} \approx 105{,}3^\circ$ (angle obtus, cohérent avec le signe négatif du cosinus).
+	\end{correction}
+\end{methode}
+

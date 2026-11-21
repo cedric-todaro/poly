@@ -155,6 +155,7 @@
 \def\bmc\begin{multicols}\def\emc\end{multicols}
 % ----------------------------------------------------------------------------------------------------
 \RequirePackage{xcolor}
+\definecolor{noir}{HTML}{000000}
 \definecolor{bleu}{HTML}{0D47A1}
 \definecolor{rouge}{HTML}{B71C1C}
 \definecolor{vert}{HTML}{1B5E20}
