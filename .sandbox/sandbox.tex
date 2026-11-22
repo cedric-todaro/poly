@@ -162,22 +162,56 @@
 \end{demonstration}
 
 \newpage
-% TODO : j'en suis là
+
 \begin{methode}[Déterminer l'équation d'une hauteur]
 	Dans un repère orthonormé, on considère $A\coordl{0}{1}$, $B\coordl{4}{0}$ et $C\coordl{3}{5}$.
 
 	Déterminer une équation cartésienne de la hauteur $(h)$ du triangle $ABC$ issue de $A$.
 
 	\begin{correction}
+		\nline
+		\begin{wrapstuff}[r]
+			\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+				\draw[dashed, thin, gris!40, step=1] (-1.8,-0.6) grid (5.5,5.5);
+				\draw[->, gris] (-1.8,0) -- (5.5,0) node[above, font=\footnotesize] {$x$};
+				\draw[->, gris] (0,-0.6) -- (0,5.5) node[right, font=\footnotesize] {$y$};
+				\draw[->, noir, line width=1pt] (0,0) -- (1,0) node[midway, sloped, below, font=\footnotesize] {$\vec{\imath}$};
+				\draw[->, noir, line width=1pt] (0,0) -- (0,1) node[midway, sloped, above, font=\footnotesize] {$\vec{\jmath}$};
+				\draw[thin, noir] (0.25,0) -- (0.25,0.25) -- (0,0.25);
+				\coordinate (A) at (0,1);
+				\coordinate (B) at (4,0);
+				\coordinate (C) at (3,5);
+				\coordinate (H) at ({4 - 9/26},{45/26});
+				\draw[noir] (A) -- (B) -- (C) -- cycle;
+				\draw[dashed, vert, line width=1.1pt] (-1.2, 0.76) -- (A) -- (H);
+				\node[vert, left, font=\footnotesize] at (-1.2, 0.76) {$(h)$};
+				\draw[->, rouge, line width=1.2pt] (B) -- (C) node[midway, above right, rouge, font=\footnotesize] {$\vec{BC}$};
+				\coordinate (P1) at ($(H) + ({0.35*(-1/sqrt(26))},{0.35*(5/sqrt(26))})$);
+				\coordinate (P2) at ($(H) + ({0.35*(-95/sqrt(9386))},{0.35*(-19/sqrt(9386))})$);
+				\coordinate (P3) at ($(P1) + ({0.35*(-95/sqrt(9386))},{0.35*(-19/sqrt(9386))})$);
+				\draw[thin, noir] (P1) -- (P3) -- (P2);
+				\fill[bleu] (A) circle (2pt) node[above left, xshift=2pt, bleu, font=\footnotesize] {$A$};
+				\fill[noir] (B) circle (2pt) node[below right, font=\footnotesize] {$B$};
+				\fill[noir] (C) circle (2pt) node[above right, font=\footnotesize] {$C$};
+				\fill[vert] (H) circle (2pt) node[above right, vert, font=\footnotesize] {$H$};
+			\end{tikzpicture}
+		\end{wrapstuff}
+
 		La hauteur $(h)$ passe par $A\coordl{0}{1}$ et est perpendiculaire à $(BC)$.
 
 		Le vecteur $\vec{BC}\coord{-1}{5}$ est donc un vecteur normal à $(h)$.
 
 		Pour tout point $M\coordl{x}{y}$ :
 		\[
-			M \in (h) \eqv \vec{AM} \cdot \vec{BC} = 0 \eqv -1\pa{x - 0} + 5\pa{y - 1} = 0 \eqv -x + 5y - 5 = 0
+			\def\arraystretch{1.5}
+			\begin{array}{rcl}
+				M \in (h) & \eqv & \vec{AM} \cdot \vec{BC} = 0    \\
+				          & \eqv & -1\pa{x - 0} + 5\pa{y - 1} = 0 \\
+				          & \eqv & -x + 5y - 5 = 0
+			\end{array}
 		\]
-		Une équation cartésienne de $(h)$ est $-x + 5y - 5 = 0$ (ou, de façon équivalente, $x - 5y + 5 = 0$).
+
+		Une équation cartésienne de $(h)$ est $-x + 5y - 5 = 0$ ou, de façon équivalente, $x - 5y + 5 = 0$.
 	\end{correction}
 \end{methode}
 
@@ -186,12 +220,45 @@
 
 	\begin{correction}
 		\nline
+		\begin{wrapstuff}[r]
+			\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+				\coordinate (A) at (1,2);
+				\coordinate (B) at (5,0);
+				\coordinate (I) at (3,1);
+				\coordinate (M) at (3.5,2);
+				\draw[dashed, thin, gris!40, step=1] (-0.5,-0.5) grid (6.5,3.5);
+				\fill[bleu] (A) circle (2pt) node[above left, bleu, font=\footnotesize] {$A$};
+				\fill[noir] (B) circle (2pt) node[below right, font=\footnotesize] {$B$};
+				\fill[vert] (I) circle (2pt) node[below, vert, fill=white, font=\footnotesize] {$I$};
+				\fill[vert] (M) circle (2pt) node[right, rouge, fill=white, font=\footnotesize] {$M$};
+				\fill[vert] (M) circle (2pt);
+				\draw[->, gris] (-0.5,0) -- (6.5,0) node[above, font=\footnotesize] {$x$};
+				\draw[->, gris] (0,-0.5) -- (0,3.5) node[right, font=\footnotesize] {$y$};
+				\draw[->, noir, line width=1pt] (0,0) -- (1,0) node[midway, sloped, below, font=\footnotesize] {$\vec{\imath}$};
+				\draw[->, noir, line width=1pt] (0,0) -- (0,1) node[midway, sloped, above, font=\footnotesize] {$\vec{\jmath}$};
+				\draw[noir] (A) -- (B);
+				\draw[rouge, dashed, thick, domain=2.25:4] plot ( \x , 2*\x - 5) node[above right, fill=white] {$\Delta$};
+				\draw[rouge, very thick, ->] (I) -- (M) node[midway, above, sloped, font=\footnotesize, fill=white] {$\vec{IM}$};
+				\draw[rouge, very thick, ->] (I) -- (M);
+				\coordinate (P1) at ($(I) + ({0.28*2/sqrt(5)},{-0.28*1/sqrt(5)})$);
+				\coordinate (P2) at ($(I) + ({0.28*1/sqrt(5)},{0.28*2/sqrt(5)})$);
+				\coordinate (P3) at ($(P1) + ({0.28*1/sqrt(5)},{0.28*2/sqrt(5)})$);
+				\draw[thin, noir] (P1) -- (P3) -- (P2);	\fill[vert] (I) circle (2pt);
+			\end{tikzpicture}
+		\end{wrapstuff}
 		La médiatrice est la droite perpendiculaire à $(AB)$ passant par le milieu $I\coordl{3}{1}$ de $[AB]$.
 
 		Le vecteur $\vec{AB}\coord{4}{-2}$ est donc normal à $(\Delta)$ et :
 		\[
-			M \in (\Delta) \eqv \vec{IM} \cdot \vec{AB} = 0 \eqv 4\pa{x - 3} - 2\pa{y - 1} = 0 \eqv 4x - 2y - 10 = 0 \eqv 2x - y - 5 = 0
+			\begin{array}{rcrccl}
+				M \in (\Delta) & \eqv & \vec{IM} \cdot \vec{AB}   & = & 0 &                     \\
+				               & \eqv & 4\pa{x - 3} - 2\pa{y - 1} & = & 0 &                     \\
+				               & \eqv & 4x - 2y - 10              & = & 0 & \eqv 2x - y - 5 = 0
+
+			\end{array}
 		\]
+
+		La médiatrice de $[AB]$ a pour équation : $2x - y - 5 = 0$.
 	\end{correction}
 \end{methode}
 
@@ -200,30 +267,48 @@
 
 	\begin{correction}
 		\nline
+		\begin{wrapstuff}[r]
+			\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+				\draw[dashed, thin, gris!40, step=1] (-0.3,-0.3) grid (4.6,6.3);
+				\draw[->, gris] (-0.3,0) -- (4.6,0) node[above, font=\footnotesize] {$x$};
+				\draw[->, gris] (0,-0.3) -- (0,6.3) node[right, font=\footnotesize] {$y$};
+				\draw[->, noir, line width=1pt] (0,0) -- (1,0) node[midway, sloped, below, font=\footnotesize] {$\vec{\imath}$};
+				\draw[->, noir, line width=1pt] (0,0) -- (0,1) node[midway, sloped, above, font=\footnotesize] {$\vec{\jmath}$};
+				\draw[bleu, domain=0:2.5, samples=2] plot (\x,{2*\x+1}) node[above] {$(d)$};
+				\fill[rouge] (3,4) circle (2pt) node[above right, rouge, fill=white] {$M$};
+				\fill[rouge] (3,4) circle (2pt);
+				\draw[->, vert, thick] (2,3) -- (4,2) node[right] {$\vec{n}$};
+				\draw[->, rouge, thick] (3,4) -- (1.8,4.6) node[sloped, midway, below, fill=white, font=\footnotesize] {$\vec{MH}$};
+				\draw[->, rouge, thick] (3,4) -- (1.8,4.6);
+				\draw (1.934,4.868) -- (2.202,4.734) -- (2.068,4.466);
+				\fill (1.8,4.6) circle (2pt) node[above left] {$H$};
+			\end{tikzpicture}
+		\end{wrapstuff}
 		Le vecteur $\vec{n}\coord{2}{-1}$ est normal à $(d)$.
 
-		Le point $H$ appartient à $(d)$ et le vecteur $\vec{MH}$ est orthogonal à $(d)$, donc colinéaire à $\vec{n}$ : il existe un réel $t$ tel que $\vec{MH} = t\vec{n}$, c'est-à-dire $H\coordl{3 + 2t}{4 - t}$.
+		Le point $H$ appartient à $(d)$ et le vecteur $\vec{MH}$ est orthogonal à $(d)$.
+
+		Donc $\vec{MH}$ colinéaire à $\vec{n}$ : il existe un réel $t$ tel que $\vec{MH} = t\vec{n}$ :
+		\[
+			\begin{array}{rcll}
+				\vec{MH} = t\vec{n} & \iff & \coord{x_H-3}{y_H-4} = t\times\coord{2}{-1} &                              \\
+				                    & \iff & \begin{cases}x_H-3=2t\\y_H-4=-1t\end{cases} &                              \\
+				                    & \iff & \begin{cases}x_H=3+2t\\y_H=4-t\end{cases}   & \iff H\coordl{3 + 2t}{4 - t}
+			\end{array}
+		\]
 
 		Comme $H \in (d)$ :
 		\[
-			2\pa{3 + 2t} - \pa{4 - t} + 1 = 0 \eqv 5t + 3 = 0 \eqv t = -\dfrac{3}{5}
+			2\pa{3 + 2t} - \pa{4 - t} + 1 = 0 \eqv 5t + 3 = 0 \eqv t = \dfrac{-3}{5}
 		\]
-		D'où $H\coordl{\dfrac{9}{5}}{\dfrac{23}{5}}$.
 
-		La distance de $M$ à $(d)$ est $MH = \abs{t}\,\norm{\vec{n}} = \dfrac{3}{5}\sqrt{5} = \dfrac{3\sqrt{5}}{5} \approx 1{,}34$.
+		D'où $H\coordl{3+2\times\dfrac{-3}{5}}{4-\dfrac{-3}{5}} \iff H\coordl{\dfrac{9}{5}}{\dfrac{23}{5}}$.
 
-		\begin{center}
-			\begin{tikzpicture}[scale=0.9, >=Stealth, thick]
-				\draw[->, gris] (-0.3,0) -- (4.6,0) node[right] {$x$};
-				\draw[->, gris] (0,-0.3) -- (0,6.3) node[above] {$y$};
-				\draw[bleu, domain=0:2.5, samples=2] plot (\x,{2*\x+1}) node[above] {$(d)$};
-				\draw[->, vert, thick] (1.8,4.6) -- (3.8,3.6) node[right] {$\vec{n}$};
-				\draw[dashed, rouge] (1.8,4.6) -- (3,4);
-				\draw (1.934,4.868) -- (2.202,4.734) -- (2.068,4.466);
-				\fill (1.8,4.6) circle (2pt) node[above left] {$H$};
-				\fill[rouge] (3,4) circle (2pt) node[below right, rouge] {$M$};
-			\end{tikzpicture}
-		\end{center}
+		La distance de $M$ à $(d)$ est :
+		\[
+			MH = \abs{t}\times\norm{\vec{n}} \quad = \dfrac{3}{5}\times\sqrt{2^2+1^2} \quad = \dfrac{3\sqrt{5}}{5} \quad \approx 1{,}34
+		\]
+
 	\end{correction}
 \end{methode}
 
@@ -234,34 +319,65 @@
 \end{propriete}
 
 \begin{demonstration}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (5,0);
+			\coordinate (C) at (1.5,3.5);
+			\coordinate (Hab) at (1.5,0);
+			\coordinate (Hbc) at (2.5,2.5);
+			\coordinate (Hac) at (0.7759,1.8103);
+			\draw[bleu, ultra thick] (A) -- (B) -- (C) -- cycle;
+			\draw[dashed, rouge] (C) -- (Hab);
+			\draw[dashed, rouge] (A) -- (Hbc);
+			\draw[dashed, rouge] (B) -- (Hac);
+			\fill[vert] (1.5,1.5) circle (2.5pt) node[right, vert, fill=white] {$H$};
+			\draw[thin, noir] (1.5,0.25) -- (1.75,0.25) -- (1.75,0);
+			\coordinate (P1) at ($(Hbc) + ({-0.28/sqrt(2)},{0.28/sqrt(2)})$);
+			\coordinate (P2) at ($(Hbc) + ({-0.28/sqrt(2)},{-0.28/sqrt(2)})$);
+			\coordinate (P3) at ($(P1) + ({-0.28/sqrt(2)},{-0.28/sqrt(2)})$);
+			\draw[thin, noir] (P1) -- (P3) -- (P2);
+			\coordinate (Q1) at ($(Hac) + ({-0.28*3/sqrt(58)},{-0.28*7/sqrt(58)})$);
+			\coordinate (Q2) at ($(Hac) + ({0.28*7/sqrt(58)},{-0.28*3/sqrt(58)})$);
+			\coordinate (Q3) at ($(Q1) + ({0.28*7/sqrt(58)},{-0.28*3/sqrt(58)})$);
+			\draw[thin, noir] (Q1) -- (Q3) -- (Q2);
+			\fill[vert] (1.5,1.5) circle (2.5pt);
+			\node[below left] at (A) {$A$};
+			\node[below right] at (B) {$B$};
+			\node[above] at (C) {$C$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
 	Les hauteurs issues de $A$ et de $B$ sont perpendiculaires à $(BC)$ et $(AC)$, qui ne sont pas parallèles : elles se coupent en un point $H$.
 
 	On a alors $\vec{HA} \cdot \vec{BC} = 0$ et $\vec{HB} \cdot \vec{CA} = 0$.
 
-	Or, par la relation de Chasles, $\vec{BC} = \vec{HC} - \vec{HB}$, $\vec{CA} = \vec{HA} - \vec{HC}$ et $\vec{AB} = \vec{HB} - \vec{HA}$, donc :
-	\[
-		\vec{HA} \cdot \vec{BC} + \vec{HB} \cdot \vec{CA} + \vec{HC} \cdot \vec{AB} = \vec{HA} \cdot \pa{\vec{HC} - \vec{HB}} + \vec{HB} \cdot \pa{\vec{HA} - \vec{HC}} + \vec{HC} \cdot \pa{\vec{HB} - \vec{HA}} = 0
-	\]
-	On en déduit $\vec{HC} \cdot \vec{AB} = 0$ : $H = C$ ou $(CH)$ est perpendiculaire à $(AB)$.
+	Or, par la relation de Chasles, on a :
+
+	\begin{itemize}
+		\item $\vec{BC} = \vec{HC} - \vec{HB}$
+		\item $\vec{CA} = \vec{HA} - \vec{HC}$
+		\item $\vec{AB} = \vec{HB} - \vec{HA}$
+	\end{itemize}
+
+	Donc :
+
+	\ms
+
+	$\begin{array}{rcll}
+			\vec{HA} \cdot \vec{BC} + \vec{HB} \cdot \vec{CA} + \vec{HC} \cdot \vec{AB} & = & \vec{HA} \cdot \pa{\vec{HC} - \vec{HB}} + \vec{HB} \cdot \pa{\vec{HA} - \vec{HC}} + \vec{HC} \cdot \pa{\vec{HB} - \vec{HA}}                              \\
+			                                                                            & = & \vec{HA} \cdot \vec{HC} - \vec{HA} \cdot \vec{HB}+ \vec{HB} \cdot \vec{HA} -  \vec{HB} \cdot\vec{HC} + \vec{HC} \cdot \vec{HB} - \vec{HC} \cdot \vec{HA} \\
+			                                                                            & = & 0
+		\end{array}$
+
+	On en déduit : $\vec{HC} \cdot \vec{AB} = 0 \iff (CH) \perp (AB)$.
 
 	Le point $H$ appartient donc aussi à la hauteur issue de $C$.
+
 \end{demonstration}
 
-\begin{center}
-	\begin{tikzpicture}[scale=0.9, >=Stealth, thick]
-		\coordinate (A) at (0,0);
-		\coordinate (B) at (5,0);
-		\coordinate (C) at (1.5,3.5);
-		\draw[bleu, ultra thick] (A) -- (B) -- (C) -- cycle;
-		\draw[dashed, rouge] (C) -- (1.5,0);
-		\draw[dashed, rouge] (A) -- (2.5,2.5);
-		\draw[dashed, rouge] (B) -- (0.7759,1.8103);
-		\fill[vert] (1.5,1.5) circle (2.5pt) node[right, vert] {$H$};
-		\node[below left] at (A) {$A$};
-		\node[below right] at (B) {$B$};
-		\node[above] at (C) {$C$};
-	\end{tikzpicture}
-\end{center}
+% TODO : il faut faire le reste à partir de là.
 
 \subsection{Cercle de diamètre donné}
 
