@@ -377,60 +377,56 @@
 
 \end{demonstration}
 
-% TODO : il faut faire le reste à partir de là.
-
 \subsection{Cercle de diamètre donné}
 
 \begin{propriete}[Cercle de diamètre donné]
 	Soit $A$ et $B$ deux points distincts du plan et $O$ le milieu de $[AB]$.
-	\begin{enumerate}
-		\item Pour tout point $M$ du plan :
-		      \[
-			      \vec{MA} \cdot \vec{MB} = MO^2 - OA^2 = MO^2 - \pfrac{AB}{2}^2
-		      \]
-		\item L'ensemble des points $M$ du plan tels que $\vec{MA} \cdot \vec{MB} = 0$ est le \textbf{cercle de diamètre $[AB]$}.
-	\end{enumerate}
+
+	L'ensemble des points $M$ du plan tels que $\vec{MA} \cdot \vec{MB} = 0$ est le \textbf{cercle de diamètre $[AB]$}.
+
+	\begin{center}
+		\begin{tikzpicture}[x=7mm, y=7mm, >=Stealth, thick]
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (-2.2,0);
+			\coordinate (B) at (2.2,0);
+			\coordinate (M) at ({2.2*cos(52)},{2.2*sin(52)});
+			\draw[bleu, line width=1.2pt] (O) circle (2.2);
+			\draw[noir] (A) -- (B);
+			\draw[rouge, line width=1.1pt] (A) -- (M) -- (B);
+			\draw[thin, noir] ($(M) + (206:0.28)$) -- ($(M) + (206:0.28) + (296:0.28)$) -- ($(M) + (296:0.28)$);
+			\fill[noir] (A) circle (2pt) node[below left] {$A$};
+			\fill[noir] (B) circle (2pt) node[below right] {$B$};
+			\fill[vert] (O) circle (2pt) node[below, vert, font=\footnotesize] {$O$};
+			\fill[rouge] (M) circle (2pt) node[above right, rouge] {$M$};
+			\draw[rouge, very thick, ->] (M) -- (B);
+			\draw[rouge, very thick, ->] (M) -- (A);
+		\end{tikzpicture}
+	\end{center}
 \end{propriete}
 
 \begin{demonstration}
 	En introduisant le milieu $O$ de $[AB]$ par la relation de Chasles, on a $\vec{OB} = -\vec{OA}$, d'où :
 	\[
-		\vec{MA} \cdot \vec{MB} = \pa{\vec{MO} + \vec{OA}} \cdot \pa{\vec{MO} + \vec{OB}} = \pa{\vec{MO} + \vec{OA}} \cdot \pa{\vec{MO} - \vec{OA}} = \vec{MO}^2 - \vec{OA}^2 = MO^2 - OA^2
+		\begin{array}{rcll}
+			\vec{MA} \cdot \vec{MB} & = & \pa{\vec{MO} + \vec{OA}} \cdot \pa{\vec{MO} + \vec{OB}}                                               &                                         \\
+			                        & = & \pa{\vec{MO} + \vec{OA}} \cdot \pa{\vec{MO} - \vec{OA}}                                               &                                         \\
+			                        & = & \vec{MO} \cdot \vec{MO} - \vec{MO} \cdot \vec{OA} + \vec{OA} \cdot \vec{MO} - \vec{OA} \cdot \vec{OA} & = \vec{MO}^2 - \vec{OA}^2 = MO^2 - OA^2
+		\end{array}
 	\]
+
 	Par conséquent :
 	\[
 		\vec{MA} \cdot \vec{MB} = 0 \eqv MO^2 - OA^2 = 0 \eqv MO^2 = OA^2 \eqv MO = OA
 	\]
-	ce qui caractérise le cercle de centre $O$ et de rayon $OA = \dfrac{AB}{2}$, c'est-à-dire le cercle de diamètre $[AB]$.
+
+	Cette relation caractérise le cercle de centre $O$ et de rayon $OA$, c'est-à-dire le cercle de diamètre $[AB]$.
 \end{demonstration}
-
-\begin{center}
-	\begin{tikzpicture}[scale=1.1, >=Stealth, thick]
-		\coordinate (O) at (0,0);
-		\coordinate (A) at (-2,0);
-		\coordinate (B) at (2,0);
-		\coordinate (M) at (55:2);
-
-		\draw[bleu, line width=1.1pt] (O) circle (2);
-		\draw[black] (A) -- (B);
-		\draw[rouge, line width=1pt] (A) -- (M) -- (B);
-
-		% Angle droit en M
-		\coordinate (U) at ($(M)!0.22cm!(A)$);
-		\coordinate (V) at ($(M)!0.22cm!(B)$);
-		\coordinate (W) at ($(U)+(V)-(M)$);
-		\draw[vert] (U) -- (W) -- (V);
-
-		\fill (A) circle (1.8pt) node[left] {$A$};
-		\fill (B) circle (1.8pt) node[right] {$B$};
-		\fill (O) circle (1.5pt) node[below] {$O$};
-		\fill[rouge] (M) circle (2pt) node[above right, rouge] {$M$};
-	\end{tikzpicture}
-\end{center}
 
 \begin{rem}
 	On retrouve un résultat connu : un triangle $AMB$ inscrit dans un cercle de diamètre $[AB]$ est rectangle en $M$ ; réciproquement, si $\vec{MA} \cdot \vec{MB} = 0$ avec $M \neq A$ et $M \neq B$, le triangle $AMB$ est rectangle en $M$.
 \end{rem}
+
+% TODO : il faut faire le reste à partir de là.
 
 \subsection{Équation d'un cercle}
 
