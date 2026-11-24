@@ -426,46 +426,76 @@
 	On retrouve un résultat connu : un triangle $AMB$ inscrit dans un cercle de diamètre $[AB]$ est rectangle en $M$ ; réciproquement, si $\vec{MA} \cdot \vec{MB} = 0$ avec $M \neq A$ et $M \neq B$, le triangle $AMB$ est rectangle en $M$.
 \end{rem}
 
-% TODO : il faut faire le reste à partir de là.
-
 \subsection{Équation d'un cercle}
 
 \begin{propriete}[Équation d'un cercle]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=8.5mm, y=8.5mm, >=Stealth, thick]
+			\def\xomega{2.5}\def\yomega{1.2}\def\ang{65}\def\rayon{1.9}
+			\draw[->, gris] (-0.8,0) -- (5.2,0) node[above, font=\footnotesize] {$x$};
+			\draw[->, gris] (0,-0.8) -- (0,4.1) node[right, font=\footnotesize] {$y$};
+			\draw[->, noir, line width=1pt] (0,0) -- (1,0) node[midway, sloped, below, font=\footnotesize] {$\vec{\imath}$};
+			\draw[->, noir, line width=1pt] (0,0) -- (0,1) node[midway, sloped, above, font=\footnotesize] {$\vec{\jmath}$};
+			\draw[thin, noir] (0.25,0) -- (0.25,0.25) -- (0,0.25);
+			\coordinate (Omega) at (\xomega,\yomega);
+			\coordinate (M) at ({\xomega + \rayon*cos(\ang)},{\yomega + \rayon*sin(\ang)});
+			\draw[bleu, line width=1pt] (Omega) circle (\rayon);
+			\draw[rouge, line width=1pt] (Omega) -- (M) node[midway, above, sloped, rouge, font=\footnotesize] {$r$};
+			\draw[dashed, gris, thin] (\xomega,0) -- (Omega) -- (0,\yomega);
+			\draw[dashed, rouge, thin] ({\xomega + \rayon*cos(\ang)},0) -- (M) -- (0,{\yomega + \rayon*sin(\ang)});
+			\node[below, gris, font=\footnotesize] at (\xomega,0) {$a$};
+			\node[left, gris, font=\footnotesize] at (0,\yomega) {$b$};
+			\node[below, rouge, font=\footnotesize] at ({\xomega + \rayon*cos(\ang)},0) {$x$};
+			\node[left, rouge, font=\footnotesize] at (0,{\yomega + \rayon*sin(\ang)}) {$y$};
+			\fill[noir] (0,0) circle (2pt) node[below left, font=\footnotesize] {$O$};
+			\fill[bleu] (Omega) circle (2pt) node[below right, bleu, font=\footnotesize] {$\Omega$};
+			\fill[rouge] (M) circle (2pt) node[above right, rouge, font=\footnotesize] {$M$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
 	Dans un repère orthonormé, le cercle de centre $\Omega\coordl{a}{b}$ et de rayon $r > 0$ est l'ensemble des points $M\coordl{x}{y}$ tels que :
 	\[
 		\pa{x - a}^2 + \pa{y - b}^2 = r^2
 	\]
+
+	\rule{0mm}{20mm}
 \end{propriete}
 
 \begin{demonstration}
 	$M$ appartient au cercle si et seulement si $\Omega M = r$, c'est-à-dire $\Omega M^2 = r^2$.
 
-	Or $\vec{\Omega M}\coord{x - a}{y - b}$ et $\Omega M^2 = \pa{x - a}^2 + \pa{y - b}^2$.
+	Or $\vec{\Omega M}\coord{x - a}{y - b}$ et  donc :
+	\[
+		\Omega M^2 = \pa{x - a}^2 + \pa{y - b}^2 = r^2
+	\]
 \end{demonstration}
 
 \begin{exemple}
 	Dans un repère orthonormé, déterminons l'équation du cercle $\mathcal{C}$ de diamètre $[AB]$ avec $A\coordl{1}{2}$ et $B\coordl{7}{4}$.
 
 	Pour tout point $M\coordl{x}{y}$, on a $\vec{MA}\coord{1 - x}{2 - y}$ et $\vec{MB}\coord{7 - x}{4 - y}$, donc :
-	\begin{align*}
-		M \in \mathcal{C} & \eqv \vec{MA} \cdot \vec{MB} = 0             \\
-		                  & \eqv (1 - x)(7 - x) + (2 - y)(4 - y) = 0     \\
-		                  & \eqv x^2 - 8x + 7 + y^2 - 6y + 8 = 0         \\
-		                  & \eqv (x - 4)^2 - 16 + (y - 3)^2 - 9 + 15 = 0 \\
-		                  & \eqv (x - 4)^2 + (y - 3)^2 = 10
-	\end{align*}
+	\[
+		\def\arraystretch{1.3}
+		\begin{array}{rcll}
+			M \in \mathcal{C} & \eqv & \vec{MA} \cdot \vec{MB}                                                                                                   & = 0  \\
+			                  & \eqv & (1 - x)(7 - x) + (2 - y)(4 - y)                                                                                           & = 0  \\
+			                  & \eqv & x^2 - 8x + \textcolor{red}7 + y^2 - 6y + \textcolor{red}8                                                                 & = 0  \\
+			                  & \eqv & \underbrace{\pa{x^2 - 8x + 16}}_{\pa{x-4}^2} - 16 + \underbrace{\pa{y^2 - 6y + 9}}_{\pa{y-3}^2} - 9 + \textcolor{red}{15} & = 0  \\
+			                  & \eqv & (x - 4)^2 - 16 + (y - 3)^2 - 9 + 15                                                                                       & = 0  \\
+			                  & \eqv & (x - 4)^2 + (y - 3)^2                                                                                                     & = 10
+		\end{array}
+	\]
+
 	$\mathcal{C}$ est le cercle de centre $\Omega\coordl{4}{3}$ (milieu de $[AB]$) et de rayon $\sqrt{10}$.
 
 	\begin{center}
-		\begin{tikzpicture}[scale=0.8, >=Stealth, thick]
-			\draw[->, gris] (-0.5,0) -- (8.2,0) node[right] {$x$};
-			\draw[->, gris] (0,-0.5) -- (0,6.6) node[above] {$y$};
-			\foreach \x in {1,...,7} {
-					\draw (\x,0.08) -- (\x,-0.08) node[below, font=\small] {$\x$};
-				}
-			\foreach \y in {1,...,6} {
-					\draw (0.08,\y) -- (-0.08,\y) node[left, font=\small] {$\y$};
-				}
+		\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+			\draw[dashed, gris!40, step=1] (0,0) grid (7.5,6.5);
+			\draw[->, gris] (-0.5,0) -- (7.5,0) node[above] {$x$};
+			\draw[->, gris] (0,-0.5) -- (0,6.5) node[right] {$y$};
+			\foreach \x in {1,...,7} { \draw (\x,0.08) -- (\x,-0.08) node[below, font=\small] {$\x$}; }
+			\foreach \y in {1,...,6} { \draw (0.08,\y) -- (-0.08,\y) node[left, font=\small] {$\y$}; }
 			\draw[bleu, ultra thick] (4,3) circle ({sqrt(10)});
 			\draw[rouge] (1,2) -- (7,4);
 			\fill[rouge] (1,2) circle (2pt) node[left, rouge] {$A$};
@@ -474,6 +504,8 @@
 		\end{tikzpicture}
 	\end{center}
 \end{exemple}
+
+% TODO : il faut faire le reste à partir de là.
 
 \begin{methode}[Reconnaître une équation de cercle]
 	Pour reconnaître l'ensemble d'équation $x^2 + y^2 + \alpha x + \beta y + \gamma = 0$, on met l'équation sous forme canonique en complétant les carrés avec $x^2 + 2px = (x + p)^2 - p^2$.
