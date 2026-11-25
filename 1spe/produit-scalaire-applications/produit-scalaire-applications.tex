@@ -1,0 +1,802 @@
+\chapter{Produit scalaire et applications géométriques}
+
+\section{Orthogonalité}
+
+\subsection{Orthogonalité de deux vecteurs}
+
+\begin{defin}[Vecteurs orthogonaux]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=6mm, y=6mm, >=Stealth, thick]
+			\clip (-1.2,-1) rectangle (3,3);
+			\coordinate (O) at (0,0);
+			\coordinate (U) at (2.6,0.9);
+			\coordinate (V) at (-0.6,1.8);
+			\draw[dashed, gris, thin] (-1.2,-0.415) -- (3.6,1.246);
+			\draw[dashed, gris, thin] (-0.9,2.7) -- (0.9,-2.7);
+			\draw[->, bleu, line width=1.5pt] (O) -- (U) node[midway, sloped, below, bleu] {$\vec{u}$};
+			\draw[->, rouge, line width=1.5pt] (O) -- (V) node[midway, sloped, below, rouge] {$\vec{v}$};
+			\draw[thin, noir] ($(O) + (19.1:0.32)$) -- ($(O) + (64.1:0.45)$) -- ($(O) + (109.1:0.32)$);
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Deux vecteurs $\vec{u}$ et $\vec{v}$ sont dits \textbf{orthogonaux} (on note $\vec{u} \perp \vec{v}$) lorsque l'un d'eux est nul ou lorsque leurs directions sont perpendiculaires.
+
+	\rule{0mm}{15mm}
+\end{defin}
+
+\begin{propriete}[Caractérisation de l'orthogonalité]
+	Deux vecteurs $\vec{u}$ et $\vec{v}$ du plan sont orthogonaux si et seulement si leur produit scalaire est nul :
+	\[
+		\vec{u} \perp \vec{v} \eqv \vec{u} \cdot \vec{v} = 0
+	\]
+
+	Dans un repère orthonormé, pour $\vec{u}\coord{x}{y}$ et $\vec{v}\coord{x'}{y'}$ :
+	\[
+		\vec{u} \perp \vec{v} \eqv xx' + yy' = 0
+	\]
+\end{propriete}
+
+\begin{demonstration}
+	Si l'un des deux vecteurs est nul, ils sont orthogonaux par définition et $\vec{u} \cdot \vec{v} = 0$.
+
+	Sinon, $\norm{\vec{u}}$ et $\norm{\vec{v}}$ sont non nuls et, pour $\theta \in \intff{0}{\pi}$ :
+	\[
+		\begin{array}{rcll}
+			\vec{u} \cdot \vec{v} = 0 & \eqv & \norm{\vec{u}}\times\norm{\vec{v}}\times \cos(\theta) = 0 &                            \\
+			                          & \eqv & \cos(\theta) = 0                                          &                            \\
+			                          & \eqv & \theta = \dfrac{\pi}{2}                                   & \eqv \vec{u} \perp \vec{v}
+		\end{array}
+	\]
+
+	La seconde équivalence découle de l'expression analytique.
+\end{demonstration}
+
+\begin{exemple}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=6mm, y=6mm, >=Stealth, thick]
+			\draw[dashed, thin, gris!40, step=1] (-1.2,-1.2) grid (8.2,8.2);
+			\draw[->, gris] (-1.2,0) -- (8.2,0) node[above, font=\footnotesize] {$x$};
+			\draw[->, gris] (0,-1.2) -- (0,8.2) node[right, font=\footnotesize] {$y$};
+			\coordinate (A) at (1,1);
+			\coordinate (B) at (7,0);
+			\coordinate (C) at (2,7);
+			\fill[bleu] (A) circle (2pt) node[left, bleu, font=\footnotesize, fill=white] {$A$};
+			\fill[bleu] (B) circle (2pt) node[below, bleu, font=\footnotesize, fill=white] {$B$};
+			\fill[rouge] (C) circle (2pt) node[above, rouge, font=\footnotesize, fill=white] {$C$};
+			\draw[->, noir, line width=1pt] (0,0) -- (1,0) node[below, font=\footnotesize] {$\vec{\imath}$};
+			\draw[->, noir, line width=1pt] (0,0) -- (0,1) node[left, font=\footnotesize] {$\vec{\jmath}$};
+			\draw[thin, noir] (0.25,0) -- (0.25,0.25) -- (0,0.25);
+			\draw[noir] (A) -- (B) -- (C) -- cycle;
+			\draw[thin, noir] ($(A) + (0.35, -0.058)$) -- ($(A) + (0.408, 0.292)$) -- ($(A) + (0.058, 0.35)$);
+			\draw[->, bleu, line width=1.2pt] (A) -- (B) node[midway, sloped, above, bleu, fill=white, font=\footnotesize] {$\vec{AB}$};
+			\draw[->, rouge, line width=1.2pt] (A) -- (C) node[midway, sloped, above, rouge, fill=white, font=\footnotesize] {$\vec{AC}$};
+			\fill[bleu] (A) circle (2pt);
+			\fill[bleu] (B) circle (2pt);
+			\fill[rouge] (C) circle (2pt);
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Dans un repère orthonormé, on donne $A\coordl{1}{1}$, $B\coordl{7}{0}$ et $C\coordl{2}{7}$.
+
+	On a $\vec{AB}\coord{6}{-1}$ et $\vec{AC}\coord{1}{6}$, donc $\vec{AB} \cdot \vec{AC} = 6 \times 1 + (-1) \times 6 = 0$.
+
+	Les vecteurs $\vec{AB}$ et $\vec{AC}$ sont orthogonaux : le triangle $ABC$ est rectangle en $A$.
+\end{exemple}
+
+\newpage
+
+\subsection{Vecteur normal à une droite et équation cartésienne}
+
+\begin{defin}[Vecteur normal à une droite]
+	Un \textbf{vecteur normal} à une droite $(d)$ est un vecteur non nul $\vec{n}$ orthogonal à un vecteur directeur de $(d)$.
+\end{defin}
+
+\begin{propriete}[Équation cartésienne et vecteur normal]
+	Dans un repère orthonormé $\vOIJ$ :
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+			\clip (-1,-1) rectangle (4.8,3.8);
+			\draw[->, gris] (-2.4,0) -- (4.6,0) node[above] {$x$};
+			\draw[->, gris] (0,-1) -- (0,3.6) node[right] {$y$};
+			\draw[bleu, domain=-2:4, samples=2] plot (\x,{(3-\x)/2}) node[right] {$(d)$};
+			\draw[->, vert, ultra thick] (1,1) -- (2,3) node[midway, sloped, above] {$\vec{n}$};
+			\draw (1.268,0.866) -- (1.402,1.134) -- (1.134,1.268);
+			\fill[rouge] (2,0.5) circle (2pt) node[above right, rouge] {$M$};
+			\draw[->, rouge, ultra thick] (1,1) -- (2,0.5);
+			\fill (1,1) circle (2pt) node[below left] {$A$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+	\begin{enumerate}
+		\item La droite $(d)$ passant par $A\coordl{x_A}{y_A}$ et de vecteur normal $\vec{n}\coord{a}{b}$ est l'ensemble des points $M\coordl{x}{y}$ tels que $\vec{AM} \cdot \vec{n} = 0$, soit :
+		      \[
+			      a\pa{x - x_A} + b\pa{y - y_A} = 0
+		      \]
+		\item Toute droite d'équation cartésienne $ax + by + c = 0$ (avec $\coordl{a}{b} \neq \coordl{0}{0}$) admet pour vecteur normal $\vec{n}\coord{a}{b}$ et pour vecteur directeur $\vec{u}\coord{-b}{a}$.
+	\end{enumerate}
+\end{propriete}
+
+\begin{demonstration}
+	\nline
+	\begin{enumerate}
+		\item Avec $\vec{AM}\coord{x - x_A}{y - y_A}$ et $\vec{n}\coord{a}{b}$, l'expression analytique donne :
+		      \[
+			      \vec{AM} \cdot \vec{n} = a\pa{x - x_A} + b\pa{y - y_A}
+		      \]
+
+		      Le vecteur $\vec{AM}$ est orthogonal à $\vec{n}$ si et seulement s'il est nul ou colinéaire à la direction de $(d)$, c'est-à-dire si et seulement si $M \in (d)$.
+		      \[
+			      \vec{AM} \cdot \vec{n} =0 \iff a\pa{x - x_A} + b\pa{y - y_A}=0 \iff M\in\pa{d}
+		      \]
+
+		\item Soit $A\coordl{x_A}{y_A}$ un point de la droite.
+
+		      D'après le point précédent, la droite passant par $A$ et de vecteur normal $\vec{n}\coord{a}{b}$ est l'ensemble des points $M\coordl{x}{y}$ tels que $\vec{AM} \cdot \vec{n} = 0$, soit :
+		      \[
+			      a\pa{x - x_A} + b\pa{y - y_A} = 0
+		      \]
+
+		      En développant cette expression, on obtient :
+		      \[
+			      ax - ax_A + by - by_A = 0 \iff ax + by + \pa{-ax_A - by_A} = 0
+		      \]
+
+		      Or, comme $A$ appartient à la droite, on a $ax_A + by_A + c = 0$, d'où $-ax_A - by_A = c$.
+
+		      L'équation se réécrit donc bien :
+		      \[
+			      ax + by + c = 0
+		      \]
+
+		      Enfin, le vecteur $\vec{u}\coord{-b}{a}$ est non nul (car $(a\,;\,b) \neq (0\,;\,0)$) et vérifie $\vec{n} \cdot \vec{u} = a\times(-b) + b\times a = 0$ : il est orthogonal à $\vec{n}$, donc dirige la droite.
+	\end{enumerate}
+\end{demonstration}
+
+\newpage
+
+\begin{methode}[Déterminer l'équation d'une hauteur]
+	Dans un repère orthonormé, on considère $A\coordl{0}{1}$, $B\coordl{4}{0}$ et $C\coordl{3}{5}$.
+
+	Déterminer une équation cartésienne de la hauteur $(h)$ du triangle $ABC$ issue de $A$.
+
+	\begin{correction}
+		\nline
+		\begin{wrapstuff}[r]
+			\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+				\draw[dashed, thin, gris!40, step=1] (-1.8,-0.6) grid (5.5,5.5);
+				\draw[->, gris] (-1.8,0) -- (5.5,0) node[above, font=\footnotesize] {$x$};
+				\draw[->, gris] (0,-0.6) -- (0,5.5) node[right, font=\footnotesize] {$y$};
+				\draw[->, noir, line width=1pt] (0,0) -- (1,0) node[midway, sloped, below, font=\footnotesize] {$\vec{\imath}$};
+				\draw[->, noir, line width=1pt] (0,0) -- (0,1) node[midway, sloped, above, font=\footnotesize] {$\vec{\jmath}$};
+				\draw[thin, noir] (0.25,0) -- (0.25,0.25) -- (0,0.25);
+				\coordinate (A) at (0,1);
+				\coordinate (B) at (4,0);
+				\coordinate (C) at (3,5);
+				\coordinate (H) at ({4 - 9/26},{45/26});
+				\draw[noir] (A) -- (B) -- (C) -- cycle;
+				\draw[dashed, vert, line width=1.1pt] (-1.2, 0.76) -- (A) -- (H);
+				\node[vert, left, font=\footnotesize] at (-1.2, 0.76) {$(h)$};
+				\draw[->, rouge, line width=1.2pt] (B) -- (C) node[midway, above right, rouge, font=\footnotesize] {$\vec{BC}$};
+				\coordinate (P1) at ($(H) + ({0.35*(-1/sqrt(26))},{0.35*(5/sqrt(26))})$);
+				\coordinate (P2) at ($(H) + ({0.35*(-95/sqrt(9386))},{0.35*(-19/sqrt(9386))})$);
+				\coordinate (P3) at ($(P1) + ({0.35*(-95/sqrt(9386))},{0.35*(-19/sqrt(9386))})$);
+				\draw[thin, noir] (P1) -- (P3) -- (P2);
+				\fill[bleu] (A) circle (2pt) node[above left, xshift=2pt, bleu, font=\footnotesize] {$A$};
+				\fill[noir] (B) circle (2pt) node[below right, font=\footnotesize] {$B$};
+				\fill[noir] (C) circle (2pt) node[above right, font=\footnotesize] {$C$};
+				\fill[vert] (H) circle (2pt) node[above right, vert, font=\footnotesize] {$H$};
+			\end{tikzpicture}
+		\end{wrapstuff}
+
+		La hauteur $(h)$ passe par $A\coordl{0}{1}$ et est perpendiculaire à $(BC)$.
+
+		Le vecteur $\vec{BC}\coord{-1}{5}$ est donc un vecteur normal à $(h)$.
+
+		Pour tout point $M\coordl{x}{y}$ :
+		\[
+			\def\arraystretch{1.5}
+			\begin{array}{rcl}
+				M \in (h) & \eqv & \vec{AM} \cdot \vec{BC} = 0    \\
+				          & \eqv & -1\pa{x - 0} + 5\pa{y - 1} = 0 \\
+				          & \eqv & -x + 5y - 5 = 0
+			\end{array}
+		\]
+
+		Une équation cartésienne de $(h)$ est $-x + 5y - 5 = 0$ ou, de façon équivalente, $x - 5y + 5 = 0$.
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Déterminer l'équation d'une médiatrice]
+	Dans un repère orthonormé, déterminer une équation cartésienne de la médiatrice $(\Delta)$ du segment $[AB]$ avec $A\coordl{1}{2}$ et $B\coordl{5}{0}$.
+
+	\begin{correction}
+		\nline
+		\begin{wrapstuff}[r]
+			\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+				\coordinate (A) at (1,2);
+				\coordinate (B) at (5,0);
+				\coordinate (I) at (3,1);
+				\coordinate (M) at (3.5,2);
+				\draw[dashed, thin, gris!40, step=1] (-0.5,-0.5) grid (6.5,3.5);
+				\fill[bleu] (A) circle (2pt) node[above left, bleu, font=\footnotesize] {$A$};
+				\fill[noir] (B) circle (2pt) node[below right, font=\footnotesize] {$B$};
+				\fill[vert] (I) circle (2pt) node[below, vert, fill=white, font=\footnotesize] {$I$};
+				\fill[vert] (M) circle (2pt) node[right, rouge, fill=white, font=\footnotesize] {$M$};
+				\fill[vert] (M) circle (2pt);
+				\draw[->, gris] (-0.5,0) -- (6.5,0) node[above, font=\footnotesize] {$x$};
+				\draw[->, gris] (0,-0.5) -- (0,3.5) node[right, font=\footnotesize] {$y$};
+				\draw[->, noir, line width=1pt] (0,0) -- (1,0) node[midway, sloped, below, font=\footnotesize] {$\vec{\imath}$};
+				\draw[->, noir, line width=1pt] (0,0) -- (0,1) node[midway, sloped, above, font=\footnotesize] {$\vec{\jmath}$};
+				\draw[noir] (A) -- (B);
+				\draw[rouge, dashed, thick, domain=2.25:4] plot ( \x , 2*\x - 5) node[above right, fill=white] {$\Delta$};
+				\draw[rouge, very thick, ->] (I) -- (M) node[midway, above, sloped, font=\footnotesize, fill=white] {$\vec{IM}$};
+				\draw[rouge, very thick, ->] (I) -- (M);
+				\coordinate (P1) at ($(I) + ({0.28*2/sqrt(5)},{-0.28*1/sqrt(5)})$);
+				\coordinate (P2) at ($(I) + ({0.28*1/sqrt(5)},{0.28*2/sqrt(5)})$);
+				\coordinate (P3) at ($(P1) + ({0.28*1/sqrt(5)},{0.28*2/sqrt(5)})$);
+				\draw[thin, noir] (P1) -- (P3) -- (P2);	\fill[vert] (I) circle (2pt);
+			\end{tikzpicture}
+		\end{wrapstuff}
+		La médiatrice est la droite perpendiculaire à $(AB)$ passant par le milieu $I\coordl{3}{1}$ de $[AB]$.
+
+		Le vecteur $\vec{AB}\coord{4}{-2}$ est donc normal à $(\Delta)$ et :
+		\[
+			\begin{array}{rcrccl}
+				M \in (\Delta) & \eqv & \vec{IM} \cdot \vec{AB}   & = & 0 &                     \\
+				               & \eqv & 4\pa{x - 3} - 2\pa{y - 1} & = & 0 &                     \\
+				               & \eqv & 4x - 2y - 10              & = & 0 & \eqv 2x - y - 5 = 0
+
+			\end{array}
+		\]
+
+		La médiatrice de $[AB]$ a pour équation : $2x - y - 5 = 0$.
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Déterminer le projeté orthogonal d'un point sur une droite]
+	Dans un repère orthonormé, déterminer les coordonnées du projeté orthogonal $H$ du point $M\coordl{3}{4}$ sur la droite $(d)$ d'équation $2x - y + 1 = 0$, puis la distance de $M$ à $(d)$.
+
+	\begin{correction}
+		\nline
+		\begin{wrapstuff}[r]
+			\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+				\draw[dashed, thin, gris!40, step=1] (-0.3,-0.3) grid (4.6,6.3);
+				\draw[->, gris] (-0.3,0) -- (4.6,0) node[above, font=\footnotesize] {$x$};
+				\draw[->, gris] (0,-0.3) -- (0,6.3) node[right, font=\footnotesize] {$y$};
+				\draw[->, noir, line width=1pt] (0,0) -- (1,0) node[midway, sloped, below, font=\footnotesize] {$\vec{\imath}$};
+				\draw[->, noir, line width=1pt] (0,0) -- (0,1) node[midway, sloped, above, font=\footnotesize] {$\vec{\jmath}$};
+				\draw[bleu, domain=0:2.5, samples=2] plot (\x,{2*\x+1}) node[above] {$(d)$};
+				\fill[rouge] (3,4) circle (2pt) node[above right, rouge, fill=white] {$M$};
+				\fill[rouge] (3,4) circle (2pt);
+				\draw[->, vert, thick] (2,3) -- (4,2) node[right] {$\vec{n}$};
+				\draw[->, rouge, thick] (3,4) -- (1.8,4.6) node[sloped, midway, below, fill=white, font=\footnotesize] {$\vec{MH}$};
+				\draw[->, rouge, thick] (3,4) -- (1.8,4.6);
+				\draw (1.934,4.868) -- (2.202,4.734) -- (2.068,4.466);
+				\fill (1.8,4.6) circle (2pt) node[above left] {$H$};
+			\end{tikzpicture}
+		\end{wrapstuff}
+		Le vecteur $\vec{n}\coord{2}{-1}$ est normal à $(d)$.
+
+		Le point $H$ appartient à $(d)$ et le vecteur $\vec{MH}$ est orthogonal à $(d)$.
+
+		Donc $\vec{MH}$ colinéaire à $\vec{n}$ : il existe un réel $t$ tel que $\vec{MH} = t\vec{n}$ :
+		\[
+			\begin{array}{rcll}
+				\vec{MH} = t\vec{n} & \iff & \coord{x_H-3}{y_H-4} = t\times\coord{2}{-1} &                              \\
+				                    & \iff & \begin{cases}x_H-3=2t\\y_H-4=-1t\end{cases} &                              \\
+				                    & \iff & \begin{cases}x_H=3+2t\\y_H=4-t\end{cases}   & \iff H\coordl{3 + 2t}{4 - t}
+			\end{array}
+		\]
+
+		Comme $H \in (d)$ :
+		\[
+			2\pa{3 + 2t} - \pa{4 - t} + 1 = 0 \eqv 5t + 3 = 0 \eqv t = \dfrac{-3}{5}
+		\]
+
+		D'où $H\coordl{3+2\times\dfrac{-3}{5}}{4-\dfrac{-3}{5}} \iff H\coordl{\dfrac{9}{5}}{\dfrac{23}{5}}$.
+
+		La distance de $M$ à $(d)$ est :
+		\[
+			MH = \abs{t}\times\norm{\vec{n}} \quad = \dfrac{3}{5}\times\sqrt{2^2+1^2} \quad = \dfrac{3\sqrt{5}}{5} \quad \approx 1{,}34
+		\]
+
+	\end{correction}
+\end{methode}
+
+\subsection{Concourance des hauteurs d'un triangle}
+
+\begin{propriete}[Concourance des hauteurs]
+	Dans un triangle $ABC$, les trois hauteurs sont concourantes en un point $H$ appelé \textbf{orthocentre}.
+\end{propriete}
+
+\begin{demonstration}
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (5,0);
+			\coordinate (C) at (1.5,3.5);
+			\coordinate (Hab) at (1.5,0);
+			\coordinate (Hbc) at (2.5,2.5);
+			\coordinate (Hac) at (0.7759,1.8103);
+			\draw[bleu, ultra thick] (A) -- (B) -- (C) -- cycle;
+			\draw[dashed, rouge] (C) -- (Hab);
+			\draw[dashed, rouge] (A) -- (Hbc);
+			\draw[dashed, rouge] (B) -- (Hac);
+			\fill[vert] (1.5,1.5) circle (2.5pt) node[right, vert, fill=white] {$H$};
+			\draw[thin, noir] (1.5,0.25) -- (1.75,0.25) -- (1.75,0);
+			\coordinate (P1) at ($(Hbc) + ({-0.28/sqrt(2)},{0.28/sqrt(2)})$);
+			\coordinate (P2) at ($(Hbc) + ({-0.28/sqrt(2)},{-0.28/sqrt(2)})$);
+			\coordinate (P3) at ($(P1) + ({-0.28/sqrt(2)},{-0.28/sqrt(2)})$);
+			\draw[thin, noir] (P1) -- (P3) -- (P2);
+			\coordinate (Q1) at ($(Hac) + ({-0.28*3/sqrt(58)},{-0.28*7/sqrt(58)})$);
+			\coordinate (Q2) at ($(Hac) + ({0.28*7/sqrt(58)},{-0.28*3/sqrt(58)})$);
+			\coordinate (Q3) at ($(Q1) + ({0.28*7/sqrt(58)},{-0.28*3/sqrt(58)})$);
+			\draw[thin, noir] (Q1) -- (Q3) -- (Q2);
+			\fill[vert] (1.5,1.5) circle (2.5pt);
+			\node[below left] at (A) {$A$};
+			\node[below right] at (B) {$B$};
+			\node[above] at (C) {$C$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Les hauteurs issues de $A$ et de $B$ sont perpendiculaires à $(BC)$ et $(AC)$, qui ne sont pas parallèles : elles se coupent en un point $H$.
+
+	On a alors $\vec{HA} \cdot \vec{BC} = 0$ et $\vec{HB} \cdot \vec{CA} = 0$.
+
+	Or, par la relation de Chasles, on a :
+
+	\begin{itemize}
+		\item $\vec{BC} = \vec{HC} - \vec{HB}$
+		\item $\vec{CA} = \vec{HA} - \vec{HC}$
+		\item $\vec{AB} = \vec{HB} - \vec{HA}$
+	\end{itemize}
+
+	Donc :
+
+	\ms
+
+	$\begin{array}{rcll}
+			\vec{HA} \cdot \vec{BC} + \vec{HB} \cdot \vec{CA} + \vec{HC} \cdot \vec{AB} & = & \vec{HA} \cdot \pa{\vec{HC} - \vec{HB}} + \vec{HB} \cdot \pa{\vec{HA} - \vec{HC}} + \vec{HC} \cdot \pa{\vec{HB} - \vec{HA}}                              \\
+			                                                                            & = & \vec{HA} \cdot \vec{HC} - \vec{HA} \cdot \vec{HB}+ \vec{HB} \cdot \vec{HA} -  \vec{HB} \cdot\vec{HC} + \vec{HC} \cdot \vec{HB} - \vec{HC} \cdot \vec{HA} \\
+			                                                                            & = & 0
+		\end{array}$
+
+	On en déduit : $\vec{HC} \cdot \vec{AB} = 0 \iff (CH) \perp (AB)$.
+
+	Le point $H$ appartient donc aussi à la hauteur issue de $C$.
+
+\end{demonstration}
+
+\subsection{Cercle de diamètre donné}
+
+\begin{propriete}[Cercle de diamètre donné]
+	Soit $A$ et $B$ deux points distincts du plan et $O$ le milieu de $[AB]$.
+
+	L'ensemble des points $M$ du plan tels que $\vec{MA} \cdot \vec{MB} = 0$ est le \textbf{cercle de diamètre $[AB]$}.
+
+	\begin{center}
+		\begin{tikzpicture}[x=7mm, y=7mm, >=Stealth, thick]
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (-2.2,0);
+			\coordinate (B) at (2.2,0);
+			\coordinate (M) at ({2.2*cos(52)},{2.2*sin(52)});
+			\draw[bleu, line width=1.2pt] (O) circle (2.2);
+			\draw[noir] (A) -- (B);
+			\draw[rouge, line width=1.1pt] (A) -- (M) -- (B);
+			\draw[thin, noir] ($(M) + (206:0.28)$) -- ($(M) + (206:0.28) + (296:0.28)$) -- ($(M) + (296:0.28)$);
+			\fill[noir] (A) circle (2pt) node[below left] {$A$};
+			\fill[noir] (B) circle (2pt) node[below right] {$B$};
+			\fill[vert] (O) circle (2pt) node[below, vert, font=\footnotesize] {$O$};
+			\fill[rouge] (M) circle (2pt) node[above right, rouge] {$M$};
+			\draw[rouge, very thick, ->] (M) -- (B);
+			\draw[rouge, very thick, ->] (M) -- (A);
+		\end{tikzpicture}
+	\end{center}
+\end{propriete}
+
+\begin{demonstration}
+	En introduisant le milieu $O$ de $[AB]$ par la relation de Chasles, on a $\vec{OB} = -\vec{OA}$, d'où :
+	\[
+		\begin{array}{rcll}
+			\vec{MA} \cdot \vec{MB} & = & \pa{\vec{MO} + \vec{OA}} \cdot \pa{\vec{MO} + \vec{OB}}                                               &                                         \\
+			                        & = & \pa{\vec{MO} + \vec{OA}} \cdot \pa{\vec{MO} - \vec{OA}}                                               &                                         \\
+			                        & = & \vec{MO} \cdot \vec{MO} - \vec{MO} \cdot \vec{OA} + \vec{OA} \cdot \vec{MO} - \vec{OA} \cdot \vec{OA} & = \vec{MO}^2 - \vec{OA}^2 = MO^2 - OA^2
+		\end{array}
+	\]
+
+	Par conséquent :
+	\[
+		\vec{MA} \cdot \vec{MB} = 0 \eqv MO^2 - OA^2 = 0 \eqv MO^2 = OA^2 \eqv MO = OA
+	\]
+
+	Cette relation caractérise le cercle de centre $O$ et de rayon $OA$, c'est-à-dire le cercle de diamètre $[AB]$.
+\end{demonstration}
+
+\begin{rem}
+	On retrouve un résultat connu : un triangle $AMB$ inscrit dans un cercle de diamètre $[AB]$ est rectangle en $M$ ; réciproquement, si $\vec{MA} \cdot \vec{MB} = 0$ avec $M \neq A$ et $M \neq B$, le triangle $AMB$ est rectangle en $M$.
+\end{rem}
+
+\subsection{Équation d'un cercle}
+
+\begin{propriete}[Équation d'un cercle]
+	\nline
+	\begin{wrapstuff}[r]
+		\begin{tikzpicture}[x=8.5mm, y=8.5mm, >=Stealth, thick]
+			\def\xomega{2.5}\def\yomega{1.2}\def\ang{65}\def\rayon{1.9}
+			\draw[->, gris] (-0.8,0) -- (5.2,0) node[above, font=\footnotesize] {$x$};
+			\draw[->, gris] (0,-0.8) -- (0,4.1) node[right, font=\footnotesize] {$y$};
+			\draw[->, noir, line width=1pt] (0,0) -- (1,0) node[midway, sloped, below, font=\footnotesize] {$\vec{\imath}$};
+			\draw[->, noir, line width=1pt] (0,0) -- (0,1) node[midway, sloped, above, font=\footnotesize] {$\vec{\jmath}$};
+			\draw[thin, noir] (0.25,0) -- (0.25,0.25) -- (0,0.25);
+			\coordinate (Omega) at (\xomega,\yomega);
+			\coordinate (M) at ({\xomega + \rayon*cos(\ang)},{\yomega + \rayon*sin(\ang)});
+			\draw[bleu, line width=1pt] (Omega) circle (\rayon);
+			\draw[rouge, line width=1pt] (Omega) -- (M) node[midway, above, sloped, rouge, font=\footnotesize] {$r$};
+			\draw[dashed, gris, thin] (\xomega,0) -- (Omega) -- (0,\yomega);
+			\draw[dashed, rouge, thin] ({\xomega + \rayon*cos(\ang)},0) -- (M) -- (0,{\yomega + \rayon*sin(\ang)});
+			\node[below, gris, font=\footnotesize] at (\xomega,0) {$a$};
+			\node[left, gris, font=\footnotesize] at (0,\yomega) {$b$};
+			\node[below, rouge, font=\footnotesize] at ({\xomega + \rayon*cos(\ang)},0) {$x$};
+			\node[left, rouge, font=\footnotesize] at (0,{\yomega + \rayon*sin(\ang)}) {$y$};
+			\fill[noir] (0,0) circle (2pt) node[below left, font=\footnotesize] {$O$};
+			\fill[bleu] (Omega) circle (2pt) node[below right, bleu, font=\footnotesize] {$\Omega$};
+			\fill[rouge] (M) circle (2pt) node[above right, rouge, font=\footnotesize] {$M$};
+		\end{tikzpicture}
+	\end{wrapstuff}
+
+	Dans un repère orthonormé, le cercle de centre $\Omega\coordl{a}{b}$ et de rayon $r > 0$ est l'ensemble des points $M\coordl{x}{y}$ tels que :
+	\[
+		\pa{x - a}^2 + \pa{y - b}^2 = r^2
+	\]
+
+	\rule{0mm}{20mm}
+\end{propriete}
+
+\begin{demonstration}
+	$M$ appartient au cercle si et seulement si $\Omega M = r$, c'est-à-dire $\Omega M^2 = r^2$.
+
+	Or $\vec{\Omega M}\coord{x - a}{y - b}$ et  donc :
+	\[
+		\Omega M^2 = \pa{x - a}^2 + \pa{y - b}^2 = r^2
+	\]
+\end{demonstration}
+
+\begin{exemple}
+	Dans un repère orthonormé, déterminons l'équation du cercle $\mathcal{C}$ de diamètre $[AB]$ avec $A\coordl{1}{2}$ et $B\coordl{7}{4}$.
+
+	Pour tout point $M\coordl{x}{y}$, on a $\vec{MA}\coord{1 - x}{2 - y}$ et $\vec{MB}\coord{7 - x}{4 - y}$, donc :
+	\[
+		\def\arraystretch{1.3}
+		\begin{array}{rcll}
+			M \in \mathcal{C} & \eqv & \vec{MA} \cdot \vec{MB}                                                                                                   & = 0  \\
+			                  & \eqv & (1 - x)(7 - x) + (2 - y)(4 - y)                                                                                           & = 0  \\
+			                  & \eqv & x^2 - 8x + \textcolor{red}7 + y^2 - 6y + \textcolor{red}8                                                                 & = 0  \\
+			                  & \eqv & \underbrace{\pa{x^2 - 8x + 16}}_{\pa{x-4}^2} - 16 + \underbrace{\pa{y^2 - 6y + 9}}_{\pa{y-3}^2} - 9 + \textcolor{red}{15} & = 0  \\
+			                  & \eqv & (x - 4)^2 - 16 + (y - 3)^2 - 9 + 15                                                                                       & = 0  \\
+			                  & \eqv & (x - 4)^2 + (y - 3)^2                                                                                                     & = 10
+		\end{array}
+	\]
+
+	$\mathcal{C}$ est le cercle de centre $\Omega\coordl{4}{3}$ (milieu de $[AB]$) et de rayon $\sqrt{10}$.
+
+	\begin{center}
+		\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+			\draw[dashed, gris!40, step=1] (0,0) grid (7.5,6.5);
+			\draw[->, gris] (-0.5,0) -- (7.5,0) node[above] {$x$};
+			\draw[->, gris] (0,-0.5) -- (0,6.5) node[right] {$y$};
+			\foreach \x in {1,...,7} { \draw (\x,0.08) -- (\x,-0.08) node[below, font=\small] {$\x$}; }
+			\foreach \y in {1,...,6} { \draw (0.08,\y) -- (-0.08,\y) node[left, font=\small] {$\y$}; }
+			\draw[bleu, ultra thick] (4,3) circle ({sqrt(10)});
+			\draw[rouge] (1,2) -- (7,4);
+			\fill[rouge] (1,2) circle (2pt) node[left, rouge] {$A$};
+			\fill[rouge] (7,4) circle (2pt) node[right, rouge] {$B$};
+			\fill (4,3) circle (2pt) node[above left] {$\Omega$};
+		\end{tikzpicture}
+	\end{center}
+\end{exemple}
+
+\begin{methode}[Reconnaître une équation de cercle]
+	Pour reconnaître l'ensemble d'équation $x^2 + y^2 + \alpha x + \beta y + \gamma = 0$, on met l'équation sous forme canonique en complétant les carrés avec $x^2 + 2px = (x + p)^2 - p^2$.
+
+	Déterminer l'ensemble $\mathcal{E}_1$ d'équation $x^2 + y^2 - 6x + 4y - 12 = 0$ et l'ensemble $\mathcal{E}_2$ d'équation $x^2 + y^2 - 2x + 6y + 11 = 0$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On a :
+			      \[
+				      \begin{array}{rllllll}
+					           & x^2 + y^2                                  & - & 6x + 4y                                 & - 12 & = & 0        \\
+					      \eqv & x^2 - 6x                                   & + & y^2 + 4y                                & - 12 & = & 0        \\
+					      \eqv & \underbrace{x^2 - 6x + 9}_{\pa{x-3}^2} - 9 & + & \underbrace{y + 4y +4}_{\pa{y+2}^2} - 4 & - 12 & = & 0        \\
+					      \eqv & (x - 3)^2 - 9                              & + & (y + 2)^2 - 4                           & - 12 & = & 0        \\
+					      \eqv & (x - 3)^2                                  & + & (y + 2)^2                               &      & = & 25 = 5^2
+				      \end{array}
+			      \]
+
+			      $\mathcal{E}_1$ est le cercle de centre $\coordl{3}{-2}$ et de rayon $5$.
+			\item On a :
+			      \[
+				      \begin{array}{rllllll}
+					           & x^2 + y^2             & - & 2x + 6y                & + 11 & = & 0  \\
+					      \eqv & x^2 - 2x              & + & y^2 + 6y               & + 11 & = & 0  \\
+					      \eqv & \pa{x^2 - 2x + 1} - 1 & + & \pa{y^2 + 6y  + 9} - 9 & + 11 & = & 0  \\
+					      \eqv & (x - 1)^2 - 1         & + & (y + 3)^2 - 9          & + 11 & = & 0  \\
+					      \eqv & (x - 1)^2             & + & (y + 3)^2              &      & = & -1
+				      \end{array}
+			      \]
+
+			      Une somme de carrés ne pouvant pas être négative, $\mathcal{E}_2$ est l'ensemble vide.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+% TODO : il faut faire le reste à partir de là.
+
+\section{Relations métriques dans un triangle}
+
+\subsection{Théorème d'Al-Kashi}
+
+\begin{theoreme}[Théorème d'Al-Kashi]
+	Soit $ABC$ un triangle quelconque.
+
+	En notant $a = BC$, $b = AC$ et $c = AB$, on a :
+	\[
+		a^2 = b^2 + c^2 - 2bc\cos\pa{\widehat{A}}
+	\]
+
+	De même, par permutation circulaire des sommets :
+	\[
+		b^2 = a^2 + c^2 - 2ac\cos\pa{\widehat{B}} \qquad \text{et} \qquad c^2 = a^2 + b^2 - 2ab\cos\pa{\widehat{C}}
+	\]
+
+	\begin{center}
+		\begin{tikzpicture}[scale=1.0, >=Stealth, thick]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (5,0);
+			\coordinate (C) at (1.8,3.2);
+			\draw[bleu, line width=1.1pt] (A) -- (B) node[midway, below] {$c$} -- (C) node[midway, above right] {$a$} -- cycle node[midway, above left] {$b$};
+			\draw[vert, fill=vert!15] (0.7,0) arc[start angle=0, end angle=60.6, radius=0.7] -- (A) -- cycle;
+			\node[vert, font=\small] at (30:1.0) {$\widehat{A}$};
+			\draw[vert, fill=vert!15] (B) -- ++(135:0.7) arc[start angle=135, end angle=180, radius=0.7] -- cycle;
+			\node[vert, font=\small] at ($(B) + (157.5:1.0)$) {$\widehat{B}$};
+			\draw[vert, fill=vert!15] (C) -- ++(-119.36:0.7) arc[start angle=-119.36, end angle=-45, radius=0.7] -- cycle;
+			\node[vert, font=\small] at ($(C) + (-82.18:1.0)$) {$\widehat{C}$};
+			\node[below left] at (A) {$A$};
+			\node[below right] at (B) {$B$};
+			\node[above] at (C) {$C$};
+		\end{tikzpicture}
+	\end{center}
+\end{theoreme}
+
+\newpage
+
+\begin{demonstration}
+	Comme $\vec{BC} =\vec{BA} + \vec{AC} = \vec{AC} - \vec{AB}$, on a :
+	\[
+		\def\arraystretch{1.5}
+		\begin{array}{rcl}
+			a^2 & = & \norm{\vec{AC} - \vec{AB}}^2                         \\
+			    & = & \pa{\vec{AC} - \vec{AB}}^2                           \\
+			    & = & \vec{AC}^2 - 2\,\vec{AB} \cdot \vec{AC} + \vec{AB}^2 \\
+			    & = & b^2 + c^2 - 2\,\vec{AB} \cdot \vec{AC}
+		\end{array}
+	\]
+
+	Par définition du produit scalaire, $\vec{AB} \cdot \vec{AC} = AB \times AC \times \cos\pa{\widehat{A}} = bc\cos\pa{\widehat{A}}$.
+
+	D'où :
+	\[
+		a^2 = b^2 + c^2 - 2bc\cos\pa{\widehat{A}}
+	\]
+
+	Les deux autres égalités s'obtiennent en échangeant le rôle des sommets.
+\end{demonstration}
+
+\begin{rem}
+	Le théorème d'Al-Kashi généralise le théorème de Pythagore : lorsque le triangle $ABC$ est rectangle en $A$, on a $\cos\pa{\widehat{A}} = \cos\pa{\dfrac{\pi}{2}} = 0$ et l'égalité devient $a^2 = b^2 + c^2$.
+\end{rem}
+
+\begin{methode}[Appliquer le théorème d'Al-Kashi]
+	\nline
+	\begin{enumerate}
+		\item Soit $ABC$ un triangle tel que $AB = 4$, $AC = 6$ et $\widehat{BAC} = 60^\circ$. Calculer $BC$.
+		\item Soit $ABC$ un triangle tel que $AB = 6$, $AC = 5$ et $BC = 4$. Calculer $\widehat{BAC}$ au degré près.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item D'après le théorème d'Al-Kashi :
+			      \[
+				      \def\arraystretch{1.4}
+				      \begin{array}{rccccccll}
+					           & BC^2 & = & AB^2 & + & AC^2 & - & 2 \times AB \times AC \times \cos\pa{\widehat{BAC}} &      \\
+					      \eqv & BC^2 & = & 4^2  & + & 6^2  & - & 2 \times 4 \times 6 \times \cos\pa{60^\circ}        &      \\
+					           &      & = & 16   & + & 36   & - & 48 \times 0.5                                       & = 28
+				      \end{array}
+			      \]
+
+			      Comme $BC > 0$, $BC = \sqrt{28} = 2\sqrt{7} \approx 5{,}3$.
+			\item D'après le théorème d'Al-Kashi :
+			      \[
+				      \def\arraystretch{1.4}
+				      \begin{array}{rccl}
+					           & BC^2                   & = & AB^2 + AC^2 - 2 \times AB \times AC \times \cos\pa{\widehat{BAC}} \\
+					      \eqv & 4^2                    & = & 6^2 + 5^2 - 2 \times 6 \times 5 \times \cos\pa{\widehat{BAC}}     \\
+					      \eqv & 16                     & = & 61 - 60\cos\pa{\widehat{BAC}}                                     \\
+					      \eqv & \cos\pa{\widehat{BAC}} & = & \dfrac{45}{60}\quad =\quad \dfrac{3}{4}
+				      \end{array}
+			      \]
+			      À la calculatrice, $\widehat{BAC} \approx 41^\circ$.
+		\end{enumerate}
+		\begin{center}
+			\begin{tikzpicture}[x=8mm, y=8mm, >=Stealth, thick]
+				\begin{scope}[shift={(0,0)}]
+					\coordinate (A) at (0,0);
+					\coordinate (B) at (4,0);
+					\coordinate (C) at ({6*cos(60)},{6*sin(60)});
+					\draw[noir] (A) -- (B) -- (C) -- cycle;
+					\draw[->, bleu, line width=1.2pt] (A) -- (B) node[midway, below, bleu, font=\footnotesize] {$4$};
+					\draw[->, rouge, line width=1.2pt] (A) -- (C) node[midway, above left, rouge, font=\footnotesize] {$6$};
+					\draw[vert, line width=1.2pt] (B) -- (C) node[midway, above right, vert, font=\footnotesize] {$BC$};
+					\draw[vert, fill=vert!15] (A) -- ++(0:0.8) arc[start angle=0, end angle=60, radius=0.8] -- cycle;
+					\node[vert, font=\footnotesize] at (30:1.15) {$60^\circ$};
+					\fill (A) circle (1.6pt) node[below left, font=\footnotesize] {$A$};
+					\fill (B) circle (1.6pt) node[below right, font=\footnotesize] {$B$};
+					\fill (C) circle (1.6pt) node[above, font=\footnotesize] {$C$};
+				\end{scope}
+				\begin{scope}[shift={(7.5,0)}]
+					\coordinate (A) at (0,0);
+					\coordinate (B) at (6,0);
+					\coordinate (C) at (3.75,{sqrt(10.9375)});
+					\draw[noir] (A) -- (B) -- (C) -- cycle;
+					\draw[bleu, line width=1.2pt] (A) -- (B) node[midway, below, bleu, font=\footnotesize] {$6$};
+					\draw[rouge, line width=1.2pt] (A) -- (C) node[midway, above left, rouge, font=\footnotesize] {$5$};
+					\draw[vert, line width=1.2pt] (B) -- (C) node[midway, above right, vert, font=\footnotesize] {$4$};
+					\draw[vert, fill=vert!15] (A) -- ++(0:0.8) arc[start angle=0, end angle=41.41, radius=0.8] -- cycle;
+					\node[vert, font=\footnotesize] at (20.7:1.3) {$\widehat{BAC}$};
+					\fill (A) circle (1.6pt) node[below left, font=\footnotesize] {$A$};
+					\fill (B) circle (1.6pt) node[below right, font=\footnotesize] {$B$};
+					\fill (C) circle (1.6pt) node[above, font=\footnotesize] {$C$};
+				\end{scope}
+			\end{tikzpicture}
+		\end{center}
+	\end{correction}
+\end{methode}
+
+\subsection{Formule de la médiane}
+
+\begin{propriete}[Formule de la médiane]
+	Soit $A$ et $B$ deux points du plan et $I$ le milieu du segment $[AB]$.
+
+	Pour tout point $M$ du plan :
+	\[
+		MA^2 + MB^2 = 2MI^2 + \dfrac{AB^2}{2}
+	\]
+\end{propriete}
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.0, >=Stealth, thick]
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (5,0);
+		\coordinate (I) at (2.5,0);
+		\coordinate (M) at (1.5,3);
+		\draw[bleu, ultra thick] (A) -- (B);
+		\draw[bleu] (M) -- (A);
+		\draw[bleu] (M) -- (B);
+		\draw[rouge, ultra thick] (M) -- (I);
+		\fill (I) circle (2pt) node[below] {$I$};
+		\node[below left] at (A) {$A$};
+		\node[below right] at (B) {$B$};
+		\node[above] at (M) {$M$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{demonstration}
+	En utilisant la relation de Chasles et $\vec{IB} = -\vec{IA}$ :
+	\begin{align*}
+		MA^2 + MB^2 & = \pa{\vec{MI} + \vec{IA}}^2 + \pa{\vec{MI} + \vec{IB}}^2                                       \\
+		            & = \pa{MI^2 + 2\,\vec{MI} \cdot \vec{IA} + IA^2} + \pa{MI^2 - 2\,\vec{MI} \cdot \vec{IA} + IA^2} \\
+		            & = 2MI^2 + 2IA^2
+	\end{align*}
+
+	Or :
+	\[
+		IA = \dfrac{AB}{2}\eqv 2IA^2 = 2\pfrac{AB}{2}^2 = \dfrac{AB^2}{2}
+	\]
+
+	Donc $\quad MA^2 + MB^2 = 2MI^2 + \dfrac{AB^2}{2}$
+\end{demonstration}
+
+\begin{exemple}
+	Dans un triangle $ABC$ tel que $AB = 5$, $AC = 7$ et $BC = 8$, soit $I$ le milieu de $[BC]$.
+
+	D'après la formule de la médiane :
+	\[
+		AB^2 + AC^2 = 2AI^2 + \dfrac{BC^2}{2} \eqv 25 + 49 = 2AI^2 + 32 \eqv AI^2 = 21 \eqv AI = \sqrt{21}
+	\]
+
+	\begin{center}
+		\begin{tikzpicture}[x=10mm, y=10mm, >=Stealth, thick]
+			\coordinate (B) at (0,0);
+			\coordinate (C) at (8,0);
+			\coordinate (I) at (4,0);
+			\coordinate (A) at (2.5,{2.5*sqrt(3)});
+			\draw[noir] (A) -- (B) -- (C) -- cycle;
+			\draw[vert, line width=1.5pt] (A) -- (I) node[midway, above, sloped, vert] {$AI$};
+			\draw[bleu, line width=1.5pt] (A) -- (B) node[midway, above, sloped, bleu] {$5$};
+			\draw[rouge, line width=1.5pt] (A) -- (C) node[midway, above, sloped, rouge] {$7$};
+			\node[below] at (2,-0.1) {$4$};
+			\node[below] at (6,-0.1) {$4$};
+			\draw[vert] (1.95,-0.12) -- (2.05,0.12);
+			\draw[vert] (5.95,-0.12) -- (6.05,0.12);
+			\fill[bleu] (A) circle (1.8pt) node[above, bleu] {$A$};
+			\fill[noir] (B) circle (1.8pt) node[below left] {$B$};
+			\fill[noir] (C) circle (1.8pt) node[below right] {$C$};
+			\fill[vert] (I) circle (1.8pt) node[below, vert, yshift=-3pt] {$I$};
+		\end{tikzpicture}
+	\end{center}
+\end{exemple}
+
+\newpage
+
+\section{Algorithmique : produit scalaire et angles avec Python}
+
+\begin{ex}[Produit scalaire, norme et angle de deux vecteurs]
+	Dans un repère orthonormé, un vecteur est représenté par la liste de ses coordonnées.
+
+	Les fonctions suivantes calculent un produit scalaire, une norme, la mesure en degrés de l'angle géométrique entre deux vecteurs non nuls, et testent l'orthogonalité :
+
+	\begin{lstlisting}
+from math import acos, sqrt, degrees
+
+def produit_scalaire(u, v):
+    return u[0] * v[0] + u[1] * v[1]
+
+def norme(u):
+    return sqrt(produit_scalaire(u, u))
+
+def angle(u, v):
+    c = produit_scalaire(u, v) / (norme(u) * norme(v))
+    return degrees(acos(c))
+
+def est_orthogonal(u, v):
+    return produit_scalaire(u, v) == 0
+\end{lstlisting}
+
+	\begin{itemize}
+		\item Pour $\vec{u}\coord{5}{-1}$ et $\vec{v}\coord{-2}{-4}$, l'appel \quad\texttt{angle([5, -1], [-2, -4])}\quad renvoie environ $105{,}26$.
+
+		      On vérifie ce résultat par le calcul :
+
+		      \[
+			      \vec{u} \cdot \vec{v} = 5 \times (-2) + (-1) \times (-4) = -6\quad,\quad\norm{\vec{u}} = \sqrt{26}\quad\text{et}\quad\norm{\vec{v}} = \sqrt{20}
+		      \]
+
+		      Donc :
+		      \[
+			      \cos\pa{\vec{u}\,;\,\vec{v}} = \dfrac{\vec{u}\cdot\vec{v}}{\norm{\vec{v}}\times\norm{\vec{v}}} = \dfrac{-6}{\sqrt{26}\sqrt{20}} = \dfrac{-3}{\sqrt{130}}\quad\eqv\quad \pa{\vec{u}\,;\,\vec{v}}=\text{acos}\pa{\dfrac{-3}{\sqrt{130}}}\approx 105{,}26
+		      \]
+
+		\item Pour $\vec{AB}\coord{6}{-1}$ et $\vec{AC}\coord{1}{6}$, l'appel \quad\texttt{est\_orthogonal([6, -1], [1, 6])}\quad renvoie \quad\texttt{True}.
+	\end{itemize}
+\end{ex}
+
+\section{Synthèse : quelle expression du produit scalaire choisir ?}
+
+\begin{center}
+	\rnc{\arraystretch}{1.5}
+	\begin{tabular}{|>{\raggedright\arraybackslash}m{4.8cm}|>{\raggedright\arraybackslash}m{5.6cm}|>{\raggedright\arraybackslash}m{5.2cm}|} \hline
+		\ccg \textbf{Données de l'énoncé}                             & \ccg \textbf{Expression à privilégier}                                   & \ccg \textbf{Objectif principal}                                            \\ \hline
+		Normes et angle connus                                        & $\vec{u} \cdot \vec{v} = \norm{\vec{u}}\times\norm{\vec{v}}\cos(\theta)$ & Calculer un produit scalaire ou vérifier son signe                          \\ \hline
+		Projeté orthogonal visible                                    & $\vec{OA} \cdot \vec{OB} = \vec{OA} \cdot \vec{OH}$                      & Calculer rapidement avec une hauteur ou un angle droit                      \\ \hline
+		Trois longueurs d'un triangle                                 & $\vec{AB} \cdot \vec{AC} = \dfrac{1}{2}\pa{AB^2 + AC^2 - BC^2}$          & Calculer un produit scalaire, un angle ou une longueur (Al-Kashi)           \\ \hline
+		Coordonnées dans un repère orthonormé                         & $\vec{u} \cdot \vec{v} = xx' + yy'$                                      & Calculer un produit scalaire, une norme, un angle ou tester l'orthogonalité \\ \hline
+		Droite définie par une équation cartésienne $ax + by + c = 0$ & Vecteur normal $\def\arraystretch{0.9}\vec{n}\coord{a}{b}$               & Déterminer une perpendiculaire, une hauteur ou une médiatrice               \\ \hline
+		Diamètre $[AB]$ d'un cercle                                   & $\vec{MA} \cdot \vec{MB} = 0$                                            & Caractériser un cercle ou démontrer un angle droit                          \\ \hline
+	\end{tabular}
+\end{center}
+

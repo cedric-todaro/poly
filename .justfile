@@ -1,7 +1,6 @@
 set shell := ["bash", "-uc"]
 
-default:
-    @just --list
+default: mk
 
 # Commit and push (usage: just push "commit msg")
 push MESSAGE:
@@ -12,5 +11,5 @@ push MESSAGE:
 # `make` in all subdirs
 mk:
     @find . -mindepth 2 -name "Makefile" -exec dirname {} \; | while read -r dir; do \
-        make -C "$dir"; \
+        make -s -k -C "$dir"; \
     done
