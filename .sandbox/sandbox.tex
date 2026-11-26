@@ -5,6 +5,1081 @@
 \date{\today}
 \begin{document}
 \tableofcontents
-\lipsum
+\chapter{Généralités sur les suites}
+
+\section{Notion de suite}
+
+\begin{defin}[Suite numérique]
+	Une \textbf{suite numérique} $u$ est une fonction définie sur $\N$ (ou sur l'ensemble des entiers naturels supérieurs ou égaux à un entier $n_0$) qui, à tout entier $n$, associe un nombre réel noté $u(n)$ ou $u_n$.
+	\begin{itemize}
+		\item Le nombre $u_n$ est le \textbf{terme de rang $n$} (ou d'indice $n$).
+		\item Le terme $u_{n+1}$ est le terme qui \textbf{suit} $u_n$.
+		\item Si la suite est définie à partir du rang $n_0$, le terme $u_{n_0}$ est son \textbf{premier terme} (le plus souvent $u_0$ ou $u_1$).
+	\end{itemize}
+\end{defin}
+
+\begin{notation}
+	La suite est notée $(u_n)$ ou $(u_n)_{n \geq n_0}$ lorsqu'on veut préciser le rang du premier terme.
+
+	Il faut distinguer $(u_n)$, qui désigne la suite tout entière, et $u_n$, qui est un nombre : le terme de rang $n$.
+\end{notation}
+
+\begin{ex}
+	La liste des nombres impairs rangés dans l'ordre croissant $1\,;\,3\,;\,5\,;\,7\,;\,\dots$ définit une suite :
+	\[
+		u_0 = 1\text{,}\quad u_1 = 3\text{,}\quad u_2 = 5\text{,}\quad u_3 = 7\text{,}\ldots
+	\]
+
+	Et plus généralement $u_n = 2n + 1$.
+\end{ex}
+
+\begin{ex}
+	Une suite n'est pas toujours définie dès le rang $0$ :
+	\begin{itemize}
+		\item la suite $u_n = \dfrac{1}{n}$ est définie pour tout entier $n \geq 1$ ; son premier terme est $u_1 = 1$, puis $u_2 = \dfrac{1}{2}$ et $u_3 = \dfrac{1}{3}$ ;
+		\item la suite $u_n = \dfrac{1}{n - 3}$ est définie pour tout entier $n \geq 4$ ; son premier terme est $u_4 = \dfrac{1}{4 - 3} = 1$, puis $u_5 = \dfrac{1}{2}$ et $u_6 = \dfrac{1}{3}$.
+	\end{itemize}
+\end{ex}
+
+\begin{attention}
+	Si le premier terme est $u_0$, alors de $u_0$ à $u_n$ il y a $n + 1$ termes, et non $n$ termes.
+\end{attention}
+
+\section{Modes de génération d'une suite}
+
+\subsection{Suite définie par une formule explicite}
+
+\begin{defin}[Formule explicite]
+	Une suite $(u_n)$ est définie de façon \textbf{explicite} lorsque chaque terme $u_n$ est donné directement en fonction de $n$ : on peut calculer $u_n$ pour n'importe quel rang sans connaître les termes précédents.
+
+	Lorsque $u_n = f(n)$, où $f$ est une fonction définie sur $\intfo{0}{+\infty}$, on dit que $f$ est la \textbf{fonction associée} à la suite.
+\end{defin}
+
+\begin{ex}
+	\begin{itemize}
+		\item Pour $u_n = (-1)^n$ : $u_0 = 1$, $u_1 = -1$, $u_{1000} = 1$ et $u_{1997} = -1$.
+		\item Pour $v_n = 2n + 5$ : $v_0 = 5$, $v_1 = 7$, $v_2 = 9$, $v_3 = 11$.
+		\item Pour $u_n = n^2 - 3n + 1$ : $u_n = f(n)$ avec $f(x) = x^2 - 3x + 1$, donc $u_0 = 1$, $u_1 = -1$, $u_2 = -1$, $u_3 = 1$, $u_4 = 5$.
+	\end{itemize}
+\end{ex}
+
+\begin{methode}[Calculer des termes d'une suite définie explicitement]
+	Calculer les quatre premiers termes des suites $(u_n)$ et $(v_n)$ définies pour tout entier $n$ par $u_n = 2n$ et $v_n = 3n^2 - 1$, puis calculer $u_{100}$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On remplace $n$ par $0$, $1$, $2$, $3$ dans $u_n = 2n$ : $u_0 = 0$, $u_1 = 2$, $u_2 = 4$, $u_3 = 6$.
+			\item On remplace $n$ par $0$, $1$, $2$, $3$ dans $v_n = 3n^2 - 1$ :
+			      \[
+				      v_0 = 3 \times 0^2 - 1 = -1, \quad v_1 = 3 \times 1^2 - 1 = 2, \quad v_2 = 3 \times 2^2 - 1 = 11, \quad v_3 = 3 \times 3^2 - 1 = 26
+			      \]
+			\item Directement : $u_{100} = 2 \times 100 = 200$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\subsection{Suite définie par une relation de récurrence}
+
+\begin{defin}[Relation de récurrence]
+	Une suite $(u_n)$ est définie par une \textbf{relation de récurrence} lorsque son premier terme (le \textbf{terme initial}) est donné et que chaque terme s'obtient à partir du précédent.
+
+	Lorsque la relation est de la forme $u_{n+1} = f(u_n)$, avec $f$ une fonction, la suite est complètement définie par $u_0$ (ou $u_{n_0}$) et par $f$.
+\end{defin}
+
+\begin{rem}
+	Contrairement à une formule explicite, une relation de récurrence ne permet pas de calculer un terme de rang donné sans avoir calculé tous les termes précédents : pour calculer $u_{12}$, il faut connaître $u_{11}$, donc $u_{10}$, etc.
+
+	La relation de récurrence peut aussi faire intervenir $n$ (par exemple $w_{n+1} = w_n + n$).
+\end{rem}
+
+\begin{methode}[Calculer des termes d'une suite définie par récurrence]
+	Calculer les quatre premiers termes de chacune des suites suivantes :
+	\begin{enumerate}
+		\item $u_0 = 5$ et, pour tout entier $n$, $u_{n+1} = 3u_n$ ;
+		\item $v_0 = 3$ et, pour tout entier $n$, $v_{n+1} = 4v_n - 6$ ;
+		\item $w_1 = 1$ et, pour tout entier $n \geq 1$, $w_{n+1} = w_n + n$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Chaque terme est le triple du précédent : $u_0 = 5$, $u_1 = 3 \times 5 = 15$, $u_2 = 3 \times 15 = 45$, $u_3 = 3 \times 45 = 135$.
+			\item $v_0 = 3$, $v_1 = 4 \times 3 - 6 = 6$, $v_2 = 4 \times 6 - 6 = 18$, $v_3 = 4 \times 18 - 6 = 66$.
+			\item Le premier terme est $w_1$.
+
+			      Pour $n = 1$ : $w_2 = w_1 + 1 = 2$ ; pour $n = 2$ : $w_3 = w_2 + 2 = 4$ ; pour $n = 3$ : $w_4 = w_3 + 3 = 7$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\subsection{Suite générée par un algorithme}
+
+\begin{ex}[Calculer un terme avec Python]
+	Soit la suite définie par $u_0 = 3$ et $u_{n+1} = 4u_n - 6$.
+
+	La fonction suivante renvoie le terme $u_n$ : à chaque tour de boucle, la variable \texttt{u} est remplacée par le terme suivant.
+
+	\begin{lstlisting}
+def suite(n):
+    u = 3
+    for i in range(1, n + 1):
+        u = 4 * u - 6
+    return u
+
+print(suite(13))
+\end{lstlisting}
+
+	L'appel \texttt{suite(13)} calcule $u_{13}$ et affiche $67\,108\,866$.
+
+	L'instruction \texttt{range(1, n + 1)} fait varier \texttt{i} de $1$ à $n$ inclus : la boucle s'exécute $n$ fois.
+\end{ex}
+
+\begin{ex}[Autre suite définie par récurrence]
+	Pour la suite définie par $u_0 = 0$ et $u_{n+1} = 0{,}5\,u_n + 2$, le programme suivant calcule $u_{50}$ :
+
+	\begin{lstlisting}
+u = 0
+for i in range(1, 51):
+    u = 0.5 * u + 2
+print(u)
+\end{lstlisting}
+
+	On obtient une valeur très proche de $4$.
+
+	De même, l'algorithme qui part de $A = 1$ et répète $N$ fois l'instruction $A \leftarrow 3A + 4$ calcule les termes de la suite $u_0 = 1$, $u_{n+1} = 3u_n + 4$ : $u_1 = 7$, $u_2 = 25$, \dots
+\end{ex}
+
+\subsection{Suite générée par des motifs géométriques}
+
+\begin{ex}[Les lunules]
+	Dans la figure ci-dessous, $AB = 8$ cm et $I$ est le milieu de $[AB]$.
+
+	La courbe $\mathcal{C}_0$ est le demi-cercle de diamètre $[AB]$ ; on coupe chaque segment en deux pour tracer les demi-cercles de la courbe $\mathcal{C}_1$, puis ceux de $\mathcal{C}_2$, et ainsi de suite.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7, thick]
+			\draw[gris] (0,0) -- (8,0);
+			\draw[bleu, ultra thick] (0,0) arc (180:0:4);
+			\draw[orange, ultra thick] (0,0) arc (180:0:2);
+			\draw[orange, ultra thick] (4,0) arc (180:0:2);
+			\foreach \xx in {0,2,4,6} {
+					\draw[rouge, ultra thick] (\xx,0) arc (180:0:1);
+				}
+			\node[below left] at (0,0) {$A$};
+			\node[below right] at (8,0) {$B$};
+			\node[below] at (4,0) {$I$};
+			\node[bleu, above] at (4,4) {$\mathcal{C}_0$};
+			\node[orange, above] at (2,2) {$\mathcal{C}_1$};
+			\node[rouge, above] at (1,1) {$\mathcal{C}_2$};
+		\end{tikzpicture}
+	\end{center}
+
+	Notons $r_n$ le rayon des demi-cercles de la courbe $\mathcal{C}_n$.
+
+	On a $r_0 = 4$, $r_1 = 2$, $r_2 = 1$, $r_3 = 0{,}5$, et pour tout entier $n$ :
+	\[
+		r_{n+1} = \dfrac{r_n}{2}
+	\]
+	La courbe $\mathcal{C}_n$ est formée de $2^n$ demi-cercles de rayon $r_n = \dfrac{4}{2^n}$ ; sa longueur $\ell_n$ vérifie donc $\ell_n = 2^n \times \pi \times \dfrac{4}{2^n} = 4\pi$ : la suite $(\ell_n)$ est constante.
+\end{ex}
+
+\section{Représentation graphique d'une suite}
+
+\begin{representation}
+	Dans un repère du plan, la \textbf{représentation graphique} d'une suite $(u_n)$ est le \textbf{nuage de points} $A_n$ de coordonnées $\coordl{n}{u_n}$.
+
+	On ne relie pas ces points : seuls les entiers $n$ ont un sens.
+\end{representation}
+
+\begin{ex}
+	Pour tout entier $n$, on pose $u_n = \dfrac{n^2}{2} - 3$.
+
+	Par exemple $u_2 = \dfrac{2^2}{2} - 3 = -1$ et $u_4 = \dfrac{4^2}{2} - 3 = 5$.
+
+	Le tableau de valeurs est :
+	\begin{center}
+		\rnc{\arraystretch}{1.3}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
+			\ccg $n$   & $0$  & $1$      & $2$  & $3$     & $4$ & $5$     & $6$  & $7$      & $8$  \\ \hline
+			\ccg $u_n$ & $-3$ & $-2{,}5$ & $-1$ & $1{,}5$ & $5$ & $9{,}5$ & $15$ & $21{,}5$ & $29$ \\ \hline
+		\end{tabular}
+	\end{center}
+
+	\begin{center}
+		\begin{tikzpicture}[x=1cm, y=0.2cm, >=Stealth, thick]
+			\draw[->] (-0.3,0) -- (8.8,0) node[right] {$n$};
+			\draw[->] (0,-5) -- (0,31) node[above] {$u_n$};
+			\foreach \xx in {1,...,8} {
+					\draw (\xx,0.5) -- (\xx,-0.5) node[below, font=\small] {$\xx$};
+				}
+			\foreach \yy in {-5,5,10,15,20,25,30} {
+					\draw (0.1,\yy) -- (-0.1,\yy) node[left, font=\small] {$\yy$};
+				}
+			\foreach \nn/\vv in {0/-3, 1/-2.5, 2/-1, 3/1.5, 4/5, 5/9.5, 6/15, 7/21.5, 8/29} {
+					\fill[rouge] (\nn,\vv) circle (2pt);
+				}
+		\end{tikzpicture}
+	\end{center}
+\end{ex}
+
+\begin{methode}[Représenter les termes d'une suite définie par récurrence]
+	Soit la suite définie par $u_0 = 0{,}75$ et $u_{n+1} = f(u_n)$ avec $f(x) = x^2$.
+
+	Représenter graphiquement les premiers termes à l'aide de la courbe de $f$ et de la droite d'équation $y = x$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On trace la courbe de $f$ et la droite d'équation $y = x$, puis on place $u_0$ sur l'axe des abscisses.
+			\item La verticale d'abscisse $u_0$ coupe la courbe de $f$ au point d'ordonnée $f(u_0) = u_1$.
+			\item L'horizontale passant par ce point coupe la droite $y = x$ au point d'abscisse $u_1$ : la droite $y = x$ permet de \og reporter \fg{} la valeur $u_1$ sur l'axe des abscisses.
+			\item On recommence : la verticale d'abscisse $u_1$ coupe la courbe en un point d'ordonnée $u_2$, et ainsi de suite.
+		\end{enumerate}
+		Les premiers termes sont $u_0 = 0{,}75$, $u_1 = 0{,}5625$, $u_2 \approx 0{,}316$ et $u_3 \approx 0{,}100$.
+
+		\begin{center}
+			\begin{tikzpicture}[x=8cm, y=8cm, >=Stealth, thick]
+				\draw[->] (-0.03,0) -- (1.08,0) node[right] {$x$};
+				\draw[->] (0,-0.03) -- (0,1.08) node[above] {$y$};
+				\draw[bleu, domain=0:1, samples=60] plot (\x,{\x*\x});
+				\draw[vert, domain=0:1, samples=2] plot (\x,{\x});
+				\node[bleu, right] at (1,1) {$y = x^2$};
+				\node[vert, above left] at (0.9,0.9) {$y = x$};
+				\draw[rouge, dashed] (0.75,0) -- (0.75,0.5625) -- (0.5625,0.5625) -- (0.5625,0.3164) -- (0.3164,0.3164) -- (0.3164,0.1001) -- (0.1001,0.1001);
+				\node[below, rouge, font=\small] at (0.75,0) {$u_0$};
+				\node[below, rouge, font=\small] at (0.5625,0) {$u_1$};
+				\node[below, rouge, font=\small] at (0.3164,0) {$u_2$};
+				\node[below, rouge, font=\small] at (0.1001,0) {$u_3$};
+			\end{tikzpicture}
+		\end{center}
+	\end{correction}
+\end{methode}
+
+\section{Sens de variation d'une suite}
+
+\begin{defin}[Sens de variation]
+	Soit $p$ un entier et $(u_n)$ une suite.
+	\begin{itemize}
+		\item $(u_n)$ est \textbf{croissante} à partir du rang $p$ si, pour tout entier $n \geq p$, $u_{n+1} \geq u_n$.
+		\item $(u_n)$ est \textbf{décroissante} à partir du rang $p$ si, pour tout entier $n \geq p$, $u_{n+1} \leq u_n$.
+		\item $(u_n)$ est \textbf{constante} à partir du rang $p$ si, pour tout entier $n \geq p$, $u_{n+1} = u_n$.
+	\end{itemize}
+	On dit que la suite est \textbf{strictement} croissante (resp.
+
+	décroissante) lorsque les inégalités sont strictes.
+
+	Une suite est \textbf{monotone} si elle est croissante ou décroissante.
+
+	Lorsque $p$ est le rang du premier terme, on dit simplement que la suite est croissante (ou décroissante).
+\end{defin}
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.8, >=Stealth, thick]
+		% Suite croissante
+		\begin{scope}
+			\draw[->] (-0.3,0) -- (6,0) node[right] {$n$};
+			\draw[->] (0,-0.3) -- (0,5.8) node[above] {$u_n$};
+			\foreach \xx/\yy in {1/1, 2/1.8, 3/2.7, 4/3.9, 5/5.3} {
+					\fill[bleu] (\xx,\yy) circle (2.5pt);
+				}
+			\draw[dashed, gris] (3,0) -- (3,2.7) -- (0,2.7);
+			\draw[dashed, gris] (4,0) -- (4,3.9) -- (0,3.9);
+			\node[below, font=\small] at (3,0) {$n$};
+			\node[below, font=\small] at (4.1,0) {$n+1$};
+			\node[left, font=\small] at (0,2.7) {$u_n$};
+			\node[left, font=\small] at (0,3.9) {$u_{n+1}$};
+			\node[below] at (3,-0.8) {$(u_n)$ croissante};
+		\end{scope}
+		% Suite décroissante
+		\begin{scope}[shift={(8.5,0)}]
+			\draw[->] (-0.3,0) -- (6,0) node[right] {$n$};
+			\draw[->] (0,-0.3) -- (0,5.8) node[above] {$u_n$};
+			\foreach \xx/\yy in {1/5.3, 2/3.9, 3/2.7, 4/1.8, 5/1} {
+					\fill[rouge] (\xx,\yy) circle (2.5pt);
+				}
+			\draw[dashed, gris] (3,0) -- (3,2.7) -- (0,2.7);
+			\draw[dashed, gris] (4,0) -- (4,1.8) -- (0,1.8);
+			\node[below, font=\small] at (2.9,0) {$n$};
+			\node[below, font=\small] at (4.1,0) {$n+1$};
+			\node[left, font=\small] at (0,2.7) {$u_n$};
+			\node[left, font=\small] at (0,1.8) {$u_{n+1}$};
+			\node[below] at (3,-0.8) {$(u_n)$ décroissante};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+\begin{propriete}[Étudier le sens de variation d'une suite]
+	Soit $(u_n)$ une suite.
+	\begin{enumerate}
+		\item \textbf{Signe de la différence.} Si $u_{n+1} - u_n \geq 0$ pour tout $n \geq p$, alors $(u_n)$ est croissante à partir du rang $p$.
+
+		      Si $u_{n+1} - u_n \leq 0$ pour tout $n \geq p$, elle est décroissante à partir du rang $p$.
+		\item \textbf{Comparaison à $1$ du quotient.} Si tous les termes sont strictement positifs et si $\dfrac{u_{n+1}}{u_n} \geq 1$ pour tout $n \geq p$, alors $(u_n)$ est croissante à partir du rang $p$ ; si $\dfrac{u_{n+1}}{u_n} \leq 1$ pour tout $n \geq p$, elle est décroissante à partir du rang $p$.
+		\item \textbf{Fonction associée.} Si $u_n = f(n)$ et si $f$ est croissante (resp.
+
+		      décroissante) sur $\intfo{p}{+\infty}$, alors $(u_n)$ est croissante (resp.
+
+		      décroissante) à partir du rang $p$.
+	\end{enumerate}
+\end{propriete}
+
+\begin{demonstration}
+	\begin{enumerate}
+		\item $u_{n+1} - u_n \geq 0$ équivaut à $u_{n+1} \geq u_n$ ; de même pour $\leq$.
+		\item Comme $u_n > 0$, multiplier l'inégalité $\dfrac{u_{n+1}}{u_n} \geq 1$ par $u_n$ donne $u_{n+1} \geq u_n$ ; de même pour $\leq$.
+		\item Pour tout entier $n \geq p$, on a $n < n + 1$.
+
+		      Si $f$ est croissante sur $\intfo{p}{+\infty}$, alors $f(n) \leq f(n + 1)$, c'est-à-dire $u_n \leq u_{n+1}$.
+
+		      Si $f$ est décroissante, alors $f(n) \geq f(n + 1)$.
+	\end{enumerate}
+\end{demonstration}
+
+\begin{attention}
+	La réciproque du point 3 est \textbf{fausse}.
+
+	Par exemple, la suite $u_n = n$ est croissante et $u_n = f(n)$ avec $f(x) = x + \dfrac{3}{10}\sin(2\pi x)$, puisque $\sin(2\pi n) = 0$ pour tout entier $n$ ; pourtant $f$ n'est pas croissante : $f\pa{\dfrac{1}{2}} = \dfrac{1}{2}$ alors que $f\pa{\dfrac{3}{4}} = \dfrac{3}{4} - \dfrac{3}{10} = 0{,}45 < \dfrac{1}{2}$ avec $\dfrac{1}{2} < \dfrac{3}{4}$.
+\end{attention}
+
+\begin{methode}[Étudier le sens de variation avec la différence $u_{n+1} - u_n$]
+	\begin{enumerate}
+		\item Pour tout entier $n$, $u_n = 3n + 1$.
+
+		      Étudier le sens de variation de $(u_n)$.
+		\item Pour tout entier $n$, $u_n = n^2 - 4n + 4$.
+
+		      Démontrer que $(u_n)$ est croissante à partir d'un certain rang à déterminer.
+		\item Pour tout entier $n \geq 1$, $u_n = \dfrac{1}{n}$.
+
+		      Étudier le sens de variation de $(u_n)$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $u_{n+1} = 3(n + 1) + 1 = 3n + 4$, donc $u_{n+1} - u_n = (3n + 4) - (3n + 1) = 3 > 0$.
+
+			      La suite $(u_n)$ est strictement croissante.
+			\item On calcule $u_{n+1} = (n + 1)^2 - 4(n + 1) + 4 = n^2 - 2n + 1$, puis :
+			      \[
+				      u_{n+1} - u_n = \pa{n^2 - 2n + 1} - \pa{n^2 - 4n + 4} = 2n - 3
+			      \]
+			      Or $2n - 3 \geq 0 \eqv n \geq 1{,}5$ ; comme $n$ est entier, $u_{n+1} - u_n \geq 0$ pour $n \geq 2$.
+
+			      La suite $(u_n)$ est croissante à partir du rang $2$.
+			\item Pour tout entier $n \geq 1$ :
+			      \[
+				      u_{n+1} - u_n = \dfrac{1}{n + 1} - \dfrac{1}{n} = \dfrac{n - (n + 1)}{n(n + 1)} = \dfrac{-1}{n(n + 1)} < 0
+			      \]
+			      La suite $(u_n)$ est strictement décroissante.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Étudier le sens de variation avec le quotient $\dfrac{u_{n+1}}{u_n}$]
+	\begin{enumerate}
+		\item Soit $(u_n)$ définie par $u_0 = 2$ et $u_{n+1} = 4u_n$.
+
+		      Étudier le sens de variation de $(u_n)$.
+		\item Pour tout entier $n \geq 1$, $v_n = \dfrac{1}{n(n + 1)}$.
+
+		      Démontrer que $(v_n)$ est décroissante.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Comme $u_0 = 2 > 0$ et que chaque terme est le quadruple du précédent, tous les termes sont strictement positifs.
+
+			      Alors $\dfrac{u_{n+1}}{u_n} = \dfrac{4u_n}{u_n} = 4 > 1$ : la suite $(u_n)$ est strictement croissante.
+			\item Les termes sont strictement positifs et :
+			      \[
+				      \dfrac{v_{n+1}}{v_n} = \dfrac{\dfrac{1}{(n + 1)(n + 2)}}{\dfrac{1}{n(n + 1)}} = \dfrac{n(n + 1)}{(n + 1)(n + 2)} = \dfrac{n}{n + 2}
+			      \]
+			      Comme $0 < n < n + 2$, on a $\dfrac{v_{n+1}}{v_n} < 1$, donc $v_{n+1} < v_n$ : la suite $(v_n)$ est strictement décroissante.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Étudier le sens de variation avec la fonction associée]
+	\begin{enumerate}
+		\item Pour tout entier $n$, $u_n = \dfrac{1}{n + 1}$.
+
+		      Étudier le sens de variation de $(u_n)$ à l'aide de la fonction $f(x) = \dfrac{1}{x + 1}$ définie sur $\intfo{0}{+\infty}$.
+		\item Pour tout entier $n$, $u_n = n^2 - n + 1$.
+
+		      Étudier le sens de variation de $(u_n)$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $f$ est dérivable sur $\intfo{0}{+\infty}$ et $f'(x) = -\dfrac{1}{(x + 1)^2} < 0$ car un carré est positif et $(x + 1)^2 \neq 0$.
+
+			      La fonction $f$ est donc strictement décroissante sur $\intfo{0}{+\infty}$ et, comme $u_n = f(n)$, la suite $(u_n)$ est strictement décroissante.
+			\item On a $u_n = f(n)$ avec $f(x) = x^2 - x + 1$.
+
+			      C'est une fonction du second degré avec $a = 1 > 0$, qui admet un minimum en $x = -\dfrac{b}{2a} = \dfrac{1}{2}$ : elle est décroissante sur $\intof{-\infty}{\dfrac{1}{2}}$ et croissante sur $\intfo{\dfrac{1}{2}}{+\infty}$, donc croissante sur $\intfo{1}{+\infty}$.
+
+			      La suite $(u_n)$ est croissante à partir du rang $1$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\section{Limite d'une suite : première approche}
+
+\begin{ex}[Un exemple d'introduction]
+	Pour tout entier $n \geq 1$, on pose $u_n = \dfrac{2n + 1}{n} = 2 + \dfrac{1}{n}$.
+
+	On calcule des termes pour des rangs de plus en plus grands :
+	\begin{center}
+		\rnc{\arraystretch}{1.3}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
+			\ccg $n$   & $1$ & $2$     & $3$               & $4$      & $5$     & $10$    & $15$              & $50$     & $500$     \\ \hline
+			\ccg $u_n$ & $3$ & $2{,}5$ & $\approx 2{,}333$ & $2{,}25$ & $2{,}2$ & $2{,}1$ & $\approx 2{,}067$ & $2{,}02$ & $2{,}002$ \\ \hline
+		\end{tabular}
+	\end{center}
+	Plus $n$ devient grand, plus les termes semblent se rapprocher de $2$.
+\end{ex}
+
+\begin{defin}[Limite d'une suite (approche intuitive)]
+	\begin{itemize}
+		\item Une suite $(u_n)$ \textbf{converge} vers un réel $\ell$ lorsque ses termes se rapprochent de $\ell$ quand $n$ devient de plus en plus grand.
+
+		      On note $\displaystyle\lim_{n \to +\infty} u_n = \ell$ et on dit que $\ell$ est la \textbf{limite} de la suite.
+		\item Une suite a pour \textbf{limite $+\infty$} lorsque ses termes deviennent aussi grands que l'on veut quand $n$ devient grand ; on note $\displaystyle\lim_{n \to +\infty} u_n = +\infty$.
+
+		      On définit de même la limite $-\infty$.
+		\item Une suite qui ne converge pas est \textbf{divergente} : elle a pour limite $+\infty$ ou $-\infty$, ou n'a pas de limite.
+	\end{itemize}
+\end{defin}
+
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, thick]
+		% Suite convergente
+		\begin{scope}[x=0.55cm, y=1.5cm]
+			\draw[->] (-0.3,0) -- (11,0) node[right] {$n$};
+			\draw[->] (0,-0.1) -- (0,3.4) node[above] {$v_n$};
+			\draw[dashed, gris] (0,2) -- (10.5,2) node[right, font=\small] {$y = 2$};
+			\foreach \nn in {1,...,10} {
+					\fill[bleu] (\nn,{2+1/\nn}) circle (2pt);
+				}
+			\node[left, font=\small] at (0,2) {$2$};
+			\node[below] at (5.5,-0.4) {$v_n = 2 + \frac{1}{n}$ : limite $2$};
+		\end{scope}
+		% Suite sans limite
+		\begin{scope}[shift={(8.5,0)}, x=0.55cm, y=1cm]
+			\draw[->] (-0.3,0) -- (10,0) node[right] {$n$};
+			\draw[->] (0,-1.6) -- (0,1.7) node[above] {$w_n$};
+			\foreach \nn in {0,...,9} {
+					\fill[rouge] (\nn,{(-1)^\nn}) circle (2pt);
+				}
+			\node[left, font=\small] at (0,1) {$1$};
+			\node[left, font=\small] at (0,-1) {$-1$};
+			\node[below] at (5,-1.9) {$w_n = (-1)^n$ : pas de limite};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+\begin{piege}
+	Une conjecture n'est pas une preuve : on ne peut pas conclure à une limite à partir de quelques termes seulement.
+
+	En première, on conjecture une limite à l'aide du calcul de nombreux termes, d'un tableur ou d'un programme.
+\end{piege}
+
+\begin{methode}[Conjecturer la limite d'une suite]
+	\begin{enumerate}
+		\item Pour tout entier $n$, $u_n = n^2 + 1$.
+
+		      Calculer $u_0$, $u_1$, $u_2$, $u_{10}$ et $u_{100}$.
+
+		      La suite semble-t-elle convergente ou divergente ?
+		\item On définit $v_0 = 2$ et $v_{n+1} = (-1)^n v_n$.
+
+		      Calculer des termes de la suite.
+
+		      Semble-t-elle convergente ou divergente ?
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $u_0 = 1$, $u_1 = 2$, $u_2 = 5$, $u_{10} = 101$, $u_{100} = 10\,001$.
+
+			      Plus $n$ devient grand, plus les termes semblent devenir grands : la suite semble diverger vers $+\infty$ et on note $\displaystyle\lim_{n \to +\infty} u_n = +\infty$.
+			\item $v_1 = (-1)^0 v_0 = 2$, $v_2 = (-1)^1 v_1 = -2$, $v_3 = (-1)^2 v_2 = -2$, $v_4 = (-1)^3 v_3 = 2$, $v_5 = (-1)^4 v_4 = 2$.
+
+			      Les termes ne se rapprochent pas d'une valeur : la suite semble diverger et n'a pas de limite.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Déterminer un seuil à l'aide d'un algorithme]
+	Soit la suite définie par $u_0 = 2$ et $u_{n+1} = 0{,}9\,u_n + 1$.
+
+	Écrire un programme Python qui détermine le plus petit rang à partir duquel les termes sont supérieurs à $8$.
+
+	\begin{correction}
+		\nline
+		On utilise une boucle \texttt{while} : tant que le terme courant est inférieur ou égal à $8$, on passe au terme suivant en comptant les étapes.
+
+		\begin{lstlisting}
+def seuil():
+    n = 0
+    u = 2
+    while u <= 8:
+        n = n + 1
+        u = 0.9 * u + 1
+    return n
+
+print(seuil())
+\end{lstlisting}
+
+		L'appel renvoie $14$ : le premier terme strictement supérieur à $8$ est $u_{14}$.
+	\end{correction}
+\end{methode}
+
 \pagenotes
+
+\chapter{Suites arithmétiques et géométriques}
+
+\section{Suites arithmétiques}
+
+\subsection{Définition et terme général}
+
+\begin{defin}[Suite arithmétique]
+	Une suite $(u_n)$ est \textbf{arithmétique} s'il existe un nombre réel $r$ tel que, pour tout entier $n$ :
+	\[
+		u_{n+1} = u_n + r
+	\]
+	Le nombre $r$ est appelé la \textbf{raison} de la suite.
+\end{defin}
+
+\begin{rem}
+	Dans une suite arithmétique, on passe d'un terme au suivant en \textbf{ajoutant toujours la même quantité} $r$.
+
+	Autrement dit, $u_{n+1} - u_n = r$ pour tout entier $n$ : la différence entre deux termes consécutifs est constante.
+
+	Les suites arithmétiques modélisent les évolutions à \textbf{accroissements constants}.
+\end{rem}
+
+\begin{ex}
+	La suite définie par $u_0 = 10$ et $u_{n+1} = u_n - 3$ est arithmétique de raison $-3$ et de premier terme $10$ : $u_1 = 7$, $u_2 = 4$, $u_3 = 1$, \dots
+\end{ex}
+
+\begin{propriete}[Terme général d'une suite arithmétique]
+	Soit $(u_n)$ une suite arithmétique de raison $r$.
+
+	Pour tout entier $n$ :
+	\[
+		u_n = u_0 + nr
+	\]
+	Plus généralement, pour tous entiers $n$ et $p$, $u_n = u_p + (n - p)r$.
+
+	En particulier, si le premier terme est $u_1$, alors $u_n = u_1 + (n - 1)r$.
+\end{propriete}
+
+\begin{demonstration}
+	On démontre par récurrence que, pour tout entier $n$, $u_n = u_0 + nr$.
+	\begin{itemize}
+		\item \textbf{Initialisation.} Pour $n = 0$, $u_0 = u_0 + 0 \times r$ : la propriété est vraie.
+		\item \textbf{Hérédité.} Supposons $u_n = u_0 + nr$ pour un entier $n$.
+
+		      Alors $u_{n+1} = u_n + r = u_0 + nr + r = u_0 + (n + 1)r$, ce qui est la propriété au rang $n + 1$.
+	\end{itemize}
+	La propriété est donc vraie pour tout entier $n$.
+
+	Pour la formule générale, la suite $(v_k)$ définie par $v_k = u_{p+k}$ est arithmétique de raison $r$ et de premier terme $u_p$, donc $u_{p+k} = u_p + kr$, soit $u_n = u_p + (n - p)r$ en posant $k = n - p$.
+\end{demonstration}
+
+\begin{ex}
+	Avec $u_0 = 10$ et $u_{n+1} = u_n - 3$, on a $u_n = 10 - 3n$.
+
+	Par exemple, $u_7 = 10 - 3 \times 7 = -11$.
+\end{ex}
+
+\begin{methode}[Reconnaître une suite arithmétique]
+	Pour montrer qu'une suite est arithmétique, on calcule $u_{n+1} - u_n$ et on vérifie que le résultat est une constante indépendante de $n$.
+
+	Pour montrer qu'elle ne l'est pas, un contre-exemple suffit.
+
+	Les suites $u_n = 3n + 1$ et $v_n = n^2$ sont-elles arithmétiques ?
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $u_{n+1} - u_n = 3(n + 1) + 1 - (3n + 1) = 3$ : la différence est constante, donc $(u_n)$ est arithmétique de raison $3$ et de premier terme $u_0 = 1$.
+			\item $v_1 - v_0 = 1$ et $v_2 - v_1 = 3$ : les différences ne sont pas égales, donc $(v_n)$ n'est pas arithmétique.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Déterminer la raison et le premier terme à partir de deux termes]
+	Soit $(u_n)$ une suite arithmétique telle que $u_3 = 11$ et $u_8 = 26$.
+
+	Déterminer sa raison $r$ et son premier terme $u_0$.
+
+	\begin{correction}
+		\nline
+		D'après la formule générale, $u_8 = u_3 + (8 - 3)r$, soit $26 = 11 + 5r$, d'où $5r = 15$ et $r = 3$.
+
+		Puis $u_3 = u_0 + 3r$ donne $u_0 = 11 - 9 = 2$.
+
+		Ainsi $u_n = 2 + 3n$.
+	\end{correction}
+\end{methode}
+
+\subsection{Sens de variation et représentation graphique}
+
+\begin{propriete}[Variation d'une suite arithmétique]
+	Soit $(u_n)$ une suite arithmétique de raison $r$.
+	\begin{itemize}
+		\item Si $r > 0$, la suite est strictement croissante.
+		\item Si $r = 0$, la suite est constante.
+		\item Si $r < 0$, la suite est strictement décroissante.
+	\end{itemize}
+\end{propriete}
+
+\begin{demonstration}
+	Pour tout entier $n$, $u_{n+1} - u_n = r$ : la différence de deux termes consécutifs a le signe de $r$.
+\end{demonstration}
+
+\begin{representation}
+	Les points $A_n\coordl{n}{u_n}$ de la représentation graphique d'une suite arithmétique sont \textbf{alignés} : ils appartiennent à la droite d'équation $y = rx + u_0$, de coefficient directeur $r$.
+
+	Une suite arithmétique est la version discrète d'une fonction affine.
+\end{representation}
+
+\begin{center}
+	\begin{tikzpicture}[x=1cm, y=1cm, >=Stealth, thick]
+		\draw[->] (-0.3,0) -- (9.8,0) node[right] {$n$};
+		\draw[->] (0,-1) -- (0,4.7) node[above] {$u_n$};
+		\foreach \xx in {1,...,9} {
+				\draw (\xx,0.08) -- (\xx,-0.08) node[above, font=\small] {$\xx$};
+			}
+		\foreach \yy in {-1,1,2,3,4} {
+				\draw (0.08,\yy) -- (-0.08,\yy) node[left, font=\small] {$\yy$};
+			}
+		\draw[bleu, dashed, domain=0:9.3, samples=2] plot (\x,{4-0.5*\x});
+		\foreach \nn in {0,...,9} {
+				\fill[rouge] (\nn,{4-0.5*\nn}) circle (2pt);
+			}
+		\node[bleu, above right] at (6.5,{4-0.5*6.5}) {$y = 4 - 0{,}5x$};
+	\end{tikzpicture}
+\end{center}
+
+La figure représente la suite arithmétique de premier terme $u_0 = 4$ et de raison $-0{,}5$ : $u_n = 4 - 0{,}5n$.
+
+\subsection{Somme de termes consécutifs}
+
+\begin{propriete}[Somme des premiers entiers]
+	Pour tout entier $n \geq 1$ :
+	\[
+		1 + 2 + 3 + \dots + n = \dfrac{n(n + 1)}{2}
+	\]
+\end{propriete}
+
+\begin{demonstration}
+	Soit $S = 1 + 2 + 3 + \dots + n$.
+
+	En écrivant la somme dans l'autre sens, $S = n + (n - 1) + \dots + 2 + 1$.
+
+	En additionnant terme à terme les deux égalités :
+	\[
+		2S = (n + 1) + (n + 1) + \dots + (n + 1) = n \times (n + 1)
+	\]
+	car il y a $n$ termes.
+
+	D'où $S = \dfrac{n(n + 1)}{2}$.
+\end{demonstration}
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.6]
+		\foreach \ii in {1,...,5} {
+				\foreach \jj in {1,...,6} {
+						\ifnum\jj>\ii
+							\draw[bleu, thick] (\jj,-\ii) circle (0.2);
+						\else
+							\fill[rouge] (\jj,-\ii) circle (0.2);
+						\fi
+					}
+			}
+		\node[above] at (3.5,-0.5) {$n + 1 = 6$ colonnes};
+		\node[rotate=90, above] at (0.1,-3) {$n = 5$ lignes};
+	\end{tikzpicture}
+\end{center}
+
+Les points rouges représentent la somme $1 + 2 + 3 + 4 + 5$ ; les points bleus complètent le rectangle de $5 \times 6$ points : la somme vaut la moitié du nombre de points du rectangle, soit $\dfrac{5 \times 6}{2} = 15$.
+
+\begin{ex}
+	$1 + 2 + 3 + \dots + 100 = \dfrac{100 \times 101}{2} = 5\,050$.
+\end{ex}
+
+\begin{propriete}[Somme de termes d'une suite arithmétique]
+	Soit $(u_n)$ une suite arithmétique de raison $r$.
+
+	Pour tout entier $n$ :
+	\[
+		u_0 + u_1 + \dots + u_n = (n + 1) \times \dfrac{u_0 + u_n}{2}
+	\]
+	C'est le nombre de termes multiplié par la moyenne du premier et du dernier terme.
+\end{propriete}
+
+\begin{demonstration}
+	Comme $u_k = u_0 + kr$ pour tout entier $k$ :
+	\[
+		\sum_{k=0}^{n} u_k = (n + 1)u_0 + r\pa{1 + 2 + \dots + n} = (n + 1)u_0 + r\,\dfrac{n(n + 1)}{2} = \dfrac{(n + 1)\pa{2u_0 + nr}}{2} = (n + 1)\,\dfrac{u_0 + u_n}{2}
+	\]
+	puisque $u_0 + u_n = 2u_0 + nr$.
+\end{demonstration}
+
+\begin{methode}[Calculer la somme des termes d'une suite arithmétique]
+	\begin{enumerate}
+		\item Calculer $S = 33 + 36 + 39 + \dots + 267$.
+		\item Soit $(u_n)$ arithmétique avec $u_3 = 11$ et $u_8 = 26$.
+
+		      Calculer $u_0 + u_1 + \dots + u_{20}$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Les termes sont ceux de la suite arithmétique de raison $3$ et de premier terme $33$.
+
+			      Le dernier terme est $267 = 33 + 3k$, soit $k = 78$ : il y a $79$ termes.
+
+			      Alors :
+			      \[
+				      S = 79 \times \dfrac{33 + 267}{2} = 79 \times 150 = 11\,850
+			      \]
+			\item On a vu que $r = 3$ et $u_0 = 2$, donc $u_{20} = 2 + 3 \times 20 = 62$.
+
+			      La somme comporte $21$ termes :
+			      \[
+				      u_0 + \dots + u_{20} = 21 \times \dfrac{2 + 62}{2} = 21 \times 32 = 672
+			      \]
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{ex}[Modéliser une évolution à accroissements constants]
+	Une plante mesure $12\,\text{cm}$ et grandit de $1{,}5\,\text{cm}$ chaque semaine.
+
+	Notons $h_n$ sa hauteur (en cm) au bout de $n$ semaines.
+
+	On a $h_0 = 12$ et $h_{n+1} = h_n + 1{,}5$ : la suite $(h_n)$ est arithmétique de raison $1{,}5$, donc $h_n = 12 + 1{,}5n$.
+
+	Au bout de $8$ semaines, $h_8 = 12 + 12 = 24\,\text{cm}$.
+\end{ex}
+
+\section{Suites géométriques}
+
+\subsection{Définition et terme général}
+
+\begin{defin}[Suite géométrique]
+	Une suite $(u_n)$ est \textbf{géométrique} s'il existe un nombre réel $q > 0$ tel que, pour tout entier $n$ :
+	\[
+		u_{n+1} = q \times u_n
+	\]
+	Le nombre $q$ est appelé la \textbf{raison} de la suite.
+\end{defin}
+
+\begin{rem}
+	Dans une suite géométrique, on passe d'un terme au suivant en \textbf{multipliant toujours par la même quantité} $q$.
+
+	Dans ce chapitre, la raison est strictement positive : si $q < 0$, les termes changent alternativement de signe.
+
+	Les suites géométriques modélisent les évolutions à \textbf{taux constant} : une augmentation de $t\,\%$ à chaque période correspond à $q = 1 + \dfrac{t}{100}$, une diminution de $t\,\%$ à $q = 1 - \dfrac{t}{100}$.
+\end{rem}
+
+\begin{ex}
+	La suite définie par $u_0 = 100$ et $u_{n+1} = 0{,}5\,u_n$ est géométrique de raison $0{,}5$ : $u_1 = 50$, $u_2 = 25$, $u_3 = 12{,}5$, $u_4 = 6{,}25$, \dots
+\end{ex}
+
+\begin{propriete}[Terme général d'une suite géométrique]
+	Soit $(u_n)$ une suite géométrique de raison $q$.
+
+	Pour tout entier $n$ :
+	\[
+		u_n = u_0 \times q^n
+	\]
+	Plus généralement, pour tous entiers $n \geq p$, $u_n = u_p \times q^{n-p}$.
+
+	En particulier, si le premier terme est $u_1$, alors $u_n = u_1 \times q^{n-1}$.
+\end{propriete}
+
+\begin{demonstration}
+	On démontre par récurrence que, pour tout entier $n$, $u_n = u_0 q^n$.
+	\begin{itemize}
+		\item \textbf{Initialisation.} Pour $n = 0$, $u_0 = u_0 \times q^0$ : la propriété est vraie.
+		\item \textbf{Hérédité.} Supposons $u_n = u_0 q^n$ pour un entier $n$.
+
+		      Alors $u_{n+1} = q \times u_n = q \times u_0 q^n = u_0 q^{n+1}$.
+	\end{itemize}
+	La formule générale s'obtient en appliquant ce résultat à la suite $(v_k)$ définie par $v_k = u_{p+k}$, géométrique de raison $q$ et de premier terme $u_p$.
+\end{demonstration}
+
+\begin{ex}
+	\begin{itemize}
+		\item Avec $u_0 = 100$ et $u_{n+1} = 0{,}25\,u_n$, on a $u_n = 100 \times 0{,}25^n$ et $u_7 = 100 \times 0{,}25^7 \approx 0{,}0061$.
+		\item Pour $u_0 = 1\,500$ et $u_{n+1} = 0{,}8\,u_n$, on obtient $1\,500$, $1\,200$, $960$, $768$, $614{,}4$, $491{,}52$, \dots
+	\end{itemize}
+\end{ex}
+
+\begin{methode}[Reconnaître une suite géométrique et déterminer sa raison]
+	\begin{enumerate}
+		\item Pour tout entier $n$, $u_n = 3 \times 2^n$.
+
+		      Montrer que $(u_n)$ est géométrique.
+		\item Soit $(v_n)$ géométrique de raison $q > 0$ telle que $v_2 = 12$ et $v_5 = 96$.
+
+		      Déterminer $q$ et $v_0$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Pour tout entier $n$, $u_{n+1} = 3 \times 2^{n+1} = 2 \times \pa{3 \times 2^n} = 2u_n$ : $(u_n)$ est géométrique de raison $2$ et de premier terme $u_0 = 3$.
+			\item $v_5 = v_2 \times q^3$ donne $96 = 12\,q^3$, donc $q^3 = 8$ et $q = 2$ (car $q > 0$).
+
+			      Puis $v_2 = v_0 \times q^2$ donne $v_0 = \dfrac{12}{4} = 3$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\subsection{Sens de variation et représentation graphique}
+
+\begin{propriete}[Variation d'une suite géométrique]
+	Soit $(u_n)$ une suite géométrique de raison $q > 0$ et de premier terme $u_0$.
+
+	Si $q = 1$, la suite est constante.
+
+	Sinon, son sens de variation dépend de $q$ et du signe de $u_0$ :
+	\begin{center}
+		\rnc{\arraystretch}{1.5}
+		\begin{tabular}{|c|c|c|c|c|} \hline
+			\ccg                    & \multicolumn{2}{c|}{\ccg $u_0 > 0$} & \multicolumn{2}{c|}{\ccg $u_0 < 0$}                              \\ \hline
+			\ccg \textbf{Raison}    & $0 < q < 1$                         & $q > 1$                             & $0 < q < 1$ & $q > 1$      \\ \hline
+			\ccg \textbf{Variation} & décroissante                        & croissante                          & croissante  & décroissante \\ \hline
+		\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{demonstration}
+	Pour tout entier $n$, $u_{n+1} - u_n = u_0 q^{n+1} - u_0 q^n = u_0 \, q^n (q - 1)$.
+
+	Comme $q^n > 0$, cette différence a le signe de $u_0 (q - 1)$.
+
+	Si $u_0 > 0$, elle est négative pour $0 < q < 1$ et positive pour $q > 1$ ; si $u_0 < 0$, c'est l'inverse.
+\end{demonstration}
+
+\begin{representation}
+	Les points de la représentation graphique d'une suite géométrique ne sont, en général, \textbf{pas alignés} : la suite est la version discrète d'une fonction exponentielle.
+\end{representation}
+
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, thick]
+		% u0 > 0, 0 < q < 1
+		\begin{scope}[x=0.6cm, y=2cm]
+			\draw[->] (-0.3,0) -- (5.8,0) node[right] {$n$};
+			\draw[->] (0,-0.1) -- (0,1.4) node[above] {$u_n$};
+			\foreach \nn in {0,...,5} {
+					\fill[bleu] (\nn,{0.5^\nn}) circle (2pt);
+				}
+			\node[font=\small] at (3,1.6) {$u_0 > 0$ et $0 < q < 1$ : décroissante};
+		\end{scope}
+		% u0 > 0, q > 1
+		\begin{scope}[xshift=8cm, x=0.6cm, y=0.4cm]
+			\draw[->] (-0.3,0) -- (5.8,0) node[right] {$n$};
+			\draw[->] (0,-0.5) -- (0,8.2) node[above] {$u_n$};
+			\foreach \nn in {0,...,5} {
+					\fill[rouge] (\nn,{1.5^\nn}) circle (2pt);
+				}
+			\node[font=\small] at (3,9.6) {$u_0 > 0$ et $q > 1$ : croissante};
+		\end{scope}
+		% u0 < 0, 0 < q < 1
+		\begin{scope}[yshift=-1.2cm, x=0.6cm, y=2cm]
+			\draw[->] (-0.3,0) -- (5.8,0) node[right] {$n$};
+			\draw[->] (0,0.1) -- (0,-1.4) node[below] {$u_n$};
+			\foreach \nn in {0,...,5} {
+					\fill[vert] (\nn,{-0.5^\nn}) circle (2pt);
+				}
+			\node[font=\small] at (3,-1.6) {$u_0 < 0$ et $0 < q < 1$ : croissante};
+		\end{scope}
+		% u0 < 0, q > 1
+		\begin{scope}[xshift=8cm, yshift=-1.2cm, x=0.6cm, y=0.4cm]
+			\draw[->] (-0.3,0) -- (5.8,0) node[right] {$n$};
+			\draw[->] (0,0.5) -- (0,-8.2) node[below] {$u_n$};
+			\foreach \nn in {0,...,5} {
+					\fill[orange] (\nn,{-1.5^\nn}) circle (2pt);
+				}
+			\node[font=\small] at (3,-9.6) {$u_0 < 0$ et $q > 1$ : décroissante};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+\subsection{Somme de termes consécutifs}
+
+\begin{propriete}[Somme des puissances d'un réel]
+	Soit $q$ un réel différent de $1$ et $n$ un entier naturel.
+
+	Alors :
+	\[
+		1 + q + q^2 + \dots + q^n = \dfrac{1 - q^{n+1}}{1 - q}
+	\]
+\end{propriete}
+
+\begin{demonstration}
+	Soit $S = 1 + q + q^2 + \dots + q^n$.
+
+	Alors $qS = q + q^2 + \dots + q^n + q^{n+1}$.
+
+	En soustrayant, les termes intermédiaires s'éliminent :
+	\[
+		S - qS = 1 - q^{n+1} \eqv (1 - q)S = 1 - q^{n+1}
+	\]
+	Comme $q \neq 1$, on peut diviser par $1 - q$, ce qui donne la formule.
+\end{demonstration}
+
+\begin{rem}
+	C'est la somme des $n + 1$ premiers termes d'une suite géométrique de premier terme $1$ et de raison $q$.
+
+	Plus généralement, pour une suite géométrique $(u_n)$ de raison $q \neq 1$ :
+	\[
+		u_0 + u_1 + \dots + u_n = u_0\,\dfrac{1 - q^{n+1}}{1 - q}
+	\]
+\end{rem}
+
+\begin{methode}[Calculer la somme des termes d'une suite géométrique]
+	Calculer $S = 1 + 3 + 3^2 + \dots + 3^{13}$ et $T = 1 + 2 + 2^2 + \dots + 2^{10}$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Avec $q = 3$ et $n = 13$, il y a $14$ termes :
+			      \[
+				      S = \dfrac{1 - 3^{14}}{1 - 3} = \dfrac{3^{14} - 1}{2} = \dfrac{4\,782\,969 - 1}{2} = 2\,391\,484
+			      \]
+			\item Avec $q = 2$ et $n = 10$ :
+			      \[
+				      T = \dfrac{1 - 2^{11}}{1 - 2} = 2^{11} - 1 = 2\,047
+			      \]
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Modéliser une évolution à taux constant]
+	\begin{enumerate}
+		\item Une population de $3\,000$ bactéries augmente de $50\,\%$ par heure.
+
+		      Exprimer le nombre $v_n$ de bactéries au bout de $n$ heures, puis calculer $v_5$.
+		\item Un capital de $1\,000\,\text{\euro}$ est placé à $3\,\%$ par an.
+
+		      Exprimer le capital $C_n$ au bout de $n$ années, puis calculer $C_{10}$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Augmenter de $50\,\%$ revient à multiplier par $1 + \dfrac{50}{100} = 1{,}5$.
+
+			      La suite $(v_n)$ est géométrique de raison $1{,}5$ et de premier terme $3\,000$ : $v_n = 3\,000 \times 1{,}5^n$.
+
+			      Ainsi $v_5 = 3\,000 \times 7{,}59375 \approx 22\,781$ bactéries.
+			\item Augmenter de $3\,\%$ revient à multiplier par $1{,}03$ (et non par $0{,}03$).
+
+			      La suite $(C_n)$ est géométrique de raison $1{,}03$ et de premier terme $1\,000$ : $C_n = 1\,000 \times 1{,}03^n$.
+
+			      Ainsi $C_{10} = 1\,000 \times 1{,}03^{10} \approx 1\,343{,}92\,\text{\euro}$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\section{Comportement à l'infini : première approche}
+
+\begin{propriete}[Limites des suites arithmétiques et géométriques (admises)]
+	\begin{itemize}
+		\item Une suite arithmétique de raison $r > 0$ a pour limite $+\infty$ ; si $r < 0$, elle a pour limite $-\infty$.
+		\item Une suite géométrique de raison $q > 1$ et de premier terme $u_0 > 0$ a pour limite $+\infty$.
+		\item Une suite géométrique de raison $0 < q < 1$ a pour limite $0$.
+	\end{itemize}
+\end{propriete}
+
+\begin{rem}
+	Ces résultats sont admis en première : ils se conjecturent en calculant de nombreux termes (voir les exemples $u_n = 2n$, $v_n = 0{,}5^n$ dont les termes valent $1\,;\,0{,}5\,;\,0{,}25\,;\,\dots$).
+\end{rem}
+
+\begin{ex}[Une suite ni arithmétique ni géométrique]
+	Soit la suite définie par $u_0 = 100$ et $u_{n+1} = 0{,}9\,u_n + 20$.
+
+	On calcule $u_1 = 110$, $u_2 = 119$, $u_3 = 127{,}1$, \dots, et $u_{29} \approx 195{,}3$.
+
+	La suite n'est ni arithmétique ($u_2 - u_1 \neq u_1 - u_0$) ni géométrique ; on conjecture que ses termes se rapprochent de $200$ sans l'atteindre.
+
+	Le programme suivant détermine le plus petit rang $n$ tel que $u_n \geq s$ :
+
+	\begin{lstlisting}
+def seuil(s):
+    n = 0
+    u = 100
+    while u < s:
+        u = 0.9 * u + 20
+        n = n + 1
+    return n
+\end{lstlisting}
+
+	L'appel \texttt{seuil(199)} renvoie $44$ : le rang nécessaire pour s'approcher de $200$ augmente quand l'écart à $200$ diminue.
+\end{ex}
+
+\section{Algorithmique}
+
+\begin{ex}[Rang à partir duquel un capital double]
+	Un capital de $1\,000\,\text{\euro}$ est placé à $3\,\%$ par an.
+
+	Le programme suivant détermine le nombre d'années nécessaires pour que le capital dépasse $2\,000\,\text{\euro}$ :
+
+	\begin{lstlisting}
+def annees_pour_doubler():
+    n = 0
+    c = 1000
+    while c <= 2000:
+        c = c * 1.03
+        n = n + 1
+    return n
+
+print(annees_pour_doubler())
+\end{lstlisting}
+
+	L'appel renvoie $24$ : on a $1\,000 \times 1{,}03^{23} \approx 1\,973{,}59$ et $1\,000 \times 1{,}03^{24} \approx 2\,032{,}79$.
+\end{ex}
+
+\begin{ex}[Calculer une somme de puissances]
+	La fonction suivante calcule $1 + q + q^2 + \dots + q^n$ en ajoutant les termes un par un :
+
+	\begin{lstlisting}
+def somme_geometrique(q, n):
+    s = 0
+    terme = 1
+    for k in range(n + 1):
+        s = s + terme
+        terme = terme * q
+    return s
+
+print(somme_geometrique(3, 13))
+\end{lstlisting}
+
+	L'appel affiche $2\,391\,484$, ce qui confirme la valeur $\dfrac{3^{14} - 1}{2}$ obtenue avec la formule.
+\end{ex}
+
+\begin{erreur}
+	À éviter :
+	\begin{itemize}
+		\item se tromper sur le nombre de termes : de $u_0$ à $u_n$, il y en a $n + 1$ ;
+		\item confondre la raison arithmétique (on \textbf{ajoute}) et la raison géométrique (on \textbf{multiplie}) ; pour une hausse de $3\,\%$, $q = 1{,}03$ et non $0{,}03$ ;
+		\item conclure à une limite à partir de quelques termes seulement ;
+		\item relier les points du nuage représentant une suite.
+	\end{itemize}
+\end{erreur}
+
 \end{document}
