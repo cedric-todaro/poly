@@ -49,19 +49,18 @@
 
 \subsection{Suite définie par une formule explicite}
 
-\begin{defin}[Formule explicite]
-	Une suite $(u_n)$ est définie de façon \textbf{explicite} lorsque chaque terme $u_n$ est donné directement en fonction de $n$ : on peut calculer $u_n$ pour n'importe quel rang sans connaître les termes précédents.
+\begin{defin}[Suite définie de façon explicite]
+	Soit $f$ une fonction définie sur un intervalle contenant $\mathbb{N}$ (ou à partir d'un rang $n_0$).
 
-	Lorsque $u_n = f(n)$, où $f$ est une fonction définie sur $\intfo{0}{+\infty}$, on dit que $f$ est la \textbf{fonction associée} à la suite.
+	On définit une \textbf{suite explicite} $(u_n)$ en exprimant directement chaque terme $u_n$ en fonction de son rang $n$ :
+	\[
+		u_n = f(n)
+	\]
+
+	On peut ainsi calculer directement n'importe quel terme de la suite en remplaçant $n$ par sa valeur dans l'expression de $f$.
 \end{defin}
 
-\begin{ex}
-	\begin{itemize}
-		\item Pour $u_n = (-1)^n$ : $u_0 = 1$, $u_1 = -1$, $u_{1000} = 1$ et $u_{1997} = -1$.
-		\item Pour $v_n = 2n + 5$ : $v_0 = 5$, $v_1 = 7$, $v_2 = 9$, $v_3 = 11$.
-		\item Pour $u_n = n^2 - 3n + 1$ : $u_n = f(n)$ avec $f(x) = x^2 - 3x + 1$, donc $u_0 = 1$, $u_1 = -1$, $u_2 = -1$, $u_3 = 1$, $u_4 = 5$.
-	\end{itemize}
-\end{ex}
+\newpage
 
 \begin{methode}[Calculer des termes d'une suite définie explicitement]
 	Calculer les quatre premiers termes des suites $(u_n)$ et $(v_n)$ définies pour tout entier $n$ par $u_n = 2n$ et $v_n = 3n^2 - 1$, puis calculer $u_{100}$.
@@ -79,12 +78,52 @@
 	\end{correction}
 \end{methode}
 
+\begin{ex}
+	\nline
+	\begin{itemize}
+		\item Soit $(u_n)$ la suite définie sur $\mathbb{N}$ par $u_n = 2n + 5$. On a :
+		      \[
+			      u_0 = 2 \times 0 + 5 = 5, \quad u_1 = 2 \times 1 + 5 = 7, \quad u_2 = 2 \times 2 + 5 = 9, \quad u_3 = 2 \times 3 + 5 = 11, \quad\ldots
+		      \]
+
+		\item Soit $(u_n)$ la suite définie sur $\mathbb{N}$ par $u_n = n^2 - 3n + 1$.
+
+		      En posant $u_n = f(n)$ avec $f(x) = x^2 - 3x + 1$, on a :
+		      \[
+			      \begin{array}{rclcl}
+				      u_0 & = & 0^2 - 3 \times 0 + 1 & = & 1               \\
+				      u_1 & = & 1^2 - 3 \times 1 + 1 & = & 1 - 3 + 1 = -1  \\
+				      u_2 & = & 2^2 - 3 \times 2 + 1 & = & 4 - 6 + 1 = -1  \\
+				      u_3 & = & 3^2 - 3 \times 3 + 1 & = & 9 - 9 + 1 = 1   \\
+				      u_4 & = & 4^2 - 3 \times 4 + 1 & = & 16 - 12 + 1 = 5
+			      \end{array}
+		      \]
+
+		\item Soit $(u_n)$ la suite définie sur $\mathbb{N}$ par $u_n = (-1)^n$. On a :
+		      \[
+			      \begin{array}{rclcl}
+				      u_0      & = & (-1)^0      & = & 1                                 \\
+				      u_1      & = & (-1)^1      & = & -1                                \\
+				      u_{1000} & = & (-1)^{1000} & = & 1 \quad \text{(exposant pair)}    \\
+				      u_{1997} & = & (-1)^{1997} & = & -1 \quad \text{(exposant impair)}
+			      \end{array}
+		      \]
+	\end{itemize}
+\end{ex}
+
 \subsection{Suite définie par une relation de récurrence}
 
-\begin{defin}[Relation de récurrence]
-	Une suite $(u_n)$ est définie par une \textbf{relation de récurrence} lorsque son premier terme (le \textbf{terme initial}) est donné et que chaque terme s'obtient à partir du précédent.
+\begin{defin}[Suite définie par récurrence]
+	Soit $f$ une fonction définie sur un intervalle contenant les valeurs prises par la suite.
 
-	Lorsque la relation est de la forme $u_{n+1} = f(u_n)$, avec $f$ une fonction, la suite est complètement définie par $u_0$ (ou $u_{n_0}$) et par $f$.
+	Une suite $(u_n)$ est dite \textbf{définie par récurrence} lorsque l'on connaît son premier terme (ou terme initial) et une relation permettant de calculer chaque terme à partir du précédent :
+	\[
+		\begin{cases}
+			u_{n_0} \text{ donné} \\
+			u_{n+1} = f(u_n) \quad \text{pour tout entier } n \geq n_0
+		\end{cases}
+	\]
+	Contrairement à une suite explicite, calculer $u_n$ nécessite de calculer tous les termes précédents de proche en proche.
 \end{defin}
 
 \begin{rem}
@@ -93,22 +132,48 @@
 	La relation de récurrence peut aussi faire intervenir $n$ (par exemple $w_{n+1} = w_n + n$).
 \end{rem}
 
+\newpage
+
 \begin{methode}[Calculer des termes d'une suite définie par récurrence]
 	Calculer les quatre premiers termes de chacune des suites suivantes :
 	\begin{enumerate}
-		\item $u_0 = 5$ et, pour tout entier $n$, $u_{n+1} = 3u_n$ ;
-		\item $v_0 = 3$ et, pour tout entier $n$, $v_{n+1} = 4v_n - 6$ ;
-		\item $w_1 = 1$ et, pour tout entier $n \geq 1$, $w_{n+1} = w_n + n$.
+		\item La suite $(u_n)$ définie sur $\mathbb{N}$ par : $\begin{cases} u_0 = 5 \\ u_{n+1} = 3u_n\end{cases}$
+		\item La suite $(v_n)$ définie sur $\mathbb{N}$ par : $\begin{cases} v_0 = 3 \\ v_{n+1} = 4v_n - 6\end{cases}$
+		\item La suite $(w_n)$ définie pour $n \geq 1$ par : $\begin{cases} w_1 = 1 \\ w_{n+1} = w_n + n \end{cases}$
 	\end{enumerate}
 
 	\begin{correction}
 		\nline
 		\begin{enumerate}
-			\item Chaque terme est le triple du précédent : $u_0 = 5$, $u_1 = 3 \times 5 = 15$, $u_2 = 3 \times 15 = 45$, $u_3 = 3 \times 45 = 135$.
-			\item $v_0 = 3$, $v_1 = 4 \times 3 - 6 = 6$, $v_2 = 4 \times 6 - 6 = 18$, $v_3 = 4 \times 18 - 6 = 66$.
-			\item Le premier terme est $w_1$.
+			\item Les quatre premiers termes sont $u_0$, $u_1$, $u_2$ et $u_3$ :
+			      \[
+				      \begin{array}{rclcl}
+					      u_0 & = & 5    &   &                   \\
+					      u_1 & = & 3u_0 & = & 3 \times 5 = 15   \\
+					      u_2 & = & 3u_1 & = & 3 \times 15 = 45  \\
+					      u_3 & = & 3u_2 & = & 3 \times 45 = 135
+				      \end{array}
+			      \]
 
-			      Pour $n = 1$ : $w_2 = w_1 + 1 = 2$ ; pour $n = 2$ : $w_3 = w_2 + 2 = 4$ ; pour $n = 3$ : $w_4 = w_3 + 3 = 7$.
+			\item Les quatre premiers termes sont $v_0$, $v_1$, $v_2$ et $v_3$ :
+			      \[
+				      \begin{array}{rclcl}
+					      v_0 & = & 3        &   &                      \\
+					      v_1 & = & 4v_0 - 6 & = & 4 \times 3 - 6 = 6   \\
+					      v_2 & = & 4v_1 - 6 & = & 4 \times 6 - 6 = 18  \\
+					      v_3 & = & 4v_2 - 6 & = & 4 \times 18 - 6 = 66
+				      \end{array}
+			      \]
+
+			\item La suite commence à l'indice $1$ : les quatre premiers termes sont $w_1$, $w_2$, $w_3$ et $w_4$ :
+			      \[
+				      \begin{array}{rclcl}
+					      w_1 & = & 1       &   &                                  \\
+					      w_2 & = & w_1 + 1 & = & 1 + 1 = 2 \quad \text{($n = 1$)} \\
+					      w_3 & = & w_2 + 2 & = & 2 + 2 = 4 \quad \text{($n = 2$)} \\
+					      w_4 & = & w_3 + 3 & = & 4 + 3 = 7 \quad \text{($n = 3$)}
+				      \end{array}
+			      \]
 		\end{enumerate}
 	\end{correction}
 \end{methode}
@@ -130,6 +195,8 @@ def suite(n):
 print(suite(13))
 \end{lstlisting}
 
+	% TODO : J'en suis la et il faudrait mettre un bout de code pour montrer le résultat de suite(13)
+
 	L'appel \texttt{suite(13)} calcule $u_{13}$ et affiche $67\,108\,866$.
 
 	L'instruction \texttt{range(1, n + 1)} fait varier \texttt{i} de $1$ à $n$ inclus : la boucle s'exécute $n$ fois.
@@ -146,8 +213,6 @@ print(u)
 \end{lstlisting}
 
 	On obtient une valeur très proche de $4$.
-
-	De même, l'algorithme qui part de $A = 1$ et répète $N$ fois l'instruction $A \leftarrow 3A + 4$ calcule les termes de la suite $u_0 = 1$, $u_{n+1} = 3u_n + 4$ : $u_1 = 7$, $u_2 = 25$, \dots
 \end{ex}
 
 \subsection{Suite générée par des motifs géométriques}
