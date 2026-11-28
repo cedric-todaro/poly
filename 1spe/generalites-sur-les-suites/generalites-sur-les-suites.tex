@@ -1,0 +1,712 @@
+\chapter{Généralités sur les suites}
+
+\section{Notion de suite}
+
+\begin{defin}[Suite numérique]
+	Une \textbf{suite numérique} $u$ est une fonction définie sur $\N$ (ou sur l'ensemble des entiers naturels supérieurs ou égaux à un entier $n_0$) qui, à tout entier $n$, associe un nombre réel noté $u(n)$ ou $u_n$.
+	\begin{itemize}
+		\item Le nombre $u_n$ est le \textbf{terme de rang $n$} (ou d'indice $n$).
+		\item Le terme $u_{n+1}$ est le terme qui \textbf{suit} $u_n$.
+		\item Si la suite est définie à partir du rang $n_0$, le terme $u_{n_0}$ est son \textbf{premier terme} (le plus souvent $u_0$ ou $u_1$).
+	\end{itemize}
+\end{defin}
+
+\begin{notation}
+	La suite est notée $(u_n)$ ou $(u_n)_{n \geq n_0}$ lorsqu'on veut préciser le rang du premier terme.
+
+	Il faut distinguer $(u_n)$, qui désigne la suite tout entière, et $u_n$, qui est un nombre : le terme de rang $n$.
+\end{notation}
+
+\begin{ex}
+	La liste des nombres impairs rangés dans l'ordre croissant $1\,;\,3\,;\,5\,;\,7\,;\,\dots$ définit une suite :
+	\[
+		u_0 = 1\text{,}\quad u_1 = 3\text{,}\quad u_2 = 5\text{,}\quad u_3 = 7\text{,}\ldots
+	\]
+
+	Et plus généralement $u_n = 2n + 1$.
+\end{ex}
+
+\begin{ex}
+	Une suite n'est pas toujours définie dès le rang $0$ :
+	\begin{itemize}
+		\item la suite $u_n = \dfrac{1}{n}$ est définie pour tout entier $n \geq 1$ ; son premier terme est $u_1 = 1$, puis $u_2 = \dfrac{1}{2}$ et $u_3 = \dfrac{1}{3}$ ;
+		\item la suite $u_n = \dfrac{1}{n - 3}$ est définie pour tout entier $n \geq 4$ ; son premier terme est $u_4 = \dfrac{1}{4 - 3} = 1$, puis $u_5 = \dfrac{1}{2}$ et $u_6 = \dfrac{1}{3}$.
+	\end{itemize}
+\end{ex}
+
+\begin{attention}
+	Si le premier terme est $u_0$, alors de $u_0$ à $u_n$ il y a $n + 1$ termes, et non $n$ termes.
+\end{attention}
+
+\section{Modes de génération d'une suite}
+
+\subsection{Suite définie par une formule explicite}
+
+\begin{defin}[Suite définie de façon explicite]
+	Soit $f$ une fonction définie sur un intervalle contenant $\mathbb{N}$ (ou à partir d'un rang $n_0$).
+
+	On définit une \textbf{suite explicite} $(u_n)$ en exprimant directement chaque terme $u_n$ en fonction de son rang $n$ :
+	\[
+		u_n = f(n)
+	\]
+
+	On peut ainsi calculer directement n'importe quel terme de la suite en remplaçant $n$ par sa valeur dans l'expression de $f$.
+\end{defin}
+
+\newpage
+
+\begin{methode}[Calculer des termes d'une suite définie explicitement]
+	Calculer les quatre premiers termes des suites $(u_n)$ et $(v_n)$ définies pour tout entier $n$ par $u_n = 2n$ et $v_n = 3n^2 - 1$, puis calculer $u_{100}$.
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On remplace $n$ par $0$, $1$, $2$, $3$ dans $u_n = 2n$ : $u_0 = 0$, $u_1 = 2$, $u_2 = 4$, $u_3 = 6$.
+			\item On remplace $n$ par $0$, $1$, $2$, $3$ dans $v_n = 3n^2 - 1$ :
+			      \[
+				      v_0 = 3 \times 0^2 - 1 = -1, \quad v_1 = 3 \times 1^2 - 1 = 2, \quad v_2 = 3 \times 2^2 - 1 = 11, \quad v_3 = 3 \times 3^2 - 1 = 26
+			      \]
+			\item Directement : $u_{100} = 2 \times 100 = 200$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{ex}
+	\nline
+	\begin{itemize}
+		\item Soit $(u_n)$ la suite définie sur $\mathbb{N}$ par $u_n = 2n + 5$. On a :
+		      \[
+			      u_0 = 2 \times 0 + 5 = 5, \quad u_1 = 2 \times 1 + 5 = 7, \quad u_2 = 2 \times 2 + 5 = 9, \quad u_3 = 2 \times 3 + 5 = 11, \quad\ldots
+		      \]
+
+		\item Soit $(u_n)$ la suite définie sur $\mathbb{N}$ par $u_n = n^2 - 3n + 1$.
+
+		      En posant $u_n = f(n)$ avec $f(x) = x^2 - 3x + 1$, on a :
+		      \[
+			      \begin{array}{rclcl}
+				      u_0 & = & 0^2 - 3 \times 0 + 1 & = & 1               \\
+				      u_1 & = & 1^2 - 3 \times 1 + 1 & = & 1 - 3 + 1 = -1  \\
+				      u_2 & = & 2^2 - 3 \times 2 + 1 & = & 4 - 6 + 1 = -1  \\
+				      u_3 & = & 3^2 - 3 \times 3 + 1 & = & 9 - 9 + 1 = 1   \\
+				      u_4 & = & 4^2 - 3 \times 4 + 1 & = & 16 - 12 + 1 = 5
+			      \end{array}
+		      \]
+
+		\item Soit $(u_n)$ la suite définie sur $\mathbb{N}$ par $u_n = (-1)^n$. On a :
+		      \[
+			      \begin{array}{rclcl}
+				      u_0      & = & (-1)^0      & = & 1                                 \\
+				      u_1      & = & (-1)^1      & = & -1                                \\
+				      u_{1000} & = & (-1)^{1000} & = & 1 \quad \text{(exposant pair)}    \\
+				      u_{1997} & = & (-1)^{1997} & = & -1 \quad \text{(exposant impair)}
+			      \end{array}
+		      \]
+	\end{itemize}
+\end{ex}
+
+\subsection{Suite définie par une relation de récurrence}
+
+\begin{defin}[Suite définie par récurrence]
+	Soit $f$ une fonction définie sur un intervalle contenant les valeurs prises par la suite.
+
+	Une suite $(u_n)$ est dite \textbf{définie par récurrence} lorsque l'on connaît son premier terme (ou terme initial) et une relation permettant de calculer chaque terme à partir du précédent :
+	\[
+		\begin{cases}
+			u_{n_0} \text{ donné} \\
+			u_{n+1} = f(u_n) \quad \text{pour tout entier } n \geq n_0
+		\end{cases}
+	\]
+	Contrairement à une suite explicite, calculer $u_n$ nécessite de calculer tous les termes précédents de proche en proche.
+\end{defin}
+
+\begin{rem}
+	Contrairement à une formule explicite, une relation de récurrence ne permet pas de calculer un terme de rang donné sans avoir calculé tous les termes précédents : pour calculer $u_{12}$, il faut connaître $u_{11}$, donc $u_{10}$, etc.
+
+	La relation de récurrence peut aussi faire intervenir $n$ (par exemple $w_{n+1} = w_n + n$).
+\end{rem}
+
+\newpage
+
+\begin{methode}[Calculer des termes d'une suite définie par récurrence]
+	Calculer les quatre premiers termes de chacune des suites suivantes :
+	\begin{enumerate}
+		\item La suite $(u_n)$ définie sur $\mathbb{N}$ par : $\begin{cases} u_0 = 5 \\ u_{n+1} = 3u_n\end{cases}$
+		\item La suite $(v_n)$ définie sur $\mathbb{N}$ par : $\begin{cases} v_0 = 3 \\ v_{n+1} = 4v_n - 6\end{cases}$
+		\item La suite $(w_n)$ définie pour $n \geq 1$ par : $\begin{cases} w_1 = 1 \\ w_{n+1} = w_n + n \end{cases}$
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Les quatre premiers termes sont $u_0$, $u_1$, $u_2$ et $u_3$ :
+			      \[
+				      \begin{array}{rclcl}
+					      u_0 & = & 5    &   &                   \\
+					      u_1 & = & 3u_0 & = & 3 \times 5 = 15   \\
+					      u_2 & = & 3u_1 & = & 3 \times 15 = 45  \\
+					      u_3 & = & 3u_2 & = & 3 \times 45 = 135
+				      \end{array}
+			      \]
+
+			\item Les quatre premiers termes sont $v_0$, $v_1$, $v_2$ et $v_3$ :
+			      \[
+				      \begin{array}{rclcl}
+					      v_0 & = & 3        &   &                      \\
+					      v_1 & = & 4v_0 - 6 & = & 4 \times 3 - 6 = 6   \\
+					      v_2 & = & 4v_1 - 6 & = & 4 \times 6 - 6 = 18  \\
+					      v_3 & = & 4v_2 - 6 & = & 4 \times 18 - 6 = 66
+				      \end{array}
+			      \]
+
+			\item La suite commence à l'indice $1$ : les quatre premiers termes sont $w_1$, $w_2$, $w_3$ et $w_4$ :
+			      \[
+				      \begin{array}{rclcl}
+					      w_1 & = & 1       &   &                                  \\
+					      w_2 & = & w_1 + 1 & = & 1 + 1 = 2 \quad \text{($n = 1$)} \\
+					      w_3 & = & w_2 + 2 & = & 2 + 2 = 4 \quad \text{($n = 2$)} \\
+					      w_4 & = & w_3 + 3 & = & 4 + 3 = 7 \quad \text{($n = 3$)}
+				      \end{array}
+			      \]
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\subsection{Suite générée par un algorithme}
+
+\begin{ex}[Calculer un terme avec Python]
+	Soit la suite définie par $u_0 = 3$ et $u_{n+1} = 4u_n - 6$.
+
+	La fonction suivante renvoie le terme $u_n$ : à chaque tour de boucle, la variable \texttt{u} est remplacée par le terme suivant.
+
+	\begin{lstlisting}
+def suite(n):
+    u = 3
+    for i in range(1, n + 1):
+        u = 4 * u - 6
+    return u
+
+print(suite(13))
+\end{lstlisting}
+	L'instruction \texttt{range(1, n + 1)} fait varier \texttt{i} de $1$ à $n$ inclus : la boucle s'exécute $n$ fois.
+
+	L'appel \texttt{suite(13)} calcule $u_{13}$ et affiche $67\,108\,866$.
+	\begin{lstlisting}
+>>> suite(13)
+67108866
+\end{lstlisting}
+\end{ex}
+
+\begin{ex}[Autre suite définie par récurrence]
+	Pour la suite définie par $u_0 = 0$ et $u_{n+1} = 0{,}5\,u_n + 2$, le programme suivant calcule $u_{50}$ :
+
+	\begin{lstlisting}
+u = 0
+for i in range(1, 51):
+    u = 0.5 * u + 2
+print(u)
+\end{lstlisting}
+
+	On obtient une valeur très proche de $4$.
+\end{ex}
+
+\subsection{Suite générée par des motifs géométriques}
+
+\begin{ex}[Les lunules]
+	Dans la figure ci-dessous, $AB = 8$ cm et $I$ est le milieu de $[AB]$.
+
+	La courbe $\mathcal{C}_0$ est le demi-cercle de diamètre $[AB]$ ; on coupe chaque segment en deux pour tracer les demi-cercles de la courbe $\mathcal{C}_1$, puis ceux de $\mathcal{C}_2$, et ainsi de suite.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7, thick]
+			\draw[gris] (0,0) -- (8,0);
+			\draw[bleu, ultra thick] (0,0) arc (180:0:4);
+			\draw[orange, ultra thick] (0,0) arc (180:0:2);
+			\draw[orange, ultra thick] (4,0) arc (180:0:2);
+			\foreach \xx in {0,2,4,6} { \draw[rouge, ultra thick] (\xx,0) arc (180:0:1); }
+			\foreach \xx in {0,1,...,7} { \draw[vert, thick] (\xx,0) arc (180:0:0.5); }
+			\foreach \xx in {0,0.5,...,7.5} { \draw[gris, thick] (\xx,0) arc (180:0:0.25); }
+			\foreach \xx in {0,0.25,...,7.75} { \draw[gris, thin] (\xx,0) arc (180:0:0.125); }
+			\node[below left] at (0,0) {$A$};
+			\node[below right] at (8,0) {$B$};
+			\node[below] at (4,0) {$I$};
+			\node[bleu, above] at (4,4) {$\mathcal{C}_0$};
+			\node[orange, above] at (2,2) {$\mathcal{C}_1$};
+			\node[rouge, above] at (1.3,1) {$\mathcal{C}_2$};
+		\end{tikzpicture}
+	\end{center}
+
+	Notons $r_n$ le rayon des demi-cercles de la courbe $\mathcal{C}_n$.
+
+	On a $r_0 = 4$, $r_1 = 2$, $r_2 = 1$, $r_3 = 0{,}5$, et pour tout entier $n$ :
+	\[
+		r_{n+1} = \dfrac{r_n}{2}
+	\]
+
+	La courbe $\mathcal{C}_n$ est formée de $2^n$ demi-cercles de rayon $r_n = \dfrac{4}{2^n}$.
+
+	Sa longueur $\ell_n$ vérifie donc $\ell_n = 2^n \times \pi \times \dfrac{4}{2^n} = 4\pi$ : la suite $(\ell_n)$ est constante.
+\end{ex}
+
+\section{Représentation graphique d'une suite}
+
+\begin{representation}
+	Dans un repère du plan, la \textbf{représentation graphique} d'une suite $(u_n)$ est le \textbf{nuage de points} $A_n$ de coordonnées $\coordl{n}{u_n}$.
+
+	On ne relie pas ces points : la suite associe une valeur uniquement à chaque entier naturel $n$ (il n'y a pas de valeur entre deux rangs consécutifs).
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, x=6mm, y=6mm]
+			\draw[->, thick] (-0.5, 0) -- (7.2, 0) node[above] {$n$};
+			\draw[->, thick] (0, -1.5) -- (0, 5.5) node[right] {$u_n$};
+			\foreach \x in {1,2,3,4,5,6} { \draw (\x, -0.1) -- (\x, 0.1) node[below=4pt, font=\footnotesize] {$\x$}; }
+			\foreach \y in {-1,1,2,3,4,5} { \draw (-0.1, \y) -- (0.1, \y) node[left=4pt, font=\footnotesize] {$\y$}; }
+			\node[left=2pt, fill=white] at (0, 0) {$0$};
+			\fill (0, 2) circle (2pt) node[above right, font=\footnotesize] {$A_0$};
+			\fill (1, 1) circle (2pt) node[above, font=\footnotesize] {$A_1$};
+			\fill (2, 3.5) circle (2pt) node[above, font=\footnotesize] {$A_2$};
+			\fill (3, 0) circle (2pt) node[above, font=\footnotesize] {$A_3$};
+			\fill (4, 4.5) circle (2pt) node[above, font=\footnotesize] {$A_4$};
+			\fill (5, -1) circle (2pt) node[below, font=\footnotesize] {$A_5$};
+			\fill (6, 5.5) circle (2pt) node[above, font=\footnotesize] {$A_6$};
+		\end{tikzpicture}
+	\end{center}\end{representation}
+
+\begin{ex}
+	Pour tout entier $n$, on pose $u_n = \dfrac{n^2}{2} - 3$.
+
+	Par exemple $u_2 = \dfrac{2^2}{2} - 3 = -1$ et $u_4 = \dfrac{4^2}{2} - 3 = 5$.
+
+	Le tableau de valeurs est :
+	\begin{center}
+		\rnc{\arraystretch}{1.3}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
+			\ccg $n$   & $0$  & $1$      & $2$  & $3$     & $4$ & $5$     & $6$  & $7$      & $8$  \\ \hline
+			\ccg $u_n$ & $-3$ & $-2{,}5$ & $-1$ & $1{,}5$ & $5$ & $9{,}5$ & $15$ & $21{,}5$ & $29$ \\ \hline
+		\end{tabular}
+	\end{center}
+
+	\begin{center}
+		\begin{tikzpicture}[x=1cm, y=0.17cm, >=Stealth, thick]
+			\draw[->] (-0.3,0) -- (8.8,0) node[above] {$n$};
+			\draw[->] (0,-5) -- (0,31) node[right] {$u_n$};
+			\foreach \xx in {1,...,8} { \draw (\xx,0.5) -- (\xx,-0.5) node[below, font=\small] {$\xx$}; }
+			\foreach \yy in {-5,5,10,15,20,25,30} { \draw (0.1,\yy) -- (-0.1,\yy) node[left, font=\small] {$\yy$}; }
+			\foreach \nn/\vv in {0/-3, 1/-2.5, 2/-1, 3/1.5, 4/5, 5/9.5, 6/15, 7/21.5, 8/29} { \fill[rouge] (\nn,\vv) circle (2pt); }
+		\end{tikzpicture}
+	\end{center}
+\end{ex}
+
+\begin{methode}[Représenter les termes d'une suite définie par récurrence]
+	\textbf{Principe de la méthode :}
+
+	Pour représenter graphiquement les premiers termes d'une suite définie par $u_{n+1} = f(u_n)$ et la donnée de $u_0$, on trace la courbe représentative $\mathscr{C}_f$ de la fonction $f$ et la droite $\Delta$ d'équation $y = x$ dans un repère orthogonal :
+	\begin{enumerate}
+		\item On place $u_0$ sur l'axe des abscisses.
+		\item On trace la verticale passant par le point d'abscisse $u_0$ : son intersection avec $\mathscr{C}_f$ a pour ordonnée $u_1 = f(u_0)$.
+		\item On trace l'horizontale passant par ce point de $\mathscr{C}_f$ : elle coupe la droite d'équation $y = x$ en un point dont l'abscisse (égale à l'ordonnée) vaut $u_1$.
+
+		      La droite $y = x$ permet ainsi de \og reporter \fg{} $u_1$ sur l'axe des abscisses.
+		\item On réitère le procédé à partir de $u_1$ pour obtenir $u_2$, puis $u_3$, et ainsi de suite.
+	\end{enumerate}
+
+	\medskip
+	\textbf{Application :}
+
+	Soit la fonction $f$ définie sur $\mathbb{R}$ par $f(x) = x^2$ et la suite $(u_n)$ définie sur $\mathbb{N}$ par :
+	\[
+		\begin{cases}
+			u_0 = 0{,}75 \\
+			u_{n+1} = f(u_n) = (u_n)^2\quad \text{pour tout entier } n \in \mathbb{N}
+		\end{cases}
+	\]
+
+	Calculer les quatre premiers termes de la suite $(u_n)$, puis représenter graphiquement ces termes.
+
+	\begin{correction}
+		\textbf{1. Calcul des premiers termes :}
+		\[
+			\begin{array}{rclcl}
+				u_0 & = & 0{,}75                     &         &                               \\
+				u_1 & = & f(u_0) = (0{,}75)^2        & =       & 0{,}5625                      \\
+				u_2 & = & f(u_1) = (0{,}5625)^2      & =       & 0{,}31640625 \approx 0{,}3164 \\
+				u_3 & = & f(u_2) = (0{,}3164\dots)^2 & \approx & 0{,}1001
+			\end{array}
+		\]
+
+		\medskip
+		\textbf{2. Lecture du graphique :}
+		\begin{itemize}
+			\item Les points sur la courbe $y = x^2$ ont pour coordonnées $(u_0\,;\,u_1)$, $(u_1\,;\,u_2)$ et $(u_2\,;\,u_3)$ : leur \textbf{ordonnée} donne le terme suivant.
+			\item Les points sur la droite $y = x$ ont pour coordonnées $(u_1\,;\,u_1)$, $(u_2\,;\,u_2)$ et $(u_3\,;\,u_3)$ : ils permettent le \textbf{report} de l'axe des ordonnées vers l'axe des abscisses.
+		\end{itemize}
+
+		\begin{center}
+			\begin{tikzpicture}[x=6cm, y=6cm, >=Stealth, thick]
+				\draw[->] (-0.12,0) -- (1.35,0) node[above] {$x$};
+				\draw[->] (0,-0.12) -- (0,1.35) node[right] {$y$};
+				\draw (0.5,0.02) -- (0.5,-0.02);
+				\draw (1,0.02) -- (1,-0.02) node[below, font=\footnotesize] {$1$};
+				\draw (0.02,0.5) -- (-0.02,0.5);
+				\draw (0.02,1) -- (-0.02,1) node[left, font=\footnotesize] {$1$};
+				\node[below left=2pt, font=\footnotesize] at (0,0) {$0$};
+				\draw[bleu, domain=0:1.12, samples=80] plot (\x,{\x*\x});
+				\draw[vert, domain=0:1.25, samples=2] plot (\x,{\x});
+				\node[bleu, above left, font=\small] at (1.08,1.12) {$\mathscr{C}_f : y = x^2$};
+				\node[vert, below right, font=\small] at (1.12,1.12) {$y = x$};
+				\fill[black] (1,1) circle (2pt);
+				\draw[rouge, dashed] (0.75,0) -- (0.75,0.5625) -- (0.5625,0.5625) -- (0.5625,0.3164) -- (0.3164,0.3164) -- (0.3164,0.1001) -- (0.1001,0.1001) -- (0.1001,0); \draw[rouge, dotted] (0.5625,0.5625) -- (0,0.5625);
+				\draw[rouge, dotted] (0.3164,0.3164) -- (0,0.3164);
+				\draw[rouge, dotted] (0.1001,0.1001) -- (0,0.1001);
+				\draw[rouge, dotted] (0.5625,0.3164) -- (0.5625,0);
+				\draw[rouge, dotted] (0.3164,0.1001) -- (0.3164,0);
+				\fill[bleu] (0.75,0.5625) circle (2pt) node[right, font=\footnotesize] {$M_0(u_0\,;\,u_1)$};
+				\fill[bleu] (0.5625,0.3164) circle (2pt) node[below right, font=\footnotesize, fill=white] {$M_1(u_1\,;\,u_2)$};
+				\fill[bleu] (0.5625,0.3164) circle (2pt);
+				\fill[bleu] (0.3164,0.1001) circle (2pt) node[below right, font=\footnotesize, fill=white] {$M_2(u_2\,;\,u_3)$};
+				\fill[bleu] (0.3164,0.1001) circle (2pt);
+				\fill[vert] (0.5625,0.5625) circle (2pt) node[above left, font=\footnotesize] {$P_1(u_1\,;\,u_1)$};
+				\fill[vert] (0.3164,0.3164) circle (2pt) node[above left, font=\footnotesize] {$P_2(u_2\,;\,u_2)$};
+				\fill[vert] (0.1001,0.1001) circle (2pt) node[above left, font=\footnotesize, fill=white] {$P_3(u_3\,;\,u_3)$};
+				\fill[vert] (0.1001,0.1001) circle (2pt);
+				\fill[rouge] (0.75,0) circle (1.8pt);
+				\node[below, rouge, font=\footnotesize] at (0.75,0) {$u_0$};
+				\node[below, rouge, font=\footnotesize] at (0.5625,0) {$u_1$};
+				\node[below, rouge, font=\footnotesize] at (0.3164,0) {$u_2$};
+				\node[below, rouge, font=\footnotesize] at (0.1001,0) {$u_3$};
+				\node[left, rouge, font=\footnotesize] at (0,0.5625) {$u_1$};
+				\node[left, rouge, font=\footnotesize] at (0,0.3164) {$u_2$};
+				\node[below left, rouge, font=\footnotesize] at (0,0.1001) {$u_3$};
+			\end{tikzpicture}
+		\end{center}
+	\end{correction}
+\end{methode}
+
+\section{Sens de variation d'une suite}
+
+\begin{defin}[Sens de variation]
+	Soit $p$ un entier et $(u_n)$ une suite.
+	\begin{itemize}
+		\item $(u_n)$ est \textbf{croissante} à partir du rang $p$ si, pour tout entier $n \geq p$, $u_{n+1} \geq u_n$.
+		\item $(u_n)$ est \textbf{décroissante} à partir du rang $p$ si, pour tout entier $n \geq p$, $u_{n+1} \leq u_n$.
+		\item $(u_n)$ est \textbf{constante} à partir du rang $p$ si, pour tout entier $n \geq p$, $u_{n+1} = u_n$.
+	\end{itemize}
+
+	\begin{center}
+		\begin{tikzpicture}[x=8mm,y=7mm, >=Stealth, thick]
+			\begin{scope}
+				\draw[->] (-0.3,0) -- (6,0) node[right] {$n$};
+				\draw[->] (0,-0.3) -- (0,5.8) node[above] {$u_n$};
+				\foreach \xx/\yy in {1/1, 2/1.8, 3/2.7, 4/3.9, 5/5.3} { \fill[bleu] (\xx,\yy) circle (2.5pt); }
+				\draw[dashed, gris] (3,0) -- (3,2.7) -- (0,2.7);
+				\draw[dashed, gris] (4,0) -- (4,3.9) -- (0,3.9);
+				\node[below, font=\small] at (3,0) {$n$};
+				\node[below, font=\small] at (4.1,0) {$n+1$};
+				\node[left, font=\small] at (0,2.7) {$u_n$};
+				\node[left, font=\small] at (0,3.9) {$u_{n+1}$};
+				\node[below] at (3,-0.8) {$(u_n)$ croissante};
+			\end{scope}
+			\begin{scope}[shift={(8.5,0)}]
+				\draw[->] (-0.3,0) -- (6,0) node[right] {$n$};
+				\draw[->] (0,-0.3) -- (0,5.8) node[above] {$u_n$};
+				\foreach \xx/\yy in {1/5.3, 2/3.9, 3/2.7, 4/1.8, 5/1} { \fill[rouge] (\xx,\yy) circle (2.5pt); }
+				\draw[dashed, gris] (3,0) -- (3,2.7) -- (0,2.7);
+				\draw[dashed, gris] (4,0) -- (4,1.8) -- (0,1.8);
+				\node[below, font=\small] at (2.9,0) {$n$};
+				\node[below, font=\small] at (4.1,0) {$n+1$};
+				\node[left, font=\small] at (0,2.7) {$u_n$};
+				\node[left, font=\small] at (0,1.8) {$u_{n+1}$};
+				\node[below] at (3,-0.8) {$(u_n)$ décroissante};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+\end{defin}
+
+\begin{rem}
+	\nline
+	\begin{itemize}
+		\item On dit que la suite est \textbf{strictement} croissante (resp. décroissante) lorsque les inégalités sont strictes.
+		\item Une suite est \textbf{monotone} si elle est croissante ou décroissante.
+		\item Lorsque $p$ est le rang du premier terme, on dit simplement que la suite est croissante (ou décroissante).
+	\end{itemize}
+\end{rem}
+
+\begin{propriete}[Étudier le sens de variation d'une suite]
+	Soit $(u_n)$ une suite.
+	\begin{enumerate}
+		\item \textbf{Signe de la différence.}
+		      \begin{itemize}
+			      \item Si $\pa{u_{n+1} - u_n} \geq 0$ pour tout $n \geq p$, alors $(u_n)$ est croissante à partir du rang $p$.
+			      \item Si $\pa{u_{n+1} - u_n} \leq 0$ pour tout $n \geq p$, elle est décroissante à partir du rang $p$.
+		      \end{itemize}
+		\item \textbf{Comparaison à $1$ du quotient.}
+
+		      Si tous les termes sont strictement positifs et :
+		      \begin{itemize}
+			      \item si $\pa{\dfrac{u_{n+1}}{u_n}} \geq 1$ pour tout $n \geq p$, alors $(u_n)$ est croissante à partir du rang $p$
+			      \item si $\pa{\dfrac{u_{n+1}}{u_n}} \leq 1$ pour tout $n \geq p$, elle est décroissante à partir du rang $p$.
+		      \end{itemize}
+		\item \textbf{Fonction associée.}
+
+		      Si $u_n = f(n)$ et si $f$ est croissante (resp. décroissante) sur $\intfo{p}{+\infty}$, alors $(u_n)$ est croissante (resp. décroissante) à partir du rang $p$.
+	\end{enumerate}
+\end{propriete}
+
+\begin{demonstration}
+	\nline
+	\begin{enumerate}
+		\item $u_{n+1} - u_n \geq 0$ équivaut à $u_{n+1} \geq u_n$.
+		\item Comme $u_n > 0$, multiplier l'inégalité $\dfrac{u_{n+1}}{u_n} \geq 1$ par $u_n$ donne $u_{n+1} \geq u_n$.
+		\item Pour tout entier $n \geq p$, on a $n < n + 1$.
+
+		      Si $f$ est croissante sur $\intfo{p}{+\infty}$, alors $f(n) \leq f(n + 1)$, c'est-à-dire $u_n \leq u_{n+1}$.
+	\end{enumerate}
+\end{demonstration}
+
+\begin{attention}
+	La réciproque est \textbf{fausse} : une suite $(u_n)$ définie par $u_n = f(n)$ peut être croissante sur $\mathbb{N}$ sans que la fonction $f$ le soit sur $[0\,;\,+\infty[$.
+\end{attention}
+
+\begin{methode}[Étudier le sens de variation avec la différence $u_{n+1} - u_n$]
+	\nline
+	\begin{enumerate}
+		\item Pour tout entier $n$, $u_n = 3n + 1$.
+
+		      Étudier le sens de variation de $(u_n)$.
+		\item Pour tout entier $n$, $u_n = n^2 - 4n + 4$.
+
+		      Démontrer que $(u_n)$ est croissante à partir d'un certain rang à déterminer.
+		\item Pour tout entier $n \geq 1$, $u_n = \dfrac{1}{n}$.
+
+		      Étudier le sens de variation de $(u_n)$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item On a :
+			      \[
+				      u_{n+1} = 3(n + 1) + 1 = 3n + 4
+			      \]
+
+			      Donc :
+			      \[
+				      u_{n+1} - u_n = (3n + 4) - (3n + 1) = 3 > 0
+			      \]
+
+			      La suite $(u_n)$ est strictement croissante.
+			\item On calcule :
+			      \[
+				      u_{n+1} = (n + 1)^2 - 4(n + 1) + 4 = n^2 - 2n + 1
+			      \]
+
+			      Puis :
+			      \[
+				      u_{n+1} - u_n = \pa{n^2 - 2n + 1} - \pa{n^2 - 4n + 4} = 2n - 3
+			      \]
+
+			      Or $2n - 3 \geq 0 \eqv n \geq 1{,}5$ ; comme $n$ est entier, $u_{n+1} - u_n \geq 0$ pour $n \geq 2$.
+
+			      La suite $(u_n)$ est croissante à partir du rang $2$.
+			\item Pour tout entier $n \geq 1$ :
+			      \[
+				      u_{n+1} - u_n = \dfrac{1}{n + 1} - \dfrac{1}{n} = \dfrac{n - (n + 1)}{n(n + 1)} = \dfrac{-1}{n(n + 1)} < 0
+			      \]
+			      La suite $(u_n)$ est strictement décroissante.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Étudier le sens de variation avec le quotient $\dfrac{u_{n+1}}{u_n}$]
+	\nline
+	\begin{enumerate}
+		\item Soit $(u_n)$ définie par $u_0 = 2$ et $u_{n+1} = 4u_n$.
+
+		      Étudier le sens de variation de $(u_n)$.
+		\item Pour tout entier $n \geq 1$, $v_n = \dfrac{1}{n(n + 1)}$.
+
+		      Démontrer que $(v_n)$ est décroissante.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item Comme $u_0 = 2 > 0$ et que chaque terme est le quadruple du précédent, tous les termes sont strictement positifs. On a :
+			      \[
+				      \dfrac{u_{n+1}}{u_n} = \dfrac{4u_n}{u_n} = 4 > 1
+			      \]
+
+			      La suite $(u_n)$ est strictement croissante.
+			\item Les termes sont strictement positifs et :
+			      \[
+				      \dfrac{v_{n+1}}{v_n} = \dfrac{\dfrac{1}{(n + 1)(n + 2)}}{\dfrac{1}{n(n + 1)}} = \dfrac{n(n + 1)}{(n + 1)(n + 2)} = \dfrac{n}{n + 2}
+			      \]
+
+			      Comme $0 < n < n + 2$, on a $\dfrac{v_{n+1}}{v_n} < 1$, donc $v_{n+1} < v_n$ : la suite $(v_n)$ est strictement décroissante.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Étudier le sens de variation avec la fonction associée]
+	\nline
+	\begin{enumerate}
+		\item Pour tout entier $n$, $u_n = \dfrac{1}{n + 1}$.
+
+		      Étudier le sens de variation de $(u_n)$ à l'aide de la fonction $f(x) = \dfrac{1}{x + 1}$ définie sur $\intfo{0}{+\infty}$.
+		\item Pour tout entier $n$, $u_n = n^2 - n + 1$.
+
+		      Étudier le sens de variation de $(u_n)$.
+	\end{enumerate}
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $f$ est dérivable sur $\intfo{0}{+\infty}$ et $f'(x) = \dfrac{-1}{(x + 1)^2} < 0$ car un carré est positif et $(x + 1)^2 \neq 0$.
+
+			      La fonction $f$ est donc strictement décroissante sur $\intfo{0}{+\infty}$.
+
+			      Comme $u_n = f(n)$, la suite $(u_n)$ est strictement décroissante.
+
+			\item On a $u_n = f(n)$ avec $f(x) = x^2 - x + 1$.
+
+			      C'est une fonction du second degré avec $a = 1 > 0$, qui admet un minimum en $x = \dfrac{-b}{2a} = \dfrac{1}{2}$.
+
+			      Elle est décroissante sur $\intof{-\infty}{\frac{1}{2}}$ et croissante sur $\intfo{\frac{1}{2}}{+\infty}$, donc croissante sur $\intfo{1}{+\infty}$.
+
+			      La suite $(u_n)$ est croissante à partir du rang $1$.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\newpage
+
+\section{Limite d'une suite : première approche}
+
+\begin{ex}[Un exemple d'introduction]
+	Pour tout entier $n \geq 1$, on pose $u_n = \dfrac{2n + 1}{n} = 2 + \dfrac{1}{n}$.
+
+	On calcule des termes pour des rangs de plus en plus grands :
+	\begin{center}
+		\rnc{\arraystretch}{1.3}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
+			\ccg $n$   & $1$ & $2$     & $3$               & $4$      & $5$     & $10$    & $15$              & $50$     & $500$     \\ \hline
+			\ccg $u_n$ & $3$ & $2{,}5$ & $\approx 2{,}333$ & $2{,}25$ & $2{,}2$ & $2{,}1$ & $\approx 2{,}067$ & $2{,}02$ & $2{,}002$ \\ \hline
+		\end{tabular}
+	\end{center}
+
+	Plus $n$ devient grand, plus les termes semblent se rapprocher de $2$.
+\end{ex}
+
+\begin{defin}[Limite d'une suite (approche intuitive)]
+	\nline
+	\begin{itemize}
+		\item Une suite $(u_n)$ \textbf{converge} vers un réel $\ell$ lorsque ses termes se rapprochent de $\ell$ quand $n$ devient de plus en plus grand.
+
+		      On note :
+		      \[
+			      \displaystyle\lim_{n \to +\infty} u_n = \ell
+		      \]
+
+		      On dit que $\ell$ est la \textbf{limite} de la suite.
+		\item Une suite a pour \textbf{limite $+\infty$} lorsque ses termes deviennent aussi grands que l'on veut quand $n$ devient grand ; on note :
+		      \[
+			      \displaystyle\lim_{n \to +\infty} u_n = +\infty
+		      \]
+
+		      On définit de même la limite $-\infty$.
+		\item Une suite qui ne converge pas est \textbf{divergente} : elle a pour limite $+\infty$ ou $-\infty$, ou n'a pas de limite.
+	\end{itemize}
+\end{defin}
+
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, thick]
+		\begin{scope}[x=5.5mm, y=15mm]
+			\draw[->] (-0.3,0) -- (11,0) node[above] {$n$};
+			\draw[->] (0,-0.1) -- (0,2.4) node[right] {$v_n$};
+			\draw[dashed, gris] (0,1) -- (10.5,1) node[right, font=\small] {$y = 1$};
+			\foreach \nn in {1,...,10} { \fill[bleu] (\nn,{1+1/\nn}) circle (2pt); }
+			\node[left, font=\small] at (0,1) {$1$};
+			\node[below] at (5.5,-0.4) {$v_n = 1 + \frac{1}{n}$ : limite $1$};
+		\end{scope}
+		\begin{scope}[shift={(8.5,1.5)}, x=5.5mm, y=10mm]
+			\draw[->] (-0.3,0) -- (10,0) node[above] {$n$};
+			\draw[->] (0,-1.6) -- (0,1.7) node[right] {$w_n$};
+			\foreach \nn in {0,...,9} { \fill[rouge] (\nn,{(-1)^\nn}) circle (2pt); }
+			\node[left, font=\small] at (0,1) {$1$};
+			\node[left, font=\small] at (0,-1) {$-1$};
+			\node[below] at (5,-1.9) {$w_n = (-1)^n$ : pas de limite};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+\begin{piege}
+	Une conjecture n'est pas une preuve : on ne peut pas conclure à une limite à partir de quelques termes seulement.
+
+	En première, on conjecture une limite à l'aide du calcul de nombreux termes, d'un tableur ou d'un programme.
+\end{piege}
+
+\begin{methode}[Conjecturer la limite d'une suite]
+	\nline
+	\begin{enumerate}
+		\item Pour tout entier $n$, $u_n = n^2 + 1$.
+
+		      Calculer $u_0$, $u_1$, $u_2$, $u_{10}$ et $u_{100}$.
+
+		      La suite semble-t-elle convergente ou divergente ?
+		\item On définit $v_0 = 2$ et $v_{n+1} = (-1)^n v_n$.
+
+		      Calculer des termes de la suite.
+
+		      Semble-t-elle convergente ou divergente ?
+	\end{enumerate}
+	\newpage
+
+	\begin{correction}
+		\nline
+		\begin{enumerate}
+			\item $u_0 = 1$, $u_1 = 2$, $u_2 = 5$, $u_{10} = 101$, $u_{100} = 10\,001$.
+
+			      Plus $n$ devient grand, plus les termes semblent devenir grands : la suite semble diverger vers $+\infty$ et on note $\displaystyle\lim_{n \to +\infty} u_n = +\infty$.
+			\item $v_1 = (-1)^0 v_0 = 2$, $v_2 = (-1)^1 v_1 = -2$, $v_3 = (-1)^2 v_2 = -2$, $v_4 = (-1)^3 v_3 = 2$, $v_5 = (-1)^4 v_4 = 2$.
+
+			      Les termes ne se rapprochent pas d'une valeur : la suite semble diverger et n'a pas de limite.
+		\end{enumerate}
+	\end{correction}
+\end{methode}
+
+\begin{methode}[Déterminer un seuil à l'aide d'un algorithme]
+	Soit la suite $\pa{u_n}$ définie par : $\begin{cases}u_0 = 2\\u_{n+1} = 0{,}9\,u_n + 1\end{cases}$.
+
+	Écrire une fonction Python qui détermine le plus petit rang à partir duquel les termes sont supérieurs à $8$.
+
+	\begin{correction}
+		On utilise une boucle \texttt{while} : tant que le terme courant est inférieur ou égal à $8$, on passe au terme suivant en comptant les étapes.
+
+		\begin{lstlisting}
+def seuil():
+    n = 0
+    u = 2
+    while u <= 8:
+        n = n + 1
+        u = 0.9 * u + 1
+    return n
+\end{lstlisting}
+		\begin{lstlisting}
+>>> seuil()
+14
+\end{lstlisting}
+
+		L'appel renvoie $14$ : le premier terme strictement supérieur à $8$ est $u_{14}$.
+
+		En effet, en calculant les premiers termes de la suite définie par $\begin{cases}u_0 = 2\\u_{n+1} = 0{,}9\,u_n + 1\end{cases}$, on constate que la suite croît vers $10$ et ne dépasse $8$ qu'à partir du rang $14$ :
+
+		\[
+			\def\arraystretch{1.3}
+			\begin{array}{|c|c|c|c|c|c|c|c|} \hline
+				\ccg n   & 0 & 1     & 2      & 3       & \cdots & 13             & 14             \\ \hline
+				\ccg u_n & 2 & 2{,}8 & 3{,}52 & 4{,}168 & \cdots & \approx 7{,}97 & \approx 8{,}17 \\ \hline
+			\end{array}
+		\]
+
+		On a bien $u_{13} \approx 7{,}97 \leq 8$ tandis que $u_{14} \approx 8{,}17 > 8$ : le seuil est donc atteint pour $n = 14$.
+	\end{correction}
+\end{methode}
+
